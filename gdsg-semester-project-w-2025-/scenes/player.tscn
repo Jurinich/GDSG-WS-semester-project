@@ -8,6 +8,7 @@
 size = Vector2(50, 200)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_p0vlq")
 
