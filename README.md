@@ -65,10 +65,10 @@ The game will make sure that no essential information is conveyed only by colour
 The controls are kept simple, not requiring multiple buttons to be pressed at once, button mashing or buttons being held down for a longer time.
 
 ## Timeline Estimation
-- First playable version with upgrades and nice visuals/sounds:  January 7th
+- First playable version with 1 item implemented and nice visuals/sounds:  January 7th
 - First round of playtesting and fix the things that are most pressing for making a submission for the button festival: January 14th
 - Make submission for button festival by January 16th
-- Work on polishing the game, making it juicy, further playtesting: End of February
+- Work on polishing the game, add more items, making it juicy, further playtesting: End of February
 - If accepted for button festival: make version that we can show off there on March 6th/7th.
 
 ## Team and Credits
