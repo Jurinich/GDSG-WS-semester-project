@@ -34,6 +34,7 @@ The main objective is to catch incoming balls with one's own paddle and shoot th
 - Players will store the items they collect (up to a certain amount)
 - Players can then use the items they collected, one after the other, which will lead to various positive and/or chaotic effects.
 - Random obstacles (cat paws) will appear in the middle of the playing field and when the ball collides with them, they will either reflect it or swat it away in some random direction.
+- Over time, the ball's velocity will increase
 
 ### Items:
 Here's a list of item effects that will be implemented
@@ -65,10 +66,10 @@ The game will make sure that no essential information is conveyed only by colour
 The controls are kept simple, not requiring multiple buttons to be pressed at once, button mashing or buttons being held down for a longer time.
 
 ## Timeline Estimation
-- First playable version with upgrades and nice visuals/sounds:  January 7th
+- First playable version with 1 item implemented and nice visuals/sounds:  January 7th
 - First round of playtesting and fix the things that are most pressing for making a submission for the button festival: January 14th
 - Make submission for button festival by January 16th
-- Work on polishing the game, making it juicy, further playtesting: End of February
+- Work on polishing the game, add more items, making it juicy, further playtesting: End of February
 - If accepted for button festival: make version that we can show off there on March 6th/7th.
 
 ## Team and Credits

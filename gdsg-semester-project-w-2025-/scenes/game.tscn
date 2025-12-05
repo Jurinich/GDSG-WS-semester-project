@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://coyi6nqc62xb1"]
+[gd_scene load_steps=10 format=3 uid="uid://coyi6nqc62xb1"]
 
 [ext_resource type="PackedScene" uid="uid://dmngxbinp5ri7" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://cd7gftlf35edy" path="res://assets/Rucksack.PNG" id="2_iywne"]
 [ext_resource type="PackedScene" uid="uid://bhb0kygy35pj3" path="res://scenes/ball.tscn" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://dcjct6o0k4moq" path="res://scripts/ball_spawner.gd" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://bpva8mtljkuns" path="res://scripts/GoalScript.gd" id="4_lbhrr"]
@@ -26,6 +27,7 @@ mesh = SubResource("QuadMesh_8cj0n")
 [node name="Player1" parent="." instance=ExtResource("1_uwrxv")]
 position = Vector2(50, 540)
 collision_mask = 9
+playerTexture = ExtResource("2_iywne")
 isP1 = true
 
 [node name="Player2" parent="." instance=ExtResource("1_uwrxv")]
