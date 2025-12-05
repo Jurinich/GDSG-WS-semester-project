@@ -34,6 +34,7 @@ The main objective is to catch incoming balls with one's own paddle and shoot th
 - Players will store the items they collect (up to a certain amount)
 - Players can then use the items they collected, one after the other, which will lead to various positive and/or chaotic effects.
 - Random obstacles (cat paws) will appear in the middle of the playing field and when the ball collides with them, they will either reflect it or swat it away in some random direction.
+- Over time, the ball's velocity will increase
 
 ### Items:
 Here's a list of item effects that will be implemented

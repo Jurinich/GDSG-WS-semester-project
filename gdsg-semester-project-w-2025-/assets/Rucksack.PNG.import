@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bixbpe2iituc6"
-path="res://.godot/imported/circle.png-6efbe600b7e2418cd5091089237d13c1.ctex"
+uid="uid://cd7gftlf35edy"
+path="res://.godot/imported/Rucksack.PNG-2e01879583820a52b608f7bd51934c95.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/circle.png"
-dest_files=["res://.godot/imported/circle.png-6efbe600b7e2418cd5091089237d13c1.ctex"]
+source_file="res://assets/Rucksack.PNG"
+dest_files=["res://.godot/imported/Rucksack.PNG-2e01879583820a52b608f7bd51934c95.ctex"]
 
 [params]
 
