@@ -9,7 +9,7 @@ const SPEED := 500
 @export var playerTexture: Texture2D
 @export var isP1: bool = false
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	if Engine.is_editor_hint():
 		$MeshInstance2D.texture = playerTexture
 	
@@ -24,7 +24,7 @@ func getYdir() -> float:
 	else:
 		return Input.get_action_strength("downP2") - Input.get_action_strength("upP2")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not Engine.is_editor_hint(): 
 		var dir:Vector2=Vector2(0, getYdir())
 		velocity = dir * SPEED
