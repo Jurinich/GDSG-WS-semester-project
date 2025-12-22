@@ -1,6 +1,9 @@
 extends Node
-var left_player_score : int = 0
-var right_player_score : int = 0
+
+var max_score: int = 3
+
+var left_player_score: int = 0
+var right_player_score: int = 0
 
 signal score_changed
 
@@ -9,7 +12,8 @@ func reset():
 	right_player_score = 0
 	score_changed.emit()
 
-func add_point(player : String) -> void:
+# function returns true if the game should continue on
+func add_point(player : String) -> bool:
 	match player.to_lower():
 		"left":
 			left_player_score += 1
@@ -17,3 +21,13 @@ func add_point(player : String) -> void:
 			right_player_score += 1
 	print("Score:", left_player_score, " - ", right_player_score)
 	score_changed.emit()
+
+	if (left_player_score >= max_score || right_player_score >= max_score):
+		get_tree().call_deferred("change_scene_to_file", "res://scenes/main_menu.tscn")
+		return false
+
+	return true
+
+
+func get_score_formatted() -> String:
+	return str(left_player_score) + ":" + str(right_player_score)

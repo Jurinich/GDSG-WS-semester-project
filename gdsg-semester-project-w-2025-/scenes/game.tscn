@@ -62,12 +62,6 @@ position = Vector2(0, 10)
 scale = Vector2(96, 1)
 shape = SubResource("RectangleShape2D_yqjtg")
 
-[node name="BallSpawner" type="Node2D" parent="."]
-position = Vector2(960, 540)
-script = ExtResource("3_lnu2h")
-ball_scene = ExtResource("2_yqjtg")
-spawn_position = Vector2(960, 540)
-
 [node name="Goals" type="Node2D" parent="."]
 
 [node name="LeftGoal" type="Area2D" parent="Goals"]
@@ -107,3 +101,9 @@ label_settings = SubResource("LabelSettings_p57ef")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("6_p57ef")
+
+[node name="BallSpawnTimer" type="Timer" parent="."]
+one_shot = true
+script = ExtResource("3_lnu2h")
+ball_scene = ExtResource("2_yqjtg")
+spawn_position = Vector2(960, 540)
