@@ -74,7 +74,7 @@ The controls are kept simple, not requiring multiple buttons to be pressed at on
 
 ## Team and Credits
 ### Programming
-Ivan, Max, Alex, Ida, Marlene
+Ivan, Max, Alex, Ida, Marlene, Marco (not good)
 
 ### Art/UI
 Alex, Lisa, Ralev
