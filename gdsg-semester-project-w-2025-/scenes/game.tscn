@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://coyi6nqc62xb1"]
+[gd_scene load_steps=17 format=3 uid="uid://coyi6nqc62xb1"]
 
 [ext_resource type="PackedScene" uid="uid://dmngxbinp5ri7" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://cd7gftlf35edy" path="res://assets/Rucksack.PNG" id="2_iywne"]
@@ -6,6 +6,10 @@
 [ext_resource type="Script" uid="uid://dcjct6o0k4moq" path="res://scripts/ball_spawner.gd" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://bpva8mtljkuns" path="res://scripts/GoalScript.gd" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://c0n866wxrwtu6" path="res://scripts/score_label.gd" id="6_p57ef"]
+[ext_resource type="Script" uid="uid://b2oe7fsd38rx1" path="res://scripts/items/item_spawner.gd" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://bdme7ngk7uj84" path="res://scenes/CollectibleItem.tscn" id="8_gee14"]
+[ext_resource type="Script" uid="uid://cjxfeo0s5d5yr" path="res://scripts/items/item_data.gd" id="8_vtaks"]
+[ext_resource type="Resource" uid="uid://dmryy0puarxaq" path="res://resources/split_ball.tres" id="9_kvpfn"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_8cj0n"]
 
@@ -107,3 +111,10 @@ one_shot = true
 script = ExtResource("3_lnu2h")
 ball_scene = ExtResource("2_yqjtg")
 spawn_position = Vector2(960, 540)
+
+[node name="ItemSpawner" type="Node" parent="."]
+script = ExtResource("7_u5sy4")
+items_and_chance = Dictionary[ExtResource("8_vtaks"), int]({
+ExtResource("9_kvpfn"): 3
+})
+item_scene = ExtResource("8_gee14")
