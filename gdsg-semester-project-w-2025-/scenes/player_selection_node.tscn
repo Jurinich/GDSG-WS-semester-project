@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj18d1fh7lipn"]
+
+[ext_resource type="Script" uid="uid://de4tr7w5a07aw" path="res://scripts/player_selection_node.gd" id="1_h4mwn"]
+[ext_resource type="Texture2D" uid="uid://emd4k5xlqjpj" path="res://assets/paddle1.png" id="1_xkd2o"]
+
+[node name="PlayerSelectionNode" type="Control"]
+layout_mode = 3
+anchor_right = 0.31300002
+anchor_bottom = 0.74100006
+offset_bottom = -0.28009033
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h4mwn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -400.0
+offset_right = 300.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Player 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LeftButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "<"
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("1_xkd2o")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="RightButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = ">"
+
+[node name="SelectButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Select"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SelectButton" to="." method="_on_select_button_pressed"]
