@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7uldkmwrx85"]
+[gd_scene load_steps=7 format=3 uid="uid://b7uldkmwrx85"]
 
 [ext_resource type="Script" uid="uid://bvukho5xegmaq" path="res://scripts/main_menu_controller.gd" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://cdm15ogkivjxe" path="res://assets/sprites/Backgrounds/BG_StartScreenMenue.png" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://bkpwot3g78twl" path="res://assets/sprites/Kittens/UI_kittens/kitten_inbox.png" id="3_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://btg7cq10y06vr" path="res://assets/sprites/Popups/Popup_menue.png" id="3_wu84c"]
+[ext_resource type="Texture2D" uid="uid://c4vomr1gla4ut" path="res://assets/sprites/Logos/Logo_pink.png" id="4_8ln24"]
+[ext_resource type="Texture2D" uid="uid://br0nn0g3jab66" path="res://assets/sprites/Kittens/UI_kittens/kitten_lying.png" id="4_oa1go"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,7 +16,63 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l6cm7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="BackgroundElements" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="BackgroundElements"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ekxnf")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="StandingKitten" type="TextureRect" parent="BackgroundElements"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -297.0
+offset_top = -264.0
+offset_right = -60.0
+offset_bottom = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_rtw2f")
+
+[node name="LyingKitten" type="TextureRect" parent="BackgroundElements"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_oa1go")
+
+[node name="ButtonBox" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -358.5
+offset_top = -587.0
+offset_right = 358.5
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("3_wu84c")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ButtonBox"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -25,62 +86,66 @@ offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StartButton" type="Button" parent="VBoxContainer"]
+[node name="StartButton" type="Button" parent="ButtonBox/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 48
 text = "Start Game"
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="ButtonBox/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 48
 text = "Settings"
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="ButtonBox/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 48
 text = "Credits"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
+[node name="QuitButton" type="Button" parent="ButtonBox/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 48
 text = "Quit"
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_top = 100.0
-offset_right = 20.0
-offset_bottom = 123.00001
+anchor_bottom = 0.5
+offset_left = -992.0
+offset_top = -432.0
+offset_right = 992.429
+offset_bottom = -73.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 64
-text = "GDSG Semester Project WS 2025"
-horizontal_alignment = 1
-vertical_alignment = 1
+grow_vertical = 2
+texture = ExtResource("4_8ln24")
+stretch_mode = 5
 
 [node name="InfoLabel" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -124.0
-offset_top = 215.0
+offset_top = -68.0
 offset_right = 124.0
-offset_bottom = 308.0
+offset_bottom = 25.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "Left Player won!
 0:0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="ButtonBox/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ButtonBox/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="ButtonBox/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="ButtonBox/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

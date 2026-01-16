@@ -1,46 +1,46 @@
-[gd_scene load_steps=13 format=3 uid="uid://coyi6nqc62xb1"]
+[gd_scene load_steps=18 format=3 uid="uid://coyi6nqc62xb1"]
 
+[ext_resource type="Texture2D" uid="uid://bfiqq6jpq1557" path="res://assets/sprites/Backgrounds/BG Dark.png" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dmngxbinp5ri7" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="Texture2D" uid="uid://cd7gftlf35edy" path="res://assets/Rucksack.PNG" id="2_iywne"]
+[ext_resource type="Texture2D" uid="uid://dj7n4h024303j" path="res://assets/sprites/Backgrounds/playfield.png" id="2_gee14"]
 [ext_resource type="PackedScene" uid="uid://bhb0kygy35pj3" path="res://scenes/ball.tscn" id="2_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://d36omc02q8m8u" path="res://assets/sprites/Paddles/paddle1.png" id="3_gee14"]
 [ext_resource type="Script" uid="uid://dcjct6o0k4moq" path="res://scripts/ball_spawner.gd" id="3_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://8xqbske0pmah" path="res://assets/sprites/Paddles/paddle2.png" id="4_0tnpc"]
 [ext_resource type="Script" uid="uid://bpva8mtljkuns" path="res://scripts/GoalScript.gd" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://c0n866wxrwtu6" path="res://scripts/score_label.gd" id="6_p57ef"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_8cj0n"]
+[ext_resource type="Texture2D" uid="uid://dyqjkte0byedt" path="res://assets/sprites/Backgrounds/inventory_leftplayer.png" id="6_vtaks"]
+[ext_resource type="Texture2D" uid="uid://dh4qjaud52ho" path="res://assets/sprites/Backgrounds/inventory_rightplayer.png" id="7_kvpfn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
-size = Vector2(9, 1100)
+size = Vector2(64, 840)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
-size = Vector2(14.5, 1085)
+size = Vector2(60, 843)
 
 [sub_resource type="SystemFont" id="SystemFont_iywne"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p57ef"]
 font = SubResource("SystemFont_iywne")
 font_size = 128
-font_color = Color(1, 1, 1, 0.40784314)
+font_color = Color(0.623529, 0.14902, 1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_8cj0n"]
 
 [node name="Game" type="Node2D"]
 
-[node name="Background" type="MeshInstance2D" parent="."]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(960, 540)
-scale = Vector2(1920, 1080)
-mesh = SubResource("QuadMesh_8cj0n")
-
 [node name="Player1" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(50, 540)
+position = Vector2(135, 609)
 collision_mask = 9
-playerTexture = ExtResource("2_iywne")
+playerTexture = ExtResource("3_gee14")
 isP1 = true
 
 [node name="Player2" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(1870, 540)
+position = Vector2(1789, 540)
 collision_mask = 9
+playerTexture = ExtResource("4_0tnpc")
 
 [node name="Top_Bottom wall" type="Node" parent="."]
 
@@ -49,7 +49,7 @@ position = Vector2(960, 0)
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Bottom wall/TopWall"]
-position = Vector2(0, -10)
+position = Vector2(0, 207)
 scale = Vector2(96, 1)
 shape = SubResource("RectangleShape2D_yqjtg")
 
@@ -58,7 +58,7 @@ position = Vector2(960, 1080)
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Bottom wall/BotWall"]
-position = Vector2(0, 10)
+position = Vector2(0, -52)
 scale = Vector2(96, 1)
 shape = SubResource("RectangleShape2D_yqjtg")
 
@@ -71,6 +71,7 @@ script = ExtResource("4_lbhrr")
 player = "right"
 
 [node name="LeftGoal" type="CollisionShape2D" parent="Goals/LeftGoal"]
+position = Vector2(63, 81)
 shape = SubResource("RectangleShape2D_lnu2h")
 
 [node name="RightGoal" type="Area2D" parent="Goals"]
@@ -80,27 +81,54 @@ script = ExtResource("4_lbhrr")
 player = "left"
 
 [node name="RightGoal" type="CollisionShape2D" parent="Goals/RightGoal"]
+position = Vector2(-62, 82.5)
 shape = SubResource("RectangleShape2D_lbhrr")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="ForegroundUILayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
-anchors_preset = 8
+[node name="Label" type="Label" parent="ForegroundUILayer"]
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -90.5
+offset_right = 90.5
+offset_bottom = 175.0
 grow_horizontal = 2
-grow_vertical = 2
+size_flags_vertical = 0
 text = "0:0"
 label_settings = SubResource("LabelSettings_p57ef")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("6_p57ef")
+
+[node name="LeftPlayerInventory" type="TextureRect" parent="ForegroundUILayer"]
+offset_left = 36.0
+offset_top = 28.0
+offset_right = 365.0
+offset_bottom = 171.0
+texture = ExtResource("6_vtaks")
+
+[node name="RightPlayerInventory" type="TextureRect" parent="ForegroundUILayer"]
+offset_left = 1555.0
+offset_top = 28.0
+offset_right = 1884.0
+offset_bottom = 171.0
+texture = ExtResource("7_kvpfn")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="MeshInstance2D" parent="BackgroundLayer"]
+position = Vector2(960, 540)
+scale = Vector2(1920, 1080)
+mesh = SubResource("QuadMesh_8cj0n")
+texture = ExtResource("1_u5sy4")
+
+[node name="PlayingField" type="MeshInstance2D" parent="BackgroundLayer"]
+position = Vector2(960, 620)
+scale = Vector2(1860, 854)
+mesh = SubResource("QuadMesh_8cj0n")
+texture = ExtResource("2_gee14")
 
 [node name="BallSpawnTimer" type="Timer" parent="."]
 one_shot = true
