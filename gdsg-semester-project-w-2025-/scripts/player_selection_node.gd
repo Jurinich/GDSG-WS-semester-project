@@ -1,40 +1,37 @@
 class_name PlayerSelectionNode
 extends Control
 
-@onready var left_button = $"VBoxContainer/HBoxContainer/LeftButton"
-@onready var right_button = $"VBoxContainer/HBoxContainer/RightButton"
-@onready var select_button = $"VBoxContainer/SelectButton"
+@onready var label: Label = $"Label"
+@onready var selection: TextureRect = $"Selection"
 
-signal ready_changed
+@export var player_name: String
+@export var possible_textures: Array[Texture2D]
+@export var start_index: int = 0
 
-var player_ready: bool = false
+var cur_index: int
 
+func _ready():
+	label.text = player_name
+	cur_index = start_index
 
-func _on_select_button_pressed():
-	player_ready = !player_ready
-	if (player_ready):
-		select_button.text = "Ready"
-		right_button.disabled = true
-		left_button.disabled = true
-	else:
-		select_button.text = "Select"
-		right_button.disabled = false
-		left_button.disabled = false
-
-	ready_changed.emit()
+	update_texture()
 
 
 func _on_right_button_pressed():
-	if player_ready == true:
-		player_ready = false
-		ready_changed.emit()
+	cur_index = cur_index + 1
+	if (cur_index > possible_textures.size() - 1):
+		cur_index = 0
 
-	print("player changed right (no effect yet)")
+	update_texture()
 
 
 func _on_left_button_pressed():
-	if player_ready == true:
-		player_ready = false
-		ready_changed.emit()
+	cur_index = cur_index - 1
+	if (cur_index < 0):
+		cur_index = possible_textures.size() - 1
 
-	print("player changed left (no effect yet)")
+	update_texture()
+
+
+func update_texture():
+	selection.texture = possible_textures[cur_index]

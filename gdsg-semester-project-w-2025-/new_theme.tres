@@ -1,0 +1,22 @@
+[gd_resource type="Theme" format=3 uid="uid://dfhebtip2k3k3"]
+
+[ext_resource type="FontFile" uid="uid://cyq138krrqg2p" path="res://assets/fonts/Holtwood_One_SC/HoltwoodOneSC-Regular.ttf" id="1_amlv4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amlv4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbmy8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jk1qb"]
+
+[resource]
+default_font = ExtResource("1_amlv4")
+Button/colors/font_color = Color(1, 0.6392157, 0.6745098, 1)
+Button/colors/font_hover_color = Color(0.9999965, 0.49622494, 0.56242925, 1)
+Button/colors/font_outline_color = Color(0, 0.015686275, 0.23529412, 1)
+Button/colors/font_pressed_color = Color(0.99999136, 0.39627004, 0.4947269, 1)
+Button/constants/outline_size = 12
+Button/styles/hover = SubResource("StyleBoxEmpty_amlv4")
+Button/styles/normal = SubResource("StyleBoxEmpty_tbmy8")
+Button/styles/pressed = SubResource("StyleBoxEmpty_jk1qb")
+Label/constants/outline_size = 12
+Label/fonts/font = ExtResource("1_amlv4")

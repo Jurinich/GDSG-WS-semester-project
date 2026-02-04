@@ -12,7 +12,7 @@ func _ready():
 
 func _on_start_button_pressed():
 	GameManager.reset()
-	get_tree().change_scene_to_file("res://scenes/player_selection_scene.tscn")
+	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 
 func _on_settings_button_pressed():
