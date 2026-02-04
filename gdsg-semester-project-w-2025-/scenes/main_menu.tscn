@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c4vomr1gla4ut" path="res://assets/sprites/Logos/Logo_pink.png" id="4_8ln24"]
 [ext_resource type="Texture2D" uid="uid://br0nn0g3jab66" path="res://assets/sprites/Kittens/UI_kittens/kitten_lying.png" id="4_oa1go"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="6_oa1go"]
+[ext_resource type="Script" uid="uid://bpt207xu16nw5" path="res://scripts/selection_controller.gd" id="8_jk1qb"]
 [ext_resource type="PackedScene" uid="uid://bj18d1fh7lipn" path="res://scenes/player_selection_node.tscn" id="8_tbmy8"]
 
 [node name="MainMenu" type="Control" unique_id=1335995349]
@@ -153,7 +154,7 @@ text = "Left Player won!
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control" type="Control" parent="." unique_id=2026829769]
+[node name="SelectionController" type="Control" parent="." unique_id=2026829769]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -161,8 +162,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+script = ExtResource("8_jk1qb")
 
-[node name="PlayerSelectionNode" parent="Control" unique_id=425702317 instance=ExtResource("8_tbmy8")]
+[node name="PlayerSelectionNode1" parent="SelectionController" unique_id=425702317 instance=ExtResource("8_tbmy8")]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -176,7 +178,7 @@ grow_horizontal = 1
 scale = Vector2(0.5, 0.5)
 player_name = "Player 1"
 
-[node name="PlayerSelectionNode2" parent="Control" unique_id=1162290833 instance=ExtResource("8_tbmy8")]
+[node name="PlayerSelectionNode2" parent="SelectionController" unique_id=1162290833 instance=ExtResource("8_tbmy8")]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0

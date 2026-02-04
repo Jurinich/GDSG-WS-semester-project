@@ -5,6 +5,9 @@ var max_score: int = 3
 var left_player_score: int = 0
 var right_player_score: int = 0
 
+var left_player_paddle: int = 0
+var right_player_paddle: int = 0
+
 signal score_changed
 
 func reset():

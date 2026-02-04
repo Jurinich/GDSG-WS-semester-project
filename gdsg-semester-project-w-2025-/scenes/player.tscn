@@ -1,20 +1,11 @@
 [gd_scene format=3 uid="uid://dmngxbinp5ri7"]
 
 [ext_resource type="Script" uid="uid://crulmxqf0p7gx" path="res://scripts/playerMovement.gd" id="1_p0vlq"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_v6fml"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3li8b"]
-size = Vector2(50, 200)
+[ext_resource type="PackedScene" uid="uid://bxsg1y1wtx423" path="res://scenes/paddle_a.tscn" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://uxg1shddub3e" path="res://scenes/paddle_b.tscn" id="3_qhqgy"]
 
 [node name="Player" type="CharacterBody2D" unique_id=43356410]
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_p0vlq")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=417942660]
-scale = Vector2(50, 200)
-mesh = SubResource("QuadMesh_v6fml")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2044311317]
-shape = SubResource("RectangleShape2D_3li8b")
+paddles = Array[PackedScene]([ExtResource("2_g2els"), ExtResource("3_qhqgy")])

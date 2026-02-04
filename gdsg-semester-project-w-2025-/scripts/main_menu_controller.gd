@@ -1,6 +1,7 @@
 extends Control
 
 @onready var info_label: Label = $"InfoLabel"
+@onready var selection_controller = $"SelectionController"
 
 
 func _ready():
@@ -12,6 +13,7 @@ func _ready():
 
 func _on_start_button_pressed():
 	GameManager.reset()
+	selection_controller.set_selections()
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 

@@ -1,23 +1,20 @@
 @tool
-# It is a tool script in order to have the textures updated in the editor.
-# Engine.is_editor_hint() returns true if you are currently in the editor, 
-# so things that should only be happening during the game must check that
-# Engine.is_editor_hint() is false.
 extends CharacterBody2D
 
 const SPEED := 500
-@export var playerTexture: Texture2D
 @export var isP1: bool = false
+@export var paddles: Array[PackedScene]
 
-func _process(_delta) -> void:
-	if Engine.is_editor_hint():
-		$MeshInstance2D.texture = playerTexture
-	
-func _ready() -> void:
-	if not Engine.is_editor_hint():
-		$MeshInstance2D.texture = playerTexture
+func _ready():
+	var paddle: CollisionPolygon2D
+	if (isP1):
+		paddle = paddles[GameManager.left_player_paddle].instantiate()
+	else:
+		paddle = paddles[GameManager.right_player_paddle].instantiate()
+		paddle.scale.x = -paddle.scale.x
 
-		
+	add_child(paddle)
+
 func getYdir() -> float:
 	if isP1:
 		return Input.get_action_strength("downP1") - Input.get_action_strength("upP1")
