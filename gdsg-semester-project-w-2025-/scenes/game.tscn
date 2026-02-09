@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://c0n866wxrwtu6" path="res://scripts/score_label.gd" id="6_p57ef"]
 [ext_resource type="Texture2D" uid="uid://dyqjkte0byedt" path="res://assets/sprites/Backgrounds/inventory_leftplayer.png" id="6_vtaks"]
 [ext_resource type="Texture2D" uid="uid://dh4qjaud52ho" path="res://assets/sprites/Backgrounds/inventory_rightplayer.png" id="7_kvpfn"]
+[ext_resource type="Script" uid="uid://c0uvs62o1qka0" path="res://scripts/kitten_paw_spawner.gd" id="11_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://cwwdjsm2bpjkx" path="res://scenes/kitten_paw.tscn" id="12_dinhu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 
@@ -20,6 +22,12 @@ size = Vector2(64, 840)
 size = Vector2(60, 843)
 
 [sub_resource type="QuadMesh" id="QuadMesh_8cj0n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dinhu"]
+size = Vector2(578, 136)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kvuet"]
+size = Vector2(580, 146)
 
 [node name="Game" type="Node2D" unique_id=73412862]
 
@@ -115,6 +123,12 @@ scale = Vector2(1920, 1080)
 mesh = SubResource("QuadMesh_8cj0n")
 texture = ExtResource("1_u5sy4")
 
+[node name="Background2" type="MeshInstance2D" parent="BackgroundLayer" unique_id=1420202630]
+position = Vector2(960, 98.03125)
+scale = Vector2(1920.0001, 195.9375)
+mesh = SubResource("QuadMesh_8cj0n")
+texture = ExtResource("1_u5sy4")
+
 [node name="PlayingField" type="MeshInstance2D" parent="BackgroundLayer" unique_id=343629162]
 position = Vector2(960, 620)
 scale = Vector2(1860, 854)
@@ -126,3 +140,23 @@ one_shot = true
 script = ExtResource("3_lnu2h")
 ball_scene = ExtResource("2_yqjtg")
 spawn_position = Vector2(960, 540)
+
+[node name="PawTriggers" type="Node" parent="." unique_id=1290527789]
+
+[node name="Area2D" type="Area2D" parent="PawTriggers" unique_id=1517508622]
+position = Vector2(960, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PawTriggers/Area2D" unique_id=1642479886]
+shape = SubResource("RectangleShape2D_dinhu")
+
+[node name="Area2D2" type="Area2D" parent="PawTriggers" unique_id=1286321607]
+position = Vector2(960, 910)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PawTriggers/Area2D2" unique_id=116776446]
+shape = SubResource("RectangleShape2D_kvuet")
+
+[node name="KittenPawSpawner" type="Node2D" parent="." unique_id=544222303 node_paths=PackedStringArray("triggers")]
+script = ExtResource("11_kvpfn")
+paw_scene = ExtResource("12_dinhu")
+hit_chance = 1.0
+triggers = [NodePath("../PawTriggers/Area2D"), NodePath("../PawTriggers/Area2D2")]

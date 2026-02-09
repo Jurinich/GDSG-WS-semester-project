@@ -1,11 +1,16 @@
 @tool
 extends CharacterBody2D
 
-const SPEED := 500
+const SPEED := 1000
 @export var isP1: bool = false
 @export var paddles: Array[PackedScene]
 
+var fixed_x: float
+
+
 func _ready():
+	fixed_x = global_position.x
+	
 	var paddle: CollisionPolygon2D
 	if (isP1):
 		paddle = paddles[GameManager.left_player_paddle].instantiate()
@@ -26,3 +31,4 @@ func _physics_process(_delta: float) -> void:
 		var dir:Vector2=Vector2(0, getYdir())
 		velocity = dir * SPEED
 		move_and_slide()
+		global_position.x = fixed_x

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cwwdjsm2bpjkx"]
+
+[ext_resource type="Texture2D" uid="uid://o6ur7o25lh2o" path="res://assets/sprites/Kittens/player_kittens/paw.png" id="1_lw55w"]
+[ext_resource type="Script" uid="uid://dp7qf652de1gh" path="res://scripts/kitten_paw.gd" id="1_q3ek6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3gecy"]
+radius = 56.0
+height = 136.0
+
+[node name="Area2D" type="Area2D" unique_id=1350999620]
+script = ExtResource("1_q3ek6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=104630120]
+texture = ExtResource("1_lw55w")
+offset = Vector2(0, -120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=341917828]
+position = Vector2(2, -151)
+shape = SubResource("CapsuleShape2D_3gecy")
