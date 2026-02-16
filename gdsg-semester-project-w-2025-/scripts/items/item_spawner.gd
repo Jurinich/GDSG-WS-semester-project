@@ -15,7 +15,7 @@ enum SpawnChance{
 
 @export var time_for_new_item : float = 10.0 #maybe later this could be a range using a Vector2ii
 var elapsed_time : float = 0.0
-@export var items_and_chance : Dictionary[ItemData, SpawnChance]
+@export var items_and_chance : Array[ItemData]
 @export var item_scene : PackedScene 
 
 
@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 
 ##Choose which of the available items to spawn
 func chooseItem() -> ItemData:
-	return items_and_chance.keys()[0]
+	return items_and_chance[0]
 	
 	
 	

@@ -114,7 +114,6 @@ spawn_position = Vector2(960, 540)
 
 [node name="ItemSpawner" type="Node" parent="."]
 script = ExtResource("7_u5sy4")
-items_and_chance = Dictionary[ExtResource("8_vtaks"), int]({
-ExtResource("9_kvpfn"): 3
-})
+time_for_new_item = 2.0
+items_and_chance = Array[ExtResource("8_vtaks")]([ExtResource("9_kvpfn")])
 item_scene = ExtResource("8_gee14")
