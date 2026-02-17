@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://coyi6nqc62xb1"]
+[gd_scene load_steps=23 format=3 uid="uid://coyi6nqc62xb1"]
 
 [ext_resource type="Texture2D" uid="uid://bfiqq6jpq1557" path="res://assets/sprites/Backgrounds/BG Dark.png" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dmngxbinp5ri7" path="res://scenes/player.tscn" id="1_uwrxv"]
@@ -12,6 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://dh4qjaud52ho" path="res://assets/sprites/Backgrounds/inventory_rightplayer.png" id="7_kvpfn"]
 [ext_resource type="Script" uid="uid://c0uvs62o1qka0" path="res://scripts/kitten_paw_spawner.gd" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cwwdjsm2bpjkx" path="res://scenes/kitten_paw.tscn" id="12_dinhu"]
+[ext_resource type="Script" uid="uid://b2oe7fsd38rx1" path="res://scripts/items/item_spawner.gd" id="13_ca42v"]
+[ext_resource type="Script" uid="uid://cjxfeo0s5d5yr" path="res://scripts/items/item_data.gd" id="14_rysoc"]
+[ext_resource type="Resource" uid="uid://dmryy0puarxaq" path="res://resources/split_ball.tres" id="15_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://bdme7ngk7uj84" path="res://scenes/CollectibleItem.tscn" id="16_264po"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 
@@ -29,62 +33,62 @@ size = Vector2(578, 136)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvuet"]
 size = Vector2(580, 146)
 
-[node name="Game" type="Node2D" unique_id=73412862]
+[node name="Game" type="Node2D"]
 
-[node name="Player1" parent="." unique_id=1996165636 instance=ExtResource("1_uwrxv")]
+[node name="Player1" parent="." instance=ExtResource("1_uwrxv")]
 position = Vector2(135, 609)
 collision_mask = 9
 isP1 = true
 
-[node name="Player2" parent="." unique_id=1740915316 instance=ExtResource("1_uwrxv")]
+[node name="Player2" parent="." instance=ExtResource("1_uwrxv")]
 position = Vector2(1789, 540)
 collision_mask = 9
 
-[node name="Top_Bottom wall" type="Node" parent="." unique_id=1737115857]
+[node name="Top_Bottom wall" type="Node" parent="."]
 
-[node name="TopWall" type="StaticBody2D" parent="Top_Bottom wall" unique_id=770071185]
+[node name="TopWall" type="StaticBody2D" parent="Top_Bottom wall"]
 position = Vector2(960, 0)
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Bottom wall/TopWall" unique_id=995540233]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Bottom wall/TopWall"]
 position = Vector2(0, 207)
 scale = Vector2(96, 1)
 shape = SubResource("RectangleShape2D_yqjtg")
 
-[node name="BotWall" type="StaticBody2D" parent="Top_Bottom wall" unique_id=2137489420]
+[node name="BotWall" type="StaticBody2D" parent="Top_Bottom wall"]
 position = Vector2(960, 1080)
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Bottom wall/BotWall" unique_id=1730380089]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Bottom wall/BotWall"]
 position = Vector2(0, -52)
 scale = Vector2(96, 1)
 shape = SubResource("RectangleShape2D_yqjtg")
 
-[node name="Goals" type="Node2D" parent="." unique_id=852841019]
+[node name="Goals" type="Node2D" parent="."]
 
-[node name="LeftGoal" type="Area2D" parent="Goals" unique_id=1714419284]
+[node name="LeftGoal" type="Area2D" parent="Goals"]
 position = Vector2(0, 540)
 collision_layer = 4
 script = ExtResource("4_lbhrr")
 player = "right"
 
-[node name="LeftGoal" type="CollisionShape2D" parent="Goals/LeftGoal" unique_id=1273693742]
+[node name="LeftGoal" type="CollisionShape2D" parent="Goals/LeftGoal"]
 position = Vector2(63, 81)
 shape = SubResource("RectangleShape2D_lnu2h")
 
-[node name="RightGoal" type="Area2D" parent="Goals" unique_id=1418205936]
+[node name="RightGoal" type="Area2D" parent="Goals"]
 position = Vector2(1920, 540)
 collision_layer = 4
 script = ExtResource("4_lbhrr")
 player = "left"
 
-[node name="RightGoal" type="CollisionShape2D" parent="Goals/RightGoal" unique_id=176974790]
+[node name="RightGoal" type="CollisionShape2D" parent="Goals/RightGoal"]
 position = Vector2(-62, 82.5)
 shape = SubResource("RectangleShape2D_lbhrr")
 
-[node name="ForegroundUILayer" type="CanvasLayer" parent="." unique_id=69698251]
+[node name="ForegroundUILayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="ForegroundUILayer" unique_id=1066150060]
+[node name="Label" type="Label" parent="ForegroundUILayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -100,63 +104,70 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("6_p57ef")
 
-[node name="LeftPlayerInventory" type="TextureRect" parent="ForegroundUILayer" unique_id=1788090139]
+[node name="LeftPlayerInventory" type="TextureRect" parent="ForegroundUILayer"]
 offset_left = 36.0
 offset_top = 28.0
 offset_right = 365.0
 offset_bottom = 171.0
 texture = ExtResource("6_vtaks")
 
-[node name="RightPlayerInventory" type="TextureRect" parent="ForegroundUILayer" unique_id=1034005024]
+[node name="RightPlayerInventory" type="TextureRect" parent="ForegroundUILayer"]
 offset_left = 1555.0
 offset_top = 28.0
 offset_right = 1884.0
 offset_bottom = 171.0
 texture = ExtResource("7_kvpfn")
 
-[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=2112846028]
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Background" type="MeshInstance2D" parent="BackgroundLayer" unique_id=1214738913]
+[node name="Background" type="MeshInstance2D" parent="BackgroundLayer"]
 position = Vector2(960, 540)
 scale = Vector2(1920, 1080)
 mesh = SubResource("QuadMesh_8cj0n")
 texture = ExtResource("1_u5sy4")
 
-[node name="Background2" type="MeshInstance2D" parent="BackgroundLayer" unique_id=1420202630]
+[node name="Background2" type="MeshInstance2D" parent="BackgroundLayer"]
 position = Vector2(960, 98.03125)
 scale = Vector2(1920.0001, 195.9375)
 mesh = SubResource("QuadMesh_8cj0n")
 texture = ExtResource("1_u5sy4")
 
-[node name="PlayingField" type="MeshInstance2D" parent="BackgroundLayer" unique_id=343629162]
+[node name="PlayingField" type="MeshInstance2D" parent="BackgroundLayer"]
 position = Vector2(960, 620)
 scale = Vector2(1860, 854)
 mesh = SubResource("QuadMesh_8cj0n")
 texture = ExtResource("2_gee14")
 
-[node name="BallSpawnTimer" type="Timer" parent="." unique_id=10847232]
+[node name="BallSpawnTimer" type="Timer" parent="."]
 one_shot = true
 script = ExtResource("3_lnu2h")
 ball_scene = ExtResource("2_yqjtg")
 spawn_position = Vector2(960, 540)
 
-[node name="PawTriggers" type="Node" parent="." unique_id=1290527789]
+[node name="PawTriggers" type="Node" parent="."]
 
-[node name="Area2D" type="Area2D" parent="PawTriggers" unique_id=1517508622]
+[node name="Area2D" type="Area2D" parent="PawTriggers"]
 position = Vector2(960, 320)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PawTriggers/Area2D" unique_id=1642479886]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PawTriggers/Area2D"]
 shape = SubResource("RectangleShape2D_dinhu")
 
-[node name="Area2D2" type="Area2D" parent="PawTriggers" unique_id=1286321607]
+[node name="Area2D2" type="Area2D" parent="PawTriggers"]
 position = Vector2(960, 910)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PawTriggers/Area2D2" unique_id=116776446]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PawTriggers/Area2D2"]
 shape = SubResource("RectangleShape2D_kvuet")
 
-[node name="KittenPawSpawner" type="Node2D" parent="." unique_id=544222303 node_paths=PackedStringArray("triggers")]
+[node name="KittenPawSpawner" type="Node2D" parent="." node_paths=PackedStringArray("triggers")]
 script = ExtResource("11_kvpfn")
 paw_scene = ExtResource("12_dinhu")
 hit_chance = 1.0
 triggers = [NodePath("../PawTriggers/Area2D"), NodePath("../PawTriggers/Area2D2")]
+
+[node name="ItemSpawner" type="Node" parent="."]
+script = ExtResource("13_ca42v")
+time_for_new_item = 2.0
+items_and_chance = Array[ExtResource("14_rysoc")]([ExtResource("15_ssvqc")])
+item_scene = ExtResource("16_264po")
+metadata/_custom_type_script = "uid://b2oe7fsd38rx1"

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdme7ngk7uj84"]
+
+[ext_resource type="Script" uid="uid://b3uuowwhpbj1f" path="res://scripts/items/collectible_item.gd" id="1_8id85"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bx46p"]
+
+[node name="Item" type="Area2D"]
+script = ExtResource("1_8id85")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bx46p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

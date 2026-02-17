@@ -1,4 +1,3 @@
-@tool
 extends CharacterBody2D
 
 const SPEED := 1000
@@ -27,8 +26,7 @@ func getYdir() -> float:
 		return Input.get_action_strength("downP2") - Input.get_action_strength("upP2")
 
 func _physics_process(_delta: float) -> void:
-	if not Engine.is_editor_hint(): 
-		var dir:Vector2=Vector2(0, getYdir())
-		velocity = dir * SPEED
-		move_and_slide()
-		global_position.x = fixed_x
+	var dir:Vector2=Vector2(0, getYdir())
+	velocity = dir * SPEED
+	move_and_slide()
+	global_position.x = fixed_x

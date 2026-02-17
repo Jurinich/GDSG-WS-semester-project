@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://dmryy0puarxaq"]
+
+[ext_resource type="Script" uid="uid://cjxfeo0s5d5yr" path="res://scripts/items/item_data.gd" id="1_yw8kj"]
+[ext_resource type="Texture2D" uid="uid://cd7gftlf35edy" path="res://assets/Rucksack.PNG" id="2_brohk"]
+
+[resource]
+script = ExtResource("1_yw8kj")
+sprite = ExtResource("2_brohk")
+power_up_effect = NodePath("BallSpawnTimer")
+metadata/_custom_type_script = "uid://cjxfeo0s5d5yr"
