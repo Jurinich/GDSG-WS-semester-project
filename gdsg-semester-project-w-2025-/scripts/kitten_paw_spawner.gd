@@ -3,12 +3,21 @@ extends Node
 
 @export_group("Settings")
 @export var paw_scene: PackedScene
-@export_range(0.0, 1.0) var hit_chance: float = 0.2 
+@export_range(0.0, 1.0) var hit_chance: float = 0.3
 
 @export_group("References")
 @export var triggers: Array[Area2D] 
 
+var base_hit_chance: float
+var frenzy_timer: Timer
+
 func _ready():
+	add_to_group("kitten_spawner")
+	base_hit_chance = hit_chance
+	frenzy_timer = Timer.new()
+	frenzy_timer.one_shot = true
+	frenzy_timer.timeout.connect(_on_frenzy_timeout)
+	add_child(frenzy_timer)
 	
 	for i in range(triggers.size()):
 		var trigger = triggers[i]
@@ -37,3 +46,12 @@ func spawn_paw(target_ball: Ball):
 		paw.add_to_group("KittenPaws")
 		get_tree().current_scene.add_child(paw)
 		paw.attack(target_ball)
+
+func activate_frenzy(duration: float):
+	print("Paw Frenzy 100% chance for ", duration, " seconds")
+	hit_chance = 1.0
+	frenzy_timer.start(duration)
+
+func _on_frenzy_timeout():
+	print("Paw Frenzy over")
+	hit_chance = base_hit_chance

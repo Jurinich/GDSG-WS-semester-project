@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dmryy0puarxaq"]
+
+[ext_resource type="Script" uid="uid://cjxfeo0s5d5yr" path="res://scripts/items/item_data.gd" id="1_v5ldw"]
+[ext_resource type="Texture2D" uid="uid://dcetgjir3ns2f" path="res://assets/sprites/Items/PlaceholderItem.png" id="2_m0i0x"]
+
+[resource]
+script = ExtResource("1_v5ldw")
+sprite = ExtResource("2_m0i0x")
+power_up_effect = "PawFrenzy"
+metadata/_custom_type_script = "uid://cjxfeo0s5d5yr"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://coyi6nqc62xb1"]
+[gd_scene format=3 uid="uid://coyi6nqc62xb1"]
 
 [ext_resource type="Texture2D" uid="uid://bfiqq6jpq1557" path="res://assets/sprites/Backgrounds/BG Dark.png" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dmngxbinp5ri7" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://dj7n4h024303j" path="res://assets/sprites/Backgrounds/playfield.png" id="2_gee14"]
+[ext_resource type="Script" uid="uid://blfg1dymlh7ab" path="res://scripts/items/inventory.gd" id="2_rysoc"]
 [ext_resource type="PackedScene" uid="uid://bhb0kygy35pj3" path="res://scenes/ball.tscn" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://dcjct6o0k4moq" path="res://scripts/ball_spawner.gd" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://bpva8mtljkuns" path="res://scripts/GoalScript.gd" id="4_lbhrr"]
@@ -14,8 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://cwwdjsm2bpjkx" path="res://scenes/kitten_paw.tscn" id="12_dinhu"]
 [ext_resource type="Script" uid="uid://b2oe7fsd38rx1" path="res://scripts/items/item_spawner.gd" id="13_ca42v"]
 [ext_resource type="Script" uid="uid://cjxfeo0s5d5yr" path="res://scripts/items/item_data.gd" id="14_rysoc"]
-[ext_resource type="Resource" uid="uid://dmryy0puarxaq" path="res://resources/split_ball.tres" id="15_ssvqc"]
+[ext_resource type="Resource" uid="uid://dmryy0puarxaq" path="res://resources/PawFrenzy.tres" id="15_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://bdme7ngk7uj84" path="res://scenes/CollectibleItem.tscn" id="16_264po"]
+[ext_resource type="Script" uid="uid://cgj3m6cj7v0vx" path="res://scripts/items/paw_frenzy.gd" id="18_ssvqc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 
@@ -33,62 +35,72 @@ size = Vector2(578, 136)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvuet"]
 size = Vector2(580, 146)
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node2D" unique_id=1886297339]
 
-[node name="Player1" parent="." instance=ExtResource("1_uwrxv")]
+[node name="Player1" parent="." unique_id=477805542 instance=ExtResource("1_uwrxv")]
 position = Vector2(135, 609)
 collision_mask = 9
 isP1 = true
 
-[node name="Player2" parent="." instance=ExtResource("1_uwrxv")]
+[node name="InventoryP1" type="Node" parent="Player1" unique_id=800816381]
+script = ExtResource("2_rysoc")
+cycle_action = "cycleP1"
+use_action = "useItemP1"
+
+[node name="Player2" parent="." unique_id=279027391 instance=ExtResource("1_uwrxv")]
 position = Vector2(1789, 540)
 collision_mask = 9
 
-[node name="Top_Bottom wall" type="Node" parent="."]
+[node name="InventoryP2" type="Node" parent="Player2" unique_id=1757685381]
+script = ExtResource("2_rysoc")
+cycle_action = "cycleP2"
+use_action = "useItemP2"
 
-[node name="TopWall" type="StaticBody2D" parent="Top_Bottom wall"]
+[node name="Top_Bottom wall" type="Node" parent="." unique_id=1365690129]
+
+[node name="TopWall" type="StaticBody2D" parent="Top_Bottom wall" unique_id=755887784]
 position = Vector2(960, 0)
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Bottom wall/TopWall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Bottom wall/TopWall" unique_id=2021686217]
 position = Vector2(0, 207)
 scale = Vector2(96, 1)
 shape = SubResource("RectangleShape2D_yqjtg")
 
-[node name="BotWall" type="StaticBody2D" parent="Top_Bottom wall"]
+[node name="BotWall" type="StaticBody2D" parent="Top_Bottom wall" unique_id=1377988727]
 position = Vector2(960, 1080)
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Bottom wall/BotWall"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Bottom wall/BotWall" unique_id=1409367302]
 position = Vector2(0, -52)
 scale = Vector2(96, 1)
 shape = SubResource("RectangleShape2D_yqjtg")
 
-[node name="Goals" type="Node2D" parent="."]
+[node name="Goals" type="Node2D" parent="." unique_id=279516246]
 
-[node name="LeftGoal" type="Area2D" parent="Goals"]
+[node name="LeftGoal" type="Area2D" parent="Goals" unique_id=792546164]
 position = Vector2(0, 540)
 collision_layer = 4
 script = ExtResource("4_lbhrr")
 player = "right"
 
-[node name="LeftGoal" type="CollisionShape2D" parent="Goals/LeftGoal"]
+[node name="LeftGoal" type="CollisionShape2D" parent="Goals/LeftGoal" unique_id=884299002]
 position = Vector2(63, 81)
 shape = SubResource("RectangleShape2D_lnu2h")
 
-[node name="RightGoal" type="Area2D" parent="Goals"]
+[node name="RightGoal" type="Area2D" parent="Goals" unique_id=1500528154]
 position = Vector2(1920, 540)
 collision_layer = 4
 script = ExtResource("4_lbhrr")
 player = "left"
 
-[node name="RightGoal" type="CollisionShape2D" parent="Goals/RightGoal"]
+[node name="RightGoal" type="CollisionShape2D" parent="Goals/RightGoal" unique_id=22805758]
 position = Vector2(-62, 82.5)
 shape = SubResource("RectangleShape2D_lbhrr")
 
-[node name="ForegroundUILayer" type="CanvasLayer" parent="."]
+[node name="ForegroundUILayer" type="CanvasLayer" parent="." unique_id=1084581396]
 
-[node name="Label" type="Label" parent="ForegroundUILayer"]
+[node name="Label" type="Label" parent="ForegroundUILayer" unique_id=1940990595]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -104,70 +116,73 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("6_p57ef")
 
-[node name="LeftPlayerInventory" type="TextureRect" parent="ForegroundUILayer"]
+[node name="LeftPlayerInventory" type="TextureRect" parent="ForegroundUILayer" unique_id=631863509]
 offset_left = 36.0
 offset_top = 28.0
 offset_right = 365.0
 offset_bottom = 171.0
 texture = ExtResource("6_vtaks")
 
-[node name="RightPlayerInventory" type="TextureRect" parent="ForegroundUILayer"]
+[node name="RightPlayerInventory" type="TextureRect" parent="ForegroundUILayer" unique_id=1207856452]
 offset_left = 1555.0
 offset_top = 28.0
 offset_right = 1884.0
 offset_bottom = 171.0
 texture = ExtResource("7_kvpfn")
 
-[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1144167311]
 layer = -1
 
-[node name="Background" type="MeshInstance2D" parent="BackgroundLayer"]
+[node name="Background" type="MeshInstance2D" parent="BackgroundLayer" unique_id=723960218]
 position = Vector2(960, 540)
 scale = Vector2(1920, 1080)
 mesh = SubResource("QuadMesh_8cj0n")
 texture = ExtResource("1_u5sy4")
 
-[node name="Background2" type="MeshInstance2D" parent="BackgroundLayer"]
+[node name="Background2" type="MeshInstance2D" parent="BackgroundLayer" unique_id=65412911]
 position = Vector2(960, 98.03125)
 scale = Vector2(1920.0001, 195.9375)
 mesh = SubResource("QuadMesh_8cj0n")
 texture = ExtResource("1_u5sy4")
 
-[node name="PlayingField" type="MeshInstance2D" parent="BackgroundLayer"]
+[node name="PlayingField" type="MeshInstance2D" parent="BackgroundLayer" unique_id=1248166817]
 position = Vector2(960, 620)
 scale = Vector2(1860, 854)
 mesh = SubResource("QuadMesh_8cj0n")
 texture = ExtResource("2_gee14")
 
-[node name="BallSpawnTimer" type="Timer" parent="."]
+[node name="BallSpawnTimer" type="Timer" parent="." unique_id=1409921296]
 one_shot = true
 script = ExtResource("3_lnu2h")
 ball_scene = ExtResource("2_yqjtg")
 spawn_position = Vector2(960, 540)
 
-[node name="PawTriggers" type="Node" parent="."]
+[node name="PawTriggers" type="Node" parent="." unique_id=1998233890]
 
-[node name="Area2D" type="Area2D" parent="PawTriggers"]
+[node name="Area2D" type="Area2D" parent="PawTriggers" unique_id=1583465132]
 position = Vector2(960, 320)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PawTriggers/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PawTriggers/Area2D" unique_id=627959169]
 shape = SubResource("RectangleShape2D_dinhu")
 
-[node name="Area2D2" type="Area2D" parent="PawTriggers"]
+[node name="Area2D2" type="Area2D" parent="PawTriggers" unique_id=563170104]
 position = Vector2(960, 910)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PawTriggers/Area2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PawTriggers/Area2D2" unique_id=1154801488]
 shape = SubResource("RectangleShape2D_kvuet")
 
-[node name="KittenPawSpawner" type="Node2D" parent="." node_paths=PackedStringArray("triggers")]
+[node name="KittenPawSpawner" type="Node2D" parent="." unique_id=1737106517 node_paths=PackedStringArray("triggers")]
 script = ExtResource("11_kvpfn")
 paw_scene = ExtResource("12_dinhu")
-hit_chance = 1.0
 triggers = [NodePath("../PawTriggers/Area2D"), NodePath("../PawTriggers/Area2D2")]
 
-[node name="ItemSpawner" type="Node" parent="."]
+[node name="ItemSpawner" type="Node2D" parent="." unique_id=1014848990]
+position = Vector2(960, 618)
 script = ExtResource("13_ca42v")
-time_for_new_item = 2.0
 items_and_chance = Array[ExtResource("14_rysoc")]([ExtResource("15_ssvqc")])
 item_scene = ExtResource("16_264po")
-metadata/_custom_type_script = "uid://b2oe7fsd38rx1"
+
+[node name="ItemEffects" type="Node" parent="." unique_id=1580273483 groups=["item_effects"]]
+
+[node name="PawFrenzy" type="Node" parent="ItemEffects" unique_id=1745424071]
+script = ExtResource("18_ssvqc")

@@ -1,6 +1,6 @@
 extends Node
 
-var max_score: int = 3
+var max_score: int = 10
 
 var left_player_score: int = 0
 var right_player_score: int = 0
