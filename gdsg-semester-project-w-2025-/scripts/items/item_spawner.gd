@@ -31,6 +31,7 @@ func _process(delta: float) -> void:
 	if elapsed_time >= time_for_new_item:
 		var item = chooseItem()
 		spawnItem(item)
+		elapsed_time = 0.0
 
 
 ##Choose which of the available items to spawn
