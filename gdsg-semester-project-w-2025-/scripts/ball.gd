@@ -6,10 +6,21 @@ extends CharacterBody2D
 
 var current_speed: float
 var last_hit_by: CharacterBody2D = null
+var is_split_spawn: bool = false
+var size_multiplier: float = 1.0
+
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
 
 func _ready():
 	current_speed = BASE_SPEED
-	launch_ball()
+	collision_shape.shape = collision_shape.shape.duplicate()
+	add_to_group("balls")
+	if size_multiplier != 1.0:
+		scale_ball(size_multiplier)
+	if not is_split_spawn:
+		launch_ball()
 
 func launch_ball():
 	last_hit_by = null
@@ -38,3 +49,8 @@ func _physics_process(delta: float) -> void:
 func paw_hit(new_direction: Vector2, boost_amount: float):
 	velocity = new_direction.normalized()
 	current_speed += boost_amount
+	
+func scale_ball(multiplier: float):
+	sprite.scale *= multiplier
+	if collision_shape.shape is CircleShape2D:
+		collision_shape.shape.radius *= multiplier

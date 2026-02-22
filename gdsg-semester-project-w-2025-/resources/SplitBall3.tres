@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://t2saihw67sa5"]
+
+[ext_resource type="Script" uid="uid://cjxfeo0s5d5yr" path="res://scripts/items/item_data.gd" id="1_t6yhk"]
+[ext_resource type="Texture2D" uid="uid://bcayp5mafp8td" path="res://assets/sprites/Items/PlaceholderItemyellow3.png" id="2_cger3"]
+
+[resource]
+script = ExtResource("1_t6yhk")
+sprite = ExtResource("2_cger3")
+power_up_effect = "SplitBall3"
+metadata/_custom_type_script = "uid://cjxfeo0s5d5yr"

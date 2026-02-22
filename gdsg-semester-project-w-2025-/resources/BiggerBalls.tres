@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://b11nxukklyrfj"]
+
+[ext_resource type="Script" uid="uid://cjxfeo0s5d5yr" path="res://scripts/items/item_data.gd" id="1_3g6fk"]
+[ext_resource type="Texture2D" uid="uid://sboqvjb8labf" path="res://assets/sprites/Items/PlaceholderItemred.png" id="2_0sn2c"]
+
+[resource]
+script = ExtResource("1_3g6fk")
+sprite = ExtResource("2_0sn2c")
+power_up_effect = "BiggerBalls"
+metadata/_custom_type_script = "uid://cjxfeo0s5d5yr"

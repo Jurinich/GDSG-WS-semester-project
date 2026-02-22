@@ -14,10 +14,19 @@
 [ext_resource type="Script" uid="uid://c0uvs62o1qka0" path="res://scripts/kitten_paw_spawner.gd" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cwwdjsm2bpjkx" path="res://scenes/kitten_paw.tscn" id="12_dinhu"]
 [ext_resource type="Script" uid="uid://b2oe7fsd38rx1" path="res://scripts/items/item_spawner.gd" id="13_ca42v"]
-[ext_resource type="Script" uid="uid://cjxfeo0s5d5yr" path="res://scripts/items/item_data.gd" id="14_rysoc"]
+[ext_resource type="Script" uid="uid://d2jgn4osg4v7x" path="res://scripts/items/item_drop.gd" id="15_37s47"]
 [ext_resource type="Resource" uid="uid://dmryy0puarxaq" path="res://resources/PawFrenzy.tres" id="15_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://bdme7ngk7uj84" path="res://scenes/CollectibleItem.tscn" id="16_264po"]
+[ext_resource type="Resource" uid="uid://b11nxukklyrfj" path="res://resources/BiggerBalls.tres" id="17_5newe"]
+[ext_resource type="Resource" uid="uid://be6ilvwrhaya8" path="res://resources/SmallerBalls.tres" id="18_bt5mj"]
 [ext_resource type="Script" uid="uid://cgj3m6cj7v0vx" path="res://scripts/items/paw_frenzy.gd" id="18_ssvqc"]
+[ext_resource type="Script" uid="uid://djw7e30kw63ep" path="res://scripts/items/bigger_balls.gd" id="19_264po"]
+[ext_resource type="Resource" uid="uid://dybmbgbo7ljub" path="res://resources/SplitBall2.tres" id="19_qnb83"]
+[ext_resource type="Script" uid="uid://bvhryv3l2ogbq" path="res://scripts/items/smaller_balls.gd" id="20_1kice"]
+[ext_resource type="Resource" uid="uid://t2saihw67sa5" path="res://resources/SplitBall3.tres" id="20_sww3w"]
+[ext_resource type="Resource" uid="uid://bhduho0tmw16w" path="res://resources/SplitBall4.tres" id="21_suyxu"]
+[ext_resource type="Resource" uid="uid://5m3rckxpy8ua" path="res://resources/SplitBall5.tres" id="22_sgl2t"]
+[ext_resource type="Script" uid="uid://bhm6sk7siveqy" path="res://scripts/items/split_ball.gd" id="23_bt5mj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 
@@ -34,6 +43,41 @@ size = Vector2(578, 136)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvuet"]
 size = Vector2(580, 146)
+
+[sub_resource type="Resource" id="Resource_e1j6l"]
+script = ExtResource("15_37s47")
+item = ExtResource("15_ssvqc")
+metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
+
+[sub_resource type="Resource" id="Resource_pl11u"]
+script = ExtResource("15_37s47")
+item = ExtResource("17_5newe")
+metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
+
+[sub_resource type="Resource" id="Resource_bhx41"]
+script = ExtResource("15_37s47")
+item = ExtResource("18_bt5mj")
+metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
+
+[sub_resource type="Resource" id="Resource_qouja"]
+script = ExtResource("15_37s47")
+item = ExtResource("19_qnb83")
+metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
+
+[sub_resource type="Resource" id="Resource_wljb1"]
+script = ExtResource("15_37s47")
+item = ExtResource("20_sww3w")
+metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
+
+[sub_resource type="Resource" id="Resource_v2yb1"]
+script = ExtResource("15_37s47")
+item = ExtResource("21_suyxu")
+metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
+
+[sub_resource type="Resource" id="Resource_js0lu"]
+script = ExtResource("15_37s47")
+item = ExtResource("22_sgl2t")
+metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [node name="Game" type="Node2D" unique_id=1886297339]
 
@@ -179,10 +223,31 @@ triggers = [NodePath("../PawTriggers/Area2D"), NodePath("../PawTriggers/Area2D2"
 [node name="ItemSpawner" type="Node2D" parent="." unique_id=1014848990]
 position = Vector2(960, 618)
 script = ExtResource("13_ca42v")
-items_and_chance = Array[ExtResource("14_rysoc")]([ExtResource("15_ssvqc")])
+item_drops = Array[ExtResource("15_37s47")]([SubResource("Resource_e1j6l"), SubResource("Resource_pl11u"), SubResource("Resource_bhx41"), SubResource("Resource_qouja"), SubResource("Resource_wljb1"), SubResource("Resource_v2yb1"), SubResource("Resource_js0lu")])
 item_scene = ExtResource("16_264po")
 
 [node name="ItemEffects" type="Node" parent="." unique_id=1580273483 groups=["item_effects"]]
 
 [node name="PawFrenzy" type="Node" parent="ItemEffects" unique_id=1745424071]
 script = ExtResource("18_ssvqc")
+
+[node name="BiggerBalls" type="Node" parent="ItemEffects" unique_id=188373093]
+script = ExtResource("19_264po")
+
+[node name="SmallerBalls" type="Node" parent="ItemEffects" unique_id=90983725]
+script = ExtResource("20_1kice")
+
+[node name="SplitBall2" type="Node" parent="ItemEffects" unique_id=8699232]
+script = ExtResource("23_bt5mj")
+split_amount = 2
+
+[node name="SplitBall3" type="Node" parent="ItemEffects" unique_id=673146280]
+script = ExtResource("23_bt5mj")
+
+[node name="SplitBall4" type="Node" parent="ItemEffects" unique_id=1114381143]
+script = ExtResource("23_bt5mj")
+split_amount = 5
+
+[node name="SplitBall5" type="Node" parent="ItemEffects" unique_id=1700692553]
+script = ExtResource("23_bt5mj")
+split_amount = 4
