@@ -9,6 +9,5 @@ func apply_effect(player: CharacterBody2D):
 	var active_balls = get_tree().get_nodes_in_group("balls")
 	
 	if spawner and active_balls.size() > 0:
-		# Loop through EVERY ball on the board and split it
 		for ball in active_balls:
 			spawner.split_ball(ball, split_amount)
