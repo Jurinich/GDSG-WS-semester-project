@@ -27,6 +27,10 @@
 [ext_resource type="Resource" uid="uid://bhduho0tmw16w" path="res://resources/SplitBall4.tres" id="21_suyxu"]
 [ext_resource type="Resource" uid="uid://5m3rckxpy8ua" path="res://resources/SplitBall5.tres" id="22_sgl2t"]
 [ext_resource type="Script" uid="uid://bhm6sk7siveqy" path="res://scripts/items/split_ball.gd" id="23_bt5mj"]
+[ext_resource type="AudioStream" uid="uid://d0xwonisrdwb5" path="res://assets/sounds/Goal Sound.wav" id="28_sww3w"]
+[ext_resource type="AudioStream" uid="uid://cl1o4ab4wtbi" path="res://assets/sounds/border sound.wav" id="29_suyxu"]
+[ext_resource type="AudioStream" uid="uid://y6dsn7s0mt7x" path="res://assets/sounds/paw swiff sound.wav" id="30_sgl2t"]
+[ext_resource type="AudioStream" uid="uid://cjjm5ye1xclu7" path="res://assets/sounds/fish paddle sound.wav" id="31_qouja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 
@@ -251,3 +255,18 @@ split_amount = 5
 [node name="SplitBall5" type="Node" parent="ItemEffects" unique_id=1700692553]
 script = ExtResource("23_bt5mj")
 split_amount = 4
+
+[node name="Goal Sound" type="AudioStreamPlayer" parent="." unique_id=125741821]
+stream = ExtResource("28_sww3w")
+
+[node name="border sound" type="AudioStreamPlayer" parent="." unique_id=184895502]
+stream = ExtResource("29_suyxu")
+volume_db = 6.0
+
+[node name="paw swiff sound" type="AudioStreamPlayer" parent="." unique_id=1106187023]
+stream = ExtResource("30_sgl2t")
+volume_db = 6.0
+
+[node name="fish paddle sound" type="AudioStreamPlayer" parent="." unique_id=951044112]
+stream = ExtResource("31_qouja")
+volume_db = -3.0
