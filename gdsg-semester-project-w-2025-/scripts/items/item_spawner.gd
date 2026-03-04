@@ -60,5 +60,6 @@ func spawnItem(item_data : ItemData):
 	var random_x = randf_range(-half_size.x, half_size.x)
 	var random_y = randf_range(-half_size.y, half_size.y)
 	item_node.position = Vector2(random_x, random_y)
+
 	add_child(item_node)
 	item_node.setup(item_data)

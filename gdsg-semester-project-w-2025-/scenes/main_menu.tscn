@@ -176,7 +176,7 @@ offset_right = 688.0
 offset_bottom = 590.0
 grow_horizontal = 1
 scale = Vector2(0.5, 0.5)
-player_name = "Player 1"
+player_name = "Left Player"
 
 [node name="PlayerSelectionNode2" parent="SelectionController" unique_id=1162290833 instance=ExtResource("8_tbmy8")]
 layout_mode = 1
@@ -191,7 +191,7 @@ offset_right = 164.0
 offset_bottom = 590.0
 grow_horizontal = 0
 scale = Vector2(0.5, 0.5)
-player_name = "Player 2"
+player_name = "Right Player"
 start_index = 1
 
 [connection signal="pressed" from="ButtonBox/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
