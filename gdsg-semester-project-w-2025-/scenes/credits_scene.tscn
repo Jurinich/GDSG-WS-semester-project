@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://djhf60ttor7am"]
+[gd_scene format=3 uid="uid://djhf60ttor7am"]
 
 [ext_resource type="Script" uid="uid://c7wi0y5tesb1u" path="res://scripts/credits_scene.gd" id="1_ma2dp"]
+[ext_resource type="Texture2D" uid="uid://u4s3ua136vo4" path="res://assets/sprites/Backgrounds/BG_Credits.png" id="2_t4kbm"]
+[ext_resource type="Texture2D" uid="uid://cnhaf3vq6xiw0" path="res://assets/sprites/Logos/GameDevStudents_Logo.png" id="3_s6411"]
+[ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="3_utjet"]
+[ext_resource type="FontFile" uid="uid://cyq138krrqg2p" path="res://assets/fonts/Holtwood_One_SC/HoltwoodOneSC-Regular.ttf" id="4_s6411"]
 
-[node name="CreditsScene" type="Control"]
+[node name="CreditsScene" type="Control" unique_id=1474240653]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,32 +15,165 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ma2dp")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "This is our amazing credits page"
+[node name="Background" type="Control" parent="." unique_id=594867076]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=1627325798]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_t4kbm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=597274638]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Heading" type="Label" parent="VBoxContainer" unique_id=1544095045]
+custom_minimum_size = Vector2(0, 270)
+layout_mode = 2
+theme = ExtResource("3_utjet")
+theme_override_fonts/font = ExtResource("4_s6411")
+theme_override_font_sizes/font_size = 64
+text = "This game was made as part of the 
+GDSG Semester Project"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BackButton" type="Button" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" unique_id=1851321795]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer" unique_id=291733358]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="subheading" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1481684116]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_utjet")
+theme_override_font_sizes/font_size = 48
+text = "Programming"
+
+[node name="person2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1537928057]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_utjet")
+theme_override_font_sizes/font_size = 32
+text = "Ivan, Max, Alex, Ida, Marlene, Marco (not good)"
+
+[node name="subheading2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1496383330]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_utjet")
+theme_override_font_sizes/font_size = 48
+text = "Art/UI"
+
+[node name="person7" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1582382317]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_utjet")
+theme_override_font_sizes/font_size = 32
+text = "Alex, Lisa, Ralev, Jonas"
+
+[node name="subheading3" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=679296202]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_utjet")
+theme_override_font_sizes/font_size = 48
+text = "Music"
+
+[node name="person6" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=358236486]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_utjet")
+theme_override_font_sizes/font_size = 32
+text = "Sina"
+
+[node name="subheading4" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=248337398]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_utjet")
+theme_override_font_sizes/font_size = 48
+text = "Sound effects"
+
+[node name="person3" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=890607928]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_utjet")
+theme_override_font_sizes/font_size = 32
+text = "Sina, Marlene, Thomas"
+
+[node name="subheading5" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2022854532]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_utjet")
+theme_override_font_sizes/font_size = 48
+text = "Visual effects"
+
+[node name="person4" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1390519505]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_utjet")
+theme_override_font_sizes/font_size = 32
+text = "Ida, Lisa"
+
+[node name="subheading6" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1939386649]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_utjet")
+theme_override_font_sizes/font_size = 48
+text = "Game Design"
+
+[node name="person5" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2024217938]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_utjet")
+theme_override_font_sizes/font_size = 32
+text = "Alex, Marco, Marlene, Lisa, Thomas, Ivan, Ida, Sina"
+
+[node name="subheading7" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=883804319]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_utjet")
+theme_override_font_sizes/font_size = 48
+text = "Team Lead"
+
+[node name="person8" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1236501104]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_utjet")
+theme_override_font_sizes/font_size = 32
+text = "Ida"
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1757132302]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_s6411")
+
+[node name="BackButton" type="Button" parent="VBoxContainer" unique_id=1326480449]
 custom_minimum_size = Vector2(300, 100)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -8.0
-offset_right = 4.0
-grow_horizontal = 2
-grow_vertical = 0
+layout_mode = 2
+theme = ExtResource("3_utjet")
 theme_override_font_sizes/font_size = 64
 text = "Back"
 
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
