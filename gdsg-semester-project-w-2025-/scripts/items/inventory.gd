@@ -8,6 +8,8 @@ var selected_index: int = 0
 @export var cycle_action: String = "" 
 @export var use_action: String = ""
 
+@onready var powerup_use: AudioStreamPlayer = $"../../powerup use"
+
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed(cycle_action):
 		cycle_item()
@@ -41,13 +43,13 @@ func use_item() -> void:
 func activate_powerup(item: ItemData) -> void:
 	if item.power_up_effect.is_empty():
 		return
-		
 	var effects_hub = get_tree().get_first_node_in_group("item_effects")
 	
 	if effects_hub != null:
 		var effect_node = effects_hub.get_node_or_null(item.power_up_effect)
 		if effect_node and effect_node.has_method("apply_effect"):
 			effect_node.apply_effect(get_parent()) 
+			powerup_use.play()	
 		else:
 			print("no '", item.power_up_effect, "' or no apply_effect method.")
 	else:

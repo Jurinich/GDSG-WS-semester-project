@@ -16,6 +16,7 @@ var elapsed_time : float = 0.0
 @export var item_drops : Array[ItemDrop]
 @export var item_scene : PackedScene 
 @export var spawn_area_size: Vector2 = Vector2(800, 600)
+@onready var powerup_spawn: AudioStreamPlayer = $"root/Game/powerup spawn"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -55,6 +56,7 @@ func chooseItem() -> ItemData:
 	
 ##Spawn the actual item, by instantiating its scene with the corresponding Data
 func spawnItem(item_data : ItemData):
+	powerup_spawn.play()
 	var item_node : CollectibleItem = item_scene.instantiate()
 	var half_size = spawn_area_size / 2.0
 	var random_x = randf_range(-half_size.x, half_size.x)

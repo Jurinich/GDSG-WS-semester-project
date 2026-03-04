@@ -7,6 +7,8 @@ extends Node
 
 @export_group("References")
 @export var triggers: Array[Area2D] 
+@onready var paw_swiff_sound: AudioStreamPlayer = $"../paw swiff sound"
+
 
 var base_hit_chance: float
 var frenzy_timer: Timer
@@ -42,6 +44,7 @@ func attempt_kitten_spawn(target_ball: Ball):
 
 func spawn_paw(target_ball: Ball):
 	if paw_scene:
+		paw_swiff_sound.play()
 		var paw = paw_scene.instantiate()
 		paw.add_to_group("KittenPaws")
 		get_tree().current_scene.add_child(paw)

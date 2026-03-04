@@ -4,6 +4,8 @@ class_name CollectibleItem
 @export var tex_scale: float = 1.0
 
 @onready var sprite : Sprite2D = $Sprite2D
+
+
 var item_data : ItemData
 
 func _ready() -> void:

@@ -11,6 +11,11 @@ var size_multiplier: float = 1.0
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var border_sound: AudioStreamPlayer = $"../../border sound"
+@onready var fish_paddle_sound: AudioStreamPlayer = $"../../fish paddle sound"
+
+
+
 
 
 func _ready():
@@ -38,9 +43,12 @@ func _physics_process(delta: float) -> void:
 		var collider = collision.get_collider()
 		#print("Ball hit:",collider, " at pos ", collider.global_position)
 		if collider is CharacterBody2D or collider is StaticBody2D:
+			if collider is StaticBody2D:
+				border_sound.play()
 			var normal := collision.get_normal()
 			velocity = velocity.bounce(normal)
 			if collider is CharacterBody2D:
+				fish_paddle_sound.play()
 				last_hit_by = collider
 				#print("Last hit:",collider)
 				velocity.y += collider.velocity.y * 0.5  
