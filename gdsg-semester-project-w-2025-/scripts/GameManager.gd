@@ -12,6 +12,7 @@ var sound_vol: int = 100
 var music_vol: int = 100
 
 signal score_changed
+signal sound_changed
 
 func reset():
 	left_player_score = 0
@@ -20,7 +21,7 @@ func reset():
 
 func change_sound(new: int):
 	sound_vol = new
-	print(sound_vol)
+	sound_changed.emit()
 
 func change_music(new: int):
 	music_vol = new

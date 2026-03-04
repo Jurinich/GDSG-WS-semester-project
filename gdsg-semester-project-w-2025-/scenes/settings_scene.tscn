@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://kocd13u0ou15" path="res://scripts/settings_scene.gd" id="1_kqt80"]
 [ext_resource type="Texture2D" uid="uid://oc3myowet37o" path="res://assets/sprites/Backgrounds/BG Purple.png" id="2_5jacn"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="3_83w5s"]
+[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/buttonsound_extension.gd" id="4_tori7"]
 
 [node name="SettingsScene" type="Control" unique_id=596093716]
 layout_mode = 3
@@ -57,6 +58,7 @@ layout_mode = 2
 theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 32
 text = "Music: On"
+script = ExtResource("4_tori7")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="content" unique_id=405671482]
 layout_mode = 2
@@ -94,6 +96,7 @@ layout_mode = 2
 theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 32
 text = "Sound: On"
+script = ExtResource("4_tori7")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="content" unique_id=1012310735]
 layout_mode = 2
@@ -125,6 +128,7 @@ size_flags_vertical = 8
 theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 64
 text = "Back"
+script = ExtResource("4_tori7")
 
 [connection signal="pressed" from="content/Button2" to="." method="music_button_pressed"]
 [connection signal="drag_ended" from="content/HBoxContainer/HSlider" to="." method="on_music_slider_drag_end"]

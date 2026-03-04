@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c4vomr1gla4ut" path="res://assets/sprites/Logos/Logo_pink.png" id="4_8ln24"]
 [ext_resource type="Texture2D" uid="uid://br0nn0g3jab66" path="res://assets/sprites/Kittens/UI_kittens/kitten_lying.png" id="4_oa1go"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="6_oa1go"]
+[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/buttonsound_extension.gd" id="7_5dd4i"]
 [ext_resource type="Script" uid="uid://bpt207xu16nw5" path="res://scripts/selection_controller.gd" id="8_jk1qb"]
 [ext_resource type="PackedScene" uid="uid://bj18d1fh7lipn" path="res://scenes/player_selection_node.tscn" id="8_tbmy8"]
 
@@ -95,6 +96,7 @@ size_flags_vertical = 3
 theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
 text = "Start Game"
+script = ExtResource("7_5dd4i")
 
 [node name="SettingsButton" type="Button" parent="ButtonBox/VBoxContainer" unique_id=2017300482]
 layout_mode = 2
@@ -102,6 +104,7 @@ size_flags_vertical = 3
 theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
 text = "Settings"
+script = ExtResource("7_5dd4i")
 
 [node name="CreditsButton" type="Button" parent="ButtonBox/VBoxContainer" unique_id=1033975307]
 layout_mode = 2
@@ -109,6 +112,7 @@ size_flags_vertical = 3
 theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
 text = "Credits"
+script = ExtResource("7_5dd4i")
 
 [node name="QuitButton" type="Button" parent="ButtonBox/VBoxContainer" unique_id=75757821]
 layout_mode = 2
@@ -116,6 +120,7 @@ size_flags_vertical = 3
 theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
 text = "Quit"
+script = ExtResource("7_5dd4i")
 
 [node name="Title" type="TextureRect" parent="." unique_id=475323065]
 layout_mode = 1
