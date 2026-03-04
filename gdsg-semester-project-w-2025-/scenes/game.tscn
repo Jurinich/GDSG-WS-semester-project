@@ -31,6 +31,13 @@
 [ext_resource type="AudioStream" uid="uid://cl1o4ab4wtbi" path="res://assets/sounds/border sound.wav" id="29_suyxu"]
 [ext_resource type="AudioStream" uid="uid://y6dsn7s0mt7x" path="res://assets/sounds/paw swiff sound.wav" id="30_sgl2t"]
 [ext_resource type="AudioStream" uid="uid://cjjm5ye1xclu7" path="res://assets/sounds/fish paddle sound.wav" id="31_qouja"]
+[ext_resource type="AudioStream" uid="uid://dfj07w1gkp5rd" path="res://assets/sounds/menu hover.wav" id="32_twgab"]
+[ext_resource type="AudioStream" uid="uid://yhqh3quecu5b" path="res://assets/sounds/menu select.wav" id="33_02fa5"]
+[ext_resource type="AudioStream" uid="uid://gjxvv3b3fxsw" path="res://assets/sounds/powerup spawn.wav" id="34_nepv3"]
+[ext_resource type="AudioStream" uid="uid://rojt8w7y0lib" path="res://assets/sounds/powerup use.wav" id="36_m4url"]
+[ext_resource type="AudioStream" uid="uid://cpbwo62dnkmoo" path="res://assets/sounds/after run score 1.wav" id="37_7025r"]
+[ext_resource type="AudioStream" uid="uid://hwdmsocn8116" path="res://assets/sounds/after run score 2.wav" id="38_m4url"]
+[ext_resource type="AudioStream" uid="uid://dv0pe3el3sujs" path="res://assets/sounds/after run score 3.wav" id="39_8ool0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 
@@ -270,3 +277,24 @@ volume_db = 6.0
 [node name="fish paddle sound" type="AudioStreamPlayer" parent="." unique_id=951044112]
 stream = ExtResource("31_qouja")
 volume_db = -3.0
+
+[node name="menu hover" type="AudioStreamPlayer" parent="." unique_id=1385162994]
+stream = ExtResource("32_twgab")
+
+[node name="menu select" type="AudioStreamPlayer" parent="." unique_id=208994679]
+stream = ExtResource("33_02fa5")
+
+[node name="powerup spawn" type="AudioStreamPlayer" parent="." unique_id=1204851298]
+stream = ExtResource("34_nepv3")
+
+[node name="powerup use" type="AudioStreamPlayer" parent="." unique_id=1067459218]
+stream = ExtResource("36_m4url")
+
+[node name="scoring beginning" type="AudioStreamPlayer" parent="." unique_id=1898465809]
+stream = ExtResource("37_7025r")
+
+[node name="scoring mid" type="AudioStreamPlayer" parent="." unique_id=270743905]
+stream = ExtResource("38_m4url")
+
+[node name="scoring end" type="AudioStreamPlayer" parent="." unique_id=738499081]
+stream = ExtResource("39_8ool0")

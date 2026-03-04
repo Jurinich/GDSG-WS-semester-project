@@ -2,6 +2,8 @@ extends Area2D
 class_name CollectibleItem
 
 @onready var sprite : Sprite2D = $Sprite2D
+
+
 var item_data : ItemData
 
 func _ready() -> void:
@@ -14,7 +16,6 @@ func setup(_item_data : ItemData):
 func _on_body_entered(body: Node2D) -> void:
 	if body is Ball:
 		var player = body.last_hit_by
-		
 		if player != null:
 			var inventory: PlayerInventory = null
 			for child in player.get_children():
