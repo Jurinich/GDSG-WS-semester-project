@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://coyi6nqc62xb1"]
 
-[ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_bhx41"]
+[ext_resource type="Script" uid="uid://b5bt2fewnslhs" path="res://scripts/game_controller.gd" id="1_bhx41"]
 [ext_resource type="Texture2D" uid="uid://bfiqq6jpq1557" path="res://assets/sprites/Backgrounds/BG Dark.png" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dmngxbinp5ri7" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://dj7n4h024303j" path="res://assets/sprites/Backgrounds/playfield.png" id="2_gee14"]
@@ -278,7 +278,11 @@ split_amount = 4
 
 [node name="SplitBall5" type="Node" parent="ItemEffects" unique_id=1700692553]
 script = ExtResource("23_bt5mj")
-split_amount = 4
+split_amount = 5
+
+[node name="SplitBall10" type="Node" parent="ItemEffects" unique_id=1048310688]
+script = ExtResource("23_bt5mj")
+split_amount = 10
 
 [node name="Goal Sound" type="AudioStreamPlayer" parent="." unique_id=125741821]
 stream = ExtResource("28_sww3w")
@@ -315,11 +319,6 @@ stream = ExtResource("38_m4url")
 
 [node name="scoring end" type="AudioStreamPlayer" parent="." unique_id=738499081]
 stream = ExtResource("39_8ool0")
-split_amount = 5
-
-[node name="SplitBall10" type="Node" parent="ItemEffects" unique_id=1048310688]
-script = ExtResource("23_bt5mj")
-split_amount = 10
 
 [node name="GameTimer" type="Timer" parent="." unique_id=1728957633]
 

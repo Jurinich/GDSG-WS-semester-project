@@ -16,7 +16,7 @@ var elapsed_time : float = 0.0
 @export var item_drops : Array[ItemDrop]
 @export var item_scene : PackedScene 
 @export var spawn_area_size: Vector2 = Vector2(800, 600)
-@onready var powerup_spawn: AudioStreamPlayer = $"root/Game/powerup spawn"
+@onready var powerup_spawn: AudioStreamPlayer = $"/root/Game/powerup spawn"
 
 
 # Called when the node enters the scene tree for the first time.
