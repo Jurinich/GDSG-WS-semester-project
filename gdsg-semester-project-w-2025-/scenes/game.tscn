@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://coyi6nqc62xb1"]
 
-[ext_resource type="Script" uid="uid://b5bt2fewnslhs" path="res://scripts/game_controller.gd" id="1_bhx41"]
+[ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_bhx41"]
 [ext_resource type="Texture2D" uid="uid://bfiqq6jpq1557" path="res://assets/sprites/Backgrounds/BG Dark.png" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dmngxbinp5ri7" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://dj7n4h024303j" path="res://assets/sprites/Backgrounds/playfield.png" id="2_gee14"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://bvhryv3l2ogbq" path="res://scripts/items/smaller_balls.gd" id="20_1kice"]
 [ext_resource type="Resource" uid="uid://t2saihw67sa5" path="res://resources/SplitBall3.tres" id="20_sww3w"]
 [ext_resource type="Resource" uid="uid://bhduho0tmw16w" path="res://resources/SplitBall4.tres" id="21_suyxu"]
+[ext_resource type="Resource" uid="uid://ckrkxy5ex4x7" path="res://resources/SplitBall10.tres" id="22_qnb83"]
 [ext_resource type="Resource" uid="uid://5m3rckxpy8ua" path="res://resources/SplitBall5.tres" id="22_sgl2t"]
 [ext_resource type="Script" uid="uid://bhm6sk7siveqy" path="res://scripts/items/split_ball.gd" id="23_bt5mj"]
 
@@ -76,6 +77,11 @@ metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 [sub_resource type="Resource" id="Resource_js0lu"]
 script = ExtResource("15_37s47")
 item = ExtResource("22_sgl2t")
+metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
+
+[sub_resource type="Resource" id="Resource_sww3w"]
+script = ExtResource("15_37s47")
+item = ExtResource("22_qnb83")
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [node name="Game" type="Node2D" unique_id=1886297339]
@@ -234,7 +240,7 @@ triggers = [NodePath("../PawTriggers/Area2D"), NodePath("../PawTriggers/Area2D2"
 [node name="ItemSpawner" type="Node2D" parent="." unique_id=1014848990]
 position = Vector2(960, 618)
 script = ExtResource("13_ca42v")
-item_drops = Array[ExtResource("15_37s47")]([SubResource("Resource_e1j6l"), SubResource("Resource_pl11u"), SubResource("Resource_bhx41"), SubResource("Resource_qouja"), SubResource("Resource_wljb1"), SubResource("Resource_v2yb1"), SubResource("Resource_js0lu")])
+item_drops = Array[ExtResource("15_37s47")]([SubResource("Resource_e1j6l"), SubResource("Resource_pl11u"), SubResource("Resource_bhx41"), SubResource("Resource_qouja"), SubResource("Resource_wljb1"), SubResource("Resource_v2yb1"), SubResource("Resource_js0lu"), SubResource("Resource_sww3w")])
 item_scene = ExtResource("16_264po")
 
 [node name="ItemEffects" type="Node" parent="." unique_id=1580273483 groups=["item_effects"]]
@@ -262,6 +268,10 @@ split_amount = 4
 [node name="SplitBall5" type="Node" parent="ItemEffects" unique_id=1700692553]
 script = ExtResource("23_bt5mj")
 split_amount = 5
+
+[node name="SplitBall10" type="Node" parent="ItemEffects" unique_id=1048310688]
+script = ExtResource("23_bt5mj")
+split_amount = 10
 
 [node name="GameTimer" type="Timer" parent="." unique_id=1728957633]
 
