@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://jnb7g07ibmtd"]
+[gd_scene format=3 uid="uid://jnb7g07ibmtd"]
 
 [ext_resource type="Script" uid="uid://kocd13u0ou15" path="res://scripts/settings_scene.gd" id="1_kqt80"]
+[ext_resource type="Texture2D" uid="uid://oc3myowet37o" path="res://assets/sprites/Backgrounds/BG Purple.png" id="2_5jacn"]
+[ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="3_83w5s"]
 
-[node name="SettingsScene" type="Control"]
+[node name="SettingsScene" type="Control" unique_id=596093716]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,32 +13,119 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kqt80")
 
-[node name="Label" type="Label" parent="."]
+[node name="Background" type="Control" parent="." unique_id=1731582913]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=1435932134]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_5jacn")
+
+[node name="content" type="VBoxContainer" parent="." unique_id=304647815]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 32
+
+[node name="heading" type="Label" parent="content" unique_id=101908018]
+layout_mode = 2
+theme = ExtResource("3_83w5s")
+theme_override_font_sizes/font_size = 64
 text = "This is our amazing settings page"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BackButton" type="Button" parent="."]
+[node name="HSeparator" type="HSeparator" parent="content" unique_id=1826360755]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="heading2" type="Label" parent="content" unique_id=162042890]
+layout_mode = 2
+theme = ExtResource("3_83w5s")
+theme_override_font_sizes/font_size = 48
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="content" unique_id=500037152]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_83w5s")
+theme_override_font_sizes/font_size = 32
+text = " turn music off"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="content" unique_id=405671482]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="text" type="Label" parent="content/HBoxContainer" unique_id=1077343360]
+layout_mode = 2
+theme = ExtResource("3_83w5s")
+theme_override_font_sizes/font_size = 32
+text = "Volume   "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="content/HBoxContainer" unique_id=916181864]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+
+[node name="HSeparator3" type="HSeparator" parent="content" unique_id=1792964731]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="heading3" type="Label" parent="content" unique_id=887099296]
+layout_mode = 2
+theme = ExtResource("3_83w5s")
+theme_override_font_sizes/font_size = 48
+text = "Sound Effects"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckBox2" type="CheckBox" parent="content" unique_id=136547099]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_83w5s")
+theme_override_font_sizes/font_size = 32
+text = " turn sound effects off"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="content" unique_id=1012310735]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="text" type="Label" parent="content/HBoxContainer2" unique_id=1008157770]
+layout_mode = 2
+theme = ExtResource("3_83w5s")
+theme_override_font_sizes/font_size = 32
+text = "Volume   "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="content/HBoxContainer2" unique_id=1856957105]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+
+[node name="HSeparator2" type="HSeparator" parent="content" unique_id=1777799279]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BackButton" type="Button" parent="content" unique_id=41829431]
 custom_minimum_size = Vector2(300, 100)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -8.0
-offset_right = 4.0
-grow_horizontal = 2
-grow_vertical = 0
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 64
 text = "Back"
 
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="content/BackButton" to="." method="_on_back_button_pressed"]
