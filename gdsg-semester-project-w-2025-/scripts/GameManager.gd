@@ -1,6 +1,6 @@
 extends Node
 
-var max_score: int = 50
+var max_score: int = -1
 
 var left_player_score: int = 0
 var right_player_score: int = 0
@@ -25,9 +25,10 @@ func add_point(player : String) -> bool:
 	print("Score:", left_player_score, " - ", right_player_score)
 	score_changed.emit()
 
-	if (left_player_score >= max_score || right_player_score >= max_score):
-		get_tree().call_deferred("change_scene_to_file", "res://scenes/main_menu.tscn")
-		return false
+	if (max_score > 0):
+		if (left_player_score >= max_score || right_player_score >= max_score):
+			get_tree().call_deferred("change_scene_to_file", "res://scenes/main_menu.tscn")
+			return false
 
 	return true
 
