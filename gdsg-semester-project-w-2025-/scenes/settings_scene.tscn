@@ -52,12 +52,11 @@ text = "Music"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="content" unique_id=500037152]
+[node name="Button2" type="Button" parent="content" unique_id=976116096]
 layout_mode = 2
-size_flags_horizontal = 4
 theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 32
-text = " turn music off"
+text = "Music: On"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="content" unique_id=405671482]
 layout_mode = 2
@@ -90,12 +89,11 @@ text = "Sound Effects"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CheckBox2" type="CheckBox" parent="content" unique_id=136547099]
+[node name="Button" type="Button" parent="content" unique_id=551788857]
 layout_mode = 2
-size_flags_horizontal = 4
 theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 32
-text = " turn sound effects off"
+text = "Sound: On"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="content" unique_id=1012310735]
 layout_mode = 2
@@ -128,4 +126,8 @@ theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 64
 text = "Back"
 
+[connection signal="pressed" from="content/Button2" to="." method="music_button_pressed"]
+[connection signal="drag_ended" from="content/HBoxContainer/HSlider" to="." method="on_music_slider_drag_end"]
+[connection signal="pressed" from="content/Button" to="." method="sound_button_pressed"]
+[connection signal="drag_ended" from="content/HBoxContainer2/HSlider" to="." method="on_sound_slider_drag_end"]
 [connection signal="pressed" from="content/BackButton" to="." method="_on_back_button_pressed"]
