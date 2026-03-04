@@ -7,6 +7,7 @@ radius = 30.0
 
 [node name="Item" type="Area2D" unique_id=2033469594]
 script = ExtResource("1_8id85")
+tex_scale = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1165437942]
 shape = SubResource("CircleShape2D_bx46p")

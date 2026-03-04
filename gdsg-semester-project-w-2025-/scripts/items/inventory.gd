@@ -1,7 +1,7 @@
 extends Node
 class_name PlayerInventory
 
-@export var max_items: int = 3
+@export var max_items: int = 0
 var items: Array[ItemData] = []
 var selected_index: int = 0
 

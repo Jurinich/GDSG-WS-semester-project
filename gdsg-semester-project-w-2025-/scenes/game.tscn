@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://coyi6nqc62xb1"]
 
+[ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_bhx41"]
 [ext_resource type="Texture2D" uid="uid://bfiqq6jpq1557" path="res://assets/sprites/Backgrounds/BG Dark.png" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dmngxbinp5ri7" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://dj7n4h024303j" path="res://assets/sprites/Backgrounds/playfield.png" id="2_gee14"]
@@ -9,8 +10,6 @@
 [ext_resource type="Script" uid="uid://bpva8mtljkuns" path="res://scripts/GoalScript.gd" id="4_lbhrr"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="5_dinhu"]
 [ext_resource type="Script" uid="uid://c0n866wxrwtu6" path="res://scripts/score_label.gd" id="6_p57ef"]
-[ext_resource type="Texture2D" uid="uid://dyqjkte0byedt" path="res://assets/sprites/Backgrounds/inventory_leftplayer.png" id="6_vtaks"]
-[ext_resource type="Texture2D" uid="uid://dh4qjaud52ho" path="res://assets/sprites/Backgrounds/inventory_rightplayer.png" id="7_kvpfn"]
 [ext_resource type="Script" uid="uid://c0uvs62o1qka0" path="res://scripts/kitten_paw_spawner.gd" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cwwdjsm2bpjkx" path="res://scenes/kitten_paw.tscn" id="12_dinhu"]
 [ext_resource type="Script" uid="uid://b2oe7fsd38rx1" path="res://scripts/items/item_spawner.gd" id="13_ca42v"]
@@ -25,6 +24,7 @@
 [ext_resource type="Script" uid="uid://bvhryv3l2ogbq" path="res://scripts/items/smaller_balls.gd" id="20_1kice"]
 [ext_resource type="Resource" uid="uid://t2saihw67sa5" path="res://resources/SplitBall3.tres" id="20_sww3w"]
 [ext_resource type="Resource" uid="uid://bhduho0tmw16w" path="res://resources/SplitBall4.tres" id="21_suyxu"]
+[ext_resource type="Resource" uid="uid://ckrkxy5ex4x7" path="res://resources/SplitBall10.tres" id="22_qnb83"]
 [ext_resource type="Resource" uid="uid://5m3rckxpy8ua" path="res://resources/SplitBall5.tres" id="22_sgl2t"]
 [ext_resource type="Script" uid="uid://bhm6sk7siveqy" path="res://scripts/items/split_ball.gd" id="23_bt5mj"]
 [ext_resource type="AudioStream" uid="uid://d0xwonisrdwb5" path="res://assets/sounds/Goal Sound.wav" id="28_sww3w"]
@@ -42,18 +42,18 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
-size = Vector2(64, 840)
+size = Vector2(64, 980)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
-size = Vector2(60, 843)
+size = Vector2(60, 980)
 
 [sub_resource type="QuadMesh" id="QuadMesh_8cj0n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dinhu"]
-size = Vector2(578, 136)
+size = Vector2(578, 228)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvuet"]
-size = Vector2(580, 146)
+size = Vector2(580, 246)
 
 [sub_resource type="Resource" id="Resource_e1j6l"]
 script = ExtResource("15_37s47")
@@ -90,7 +90,14 @@ script = ExtResource("15_37s47")
 item = ExtResource("22_sgl2t")
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
+[sub_resource type="Resource" id="Resource_sww3w"]
+script = ExtResource("15_37s47")
+item = ExtResource("22_qnb83")
+metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
+
 [node name="Game" type="Node2D" unique_id=1886297339]
+position = Vector2(0, -2)
+script = ExtResource("1_bhx41")
 
 [node name="Player1" parent="." unique_id=477805542 instance=ExtResource("1_uwrxv")]
 position = Vector2(135, 609)
@@ -114,11 +121,11 @@ use_action = "useItemP2"
 [node name="Top_Bottom wall" type="Node" parent="." unique_id=1365690129]
 
 [node name="TopWall" type="StaticBody2D" parent="Top_Bottom wall" unique_id=755887784]
-position = Vector2(960, 0)
+position = Vector2(960, 51)
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Bottom wall/TopWall" unique_id=2021686217]
-position = Vector2(0, 207)
+position = Vector2(0, 54)
 scale = Vector2(96, 1)
 shape = SubResource("RectangleShape2D_yqjtg")
 
@@ -140,7 +147,7 @@ script = ExtResource("4_lbhrr")
 player = "right"
 
 [node name="LeftGoal" type="CollisionShape2D" parent="Goals/LeftGoal" unique_id=884299002]
-position = Vector2(63, 81)
+position = Vector2(63, 11)
 shape = SubResource("RectangleShape2D_lnu2h")
 
 [node name="RightGoal" type="Area2D" parent="Goals" unique_id=1500528154]
@@ -150,43 +157,57 @@ script = ExtResource("4_lbhrr")
 player = "left"
 
 [node name="RightGoal" type="CollisionShape2D" parent="Goals/RightGoal" unique_id=22805758]
-position = Vector2(-62, 82.5)
+position = Vector2(-62, 14)
 shape = SubResource("RectangleShape2D_lbhrr")
 
 [node name="ForegroundUILayer" type="CanvasLayer" parent="." unique_id=1084581396]
+layer = -1
 
-[node name="Label" type="Label" parent="ForegroundUILayer" unique_id=1940990595]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -90.5
-offset_right = 90.5
-offset_bottom = 175.0
-grow_horizontal = 2
-size_flags_vertical = 0
+[node name="HBoxContainer" type="HBoxContainer" parent="ForegroundUILayer" unique_id=237591177]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.994
+offset_bottom = 0.47998047
+
+[node name="ScoreRight" type="Label" parent="ForegroundUILayer/HBoxContainer" unique_id=312316445]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
 theme = ExtResource("5_dinhu")
-theme_override_font_sizes/font_size = 81
-text = "0:0"
+theme_override_font_sizes/font_size = 256
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("6_p57ef")
 
-[node name="LeftPlayerInventory" type="TextureRect" parent="ForegroundUILayer" unique_id=631863509]
-offset_left = 36.0
-offset_top = 28.0
-offset_right = 365.0
-offset_bottom = 171.0
-texture = ExtResource("6_vtaks")
+[node name="ScoreLeft" type="Label" parent="ForegroundUILayer/HBoxContainer" unique_id=1940990595]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("5_dinhu")
+theme_override_font_sizes/font_size = 256
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_p57ef")
+left_player = true
 
-[node name="RightPlayerInventory" type="TextureRect" parent="ForegroundUILayer" unique_id=1207856452]
-offset_left = 1555.0
-offset_top = 28.0
-offset_right = 1884.0
-offset_bottom = 171.0
-texture = ExtResource("7_kvpfn")
+[node name="TimeLabel" type="Label" parent="ForegroundUILayer" unique_id=297263883]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -35.0
+offset_right = 35.0
+offset_bottom = 105.0
+grow_horizontal = 2
+theme = ExtResource("5_dinhu")
+theme_override_font_sizes/font_size = 64
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1144167311]
-layer = -1
+layer = -2
 
 [node name="Background" type="MeshInstance2D" parent="BackgroundLayer" unique_id=723960218]
 position = Vector2(960, 540)
@@ -194,15 +215,9 @@ scale = Vector2(1920, 1080)
 mesh = SubResource("QuadMesh_8cj0n")
 texture = ExtResource("1_u5sy4")
 
-[node name="Background2" type="MeshInstance2D" parent="BackgroundLayer" unique_id=65412911]
-position = Vector2(960, 98.03125)
-scale = Vector2(1920.0001, 195.9375)
-mesh = SubResource("QuadMesh_8cj0n")
-texture = ExtResource("1_u5sy4")
-
 [node name="PlayingField" type="MeshInstance2D" parent="BackgroundLayer" unique_id=1248166817]
-position = Vector2(960, 620)
-scale = Vector2(1860, 854)
+position = Vector2(960, 568.5)
+scale = Vector2(1860, 957)
 mesh = SubResource("QuadMesh_8cj0n")
 texture = ExtResource("2_gee14")
 
@@ -215,15 +230,17 @@ spawn_position = Vector2(960, 540)
 [node name="PawTriggers" type="Node" parent="." unique_id=1998233890]
 
 [node name="Area2D" type="Area2D" parent="PawTriggers" unique_id=1583465132]
-position = Vector2(960, 320)
+position = Vector2(960, 158)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PawTriggers/Area2D" unique_id=627959169]
+position = Vector2(0, 104)
 shape = SubResource("RectangleShape2D_dinhu")
 
 [node name="Area2D2" type="Area2D" parent="PawTriggers" unique_id=563170104]
 position = Vector2(960, 910)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PawTriggers/Area2D2" unique_id=1154801488]
+position = Vector2(0, -50)
 shape = SubResource("RectangleShape2D_kvuet")
 
 [node name="KittenPawSpawner" type="Node2D" parent="." unique_id=1737106517 node_paths=PackedStringArray("triggers")]
@@ -234,7 +251,7 @@ triggers = [NodePath("../PawTriggers/Area2D"), NodePath("../PawTriggers/Area2D2"
 [node name="ItemSpawner" type="Node2D" parent="." unique_id=1014848990]
 position = Vector2(960, 618)
 script = ExtResource("13_ca42v")
-item_drops = Array[ExtResource("15_37s47")]([SubResource("Resource_e1j6l"), SubResource("Resource_pl11u"), SubResource("Resource_bhx41"), SubResource("Resource_qouja"), SubResource("Resource_wljb1"), SubResource("Resource_v2yb1"), SubResource("Resource_js0lu")])
+item_drops = Array[ExtResource("15_37s47")]([SubResource("Resource_e1j6l"), SubResource("Resource_pl11u"), SubResource("Resource_bhx41"), SubResource("Resource_qouja"), SubResource("Resource_wljb1"), SubResource("Resource_v2yb1"), SubResource("Resource_js0lu"), SubResource("Resource_sww3w")])
 item_scene = ExtResource("16_264po")
 
 [node name="ItemEffects" type="Node" parent="." unique_id=1580273483 groups=["item_effects"]]
@@ -257,7 +274,7 @@ script = ExtResource("23_bt5mj")
 
 [node name="SplitBall4" type="Node" parent="ItemEffects" unique_id=1114381143]
 script = ExtResource("23_bt5mj")
-split_amount = 5
+split_amount = 4
 
 [node name="SplitBall5" type="Node" parent="ItemEffects" unique_id=1700692553]
 script = ExtResource("23_bt5mj")
@@ -298,3 +315,12 @@ stream = ExtResource("38_m4url")
 
 [node name="scoring end" type="AudioStreamPlayer" parent="." unique_id=738499081]
 stream = ExtResource("39_8ool0")
+split_amount = 5
+
+[node name="SplitBall10" type="Node" parent="ItemEffects" unique_id=1048310688]
+script = ExtResource("23_bt5mj")
+split_amount = 10
+
+[node name="GameTimer" type="Timer" parent="." unique_id=1728957633]
+
+[connection signal="timeout" from="GameTimer" to="." method="timer_tick"]
