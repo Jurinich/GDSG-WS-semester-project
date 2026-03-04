@@ -3,7 +3,7 @@ extends Timer
 
 @export var ball_scene : PackedScene
 @export var spawn_position: Vector2
-
+@onready var player_1: CharacterBody2D = $"../Player1"
 
 func _ready():
 	add_to_group("ball_spawner")

@@ -4,7 +4,7 @@ class_name CollectibleItem
 @export var tex_scale: float = 1.0
 
 @onready var sprite : Sprite2D = $Sprite2D
-
+@onready var player_1: CharacterBody2D = $"../../Player1"
 
 var item_data : ItemData
 
@@ -19,20 +19,21 @@ func setup(_item_data : ItemData):
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Ball:
-		var player = body.last_hit_by
+		var player = player_1
+		var inventory: PlayerInventory = null
+		for child in player.get_children():
+			if child is PlayerInventory:
+				inventory = child
+				print(child)
+				break 
 
-		if player != null:
-			var inventory: PlayerInventory = null
-			for child in player.get_children():
-				if child is PlayerInventory:
-					inventory = child
-					break 
+		if inventory != null:
+			print("test1")
+			var was_picked_up = inventory.add_item(item_data)
 
-			if inventory != null:
-				var was_picked_up = inventory.add_item(item_data)
+			if not was_picked_up:
+				print("test2")
+				print(player.name, " inventory is full -> auto-use item")
+				inventory.activate_powerup(item_data)
 
-				if not was_picked_up:
-					print(player.name, " inventory is full -> auto-use item")
-					inventory.activate_powerup(item_data)
-
-				queue_free()
+			queue_free()

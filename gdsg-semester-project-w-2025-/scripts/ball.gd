@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var SPEED_DECAY: float = 300.0
 
 var current_speed: float
-var last_hit_by: CharacterBody2D = null
+var last_hit_by: CharacterBody2D = player_1
 var is_split_spawn: bool = false
 var size_multiplier: float = 1.0
 
@@ -14,7 +14,7 @@ var size_multiplier: float = 1.0
 @onready var border_sound: AudioStreamPlayer = $"../../border sound"
 @onready var fish_paddle_sound: AudioStreamPlayer = $"../../fish paddle sound"
 
-
+@onready var player_1: CharacterBody2D = $"../../Player1"
 
 
 
@@ -22,6 +22,8 @@ func _ready():
 	current_speed = BASE_SPEED
 	collision_shape.shape = collision_shape.shape.duplicate()
 	add_to_group("balls")
+	last_hit_by = player_1
+	print("Balls ", last_hit_by)
 	if size_multiplier != 1.0:
 		scale_ball(size_multiplier)
 	if not is_split_spawn:

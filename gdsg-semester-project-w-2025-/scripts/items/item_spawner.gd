@@ -11,7 +11,7 @@ enum SpawnChance{
 
 
 
-@export var time_for_new_item : float = 10.0 #maybe later this could be a range using a Vector2ii
+@export var time_for_new_item : float = 8.0 #maybe later this could be a range using a Vector2ii
 var elapsed_time : float = 0.0
 @export var item_drops : Array[ItemDrop]
 @export var item_scene : PackedScene 

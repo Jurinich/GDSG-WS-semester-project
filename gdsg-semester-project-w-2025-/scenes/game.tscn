@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://coyi6nqc62xb1"]
 
-[ext_resource type="Script" uid="uid://b5bt2fewnslhs" path="res://scripts/game_controller.gd" id="1_bhx41"]
+[ext_resource type="Script" path="res://scripts/game_controller.gd" id="1_bhx41"]
 [ext_resource type="Texture2D" uid="uid://bfiqq6jpq1557" path="res://assets/sprites/Backgrounds/BG Dark.png" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dmngxbinp5ri7" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://dj7n4h024303j" path="res://assets/sprites/Backgrounds/playfield.png" id="2_gee14"]
@@ -59,26 +59,31 @@ size = Vector2(580, 246)
 [sub_resource type="Resource" id="Resource_e1j6l"]
 script = ExtResource("15_37s47")
 item = ExtResource("15_ssvqc")
+weight = 15.0
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [sub_resource type="Resource" id="Resource_pl11u"]
 script = ExtResource("15_37s47")
 item = ExtResource("17_5newe")
+weight = 15.0
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [sub_resource type="Resource" id="Resource_bhx41"]
 script = ExtResource("15_37s47")
 item = ExtResource("18_bt5mj")
+weight = 15.0
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [sub_resource type="Resource" id="Resource_qouja"]
 script = ExtResource("15_37s47")
 item = ExtResource("19_qnb83")
+weight = 20.0
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [sub_resource type="Resource" id="Resource_wljb1"]
 script = ExtResource("15_37s47")
 item = ExtResource("20_sww3w")
+weight = 13.0
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [sub_resource type="Resource" id="Resource_v2yb1"]
@@ -89,11 +94,13 @@ metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 [sub_resource type="Resource" id="Resource_js0lu"]
 script = ExtResource("15_37s47")
 item = ExtResource("22_sgl2t")
+weight = 7.0
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [sub_resource type="Resource" id="Resource_sww3w"]
 script = ExtResource("15_37s47")
 item = ExtResource("22_qnb83")
+weight = 5.0
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [node name="Game" type="Node2D" unique_id=1886297339]
