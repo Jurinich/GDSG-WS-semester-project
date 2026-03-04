@@ -28,7 +28,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 			if inventory != null:
 				var was_picked_up = inventory.add_item(item_data)
-				
+
 				if not was_picked_up:
 					print(player.name, " inventory is full -> auto-use item")
 					inventory.activate_powerup(item_data)

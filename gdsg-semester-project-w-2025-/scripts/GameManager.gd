@@ -8,12 +8,22 @@ var right_player_score: int = 0
 var left_player_paddle: int = 0
 var right_player_paddle: int = 0
 
+var sound_vol: int = 100
+var music_vol: int = 100
+
 signal score_changed
 
 func reset():
 	left_player_score = 0
 	right_player_score = 0
 	score_changed.emit()
+
+func change_sound(new: int):
+	sound_vol = new
+	print(sound_vol)
+
+func change_music(new: int):
+	music_vol = new
 
 # function returns true if the game should continue on
 func add_point(player : String) -> bool:
