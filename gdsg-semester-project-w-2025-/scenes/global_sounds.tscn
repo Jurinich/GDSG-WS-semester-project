@@ -3,6 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://dfj07w1gkp5rd" path="res://assets/sounds/menu hover.wav" id="1_hc3me"]
 [ext_resource type="Script" uid="uid://d3gneryhnu1kv" path="res://scripts/audioextension.gd" id="2_sbao2"]
 [ext_resource type="AudioStream" uid="uid://yhqh3quecu5b" path="res://assets/sounds/menu select.wav" id="3_smkhs"]
+[ext_resource type="AudioStream" uid="uid://dghu87athimbe" path="res://assets/Music/kitty_pong_bgm.mp3" id="4_sbao2"]
 
 [node name="GlobalSounds" type="Node" unique_id=1047763007]
 
@@ -12,4 +13,9 @@ script = ExtResource("2_sbao2")
 
 [node name="click-sound" type="AudioStreamPlayer" parent="." unique_id=1069709504]
 stream = ExtResource("3_smkhs")
+script = ExtResource("2_sbao2")
+
+[node name="background-music" type="AudioStreamPlayer" parent="." unique_id=264672693]
+stream = ExtResource("4_sbao2")
+autoplay = true
 script = ExtResource("2_sbao2")
