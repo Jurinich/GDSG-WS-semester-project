@@ -182,6 +182,7 @@ offset_bottom = 590.0
 grow_horizontal = 1
 scale = Vector2(0.5, 0.5)
 player_name = "Left Player"
+isP1 = true
 
 [node name="PlayerSelectionNode2" parent="SelectionController" unique_id=1162290833 instance=ExtResource("8_tbmy8")]
 layout_mode = 1

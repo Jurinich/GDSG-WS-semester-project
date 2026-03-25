@@ -11,6 +11,10 @@ var right_player_paddle: int = 0
 var sound_vol: int = 100
 var music_vol: int = 100
 
+var arcade_mode = true
+var arcade_p1_id = -1
+var arcade_p2_id = 1
+
 signal score_changed
 signal sound_changed
 
@@ -43,6 +47,9 @@ func add_point(player : String) -> bool:
 
 	return true
 
-
 func get_score_formatted() -> String:
 	return str(left_player_score) + ":" + str(right_player_score)
+
+func _unhandled_input(event):
+	if event.is_action_pressed("Quit"):
+		get_tree().quit()

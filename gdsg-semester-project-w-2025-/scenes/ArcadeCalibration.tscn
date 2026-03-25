@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://x71s57sxup44"]
+
+[ext_resource type="Texture2D" uid="uid://cdm15ogkivjxe" path="res://assets/sprites/Backgrounds/BG_StartScreenMenue.png" id="1_gp2so"]
+[ext_resource type="Script" uid="uid://cvs6ldw801lxx" path="res://scripts/arcade_calibration.gd" id="1_kt86t"]
+[ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="2_sw76w"]
+
+[node name="ArcadeCalibration" type="Control" unique_id=1317257259]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kt86t")
+
+[node name="Background" type="TextureRect" parent="." unique_id=570383848]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_gp2so")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="Calibr" type="Label" parent="." unique_id=720364544]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -290.5
+offset_right = 290.5
+offset_bottom = 118.0
+grow_horizontal = 2
+theme = ExtResource("2_sw76w")
+theme_override_colors/font_color = Color(1, 0.6392157, 0.6745098, 1)
+theme_override_constants/line_spacing = -19
+theme_override_font_sizes/font_size = 72
+text = "Calibration"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfoLabel" type="Label" parent="." unique_id=1041483803]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_sw76w")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/line_spacing = -19
+theme_override_font_sizes/font_size = 128
+text = "Player 1 (left)
+Press Any Button"
+horizontal_alignment = 1
+vertical_alignment = 1
