@@ -6,23 +6,30 @@ const SPEED := 1000
 
 var fixed_x: float
 var arcade_input: float
-
+var device_id_cur: int
 
 func _ready():
 	fixed_x = global_position.x
-	
+
 	var paddle: CollisionPolygon2D
 	if (isP1):
 		paddle = paddles[GameManager.left_player_paddle].instantiate()
+		device_id_cur = GameManager.arcade_p1_id
 	else:
 		paddle = paddles[GameManager.right_player_paddle].instantiate()
+		device_id_cur = GameManager.arcade_p2_id
 		paddle.scale.x = -paddle.scale.x
 
 	add_child(paddle)
 
 func getYdir() -> float:
 	if GameManager.arcade_mode:
-		return arcade_input
+		if Input.is_joy_button_pressed(device_id_cur, JOY_BUTTON_DPAD_UP):
+			return -1.0
+		elif Input.is_joy_button_pressed(device_id_cur, JOY_BUTTON_DPAD_DOWN):
+			return 1.0
+		else:
+			return 0.0
 
 	else:
 		if isP1:
@@ -35,25 +42,3 @@ func _physics_process(_delta: float) -> void:
 	velocity = dir * SPEED
 	move_and_slide()
 	global_position.x = fixed_x
-
-
-func _unhandled_input(event):
-	if GameManager.arcade_mode == false:
-		return
-
-	if event.device not in [GameManager.arcade_p1_id, GameManager.arcade_p2_id]:
-		return
-
-	if isP1:
-		if event.device == GameManager.arcade_p2_id: return
-	else:
-		if event.device == GameManager.arcade_p1_id: return
-
-	if event.is_action_pressed("ArcadeUp"):
-		arcade_input = -1.0
-
-	elif event.is_action_pressed("ArcadeDown"):
-		arcade_input = 1.0
-
-	else:
-		arcade_input = 0.0

@@ -52,8 +52,6 @@ func _physics_process(delta: float) -> void:
 			if collider is CharacterBody2D:
 				fish_paddle_sound.play()
 				last_hit_by = collider
-				#print("Last hit:",collider)
-				velocity.y += collider.velocity.y * 0.5  
 			velocity = velocity.normalized() * BASE_SPEED
 
 func paw_hit(new_direction: Vector2, boost_amount: float):
