@@ -10,8 +10,14 @@ func _ready():
 	else:
 		info_label.text = get_winner_text()
 
-	if GameManager.arcade_mode and GameManager.arcade_p1_id == -1:
-		get_tree().change_scene_to_file("res://scenes/ArcadeCalibration.tscn")
+	if GameManager.arcade_mode:
+		if GameManager.arcade_p1_id == -1:
+			get_tree().change_scene_to_file("res://scenes/ArcadeCalibration.tscn")
+
+	else:
+		$"SelectionController/PlayerSelectionNode1/ArControls".visible = false
+		$"SelectionController/PlayerSelectionNode2/ArControls2".visible = false
+		$"ButtonBox/Control".visible = false
 
 
 func _on_start_button_pressed():

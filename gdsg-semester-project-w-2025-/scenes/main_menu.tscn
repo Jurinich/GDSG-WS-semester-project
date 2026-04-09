@@ -8,8 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://br0nn0g3jab66" path="res://assets/sprites/Kittens/UI_kittens/kitten_lying.png" id="4_oa1go"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="6_oa1go"]
 [ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/buttonsound_extension.gd" id="7_5dd4i"]
+[ext_resource type="Texture2D" uid="uid://uvknetcjqqv2" path="res://assets/MainButtons-TopLeft.svg" id="8_flqon"]
 [ext_resource type="Script" uid="uid://bpt207xu16nw5" path="res://scripts/selection_controller.gd" id="8_jk1qb"]
 [ext_resource type="PackedScene" uid="uid://bj18d1fh7lipn" path="res://scenes/player_selection_node.tscn" id="8_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://n0qakhx5odqm" path="res://assets/MainButtons-TopMiddle.svg" id="9_rcqid"]
+[ext_resource type="Texture2D" uid="uid://c26ms0ws3aqnx" path="res://assets/SmallButton-Right.svg" id="10_1ajci"]
+[ext_resource type="Texture2D" uid="uid://bcam63poywcst" path="res://assets/Stick-LeftRight.svg" id="11_lgwnu"]
 
 [node name="MainMenu" type="Control" unique_id=1335995349]
 layout_mode = 3
@@ -122,6 +126,71 @@ theme_override_font_sizes/font_size = 48
 text = "Quit"
 script = ExtResource("7_5dd4i")
 
+[node name="Control" type="Control" parent="ButtonBox" unique_id=639696930]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect4" type="TextureRect" parent="ButtonBox/Control" unique_id=1303147088]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 135.0
+offset_right = 190.0
+offset_bottom = 225.0
+texture = ExtResource("8_flqon")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="ButtonBox/Control" unique_id=124667086]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 135.0
+offset_right = 720.0
+offset_bottom = 225.0
+texture = ExtResource("8_flqon")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="ButtonBox/Control" unique_id=731216832]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 310.0
+offset_right = 190.0
+offset_bottom = 400.0
+texture = ExtResource("9_rcqid")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="ButtonBox/Control" unique_id=893673208]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 310.0
+offset_right = 720.0
+offset_bottom = 400.0
+texture = ExtResource("9_rcqid")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="TextureRect6" type="TextureRect" parent="ButtonBox/Control" unique_id=346215539]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 400.0
+offset_right = 720.0
+offset_bottom = 490.0
+texture = ExtResource("10_1ajci")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="ButtonBox/Control" unique_id=323979733]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 400.0
+offset_right = 190.0
+offset_bottom = 490.0
+texture = ExtResource("10_1ajci")
+expand_mode = 2
+stretch_mode = 5
+
 [node name="Title" type="TextureRect" parent="." unique_id=475323065]
 layout_mode = 1
 anchors_preset = 8
@@ -184,6 +253,22 @@ scale = Vector2(0.5, 0.5)
 player_name = "Left Player"
 isP1 = true
 
+[node name="ArControls" type="TextureRect" parent="SelectionController/PlayerSelectionNode1" unique_id=1157546746]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -278.0
+offset_right = 210.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("11_lgwnu")
+expand_mode = 2
+stretch_mode = 4
+
 [node name="PlayerSelectionNode2" parent="SelectionController" unique_id=1162290833 instance=ExtResource("8_tbmy8")]
 layout_mode = 1
 anchors_preset = 6
@@ -199,6 +284,22 @@ grow_horizontal = 0
 scale = Vector2(0.5, 0.5)
 player_name = "Right Player"
 start_index = 1
+
+[node name="ArControls2" type="TextureRect" parent="SelectionController/PlayerSelectionNode2" unique_id=1472711271]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -278.0
+offset_right = 210.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("11_lgwnu")
+expand_mode = 2
+stretch_mode = 4
 
 [connection signal="pressed" from="ButtonBox/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ButtonBox/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

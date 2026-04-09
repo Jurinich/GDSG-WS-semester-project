@@ -11,7 +11,7 @@ var right_player_paddle: int = 0
 var sound_vol: int = 100
 var music_vol: int = 100
 
-var arcade_mode = true
+var arcade_mode = false
 var arcade_p1_id = -1
 var arcade_p2_id = 1
 
