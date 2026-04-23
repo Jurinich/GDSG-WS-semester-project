@@ -36,6 +36,8 @@ func _on_left_button_pressed():
 
 func update_texture():
 	selection.texture = possible_textures[cur_index]
+	if isP1:
+		selection.flip_h = true;
 
 func _unhandled_input(event):
 	if GameManager.arcade_mode == false:
@@ -54,4 +56,3 @@ func _unhandled_input(event):
 
 	elif event.is_action_pressed("ArcadeRight"):
 		_on_right_button_pressed()
-
