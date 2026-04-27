@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var BASE_SPEED: float = 600.0
 @export var SPEED_DECAY: float = 300.0
+@export var VELOCITY_THRESHOLD: float = 50.0
 
 var current_speed: float
 var last_hit_by: CharacterBody2D = player_1
@@ -15,8 +16,7 @@ var size_multiplier: float = 1.0
 @onready var fish_paddle_sound: AudioStreamPlayer = $"../../fish paddle sound"
 
 @onready var player_1: CharacterBody2D = $"../../Player1"
-
-
+@onready var kitten_spawner: KittenSpawner = $"../../KittenPawSpawner"
 
 func _ready():
 	current_speed = BASE_SPEED
@@ -53,6 +53,16 @@ func _physics_process(delta: float) -> void:
 				fish_paddle_sound.play()
 				last_hit_by = collider
 			velocity = velocity.normalized() * BASE_SPEED
+		
+		if check_velocity_threshold():
+			kitten_spawner.call_deferred("spawn_paw", self)
+
+func check_velocity_threshold() -> bool:
+	if velocity.x < VELOCITY_THRESHOLD && velocity.x > -VELOCITY_THRESHOLD:
+		return true
+	elif velocity.y < VELOCITY_THRESHOLD && velocity.y > -VELOCITY_THRESHOLD:
+		return true
+	return false
 
 func paw_hit(new_direction: Vector2, boost_amount: float):
 	velocity = new_direction.normalized()
