@@ -9,13 +9,16 @@
 
 [node name="hover-sound" type="AudioStreamPlayer" parent="." unique_id=136378654]
 stream = ExtResource("1_hc3me")
+bus = &"Sounds"
 script = ExtResource("2_sbao2")
 
 [node name="click-sound" type="AudioStreamPlayer" parent="." unique_id=1069709504]
 stream = ExtResource("3_smkhs")
+bus = &"Sounds"
 script = ExtResource("2_sbao2")
 
 [node name="background-music" type="AudioStreamPlayer" parent="." unique_id=264672693]
 stream = ExtResource("4_sbao2")
 autoplay = true
+bus = &"Music"
 script = ExtResource("2_sbao2")

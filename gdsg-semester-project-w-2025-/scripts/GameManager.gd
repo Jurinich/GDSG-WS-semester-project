@@ -29,6 +29,7 @@ func change_sound(new: int):
 
 func change_music(new: int):
 	music_vol = new
+	sound_changed.emit()
 
 # function returns true if the game should continue on
 func add_point(player : String) -> bool:
