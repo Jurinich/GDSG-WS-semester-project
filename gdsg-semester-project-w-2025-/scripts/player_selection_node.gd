@@ -54,4 +54,3 @@ func _unhandled_input(event):
 
 	elif event.is_action_pressed("ArcadeRight"):
 		_on_right_button_pressed()
-

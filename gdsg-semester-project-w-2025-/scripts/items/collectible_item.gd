@@ -34,6 +34,6 @@ func _on_body_entered(body: Node2D) -> void:
 			if not was_picked_up:
 				print("test2")
 				print(player.name, " inventory is full -> auto-use item")
-				inventory.activate_powerup(item_data)
+				inventory.activate_powerup(item_data, body)
 
 			queue_free()

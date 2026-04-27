@@ -1,6 +1,7 @@
 extends Node
 
 var max_score: int = -1
+var ball_limit: int = 20;
 
 var left_player_score: int = 0
 var right_player_score: int = 0
@@ -53,3 +54,9 @@ func get_score_formatted() -> String:
 func _unhandled_input(event):
 	if event.is_action_pressed("Quit"):
 		get_tree().quit()
+		
+
+func can_spawn_more() -> bool:
+	var current_ball_count = get_tree().get_nodes_in_group("balls").size()
+	print("balls ", current_ball_count)
+	return current_ball_count < ball_limit

@@ -11,10 +11,10 @@ var size_multiplier: float = 1.0
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
-@onready var border_sound: AudioStreamPlayer = $"../../border sound"
-@onready var fish_paddle_sound: AudioStreamPlayer = $"../../fish paddle sound"
+@onready var border_sound: AudioStreamPlayer = $"../border sound"
+@onready var fish_paddle_sound: AudioStreamPlayer = $"../fish paddle sound"
 
-@onready var player_1: CharacterBody2D = $"../../Player1"
+@onready var player_1: CharacterBody2D = $"../Player1"
 
 
 
@@ -36,7 +36,7 @@ func launch_ball():
 	velocity = Vector2(direction, randf_range(-0.5, 0.5)).normalized() * current_speed
 	
 func _physics_process(delta: float) -> void:
-	if current_speed > BASE_SPEED:
+	if current_speed != BASE_SPEED:
 		current_speed = move_toward(current_speed, BASE_SPEED, SPEED_DECAY * delta)
 	velocity = velocity.normalized() * current_speed
 	
@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 			if collider is CharacterBody2D:
 				fish_paddle_sound.play()
 				last_hit_by = collider
-			velocity = velocity.normalized() * BASE_SPEED
+
 
 func paw_hit(new_direction: Vector2, boost_amount: float):
 	velocity = new_direction.normalized()

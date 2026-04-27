@@ -27,7 +27,7 @@ func add_item(new_item: ItemData) -> bool:
 func cycle_item() -> void:
 	pass
 
-func use_item() -> void:
+func use_item(triggering_ball: Ball = null) -> void:
 	if items.size() > 0 and selected_index < items.size():
 		var item_to_use = items[selected_index]
 		
@@ -40,7 +40,7 @@ func use_item() -> void:
 		elif items.size() == 0:
 			selected_index = 0
 			
-func activate_powerup(item: ItemData) -> void:
+func activate_powerup(item: ItemData, triggering_ball: Ball = null) -> void:
 	if item.power_up_effect.is_empty():
 		return
 	var effects_hub = get_tree().get_first_node_in_group("item_effects")
@@ -48,8 +48,8 @@ func activate_powerup(item: ItemData) -> void:
 	if effects_hub != null:
 		var effect_node = effects_hub.get_node_or_null(item.power_up_effect)
 		if effect_node and effect_node.has_method("apply_effect"):
-			effect_node.apply_effect(get_parent()) 
-			powerup_use.play()	
+			effect_node.apply_effect(get_parent(), triggering_ball) 
+			powerup_use.play()
 		else:
 			print("no '", item.power_up_effect, "' or no apply_effect method.")
 	else:
