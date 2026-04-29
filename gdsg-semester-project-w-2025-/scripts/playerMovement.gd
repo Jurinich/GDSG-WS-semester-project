@@ -11,14 +11,14 @@ var device_id_cur: int
 func _ready():
 	fixed_x = global_position.x
 
-	var paddle: CollisionPolygon2D
+	var paddle: CollisionShape2D
 	if (isP1):
 		paddle = paddles[GameManager.left_player_paddle].instantiate()
 		device_id_cur = GameManager.arcade_p1_id
+		paddle.scale.x = -paddle.scale.x
 	else:
 		paddle = paddles[GameManager.right_player_paddle].instantiate()
 		device_id_cur = GameManager.arcade_p2_id
-		paddle.scale.x = -paddle.scale.x
 
 	add_child(paddle)
 
