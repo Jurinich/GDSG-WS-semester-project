@@ -47,7 +47,7 @@ func split_ball(target_ball: Ball, split_amount: int):
 				ball_to_modify.global_position = target_ball.global_position
 				ball_to_modify.size_multiplier = current_size
 				
-				get_parent().add_child(ball_to_modify) 
+				get_parent().add_child.call_deferred(ball_to_modify) 
 				current_count += 1
 			else:
 				break 
