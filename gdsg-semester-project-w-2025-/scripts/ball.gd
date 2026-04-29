@@ -20,7 +20,7 @@ var size_multiplier: float = 1.0
 @onready var kitten_spawner: KittenSpawner = $"../KittenPawSpawner"
 
 func _ready():
-	current_speed = BASE_SPEED
+	current_speed = 150.0
 	collision_shape.shape = collision_shape.shape.duplicate()
 	add_to_group("balls")
 	last_hit_by = player_1
