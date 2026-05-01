@@ -53,9 +53,8 @@ func _physics_process(delta: float) -> void:
 			if collider is CharacterBody2D:
 				fish_paddle_sound.play()
 				last_hit_by = collider
-				if collider.has_method("hit_animation"):
-					collider.hit_animation()
-
+				if collider.has_method("play_hit_animation"):
+					collider.play_hit_animation()
 		
 		if check_velocity_threshold():
 			kitten_spawner.call_deferred("spawn_paw", self)

@@ -11,16 +11,16 @@ extends Node2D
 @export var paths: Array[Curve2D]
 
 @export var PAW_SPEED_MIN: float = 0.9
-@export var PAW_SPEED_MAX: float = 1.5
-@export var PAW_ROTATION_MIN: float = -0.3
+@export var PAW_SPEED_MAX: float = 1.4
+@export var PAW_ROTATION_MIN: float = -0.4
 @export var PAW_ROTATION_MAX: float = 0.5
 @export var PAW_ROTATION_DURATION: float = 0.3
 @export var PAW_HIDE_DURATION: float = 0.5
-@export var PAW_TIMER_MIN: float = 0.3
-@export var PAW_TIMER_MAX: float = 0.7
+@export var PAW_TIMER_MIN: float = 0.2
+@export var PAW_TIMER_MAX: float = 0.4
 
 @export var POINTER_OFFSET: Vector2 = Vector2(400, 20)
-@export var SPEED: float = 800
+@export var SPEED: float = 900
 @export var SPAWN_DURATION: float = 0.3
 @export var ROTATION_DURATION: float = 0.2
 
@@ -48,15 +48,15 @@ func activate(counter: int, right_player: bool) -> void:
 		pointer_position = flip_point(POINTER_OFFSET) if flip else POINTER_OFFSET
 		sprite.position = pointer_position + pointer_hidden_óffset
 		var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
-		tween.chain().tween_property(sprite, "position", pointer_position, SPAWN_DURATION)
-		tween.chain().tween_callback(line.set_point_position.bind(0, pointer_position))
-		tween.chain().tween_callback(start_next_path)
+		tween.tween_property(sprite, "position", pointer_position, SPAWN_DURATION)
+		tween.tween_callback(line.set_point_position.bind(0, pointer_position))
+		tween.tween_callback(start_next_path)
 	path_counter = counter
 
 func deactivate() -> void:
 	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	var hide_position = pointer_position + pointer_hidden_óffset
-	tween.chain().tween_property(sprite, "position", hide_position, SPAWN_DURATION)
+	tween.tween_property(sprite, "position", hide_position, SPAWN_DURATION)
 
 func flip_point(vector: Vector2) -> Vector2:
 	return Vector2(2.0 * ARENA_CENTER_X - vector.x, vector.y)
@@ -78,8 +78,8 @@ func hide_paw() -> void:
 	if paw_wrapper.global_position.y < ARENA_CENTER_Y:
 		hide_y *= -1.5
 	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
-	tween.chain().tween_property(paw_wrapper, "position", Vector2(0, hide_y), PAW_HIDE_DURATION)
-	tween.chain().tween_callback(start_next_path)
+	tween.tween_property(paw_wrapper, "position", Vector2(0, hide_y), PAW_HIDE_DURATION)
+	tween.tween_callback(start_next_path)
 
 func start_next_path() -> void:
 	if path_counter <= 0:
@@ -97,9 +97,9 @@ func start_next_path() -> void:
 		paw_wrapper.position.y = hidden_y
 		var direction = dot.global_position - sprite.global_position
 		var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
-		tween.chain().tween_property(sprite, "rotation", direction.angle(), ROTATION_DURATION)
-		tween.chain().tween_callback(turn_on_laser)
-		tween.chain().tween_property(paw_wrapper, "position", Vector2(0, 0), PAW_HIDE_DURATION)
+		tween.tween_property(sprite, "rotation", direction.angle(), ROTATION_DURATION)
+		tween.tween_callback(turn_on_laser)
+		tween.tween_property(paw_wrapper, "position", Vector2(0, 0), PAW_HIDE_DURATION)
 
 func turn_on_laser():
 	line.set_point_position(1, dot.global_position)
