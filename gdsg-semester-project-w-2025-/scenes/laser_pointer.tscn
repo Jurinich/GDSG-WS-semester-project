@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dbl6pvi0yn2rt"]
+
+[ext_resource type="Script" uid="uid://coe5qldc6onim" path="res://scripts/laser_pointer.gd" id="1_0fpsi"]
+[ext_resource type="Curve2D" uid="uid://b5bevshirfuyp" path="res://resources/laser_paths/path0.tres" id="2_jt3tt"]
+[ext_resource type="Texture2D" uid="uid://be0mk7l1b1d18" path="res://assets/sprites/laser.png" id="2_mjepj"]
+[ext_resource type="PackedScene" uid="uid://cwwdjsm2bpjkx" path="res://scenes/kitten_paw.tscn" id="3_5pj8a"]
+[ext_resource type="Curve2D" uid="uid://4mseojxd2b4i" path="res://resources/laser_paths/path1.tres" id="3_nvrk8"]
+[ext_resource type="Curve2D" uid="uid://dncmpt1r2j0or" path="res://resources/laser_paths/path2.tres" id="4_scom1"]
+[ext_resource type="Curve2D" uid="uid://dwtg8lnqwkgu4" path="res://resources/laser_paths/path3.tres" id="5_kdy3q"]
+[ext_resource type="Curve2D" uid="uid://d2r0k3a3uv8ic" path="res://resources/laser_paths/path4.tres" id="6_myn0h"]
+
+[sub_resource type="Curve" id="Curve_mjepj"]
+_data = [Vector2(0, 0.50561804), 0.0, 0.40858018, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="LaserPointer" type="Node2D" unique_id=274916930]
+script = ExtResource("1_0fpsi")
+paths = Array[Curve2D]([ExtResource("2_jt3tt"), ExtResource("3_nvrk8"), ExtResource("4_scom1"), ExtResource("5_kdy3q"), ExtResource("6_myn0h")])
+
+[node name="Line" type="Line2D" parent="." unique_id=556823877]
+visible = false
+points = PackedVector2Array(0, 0, 0, 0)
+width = 20.0
+width_curve = SubResource("Curve_mjepj")
+default_color = Color(0.80784315, 0, 0, 0.5411765)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=2026829126]
+position = Vector2(0, -300)
+rotation = 1.5707964
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_mjepj")
+
+[node name="Path" type="Path2D" parent="." unique_id=1196395452]
+curve = ExtResource("6_myn0h")
+
+[node name="Dot" type="PathFollow2D" parent="Path" unique_id=432045609]
+position = Vector2(197, 552.78973)
+rotates = false
+loop = false
+
+[node name="Kitty" type="PathFollow2D" parent="Path" unique_id=1858367327]
+position = Vector2(197, 552.78973)
+rotates = false
+loop = false
+
+[node name="PawWrapper" type="Node2D" parent="Path/Kitty" unique_id=1195941344]
+position = Vector2(0, -1000)
+
+[node name="Paw" parent="Path/Kitty/PawWrapper" unique_id=1350999620 instance=ExtResource("3_5pj8a")]
+position = Vector2(-150, -106)
+rotation = 2.1135938

@@ -28,7 +28,7 @@ func _process(_delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Ball:
-		var player = player_1
+		var player = body.last_hit_by
 		var inventory: PlayerInventory = null
 		for child in player.get_children():
 			if child is PlayerInventory:

@@ -3,7 +3,7 @@ extends Node
 @export var split_all_balls: bool = false
 @export var split_amount: int = 3 
 
-func apply_effect(player: CharacterBody2D, triggering_ball: Ball = null):
+func apply_effect(_player: CharacterBody2D, triggering_ball: Ball = null):
 	var spawner = get_tree().get_first_node_in_group("ball_spawner")
 	if not spawner: return
 	

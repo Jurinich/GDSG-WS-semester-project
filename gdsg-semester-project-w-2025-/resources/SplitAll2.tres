@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cdxv14p5rtxsw"]
+
+[ext_resource type="Script" uid="uid://cjxfeo0s5d5yr" path="res://scripts/items/item_data.gd" id="1_3eia4"]
+[ext_resource type="Texture2D" uid="uid://bseq8xtmi1txu" path="res://assets/sprites/Items/yarn_rainbow2.png" id="2_3eia4"]
+
+[resource]
+script = ExtResource("1_3eia4")
+sprite = ExtResource("2_3eia4")
+power_up_effect = "SplitBall2"
+metadata/_custom_type_script = "uid://cjxfeo0s5d5yr"

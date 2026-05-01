@@ -7,11 +7,11 @@ const SPEED := 1000
 var fixed_x: float
 var arcade_input: float
 var device_id_cur: int
+var paddle: CollisionShape2D
 
 func _ready():
 	fixed_x = global_position.x
 
-	var paddle: CollisionShape2D
 	if (isP1):
 		paddle = paddles[GameManager.left_player_paddle].instantiate()
 		device_id_cur = GameManager.arcade_p1_id

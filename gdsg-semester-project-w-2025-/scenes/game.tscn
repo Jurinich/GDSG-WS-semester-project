@@ -27,6 +27,11 @@
 [ext_resource type="Resource" uid="uid://ckrkxy5ex4x7" path="res://resources/SplitBall10.tres" id="22_qnb83"]
 [ext_resource type="Resource" uid="uid://5m3rckxpy8ua" path="res://resources/SplitBall5.tres" id="22_sgl2t"]
 [ext_resource type="Script" uid="uid://bhm6sk7siveqy" path="res://scripts/items/split_ball.gd" id="23_bt5mj"]
+[ext_resource type="Resource" uid="uid://cdxv14p5rtxsw" path="res://resources/SplitAll2.tres" id="23_pr1ej"]
+[ext_resource type="Resource" uid="uid://cgg4yxtv50a14" path="res://resources/SplitAll3.tres" id="24_05nbr"]
+[ext_resource type="PackedScene" uid="uid://dbl6pvi0yn2rt" path="res://scenes/laser_pointer.tscn" id="24_m4url"]
+[ext_resource type="Resource" uid="uid://sw61sqbvio2a" path="res://resources/LaserPointer.tres" id="25_0sl42"]
+[ext_resource type="Script" uid="uid://cdl2ng8ia0gha" path="res://scripts/items/laser_pointer_item.gd" id="27_05nbr"]
 [ext_resource type="AudioStream" uid="uid://d0xwonisrdwb5" path="res://assets/sounds/Goal Sound.wav" id="28_sww3w"]
 [ext_resource type="Script" uid="uid://d3gneryhnu1kv" path="res://scripts/audioextension.gd" id="29_7025r"]
 [ext_resource type="AudioStream" uid="uid://cl1o4ab4wtbi" path="res://assets/sounds/border sound.wav" id="29_suyxu"]
@@ -101,6 +106,23 @@ metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 script = ExtResource("15_37s47")
 item = ExtResource("22_qnb83")
 weight = 5.0
+metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
+
+[sub_resource type="Resource" id="Resource_0sl42"]
+script = ExtResource("15_37s47")
+item = ExtResource("23_pr1ej")
+weight = 5.0
+metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
+
+[sub_resource type="Resource" id="Resource_oaba0"]
+script = ExtResource("15_37s47")
+item = ExtResource("24_05nbr")
+weight = 5.0
+metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
+
+[sub_resource type="Resource" id="Resource_458eo"]
+script = ExtResource("15_37s47")
+item = ExtResource("25_0sl42")
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [node name="Game" type="Node2D" unique_id=1886297339]
@@ -259,10 +281,15 @@ triggers = [NodePath("../PawTriggers/Area2D"), NodePath("../PawTriggers/Area2D2"
 [node name="ItemSpawner" type="Node2D" parent="." unique_id=1014848990]
 position = Vector2(960, 618)
 script = ExtResource("13_ca42v")
-item_drops = Array[ExtResource("15_37s47")]([SubResource("Resource_e1j6l"), SubResource("Resource_pl11u"), SubResource("Resource_bhx41"), SubResource("Resource_qouja"), SubResource("Resource_wljb1"), SubResource("Resource_v2yb1"), SubResource("Resource_js0lu"), SubResource("Resource_sww3w")])
+item_drops = Array[ExtResource("15_37s47")]([SubResource("Resource_e1j6l"), SubResource("Resource_pl11u"), SubResource("Resource_bhx41"), SubResource("Resource_qouja"), SubResource("Resource_wljb1"), SubResource("Resource_v2yb1"), SubResource("Resource_js0lu"), SubResource("Resource_sww3w"), SubResource("Resource_0sl42"), SubResource("Resource_oaba0"), SubResource("Resource_458eo")])
 item_scene = ExtResource("16_264po")
 
+[node name="LaserPointer" parent="." unique_id=274916930 instance=ExtResource("24_m4url")]
+
 [node name="ItemEffects" type="Node" parent="." unique_id=1580273483 groups=["item_effects"]]
+
+[node name="LaserPointer" type="Node" parent="ItemEffects" unique_id=335343451]
+script = ExtResource("27_05nbr")
 
 [node name="PawFrenzy" type="Node" parent="ItemEffects" unique_id=1745424071]
 script = ExtResource("18_ssvqc")
@@ -291,6 +318,15 @@ split_amount = 5
 [node name="SplitBall10" type="Node" parent="ItemEffects" unique_id=1048310688]
 script = ExtResource("23_bt5mj")
 split_amount = 10
+
+[node name="SplitAll2" type="Node" parent="ItemEffects" unique_id=1454796815]
+script = ExtResource("23_bt5mj")
+split_all_balls = true
+split_amount = 2
+
+[node name="SplitAll3" type="Node" parent="ItemEffects" unique_id=805975314]
+script = ExtResource("23_bt5mj")
+split_all_balls = true
 
 [node name="Goal Sound" type="AudioStreamPlayer" parent="." unique_id=125741821]
 stream = ExtResource("28_sww3w")

@@ -1,3 +1,4 @@
+class_name KittenPaw
 extends Area2D
 
 @export var MIN_SWING_SPEED: float = 0.25 
@@ -14,15 +15,20 @@ var current_boost_power: float = 0.0
 
 var swing_duration: float = 0.0
 var swing_start_time: int = 0
+var attacking: bool = false
+
+var hit_direction: Vector2
+var hit_power: float
+
+const ARENA_TOP_Y = 217.0
+const ARENA_BOTTOM_Y = 1018.0 
 
 func _ready():
 	body_entered.connect(_on_body_entered)
 
 func attack(ball_ref: CharacterBody2D):
+	attacking = true
 	target_ball = ball_ref
-	
-	var ARENA_TOP_Y = 217.0
-	var ARENA_BOTTOM_Y = 1018.0 
 	
 	var actual_swing_speed = randf_range(MIN_SWING_SPEED, MAX_SWING_SPEED)
 	swing_duration = actual_swing_speed
@@ -82,23 +88,27 @@ func attack(ball_ref: CharacterBody2D):
 		.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN).set_delay(0.1)
 	tween.chain().tween_callback(queue_free)
 
+func compute_hit_power():
+	hit_direction = swing_direction
+	var time_elapsed_sec = (Time.get_ticks_msec() - swing_start_time) / 1000.0
+	
+	if time_elapsed_sec >= (swing_duration * 0.9):
+		hit_power = current_boost_power * 0.1
+		print("Late Hit! Reduced power.")
+	else:
+		hit_power = current_boost_power
+	
+	var is_top_attack = global_position.y < 617 
+	if is_top_attack:
+		if hit_direction.y < 0: hit_direction.y = 0.5 
+	else:
+		if hit_direction.y > 0: hit_direction.y = -0.5 
+
 func _on_body_entered(body):
-	if body == target_ball:
-		var new_dir = swing_direction
-		
-		var time_elapsed_sec = (Time.get_ticks_msec() - swing_start_time) / 1000.0
-		
-		var effective_power = current_boost_power
-		
-		if time_elapsed_sec >= (swing_duration * 0.9):
-			effective_power = current_boost_power * 0.1 
-			print("Late Hit! Reduced power.")
-		
-		var is_top_attack = global_position.y < 617 
-		if is_top_attack:
-			if new_dir.y < 0: new_dir.y = 0.5 
-		else:
-			if new_dir.y > 0: new_dir.y = -0.5 
-		
-		if body.has_method("paw_hit"):
-			body.paw_hit(new_dir, effective_power)
+	if attacking:
+		if body == target_ball:
+			compute_hit_power()
+			body.paw_hit(hit_direction, hit_power)
+	elif body.has_method("paw_hit"):
+		if hit_power != 0 && hit_direction.length() > 0:
+			body.paw_hit(hit_direction, hit_power)
