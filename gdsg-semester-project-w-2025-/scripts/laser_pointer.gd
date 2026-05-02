@@ -7,6 +7,7 @@ extends Node2D
 @onready var paw_wrapper: Node2D = $"Path/Kitty/PawWrapper"
 @onready var line: Line2D = $"Line"
 @onready var sprite: Sprite2D = $"Sprite"
+@onready var effects: EffectTimerManager = $"../ForegroundUILayer/EffectTimers"
 
 @export var paths: Array[Curve2D]
 
@@ -52,6 +53,7 @@ func activate(counter: int, right_player: bool) -> void:
 		tween.tween_callback(line.set_point_position.bind(0, pointer_position))
 		tween.tween_callback(start_next_path)
 	path_counter = counter
+	effects.show_effect_counter("LASER POINTER", path_counter, counter)
 
 func deactivate() -> void:
 	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
@@ -78,10 +80,11 @@ func hide_paw() -> void:
 	if paw_wrapper.global_position.y < ARENA_CENTER_Y:
 		hide_y *= -1.5
 	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(paw_wrapper, "position", Vector2(0, hide_y), PAW_HIDE_DURATION)
+	tween.tween_property(paw_wrapper, "position:y", hide_y, PAW_HIDE_DURATION)
 	tween.tween_callback(start_next_path)
 
 func start_next_path() -> void:
+	effects.show_effect_counter("LASER POINTER", path_counter)
 	if path_counter <= 0:
 		deactivate()
 	else:
@@ -99,7 +102,7 @@ func start_next_path() -> void:
 		var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(sprite, "rotation", direction.angle(), ROTATION_DURATION)
 		tween.tween_callback(turn_on_laser)
-		tween.tween_property(paw_wrapper, "position", Vector2(0, 0), PAW_HIDE_DURATION)
+		tween.tween_property(paw_wrapper, "position:y", 0, PAW_HIDE_DURATION)
 
 func turn_on_laser():
 	line.set_point_position(1, dot.global_position)
@@ -127,7 +130,7 @@ func randomize_paw() -> void:
 	var weight = inverse_lerp(PAW_SPEED_MIN, PAW_SPEED_MAX, kitty_speed_modifier)
 	paw.hit_power = lerp(paw.MIN_BOOST_POWER, paw.MAX_BOOST_POWER, weight)
 	paw_rotation = randf_range(PAW_ROTATION_MIN, PAW_ROTATION_MAX)
-	var tween = create_tween().set_parallel(true).set_ease(Tween.EASE_IN_OUT)
+	var tween = create_tween().set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(kitty, "rotation", paw_rotation, PAW_ROTATION_DURATION)
 
 func update_laser(delta: float) -> void:

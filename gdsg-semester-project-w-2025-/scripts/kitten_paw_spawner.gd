@@ -8,7 +8,7 @@ extends Node
 @export_group("References")
 @export var triggers: Array[Area2D] 
 @onready var paw_swiff_sound: AudioStreamPlayer = $"../paw swiff sound"
-
+@onready var effects: EffectTimerManager = $"../ForegroundUILayer/EffectTimers"
 
 var base_hit_chance: float
 var frenzy_timer: Timer
@@ -54,6 +54,7 @@ func activate_frenzy(duration: float):
 	print("Paw Frenzy 100% chance for ", duration, " seconds")
 	hit_chance = 1.0
 	frenzy_timer.start(duration)
+	effects.show_effect_timer("PAW FRENZY", duration)
 
 func _on_frenzy_timeout():
 	print("Paw Frenzy over")

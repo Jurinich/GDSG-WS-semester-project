@@ -33,15 +33,12 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_mjepj")
 
 [node name="Path" type="Path2D" parent="." unique_id=1196395452]
-curve = ExtResource("6_myn0h")
 
 [node name="Dot" type="PathFollow2D" parent="Path" unique_id=432045609]
-position = Vector2(197, 552.78973)
 rotates = false
 loop = false
 
 [node name="Kitty" type="PathFollow2D" parent="Path" unique_id=1858367327]
-position = Vector2(197, 552.78973)
 rotates = false
 loop = false
 

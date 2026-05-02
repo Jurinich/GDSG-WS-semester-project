@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://bmjs7km084b3v"]
+
+[ext_resource type="Texture2D" uid="uid://d1vlks56dw34d" path="res://assets/sprites/UI/progress_back.png" id="1_rr3lt"]
+[ext_resource type="Texture2D" uid="uid://cktew06tilrd5" path="res://assets/sprites/UI/progress_front.png" id="2_8b465"]
+[ext_resource type="Texture2D" uid="uid://cmwbgcp4nvw2b" path="res://assets/sprites/UI/progress_fill.png" id="3_8b465"]
+[ext_resource type="Script" uid="uid://d1mb3tuxpptfj" path="res://scripts/effect_timer.gd" id="4_8b465"]
+[ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="4_mn3hi"]
+
+[node name="Wrapper" type="Control" unique_id=2112788345]
+custom_minimum_size = Vector2(600, 70)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 600.0
+offset_bottom = 70.0
+script = ExtResource("4_8b465")
+
+[node name="Progress" type="TextureProgressBar" parent="." unique_id=365196100]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+step = 0.1
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 35
+stretch_margin_top = 35
+stretch_margin_right = 35
+stretch_margin_bottom = 35
+texture_under = ExtResource("1_rr3lt")
+texture_over = ExtResource("2_8b465")
+texture_progress = ExtResource("3_8b465")
+
+[node name="Label" type="Label" parent="Progress" unique_id=988202059]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_mn3hi")
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
