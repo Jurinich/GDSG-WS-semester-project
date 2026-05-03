@@ -36,6 +36,8 @@ func show_effect_counter(text: String, value: float, max_value: float = 0):
 	var element: EffectTimer
 	if active_effects.has(text):
 		element = active_effects[text]
+		if max_value > 0:
+			element.play_bounce_animation()
 	else:
 		element = add_element(text)
 	element.set_progress(value, max_value)

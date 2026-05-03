@@ -23,7 +23,7 @@ extends Node2D
 @export var POINTER_OFFSET: Vector2 = Vector2(400, 20)
 @export var SPEED: float = 900
 @export var SPAWN_DURATION: float = 0.3
-@export var ROTATION_DURATION: float = 0.2
+@export var ROTATION_DURATION: float = 0.5
 
 var kitty_speed_modifier: float = 1.0
 var speed_timer: float = 0
