@@ -16,8 +16,12 @@ var arcade_mode = false
 var arcade_p1_id = -1
 var arcade_p2_id = 1
 
+var game_mode = GameMode.TIME
+
 signal score_changed
 signal sound_changed
+
+enum GameMode {TIME, SCORE}
 
 func reset():
 	left_player_score = 0

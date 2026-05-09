@@ -6,13 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://btg7cq10y06vr" path="res://assets/sprites/Popups/Popup_menue.png" id="3_wu84c"]
 [ext_resource type="Texture2D" uid="uid://c4vomr1gla4ut" path="res://assets/sprites/Logos/Logo_pink.png" id="4_8ln24"]
 [ext_resource type="Texture2D" uid="uid://br0nn0g3jab66" path="res://assets/sprites/Kittens/UI_kittens/kitten_lying.png" id="4_oa1go"]
+[ext_resource type="PackedScene" uid="uid://c1xmahmsx11f" path="res://scenes/LoopingMenu.tscn" id="6_lgwnu"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="6_oa1go"]
 [ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/buttonsound_extension.gd" id="7_5dd4i"]
-[ext_resource type="Texture2D" uid="uid://uvknetcjqqv2" path="res://assets/MainButtons-TopLeft.svg" id="8_flqon"]
 [ext_resource type="Script" uid="uid://bpt207xu16nw5" path="res://scripts/selection_controller.gd" id="8_jk1qb"]
 [ext_resource type="PackedScene" uid="uid://bj18d1fh7lipn" path="res://scenes/player_selection_node.tscn" id="8_tbmy8"]
-[ext_resource type="Texture2D" uid="uid://n0qakhx5odqm" path="res://assets/MainButtons-TopMiddle.svg" id="9_rcqid"]
-[ext_resource type="Texture2D" uid="uid://c26ms0ws3aqnx" path="res://assets/SmallButton-Right.svg" id="10_1ajci"]
 [ext_resource type="Texture2D" uid="uid://bcam63poywcst" path="res://assets/Stick-LeftRight.svg" id="11_lgwnu"]
 
 [node name="MainMenu" type="Control" unique_id=1335995349]
@@ -80,116 +78,70 @@ texture = ExtResource("3_wu84c")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ButtonBox" unique_id=1719347427]
+[node name="LoopingMenu" parent="ButtonBox" unique_id=421652052 instance=ExtResource("6_lgwnu")]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -348.0
-offset_top = -159.5
-offset_right = 349.0
-offset_bottom = 200.0
-grow_horizontal = 2
-grow_vertical = 2
+anchor_left = 0.0
+anchor_top = 0.158
+anchor_bottom = 0.83900005
+offset_left = 358.5
+offset_top = 71.754
+offset_right = -358.5
+offset_bottom = -327.99304
 
-[node name="StartButton" type="Button" parent="ButtonBox/VBoxContainer" unique_id=2049458779]
-layout_mode = 2
+[node name="StartButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=2049458779]
+visible = false
+layout_mode = 0
+offset_right = 696.99994
+offset_bottom = 86.0
 size_flags_vertical = 3
 theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
 text = "Start Game"
 script = ExtResource("7_5dd4i")
 
-[node name="SettingsButton" type="Button" parent="ButtonBox/VBoxContainer" unique_id=2017300482]
-layout_mode = 2
+[node name="GamemodeButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=1624673556]
+visible = false
+layout_mode = 0
+offset_right = 696.99994
+offset_bottom = 86.0
+size_flags_vertical = 3
+theme = ExtResource("6_oa1go")
+theme_override_font_sizes/font_size = 48
+text = "Gamemodes"
+script = ExtResource("7_5dd4i")
+
+[node name="SettingsButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=2017300482]
+visible = false
+layout_mode = 0
+offset_right = 696.99994
+offset_bottom = 87.0
 size_flags_vertical = 3
 theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
 text = "Settings"
 script = ExtResource("7_5dd4i")
 
-[node name="CreditsButton" type="Button" parent="ButtonBox/VBoxContainer" unique_id=1033975307]
-layout_mode = 2
+[node name="CreditsButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=1033975307]
+visible = false
+layout_mode = 0
+offset_right = 696.99994
+offset_bottom = 87.00003
 size_flags_vertical = 3
 theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
 text = "Credits"
 script = ExtResource("7_5dd4i")
 
-[node name="QuitButton" type="Button" parent="ButtonBox/VBoxContainer" unique_id=75757821]
-layout_mode = 2
+[node name="QuitButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=75757821]
+visible = false
+layout_mode = 0
+offset_right = 696.99994
+offset_bottom = 87.0
 size_flags_vertical = 3
 theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
 text = "Quit"
 script = ExtResource("7_5dd4i")
-
-[node name="Control" type="Control" parent="ButtonBox" unique_id=639696930]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect4" type="TextureRect" parent="ButtonBox/Control" unique_id=1303147088]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 135.0
-offset_right = 190.0
-offset_bottom = 225.0
-texture = ExtResource("8_flqon")
-expand_mode = 2
-stretch_mode = 5
-
-[node name="TextureRect" type="TextureRect" parent="ButtonBox/Control" unique_id=124667086]
-layout_mode = 0
-offset_left = 540.0
-offset_top = 135.0
-offset_right = 720.0
-offset_bottom = 225.0
-texture = ExtResource("8_flqon")
-expand_mode = 2
-stretch_mode = 5
-
-[node name="TextureRect5" type="TextureRect" parent="ButtonBox/Control" unique_id=731216832]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 310.0
-offset_right = 190.0
-offset_bottom = 400.0
-texture = ExtResource("9_rcqid")
-expand_mode = 2
-stretch_mode = 5
-
-[node name="TextureRect2" type="TextureRect" parent="ButtonBox/Control" unique_id=893673208]
-layout_mode = 0
-offset_left = 540.0
-offset_top = 310.0
-offset_right = 720.0
-offset_bottom = 400.0
-texture = ExtResource("9_rcqid")
-expand_mode = 2
-stretch_mode = 5
-
-[node name="TextureRect6" type="TextureRect" parent="ButtonBox/Control" unique_id=346215539]
-layout_mode = 0
-offset_left = 540.0
-offset_top = 400.0
-offset_right = 720.0
-offset_bottom = 490.0
-texture = ExtResource("10_1ajci")
-expand_mode = 2
-stretch_mode = 5
-
-[node name="TextureRect3" type="TextureRect" parent="ButtonBox/Control" unique_id=323979733]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 400.0
-offset_right = 190.0
-offset_bottom = 490.0
-texture = ExtResource("10_1ajci")
-expand_mode = 2
-stretch_mode = 5
 
 [node name="Title" type="TextureRect" parent="." unique_id=475323065]
 layout_mode = 1
@@ -301,7 +253,8 @@ texture = ExtResource("11_lgwnu")
 expand_mode = 2
 stretch_mode = 4
 
-[connection signal="pressed" from="ButtonBox/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="ButtonBox/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="ButtonBox/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="ButtonBox/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="ButtonBox/LoopingMenu/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ButtonBox/LoopingMenu/GamemodeButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="ButtonBox/LoopingMenu/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="ButtonBox/LoopingMenu/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="ButtonBox/LoopingMenu/QuitButton" to="." method="_on_quit_button_pressed"]

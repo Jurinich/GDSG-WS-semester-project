@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c1xmahmsx11f"]
+
+[ext_resource type="Script" uid="uid://cvrxycaf00xkl" path="res://scripts/looping_menu.gd" id="1_47ct2"]
+
+[node name="LoopingMenu" type="Control" unique_id=421652052]
+layout_mode = 3
+anchor_left = 0.016
+anchor_top = 0.27800003
+anchor_right = 1.0
+anchor_bottom = 0.845
+offset_left = 0.027999878
+offset_top = -0.1860199
+offset_right = -7.5
+offset_bottom = -0.015014648
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_47ct2")

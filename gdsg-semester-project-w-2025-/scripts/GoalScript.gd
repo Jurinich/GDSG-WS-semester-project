@@ -5,6 +5,7 @@ extends Area2D
 @onready var ball_spawner: BallSpawner = $"../../BallSpawnTimer"
 @onready var goal_sound: AudioStreamPlayer = $"../../Goal Sound"
 
+signal goal_scored()
 
 func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))
@@ -18,3 +19,4 @@ func _on_body_entered(body):
 		body.queue_free()
 		if GameManager.add_point(player) and balls_in_play < 1:
 			ball_spawner.trigger_spawn()
+		goal_scored.emit()

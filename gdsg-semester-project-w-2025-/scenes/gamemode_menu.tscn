@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://kp2i7srp3rv"]
+
+[ext_resource type="Script" uid="uid://cn3r8vwakigix" path="res://scenes/gamemode_menu.gd" id="1_3i4tr"]
+[ext_resource type="Texture2D" uid="uid://cdm15ogkivjxe" path="res://assets/sprites/Backgrounds/BG_StartScreenMenue.png" id="2_ehqck"]
+[ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="7_h70ai"]
+[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/buttonsound_extension.gd" id="8_tkr0y"]
+
+[node name="GamemodeMenu" type="Control" unique_id=1335995349]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3i4tr")
+
+[node name="BackgroundElements" type="Control" parent="." unique_id=1341374918]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="BackgroundElements" unique_id=189811962]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ehqck")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="InfoLabel" type="Label" parent="." unique_id=683549828]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_h70ai")
+theme_override_constants/line_spacing = -19
+theme_override_font_sizes/font_size = 128
+text = "Gamemode Select"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1149502130]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.37
+anchor_right = 1.0
+anchor_bottom = 0.74100006
+offset_top = 0.3999939
+offset_bottom = -0.28009033
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TimeButton" type="Button" parent="HBoxContainer" unique_id=368335250]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_h70ai")
+theme_override_font_sizes/font_size = 96
+text = "Time"
+icon_alignment = 1
+script = ExtResource("8_tkr0y")
+
+[node name="ScoreButton" type="Button" parent="HBoxContainer" unique_id=237002863]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("7_h70ai")
+theme_override_font_sizes/font_size = 96
+text = "Score"
+script = ExtResource("8_tkr0y")
+
+[connection signal="pressed" from="HBoxContainer/TimeButton" to="." method="_on_time_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ScoreButton" to="." method="_on_score_button_pressed"]

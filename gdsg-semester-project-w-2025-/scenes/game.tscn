@@ -200,7 +200,7 @@ vertical_alignment = 1
 script = ExtResource("6_p57ef")
 left_player = true
 
-[node name="TimeLabel" type="Label" parent="ForegroundUILayer" unique_id=297263883]
+[node name="WinConditionLabel" type="Label" parent="ForegroundUILayer" unique_id=297263883]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
