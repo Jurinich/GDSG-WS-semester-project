@@ -84,15 +84,22 @@ anchor_left = 0.0
 anchor_top = 0.158
 anchor_bottom = 0.83900005
 offset_left = 358.5
-offset_top = 71.754
+offset_top = 183.754
 offset_right = -358.5
-offset_bottom = -327.99304
+offset_bottom = -215.99304
+menu_radius = 80.0
+rotation_speed = 12.0
+fade_modifier = 0.0
+scale_modifier = 0.473
 
 [node name="StartButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=2049458779]
-visible = false
+z_index = 1
 layout_mode = 0
-offset_right = 696.99994
-offset_bottom = 86.0
+offset_left = -178.0
+offset_top = -39.500008
+offset_right = 178.0
+offset_bottom = 39.500008
+pivot_offset = Vector2(178, 39.500008)
 size_flags_vertical = 3
 theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
@@ -100,44 +107,64 @@ text = "Start Game"
 script = ExtResource("7_5dd4i")
 
 [node name="GamemodeButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=1624673556]
-visible = false
+modulate = Color(0.5, 0.5, 0.5, 0.5)
 layout_mode = 0
-offset_right = 696.99994
-offset_bottom = 86.0
+offset_left = -179.0
+offset_top = 40.499947
+offset_right = 179.0
+offset_bottom = 119.50005
+scale = Vector2(0.7635, 0.7635)
+pivot_offset = Vector2(179, 39.5)
 size_flags_vertical = 3
+mouse_filter = 2
 theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
 text = "Gamemodes"
 script = ExtResource("7_5dd4i")
 
 [node name="SettingsButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=2017300482]
-visible = false
+modulate = Color(0, 0, 0, 0)
 layout_mode = 0
-offset_right = 696.99994
-offset_bottom = 87.0
+offset_left = -134.0
+offset_top = -39.500008
+offset_right = 134.0
+offset_bottom = 39.500008
+scale = Vector2(0.527, 0.527)
+pivot_offset = Vector2(134, 39.500008)
 size_flags_vertical = 3
+mouse_filter = 2
 theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
 text = "Settings"
 script = ExtResource("7_5dd4i")
 
 [node name="CreditsButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=1033975307]
-visible = false
+modulate = Color(0, 0, 0, 0)
 layout_mode = 0
-offset_right = 696.99994
-offset_bottom = 87.00003
+offset_left = -120.0
+offset_top = -39.5
+offset_right = 120.0
+offset_bottom = 39.5
+scale = Vector2(0.527, 0.527)
+pivot_offset = Vector2(120, 39.5)
 size_flags_vertical = 3
+mouse_filter = 2
 theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
 text = "Credits"
 script = ExtResource("7_5dd4i")
 
 [node name="QuitButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=75757821]
-visible = false
+modulate = Color(0.5, 0.5, 0.5, 0.5)
 layout_mode = 0
-offset_right = 696.99994
-offset_bottom = 87.0
+offset_left = -73.0
+offset_top = -119.5
+offset_right = 73.0
+offset_bottom = -40.5
+scale = Vector2(0.7635, 0.7635)
+pivot_offset = Vector2(73, 39.5)
 size_flags_vertical = 3
+mouse_filter = 2
 theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
 text = "Quit"
