@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED := 1000
+const SPEED := 1100
 @export var isP1: bool = false
 @export var paddles: Array[PackedScene]
 

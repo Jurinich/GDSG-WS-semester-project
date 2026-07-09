@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource("1_shpuf")
 sprite = ExtResource("2_shpuf")
-power_up_effect = "SplitBall2"
+power_up_effect = "SplitAll3"
 metadata/_custom_type_script = "uid://cjxfeo0s5d5yr"
