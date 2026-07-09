@@ -11,6 +11,7 @@
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="5_dinhu"]
 [ext_resource type="Script" uid="uid://c0n866wxrwtu6" path="res://scripts/score_label.gd" id="6_p57ef"]
 [ext_resource type="Script" uid="uid://cj72ehiqj5b7e" path="res://scripts/effect_timer_manager.gd" id="7_oaba0"]
+[ext_resource type="PackedScene" uid="uid://s7q2kt7ir0v0" path="res://scenes/pause_menu.tscn" id="8_458eo"]
 [ext_resource type="Script" uid="uid://c0uvs62o1qka0" path="res://scripts/kitten_paw_spawner.gd" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cwwdjsm2bpjkx" path="res://scenes/kitten_paw.tscn" id="12_dinhu"]
 [ext_resource type="Script" uid="uid://b2oe7fsd38rx1" path="res://scripts/items/item_spawner.gd" id="13_ca42v"]
@@ -251,6 +252,9 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 2
 script = ExtResource("7_oaba0")
+
+[node name="PauseMenu" parent="ForegroundUILayer" unique_id=1402068368 instance=ExtResource("8_458eo")]
+visible = false
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1144167311]
 layer = -2

@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://s7q2kt7ir0v0"]
+
+[ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="1_n87rw"]
+[ext_resource type="Script" uid="uid://cdixmj78exahn" path="res://scripts/pause_menu.gd" id="2_kukqi"]
+[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/buttonsound_extension.gd" id="2_myx47"]
+
+[node name="PauseMenu" type="Control" unique_id=1402068368]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_n87rw")
+script = ExtResource("2_kukqi")
+
+[node name="Backdrop" type="ColorRect" parent="." unique_id=1156329226]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3137255)
+
+[node name="content" type="VBoxContainer" parent="." unique_id=2027556061]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -707.5
+offset_top = -316.0
+offset_right = 707.5
+offset_bottom = 316.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="heading" type="Label" parent="content" unique_id=1775497830]
+layout_mode = 2
+theme = ExtResource("1_n87rw")
+theme_override_font_sizes/font_size = 64
+text = "Game Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="content" unique_id=1646543216]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="heading2" type="Label" parent="content" unique_id=800882131]
+layout_mode = 2
+theme = ExtResource("1_n87rw")
+theme_override_font_sizes/font_size = 48
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="content" unique_id=1675805832]
+layout_mode = 2
+theme = ExtResource("1_n87rw")
+theme_override_font_sizes/font_size = 32
+text = "Music: On"
+script = ExtResource("2_myx47")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="content" unique_id=1378527678]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="text" type="Label" parent="content/HBoxContainer" unique_id=1442203090]
+layout_mode = 2
+theme = ExtResource("1_n87rw")
+theme_override_font_sizes/font_size = 32
+text = "Volume   "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="content/HBoxContainer" unique_id=1436860628]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+
+[node name="HSeparator3" type="HSeparator" parent="content" unique_id=1159428512]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="heading3" type="Label" parent="content" unique_id=787974712]
+layout_mode = 2
+theme = ExtResource("1_n87rw")
+theme_override_font_sizes/font_size = 48
+text = "Sound Effects"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="content" unique_id=878951999]
+layout_mode = 2
+theme = ExtResource("1_n87rw")
+theme_override_font_sizes/font_size = 32
+text = "Sound: On"
+script = ExtResource("2_myx47")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="content" unique_id=1411531107]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="text" type="Label" parent="content/HBoxContainer2" unique_id=1223571521]
+layout_mode = 2
+theme = ExtResource("1_n87rw")
+theme_override_font_sizes/font_size = 32
+text = "Volume   "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="content/HBoxContainer2" unique_id=1787369541]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+value = 100.0
+
+[node name="HSeparator2" type="HSeparator" parent="content" unique_id=1826009328]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ContinueButton" type="Button" parent="content" unique_id=1968078453]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_n87rw")
+theme_override_font_sizes/font_size = 64
+text = "continue"
+script = ExtResource("2_myx47")
+
+[node name="QuitButton" type="Button" parent="content" unique_id=108659657]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_n87rw")
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+script = ExtResource("2_myx47")

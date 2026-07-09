@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var time_label: Label = $ForegroundUILayer/TimeLabel
+@onready var pause_menu: Control = $ForegroundUILayer/PauseMenu
 @export var game_duration: int = 180
 
 var cur_game_time: int
@@ -24,3 +25,9 @@ func update_time_label():
 	var minute = cur_game_time / 60
 	var second = cur_game_time % 60
 	time_label.text = str(minute) + ":" + ("%02d" % second)
+
+func _unhandled_input(event):
+	if event.is_action_pressed("Pause"):
+		get_tree().paused = true
+		pause_menu.show()
+		get_viewport().set_input_as_handled()
