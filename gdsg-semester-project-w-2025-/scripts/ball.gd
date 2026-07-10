@@ -35,6 +35,10 @@ func _ready():
 	if not is_split_spawn:
 		launch_ball()
 
+func _process(delta: float) -> void:
+	var multiplier: float = -1 if velocity.x < 0 else 1;
+	sprite.rotate(multiplier * delta * current_speed * 0.02);
+
 func launch_ball():
 	last_hit_by = player_1
 	current_speed = BASE_SPEED
@@ -81,9 +85,7 @@ func paw_hit(new_direction: Vector2, boost_amount: float):
 	
 func scale_ball(multiplier: float):
 	var new_scale = clampf(current_scale * multiplier, MIN_SCALE, MAX_SCALE)
-	var actual_multiplier = new_scale / current_scale	
-	sprite.scale *= actual_multiplier
-	if collision_shape.shape is CircleShape2D:
-		collision_shape.shape.radius *= actual_multiplier
-		
+	var actual_multiplier = new_scale / current_scale
+	scale *= actual_multiplier
+	
 	current_scale = new_scale

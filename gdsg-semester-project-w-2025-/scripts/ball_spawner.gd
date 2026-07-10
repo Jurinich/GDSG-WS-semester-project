@@ -33,7 +33,7 @@ func split_single_ball(target_ball: Ball, split_amount: int):
 		
 	var angle_step = (2 * PI) / split_amount 
 	var random_offset = randf_range(0, 2 * PI) 
-	var current_size = target_ball.sprite.scale.x
+	var current_size = target_ball.scale.x
 	var starting_slow_speed = 150.0
 	
 	for i in range(split_amount):
