@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var PADDLE_DIRECTION_INFLUENCE: float = 0.45
 @export var PADDLE_SPEED_INFLUENCE: float = 0.0
 @export var MIN_SCALE: float = 0.75
-@export var MAX_SCALE: float = 2
+@export var MAX_SCALE: float = 1.5
 
 var current_scale: float = 1.0
 var current_speed: float
