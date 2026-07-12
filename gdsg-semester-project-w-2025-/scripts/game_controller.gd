@@ -5,7 +5,7 @@ extends Node2D
 @onready var time_colon_label: Label = $ForegroundUILayer/TimeContainer/TimeColon
 @onready var time_seconds_label: Label = $ForegroundUILayer/TimeContainer/TimeSeconds
 @onready var pause_menu: Control = $ForegroundUILayer/PauseMenu
-@export var game_duration: int = 17
+@export var game_duration: int = 180
 @export_range(1, 30, 1) var alarm_threshold: int = 15
 
 var cur_game_time: int
