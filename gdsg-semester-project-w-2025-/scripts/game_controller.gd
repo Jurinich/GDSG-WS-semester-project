@@ -1,9 +1,9 @@
 extends Node2D
 
-@onready var alarm_ui: CanvasLayer = $ForegroundUILayer
-@onready var time_minutes_label: Label = $ForegroundUILayer/TimeContainer/TimeMinutes
-@onready var time_colon_label: Label = $ForegroundUILayer/TimeContainer/TimeColon
-@onready var time_seconds_label: Label = $ForegroundUILayer/TimeContainer/TimeSeconds
+@onready var alarm_ui: CanvasLayer = $BackgroundUILayer
+@onready var time_minutes_label: Label = $BackgroundUILayer/TimeContainer/TimeMinutes
+@onready var time_colon_label: Label = $BackgroundUILayer/TimeContainer/TimeColon
+@onready var time_seconds_label: Label = $BackgroundUILayer/TimeContainer/TimeSeconds
 @onready var pause_menu: Control = $ForegroundUILayer/PauseMenu
 @export var game_duration: int = 180
 @export_range(1, 30, 1) var alarm_threshold: int = 15

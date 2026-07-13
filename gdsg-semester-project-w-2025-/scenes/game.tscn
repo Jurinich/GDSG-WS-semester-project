@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://coyi6nqc62xb1"]
 
+[ext_resource type="Script" uid="uid://ccn35788kwhso" path="res://scripts/alarm_ui.gd" id="1_alarmui"]
 [ext_resource type="Script" uid="uid://b5bt2fewnslhs" path="res://scripts/game_controller.gd" id="1_bhx41"]
-[ext_resource type="Script" path="res://scripts/alarm_ui.gd" id="1_alarmui"]
 [ext_resource type="Texture2D" uid="uid://bfiqq6jpq1557" path="res://assets/sprites/Backgrounds/BG Dark.png" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dmngxbinp5ri7" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://dj7n4h024303j" path="res://assets/sprites/Backgrounds/playfield.png" id="2_gee14"]
@@ -197,25 +197,21 @@ position = Vector2(-62, 14)
 shape = SubResource("RectangleShape2D_lbhrr")
 
 [node name="ForegroundUILayer" type="CanvasLayer" parent="." unique_id=1084581396]
+
+[node name="PauseMenu" parent="ForegroundUILayer" unique_id=1402068368 instance=ExtResource("8_458eo")]
+visible = false
+
+[node name="BackgroundUILayer" type="CanvasLayer" parent="." unique_id=163368148]
 layer = -1
 script = ExtResource("1_alarmui")
 
-[node name="AlarmOverlay" type="ColorRect" parent="ForegroundUILayer" unique_id=1882714402]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(1, 0.121569, 0.121569, 0)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ForegroundUILayer" unique_id=237591177]
+[node name="HBoxContainer" type="HBoxContainer" parent="BackgroundUILayer" unique_id=516167396]
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.994
 offset_bottom = 0.47998047
 
-[node name="ScoreRight" type="Label" parent="ForegroundUILayer/HBoxContainer" unique_id=312316445]
+[node name="ScoreRight" type="Label" parent="BackgroundUILayer/HBoxContainer" unique_id=377718216]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -226,7 +222,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("6_p57ef")
 
-[node name="ScoreLeft" type="Label" parent="ForegroundUILayer/HBoxContainer" unique_id=1940990595]
+[node name="ScoreLeft" type="Label" parent="BackgroundUILayer/HBoxContainer" unique_id=1923181898]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
@@ -238,19 +234,18 @@ vertical_alignment = 1
 script = ExtResource("6_p57ef")
 left_player = true
 
-[node name="WinConditionLabel" type="Label" parent="ForegroundUILayer" unique_id=297263883]
-[node name="TimeContainer" type="HBoxContainer" parent="ForegroundUILayer" unique_id=297263883]
+[node name="TimeContainer" type="HBoxContainer" parent="BackgroundUILayer" unique_id=730995448]
 custom_minimum_size = Vector2(300, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -150.0
-offset_right = 150.0
+offset_left = -154.0
+offset_right = 154.0
 offset_bottom = 105.0
 grow_horizontal = 2
 alignment = 1
 
-[node name="TimeMinutes" type="Label" parent="ForegroundUILayer/TimeContainer" unique_id=1122334455]
+[node name="TimeMinutes" type="Label" parent="BackgroundUILayer/TimeContainer" unique_id=1122334455]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -261,7 +256,7 @@ text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TimeColon" type="Label" parent="ForegroundUILayer/TimeContainer" unique_id=2233445566]
+[node name="TimeColon" type="Label" parent="BackgroundUILayer/TimeContainer" unique_id=-2061521730]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -272,7 +267,7 @@ text = ":"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TimeSeconds" type="Label" parent="ForegroundUILayer/TimeContainer" unique_id=3344556677]
+[node name="TimeSeconds" type="Label" parent="BackgroundUILayer/TimeContainer" unique_id=-950410619]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -280,10 +275,9 @@ size_flags_vertical = 1
 theme = ExtResource("5_dinhu")
 theme_override_font_sizes/font_size = 64
 text = "00"
-horizontal_alignment = 0
 vertical_alignment = 1
 
-[node name="EffectTimers" type="VBoxContainer" parent="ForegroundUILayer" unique_id=1260301999]
+[node name="EffectTimers" type="VBoxContainer" parent="BackgroundUILayer" unique_id=1260301999]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -298,8 +292,18 @@ grow_vertical = 0
 alignment = 2
 script = ExtResource("7_oaba0")
 
-[node name="PauseMenu" parent="ForegroundUILayer" unique_id=1402068368 instance=ExtResource("8_458eo")]
-visible = false
+[node name="WinConditionLabel" type="Label" parent="BackgroundUILayer" unique_id=297263883]
+offset_right = 1.0
+offset_bottom = 23.0
+
+[node name="AlarmOverlay" type="ColorRect" parent="BackgroundUILayer" unique_id=1882714402]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.121569, 0.121569, 0)
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1144167311]
 layer = -2
