@@ -4,7 +4,12 @@ extends CharacterBody2D
 @export var BASE_SPEED: float = 600.0
 @export var SPEED_DECAY: float = 300.0
 @export var VELOCITY_THRESHOLD: float = 50.0
+@export var PADDLE_DIRECTION_INFLUENCE: float = 0.45
+@export var PADDLE_SPEED_INFLUENCE: float = 0.0
+@export var MIN_SCALE: float = 0.75
+@export var MAX_SCALE: float = 2
 
+var current_scale: float = 1.0
 var current_speed: float
 var last_hit_by: CharacterBody2D = player_1
 var is_split_spawn: bool = false
@@ -29,6 +34,10 @@ func _ready():
 		scale_ball(size_multiplier)
 	if not is_split_spawn:
 		launch_ball()
+
+func _process(delta: float) -> void:
+	var multiplier: float = -1 if velocity.x < 0 else 1;
+	sprite.rotate(multiplier * delta * current_speed * 0.02);
 
 func launch_ball():
 	last_hit_by = player_1
@@ -55,7 +64,10 @@ func _physics_process(delta: float) -> void:
 				last_hit_by = collider
 				if collider.has_method("play_hit_animation"):
 					collider.play_hit_animation()
-		
+				
+				velocity.y += collider.velocity.y * PADDLE_DIRECTION_INFLUENCE
+				current_speed += abs(collider.velocity.y) * PADDLE_SPEED_INFLUENCE
+				
 		if check_velocity_threshold():
 			kitten_spawner.call_deferred("spawn_paw", self)
 
@@ -72,6 +84,8 @@ func paw_hit(new_direction: Vector2, boost_amount: float):
 	current_speed += boost_amount
 	
 func scale_ball(multiplier: float):
-	sprite.scale *= multiplier
-	if collision_shape.shape is CircleShape2D:
-		collision_shape.shape.radius *= multiplier
+	var new_scale = clampf(current_scale * multiplier, MIN_SCALE, MAX_SCALE)
+	var actual_multiplier = new_scale / current_scale
+	scale *= actual_multiplier
+	
+	current_scale = new_scale

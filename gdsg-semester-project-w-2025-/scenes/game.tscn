@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://coyi6nqc62xb1"]
 
 [ext_resource type="Script" uid="uid://b5bt2fewnslhs" path="res://scripts/game_controller.gd" id="1_bhx41"]
+[ext_resource type="Script" path="res://scripts/alarm_ui.gd" id="1_alarmui"]
 [ext_resource type="Texture2D" uid="uid://bfiqq6jpq1557" path="res://assets/sprites/Backgrounds/BG Dark.png" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dmngxbinp5ri7" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://dj7n4h024303j" path="res://assets/sprites/Backgrounds/playfield.png" id="2_gee14"]
@@ -11,6 +12,7 @@
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="5_dinhu"]
 [ext_resource type="Script" uid="uid://c0n866wxrwtu6" path="res://scripts/score_label.gd" id="6_p57ef"]
 [ext_resource type="Script" uid="uid://cj72ehiqj5b7e" path="res://scripts/effect_timer_manager.gd" id="7_oaba0"]
+[ext_resource type="PackedScene" uid="uid://s7q2kt7ir0v0" path="res://scenes/pause_menu.tscn" id="8_458eo"]
 [ext_resource type="Script" uid="uid://c0uvs62o1qka0" path="res://scripts/kitten_paw_spawner.gd" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cwwdjsm2bpjkx" path="res://scenes/kitten_paw.tscn" id="12_dinhu"]
 [ext_resource type="Script" uid="uid://b2oe7fsd38rx1" path="res://scripts/items/item_spawner.gd" id="13_ca42v"]
@@ -40,6 +42,7 @@
 [ext_resource type="AudioStream" uid="uid://cjjm5ye1xclu7" path="res://assets/sounds/fish paddle sound.wav" id="31_qouja"]
 [ext_resource type="AudioStream" uid="uid://dfj07w1gkp5rd" path="res://assets/sounds/menu hover.wav" id="32_twgab"]
 [ext_resource type="AudioStream" uid="uid://yhqh3quecu5b" path="res://assets/sounds/menu select.wav" id="33_02fa5"]
+[ext_resource type="Script" uid="uid://dt6u7umxvjhdo" path="res://scripts/items/split_all_balls.gd" id="34_458eo"]
 [ext_resource type="AudioStream" uid="uid://gjxvv3b3fxsw" path="res://assets/sounds/powerup spawn.wav" id="34_nepv3"]
 [ext_resource type="AudioStream" uid="uid://rojt8w7y0lib" path="res://assets/sounds/powerup use.wav" id="36_m4url"]
 [ext_resource type="AudioStream" uid="uid://cpbwo62dnkmoo" path="res://assets/sounds/after run score 1.wav" id="37_7025r"]
@@ -65,42 +68,43 @@ size = Vector2(580, 246)
 [sub_resource type="Resource" id="Resource_e1j6l"]
 script = ExtResource("15_37s47")
 item = ExtResource("15_ssvqc")
-weight = 15.0
+weight = 5.0
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [sub_resource type="Resource" id="Resource_pl11u"]
 script = ExtResource("15_37s47")
 item = ExtResource("17_5newe")
-weight = 15.0
+weight = 5.0
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [sub_resource type="Resource" id="Resource_bhx41"]
 script = ExtResource("15_37s47")
 item = ExtResource("18_bt5mj")
-weight = 15.0
+weight = 5.0
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [sub_resource type="Resource" id="Resource_qouja"]
 script = ExtResource("15_37s47")
 item = ExtResource("19_qnb83")
-weight = 20.0
+weight = 5.0
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [sub_resource type="Resource" id="Resource_wljb1"]
 script = ExtResource("15_37s47")
 item = ExtResource("20_sww3w")
-weight = 13.0
+weight = 5.0
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [sub_resource type="Resource" id="Resource_v2yb1"]
 script = ExtResource("15_37s47")
 item = ExtResource("21_suyxu")
+weight = 5.0
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [sub_resource type="Resource" id="Resource_js0lu"]
 script = ExtResource("15_37s47")
 item = ExtResource("22_sgl2t")
-weight = 7.0
+weight = 5.0
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [sub_resource type="Resource" id="Resource_sww3w"]
@@ -124,6 +128,7 @@ metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 [sub_resource type="Resource" id="Resource_458eo"]
 script = ExtResource("15_37s47")
 item = ExtResource("25_0sl42")
+weight = 5.0
 metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [node name="Game" type="Node2D" unique_id=1886297339]
@@ -193,6 +198,16 @@ shape = SubResource("RectangleShape2D_lbhrr")
 
 [node name="ForegroundUILayer" type="CanvasLayer" parent="." unique_id=1084581396]
 layer = -1
+script = ExtResource("1_alarmui")
+
+[node name="AlarmOverlay" type="ColorRect" parent="ForegroundUILayer" unique_id=1882714402]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.121569, 0.121569, 0)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ForegroundUILayer" unique_id=237591177]
 anchors_preset = -1
@@ -224,17 +239,48 @@ script = ExtResource("6_p57ef")
 left_player = true
 
 [node name="WinConditionLabel" type="Label" parent="ForegroundUILayer" unique_id=297263883]
+[node name="TimeContainer" type="HBoxContainer" parent="ForegroundUILayer" unique_id=297263883]
+custom_minimum_size = Vector2(300, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -35.0
-offset_right = 35.0
+offset_left = -150.0
+offset_right = 150.0
 offset_bottom = 105.0
 grow_horizontal = 2
+alignment = 1
+
+[node name="TimeMinutes" type="Label" parent="ForegroundUILayer/TimeContainer" unique_id=1122334455]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
 theme = ExtResource("5_dinhu")
 theme_override_font_sizes/font_size = 64
 text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TimeColon" type="Label" parent="ForegroundUILayer/TimeContainer" unique_id=2233445566]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("5_dinhu")
+theme_override_font_sizes/font_size = 64
+text = ":"
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeSeconds" type="Label" parent="ForegroundUILayer/TimeContainer" unique_id=3344556677]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("5_dinhu")
+theme_override_font_sizes/font_size = 64
+text = "00"
+horizontal_alignment = 0
 vertical_alignment = 1
 
 [node name="EffectTimers" type="VBoxContainer" parent="ForegroundUILayer" unique_id=1260301999]
@@ -251,6 +297,9 @@ grow_horizontal = 2
 grow_vertical = 0
 alignment = 2
 script = ExtResource("7_oaba0")
+
+[node name="PauseMenu" parent="ForegroundUILayer" unique_id=1402068368 instance=ExtResource("8_458eo")]
+visible = false
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1144167311]
 layer = -2
@@ -335,14 +384,13 @@ split_amount = 5
 script = ExtResource("23_bt5mj")
 split_amount = 10
 
-[node name="SplitAll2" type="Node" parent="ItemEffects" unique_id=1454796815]
-script = ExtResource("23_bt5mj")
-split_all_balls = true
-split_amount = 2
+[node name="SplitAll3" type="Node" parent="ItemEffects" unique_id=1110411090]
+script = ExtResource("34_458eo")
+split_amount = 3
 
-[node name="SplitAll3" type="Node" parent="ItemEffects" unique_id=805975314]
-script = ExtResource("23_bt5mj")
-split_all_balls = true
+[node name="SplitAll2" type="Node" parent="ItemEffects" unique_id=1080954376]
+script = ExtResource("34_458eo")
+split_amount = 2
 
 [node name="Goal Sound" type="AudioStreamPlayer" parent="." unique_id=125741821]
 stream = ExtResource("28_sww3w")

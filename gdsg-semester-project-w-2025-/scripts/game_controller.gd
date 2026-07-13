@@ -1,49 +1,44 @@
 extends Node2D
 
-@onready var win_condition_label: Label = $ForegroundUILayer/WinConditionLabel
-@onready var left_goal = $"Goals/LeftGoal"
-@onready var right_goal = $"Goals/RightGoal"
-
-@export var time_limit: int = 180
-@export var score_limit: int = 15
-
-const GameMode = GameManager.GameMode
-
+@onready var alarm_ui: CanvasLayer = $ForegroundUILayer
+@onready var time_minutes_label: Label = $ForegroundUILayer/TimeContainer/TimeMinutes
+@onready var time_colon_label: Label = $ForegroundUILayer/TimeContainer/TimeColon
+@onready var time_seconds_label: Label = $ForegroundUILayer/TimeContainer/TimeSeconds
+@onready var pause_menu: Control = $ForegroundUILayer/PauseMenu
+@export var game_duration: int = 180
+@export_range(1, 30, 1) var alarm_threshold: int = 15
 
 var cur_game_time: int
 
 func _ready():
-	left_goal.goal_scored.connect(_goal_scored)
-	right_goal.goal_scored.connect(_goal_scored)
-	match GameManager.game_mode:
-		GameMode.TIME:
-			cur_game_time = time_limit
-			update_time_label()
-			$GameTimer.start()
-		GameMode.SCORE:
-			set_score_label()
-			
+	cur_game_time = game_duration
+	update_time_label()
+	alarm_ui.set_alarm_state(cur_game_time, alarm_threshold)
+	$GameTimer.start()
 
-func set_score_label():
-	win_condition_label.text = "Goals for win: " + str(score_limit)
 
 func timer_tick():
 	if (cur_game_time <= 0):
+		$GameTimer.stop()
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/main_menu.tscn")
+		return
 
 	cur_game_time -= 1
 	update_time_label()
+	alarm_ui.set_alarm_state(cur_game_time, alarm_threshold)
 
-func _goal_scored():
-	if GameManager.game_mode != GameMode.SCORE:
-		return
-		
-	if GameManager.left_player_score >= score_limit or GameManager.right_player_score >= score_limit:
-		get_tree().call_deferred("change_scene_to_file", "res://scenes/main_menu.tscn")
-	
 
 func update_time_label():
+	var safe_time = cur_game_time if cur_game_time > 0 else 0
 	@warning_ignore("integer_division")
-	var minute = cur_game_time / 60
-	var second = cur_game_time % 60
-	win_condition_label.text = str(minute) + ":" + ("%02d" % second)
+	var minute = safe_time / 60
+	var second = safe_time % 60
+	time_minutes_label.text = str(minute)
+	time_colon_label.text = ":"
+	time_seconds_label.text = "%02d" % second
+
+func _unhandled_input(event):
+	if event.is_action_pressed("Pause"):
+		get_tree().paused = true
+		pause_menu.show()
+		get_viewport().set_input_as_handled()

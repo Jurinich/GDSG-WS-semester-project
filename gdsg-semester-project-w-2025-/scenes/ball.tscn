@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://bhb0kygy35pj3"]
 
-[ext_resource type="Texture2D" uid="uid://bixbpe2iituc6" path="res://assets/circle.png" id="1_7s4qf"]
 [ext_resource type="Script" uid="uid://rveu54nvto23" path="res://scripts/ball.gd" id="1_cxlvu"]
+[ext_resource type="Texture2D" uid="uid://si6akrmi3ca8" path="res://assets/ball.png" id="2_cxlvu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cxlvu"]
-radius = 16.0312
+radius = 14.0
 
 [node name="Ball" type="CharacterBody2D" unique_id=1018465714]
 collision_mask = 14
 script = ExtResource("1_cxlvu")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=21687957]
-self_modulate = Color(0.0933153, 0.0563395, 0.217105, 1)
-texture = ExtResource("1_7s4qf")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_cxlvu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=900141556]
 shape = SubResource("CircleShape2D_cxlvu")
