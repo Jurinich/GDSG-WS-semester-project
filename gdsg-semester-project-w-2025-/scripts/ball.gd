@@ -6,13 +6,9 @@ extends CharacterBody2D
 @export var VELOCITY_THRESHOLD: float = 50.0
 @export var PADDLE_DIRECTION_INFLUENCE: float = 0.45
 @export var PADDLE_SPEED_INFLUENCE: float = 0.0
-@export var MIN_SCALE: float = 0.5
-@export var MAX_SCALE: float = 2
+@export var MIN_SCALE: float = 0.75
+@export var MAX_SCALE: float = 1.5
 @export var ROLL_SPEED: float = 0.01
-
-@export var SQUISH_AMOUNT: float = 0.8
-@export var STRETCH_AMOUNT: float = 1.2
-@export var SQUISH_TIME: float = 0.08
 
 var current_scale: float = 1.0
 var current_speed: float
@@ -21,8 +17,6 @@ var is_split_spawn: bool = false
 var size_multiplier: float = 1.0
 var tile_offset := Vector2.ZERO
 
-@onready var sprite: Sprite2D = $Visuals/Ball
-@onready var sprite_wrapper: Node2D = $Visuals
 @onready var sprite_material: ShaderMaterial = $Visuals/Ball.material
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var border_sound: AudioStreamPlayer = $"../border sound"
