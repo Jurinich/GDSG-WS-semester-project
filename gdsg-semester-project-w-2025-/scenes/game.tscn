@@ -196,36 +196,6 @@ position = Vector2(-62, 14)
 shape = SubResource("RectangleShape2D_lbhrr")
 
 [node name="ForegroundUILayer" type="CanvasLayer" parent="." unique_id=1084581396]
-layer = -1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ForegroundUILayer" unique_id=237591177]
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.994
-offset_bottom = 0.47998047
-
-[node name="ScoreRight" type="Label" parent="ForegroundUILayer/HBoxContainer" unique_id=312316445]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-theme = ExtResource("5_dinhu")
-theme_override_font_sizes/font_size = 256
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("6_p57ef")
-
-[node name="ScoreLeft" type="Label" parent="ForegroundUILayer/HBoxContainer" unique_id=1940990595]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-theme = ExtResource("5_dinhu")
-theme_override_font_sizes/font_size = 256
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("6_p57ef")
-left_player = true
 
 [node name="TimeLabel" type="Label" parent="ForegroundUILayer" unique_id=297263883]
 anchors_preset = 5
@@ -258,6 +228,38 @@ script = ExtResource("7_oaba0")
 
 [node name="PauseMenu" parent="ForegroundUILayer" unique_id=1402068368 instance=ExtResource("8_458eo")]
 visible = false
+
+[node name="BackgroundUILayer" type="CanvasLayer" parent="." unique_id=163368148]
+layer = -1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BackgroundUILayer" unique_id=516167396]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.994
+offset_bottom = 0.47998047
+
+[node name="ScoreRight" type="Label" parent="BackgroundUILayer/HBoxContainer" unique_id=377718216]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("5_dinhu")
+theme_override_font_sizes/font_size = 256
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_p57ef")
+
+[node name="ScoreLeft" type="Label" parent="BackgroundUILayer/HBoxContainer" unique_id=1923181898]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("5_dinhu")
+theme_override_font_sizes/font_size = 256
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_p57ef")
+left_player = true
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1144167311]
 layer = -2

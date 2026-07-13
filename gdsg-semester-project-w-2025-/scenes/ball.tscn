@@ -1,18 +1,30 @@
 [gd_scene format=3 uid="uid://bhb0kygy35pj3"]
 
 [ext_resource type="Script" uid="uid://rveu54nvto23" path="res://scripts/ball.gd" id="1_cxlvu"]
-[ext_resource type="Texture2D" uid="uid://si6akrmi3ca8" path="res://assets/ball.png" id="2_cxlvu"]
+[ext_resource type="Texture2D" uid="uid://bbrbfitp00t4k" path="res://assets/sprites/Items/shadow.png" id="2_4dx81"]
+[ext_resource type="Material" uid="uid://b2ageub7gijhn" path="res://resources/materials/ball_material.tres" id="2_f7cbr"]
+[ext_resource type="Texture2D" uid="uid://cb48vgvjrx551" path="res://assets/sprites/Ball/ball_overlay.png" id="3_f7cbr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cxlvu"]
-radius = 14.0
+radius = 27.0
 
 [node name="Ball" type="CharacterBody2D" unique_id=1018465714]
 collision_mask = 14
 script = ExtResource("1_cxlvu")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=21687957]
+[node name="Visuals" type="Node2D" parent="." unique_id=243606603]
+
+[node name="Shadow" type="Sprite2D" parent="Visuals" unique_id=1351553324]
+self_modulate = Color(0, 0, 0, 0.38039216)
+position = Vector2(6, 7)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_cxlvu")
+texture = ExtResource("2_4dx81")
+
+[node name="Ball" type="Sprite2D" parent="Visuals" unique_id=21687957]
+material = ExtResource("2_f7cbr")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_f7cbr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=900141556]
+visible = false
 shape = SubResource("CircleShape2D_cxlvu")
