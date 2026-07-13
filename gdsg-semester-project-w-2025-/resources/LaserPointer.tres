@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://sw61sqbvio2a"]
+
+[ext_resource type="Script" uid="uid://cjxfeo0s5d5yr" path="res://scripts/items/item_data.gd" id="1_s407s"]
+[ext_resource type="Texture2D" uid="uid://rgka0xr01tne" path="res://assets/sprites/Items/laser_pointer.png" id="2_s407s"]
+
+[resource]
+script = ExtResource("1_s407s")
+sprite = ExtResource("2_s407s")
+power_up_effect = "LaserPointer"
+metadata/_custom_type_script = "uid://cjxfeo0s5d5yr"

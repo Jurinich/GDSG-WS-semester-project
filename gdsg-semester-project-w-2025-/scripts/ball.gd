@@ -31,7 +31,7 @@ func _ready():
 		launch_ball()
 
 func launch_ball():
-	last_hit_by = null
+	last_hit_by = player_1
 	current_speed = BASE_SPEED
 	var direction = [-1, 1].pick_random()
 	velocity = Vector2(direction, randf_range(-0.5, 0.5)).normalized() * current_speed
@@ -53,7 +53,8 @@ func _physics_process(delta: float) -> void:
 			if collider is CharacterBody2D:
 				fish_paddle_sound.play()
 				last_hit_by = collider
-
+				if collider.has_method("play_hit_animation"):
+					collider.play_hit_animation()
 		
 		if check_velocity_threshold():
 			kitten_spawner.call_deferred("spawn_paw", self)

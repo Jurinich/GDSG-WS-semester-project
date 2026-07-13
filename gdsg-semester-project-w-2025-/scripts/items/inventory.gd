@@ -27,7 +27,7 @@ func add_item(new_item: ItemData) -> bool:
 func cycle_item() -> void:
 	pass
 
-func use_item(triggering_ball: Ball = null) -> void:
+func use_item(_triggering_ball: Ball = null) -> void:
 	if items.size() > 0 and selected_index < items.size():
 		var item_to_use = items[selected_index]
 		
