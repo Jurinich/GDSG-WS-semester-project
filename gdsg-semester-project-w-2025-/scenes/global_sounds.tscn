@@ -1,24 +1,80 @@
 [gd_scene format=3 uid="uid://c0xs4ukdtvhso"]
 
+[ext_resource type="Script" uid="uid://ca0u01v4akhj3" path="res://scripts/global_sounds.gd" id="1_1asn3"]
 [ext_resource type="AudioStream" uid="uid://dfj07w1gkp5rd" path="res://assets/sounds/menu hover.wav" id="1_hc3me"]
-[ext_resource type="Script" uid="uid://d3gneryhnu1kv" path="res://scripts/audioextension.gd" id="2_sbao2"]
 [ext_resource type="AudioStream" uid="uid://yhqh3quecu5b" path="res://assets/sounds/menu select.wav" id="3_smkhs"]
+[ext_resource type="Script" uid="uid://b07gdu4yupssq" path="res://scripts/sound_resource.gd" id="4_1asn3"]
 [ext_resource type="AudioStream" uid="uid://dghu87athimbe" path="res://assets/Music/kitty_pong_bgm.mp3" id="4_sbao2"]
+[ext_resource type="PackedScene" uid="uid://bink6xfeoi6jk" path="res://scenes/sound_component.tscn" id="6_ch668"]
+[ext_resource type="AudioStream" uid="uid://d0xwonisrdwb5" path="res://assets/sounds/Goal Sound.wav" id="7_ch668"]
+[ext_resource type="AudioStream" uid="uid://y6dsn7s0mt7x" path="res://assets/sounds/paw swiff sound.wav" id="8_10vkx"]
+[ext_resource type="AudioStream" uid="uid://cl1o4ab4wtbi" path="res://assets/sounds/border sound.wav" id="9_7js83"]
+[ext_resource type="AudioStream" uid="uid://cjjm5ye1xclu7" path="res://assets/sounds/fish paddle sound.wav" id="10_eyqm1"]
+[ext_resource type="AudioStream" uid="uid://rojt8w7y0lib" path="res://assets/sounds/powerup use.wav" id="11_eyqm1"]
+[ext_resource type="AudioStream" uid="uid://gjxvv3b3fxsw" path="res://assets/sounds/powerup spawn.wav" id="12_ttt2c"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_sbao2"]
+clip_count = 1
+clip_0/name = &"main_loop"
+clip_0/stream = ExtResource("4_sbao2")
+clip_0/auto_advance = 0
+
+[sub_resource type="Resource" id="Resource_ch668"]
+script = ExtResource("4_1asn3")
+name = &"click_sound"
+audiostreams = Array[AudioStream]([ExtResource("3_smkhs")])
+metadata/_custom_type_script = "uid://b07gdu4yupssq"
+
+[sub_resource type="Resource" id="Resource_10vkx"]
+script = ExtResource("4_1asn3")
+name = &"hover_sound"
+audiostreams = Array[AudioStream]([ExtResource("1_hc3me")])
+metadata/_custom_type_script = "uid://b07gdu4yupssq"
+
+[sub_resource type="Resource" id="Resource_0q7qy"]
+script = ExtResource("4_1asn3")
+name = &"goal_scored"
+audiostreams = Array[AudioStream]([ExtResource("7_ch668")])
+metadata/_custom_type_script = "uid://b07gdu4yupssq"
+
+[sub_resource type="Resource" id="Resource_7js83"]
+script = ExtResource("4_1asn3")
+name = &"paw_swiff"
+audiostreams = Array[AudioStream]([ExtResource("8_10vkx")])
+metadata/_custom_type_script = "uid://b07gdu4yupssq"
+
+[sub_resource type="Resource" id="Resource_ttt2c"]
+script = ExtResource("4_1asn3")
+name = &"border_hit"
+audiostreams = Array[AudioStream]([ExtResource("9_7js83")])
+metadata/_custom_type_script = "uid://b07gdu4yupssq"
+
+[sub_resource type="Resource" id="Resource_pfob2"]
+script = ExtResource("4_1asn3")
+name = &"paddle_hit"
+audiostreams = Array[AudioStream]([ExtResource("10_eyqm1")])
+metadata/_custom_type_script = "uid://b07gdu4yupssq"
+
+[sub_resource type="Resource" id="Resource_c6kha"]
+script = ExtResource("4_1asn3")
+name = &"powerup_activated"
+audiostreams = Array[AudioStream]([ExtResource("11_eyqm1")])
+metadata/_custom_type_script = "uid://b07gdu4yupssq"
+
+[sub_resource type="Resource" id="Resource_5lp4t"]
+script = ExtResource("4_1asn3")
+name = &"powerup_spawned"
+audiostreams = Array[AudioStream]([ExtResource("12_ttt2c")])
+metadata/_custom_type_script = "uid://b07gdu4yupssq"
 
 [node name="GlobalSounds" type="Node" unique_id=1047763007]
+process_mode = 3
+script = ExtResource("1_1asn3")
 
-[node name="hover-sound" type="AudioStreamPlayer" parent="." unique_id=136378654]
-stream = ExtResource("1_hc3me")
-bus = &"Sounds"
-script = ExtResource("2_sbao2")
-
-[node name="click-sound" type="AudioStreamPlayer" parent="." unique_id=1069709504]
-stream = ExtResource("3_smkhs")
-bus = &"Sounds"
-script = ExtResource("2_sbao2")
-
-[node name="background-music" type="AudioStreamPlayer" parent="." unique_id=264672693]
-stream = ExtResource("4_sbao2")
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1602257755]
+stream = SubResource("AudioStreamInteractive_sbao2")
 autoplay = true
-bus = &"Music"
-script = ExtResource("2_sbao2")
+
+[node name="SoundPlayer" parent="." unique_id=647762911 instance=ExtResource("6_ch668")]
+sounds = Array[ExtResource("4_1asn3")]([SubResource("Resource_ch668"), SubResource("Resource_10vkx"), SubResource("Resource_0q7qy"), SubResource("Resource_7js83"), SubResource("Resource_ttt2c"), SubResource("Resource_pfob2"), SubResource("Resource_c6kha"), SubResource("Resource_5lp4t")])
+audio_player_amount = 6

@@ -1,5 +1,12 @@
 extends BaseButton
 
 func _ready():
-	pressed.connect(GlobalSounds.get_node("click-sound").play)
-	mouse_entered.connect(GlobalSounds.get_node("hover-sound").play)
+	pressed.connect(_on_hovered);
+	mouse_entered.connect(_on_pressed);
+
+
+func _on_hovered():
+	GlobalSounds.playSound("click_sound");
+	
+func _on_pressed():
+	GlobalSounds.playSound("hover_sound");
