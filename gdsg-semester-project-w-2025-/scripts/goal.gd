@@ -10,7 +10,7 @@ func _ready():
 func _on_body_entered(body):
 	if body is Ball:
 		print("Goal hit by:", body, " at pos ", body.global_position)
-		GlobalSounds.playSound("goal");
+		AudioManager.playSound("goal");
 		body.remove_from_group("balls")
 		var balls_in_play = get_tree().get_nodes_in_group("balls").size()
 		body.queue_free()

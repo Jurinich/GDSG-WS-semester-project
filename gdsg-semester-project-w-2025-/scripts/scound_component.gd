@@ -9,7 +9,7 @@ var audio_player_pool: Array[AudioStreamPlayer];
 func _ready() -> void:
 	for i in range(audio_player_amount):
 		var audio_player = AudioStreamPlayer.new();
-		audio_player.bus = &"Sound";
+		audio_player.bus = "Sounds";
 		add_child(audio_player);
 		audio_player_pool.push_back(audio_player);
 

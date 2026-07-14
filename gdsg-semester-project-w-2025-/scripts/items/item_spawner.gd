@@ -53,7 +53,7 @@ func chooseItem() -> ItemData:
 	
 ##Spawn the actual item, by instantiating its scene with the corresponding Data
 func spawnItem(item_data : ItemData):
-	GlobalSounds.playSound("powerup_spawned");
+	AudioManager.playSound("powerup_spawned");
 	var item_node : CollectibleItem = item_scene.instantiate()
 	var half_size = spawn_area_size / 2.0
 	var random_x = randf_range(-half_size.x, half_size.x)

@@ -56,14 +56,11 @@ func _physics_process(delta: float) -> void:
 		#print("Ball hit:",collider, " at pos ", collider.global_position)
 		if collider is CharacterBody2D or collider is StaticBody2D:
 			if collider is StaticBody2D:
-				GlobalSounds.playSound("border_hit");
+				AudioManager.playSound("border_hit");
 			var normal := collision.get_normal()
 			velocity = velocity.bounce(normal)
 			if collider is Player:
-				if collider.sprite_type == Player.SpriteType.REGULAR:
-					GlobalSounds.playSound("fish_hit");
-				else:
-					GlobalSounds.playSound("fishbone_hit");
+				AudioManager.playSound(collider.paddle_sound);
 				last_hit_by = collider
 				if collider.has_method("play_hit_animation"):
 					collider.play_hit_animation()

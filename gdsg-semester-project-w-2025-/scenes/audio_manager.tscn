@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://dbn4dgyt2iqty"]
+
+[ext_resource type="Script" uid="uid://ca0u01v4akhj3" path="res://scripts/audio_manager.gd" id="1_yt2vs"]
+[ext_resource type="AudioStream" uid="uid://dghu87athimbe" path="res://assets/Music/kitty_pong_bgm.mp3" id="2_2fqsb"]
+[ext_resource type="PackedScene" uid="uid://bink6xfeoi6jk" path="res://scenes/sound_component.tscn" id="3_fcxyy"]
+[ext_resource type="Script" uid="uid://b07gdu4yupssq" path="res://scripts/sound_resource.gd" id="4_1y43m"]
+[ext_resource type="AudioStream" uid="uid://b587q1cl4gpme" path="res://assets/sounds/menu/Menu hover 1.wav" id="5_n1t8p"]
+[ext_resource type="AudioStream" uid="uid://fypxigingbup" path="res://assets/sounds/menu/Menu hover 2.wav" id="6_bne8e"]
+[ext_resource type="AudioStream" uid="uid://dlc61qsk2dhp5" path="res://assets/sounds/menu/Menu hover 3.wav" id="7_c6r4u"]
+[ext_resource type="AudioStream" uid="uid://56wnede1k1iv" path="res://assets/sounds/menu/menu select.wav" id="8_785fq"]
+[ext_resource type="AudioStream" uid="uid://14u27vrd30rb" path="res://assets/sounds/game/goal.wav" id="9_26ibh"]
+[ext_resource type="AudioStream" uid="uid://fta27d1ktof0" path="res://assets/sounds/game/Katze/Katze 1.wav" id="10_d55hy"]
+[ext_resource type="AudioStream" uid="uid://dk6wwpdcs2kit" path="res://assets/sounds/game/Katze/Katze 2.wav" id="11_1cnjy"]
+[ext_resource type="AudioStream" uid="uid://nve6r4p2aauq" path="res://assets/sounds/game/Katze/Katze 3.wav" id="12_2igfy"]
+[ext_resource type="AudioStream" uid="uid://bjdaxafc8j4t4" path="res://assets/sounds/game/Katze/Katze 4.wav" id="13_gi52w"]
+[ext_resource type="AudioStream" uid="uid://c6e3vu4dw8f20" path="res://assets/sounds/game/Katze/Katze 5.wav" id="14_g71vj"]
+[ext_resource type="AudioStream" uid="uid://mf7nh5ravb7n" path="res://assets/sounds/game/Katze/Katze 6.wav" id="15_ladlq"]
+[ext_resource type="AudioStream" uid="uid://7pylgbrxyhto" path="res://assets/sounds/game/Katze/Katze 7.wav" id="16_ku15p"]
+[ext_resource type="AudioStream" uid="uid://t3f431xil5ys" path="res://assets/sounds/game/Katze/Katze 8.wav" id="17_sa6p2"]
+[ext_resource type="AudioStream" uid="uid://dp0fwhtyqhh1d" path="res://assets/sounds/game/border/bounce 1.wav" id="18_opu6i"]
+[ext_resource type="AudioStream" uid="uid://bubncgdiqlpgs" path="res://assets/sounds/game/border/bounce 2.wav" id="19_t2ybr"]
+[ext_resource type="AudioStream" uid="uid://b5jwyl0w4lcje" path="res://assets/sounds/game/border/bounce 3.wav" id="20_cewst"]
+[ext_resource type="AudioStream" uid="uid://tsq5bs8qu0lc" path="res://assets/sounds/game/border/bounce 4.wav" id="21_g5lra"]
+[ext_resource type="AudioStream" uid="uid://bj1ehgbjvj2sp" path="res://assets/sounds/game/border/bounce 5.wav" id="22_ccetw"]
+[ext_resource type="AudioStream" uid="uid://djcpim0loowkh" path="res://assets/sounds/game/paddle/fish paddle 1.wav" id="23_bsfxv"]
+[ext_resource type="AudioStream" uid="uid://cxse2ftyd6ota" path="res://assets/sounds/game/paddle/fish paddle 2.wav" id="24_5n573"]
+[ext_resource type="AudioStream" uid="uid://bnq4tx8aa1a8o" path="res://assets/sounds/game/paddle/fish paddle 3.wav" id="25_550e2"]
+[ext_resource type="AudioStream" uid="uid://bins4ylpxlgqi" path="res://assets/sounds/game/paddle/Fish bone 1.wav" id="26_wutdd"]
+[ext_resource type="AudioStream" uid="uid://dcutkbvq0vkrm" path="res://assets/sounds/game/paddle/Fish bone 2.wav" id="27_n4ll6"]
+[ext_resource type="AudioStream" uid="uid://bj25ygjt0hr1y" path="res://assets/sounds/game/paddle/Fish bone 3.wav" id="28_b6biq"]
+[ext_resource type="AudioStream" uid="uid://cs73jexy4ictj" path="res://assets/sounds/game/powerup/powerup pickup.wav" id="29_7vawh"]
+[ext_resource type="AudioStream" uid="uid://dphn2r3yv51as" path="res://assets/sounds/game/powerup/powerup appear.wav" id="30_g3h6h"]
+[ext_resource type="AudioStream" uid="uid://bsxqvsxkbwq5h" path="res://assets/sounds/game/powerup/laser click.wav" id="31_2fqsb"]
+[ext_resource type="AudioStream" uid="uid://b7xy2hf065x34" path="res://assets/sounds/menu/game start.wav" id="32_fcxyy"]
+[ext_resource type="AudioStream" uid="uid://8tr8xfn5eppt" path="res://assets/sounds/menu/pause menu.wav" id="33_1y43m"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_sbao2"]
+clip_count = 1
+clip_0/name = &"main_loop"
+clip_0/stream = ExtResource("2_2fqsb")
+clip_0/auto_advance = 0
+
+[sub_resource type="Resource" id="Resource_ch668"]
+script = ExtResource("4_1y43m")
+name = &"menu_hover"
+audiostreams = Array[AudioStream]([ExtResource("5_n1t8p"), ExtResource("6_bne8e"), ExtResource("7_c6r4u")])
+
+[sub_resource type="Resource" id="Resource_10vkx"]
+script = ExtResource("4_1y43m")
+name = &"menu_select"
+audiostreams = Array[AudioStream]([ExtResource("8_785fq")])
+
+[sub_resource type="Resource" id="Resource_0q7qy"]
+script = ExtResource("4_1y43m")
+name = &"goal"
+audiostreams = Array[AudioStream]([ExtResource("9_26ibh")])
+
+[sub_resource type="Resource" id="Resource_7js83"]
+script = ExtResource("4_1y43m")
+name = &"Katze"
+audiostreams = Array[AudioStream]([ExtResource("10_d55hy"), ExtResource("11_1cnjy"), ExtResource("12_2igfy"), ExtResource("13_gi52w"), ExtResource("14_g71vj"), ExtResource("15_ladlq"), ExtResource("16_ku15p"), ExtResource("17_sa6p2")])
+
+[sub_resource type="Resource" id="Resource_ttt2c"]
+script = ExtResource("4_1y43m")
+name = &"border_hit"
+audiostreams = Array[AudioStream]([ExtResource("18_opu6i"), ExtResource("19_t2ybr"), ExtResource("20_cewst"), ExtResource("21_g5lra"), ExtResource("22_ccetw")])
+
+[sub_resource type="Resource" id="Resource_pfob2"]
+script = ExtResource("4_1y43m")
+name = &"fish_hit"
+audiostreams = Array[AudioStream]([ExtResource("23_bsfxv"), ExtResource("24_5n573"), ExtResource("25_550e2")])
+
+[sub_resource type="Resource" id="Resource_eyy75"]
+script = ExtResource("4_1y43m")
+name = &"fishbone_hit"
+audiostreams = Array[AudioStream]([ExtResource("26_wutdd"), ExtResource("27_n4ll6"), ExtResource("28_b6biq")])
+
+[sub_resource type="Resource" id="Resource_c6kha"]
+script = ExtResource("4_1y43m")
+name = &"powerup_activated"
+audiostreams = Array[AudioStream]([ExtResource("29_7vawh")])
+
+[sub_resource type="Resource" id="Resource_5lp4t"]
+script = ExtResource("4_1y43m")
+name = &"powerup_spawned"
+audiostreams = Array[AudioStream]([ExtResource("30_g3h6h")])
+
+[sub_resource type="Resource" id="Resource_yt2vs"]
+script = ExtResource("4_1y43m")
+name = &"laser_click"
+audiostreams = Array[AudioStream]([ExtResource("31_2fqsb")])
+metadata/_custom_type_script = "uid://b07gdu4yupssq"
+
+[sub_resource type="Resource" id="Resource_1y43m"]
+script = ExtResource("4_1y43m")
+name = &"game_start"
+audiostreams = Array[AudioStream]([ExtResource("32_fcxyy")])
+metadata/_custom_type_script = "uid://b07gdu4yupssq"
+
+[sub_resource type="Resource" id="Resource_fcxyy"]
+script = ExtResource("4_1y43m")
+name = &"pause_menu"
+audiostreams = Array[AudioStream]([ExtResource("33_1y43m")])
+metadata/_custom_type_script = "uid://b07gdu4yupssq"
+
+[node name="AudioManager" type="Node" unique_id=1047763007]
+process_mode = 3
+script = ExtResource("1_yt2vs")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1602257755]
+stream = SubResource("AudioStreamInteractive_sbao2")
+autoplay = true
+
+[node name="SoundPlayer" parent="." unique_id=647762911 instance=ExtResource("3_fcxyy")]
+sounds = Array[ExtResource("4_1y43m")]([SubResource("Resource_ch668"), SubResource("Resource_10vkx"), SubResource("Resource_0q7qy"), SubResource("Resource_7js83"), SubResource("Resource_ttt2c"), SubResource("Resource_pfob2"), SubResource("Resource_eyy75"), SubResource("Resource_c6kha"), SubResource("Resource_5lp4t"), SubResource("Resource_yt2vs"), SubResource("Resource_1y43m"), SubResource("Resource_fcxyy")])
+audio_player_amount = 30

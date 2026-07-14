@@ -77,7 +77,9 @@ custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-value = 100.0
+max_value = 2.0
+step = 0.01
+value = 1.0
 
 [node name="HSeparator3" type="HSeparator" parent="content" unique_id=1792964731]
 layout_mode = 2
@@ -115,7 +117,9 @@ custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-value = 100.0
+max_value = 2.0
+step = 0.01
+value = 1.0
 
 [node name="HSeparator2" type="HSeparator" parent="content" unique_id=1777799279]
 layout_mode = 2

@@ -9,37 +9,24 @@ var right_player_score: int = 0
 var left_player_paddle: int = 0
 var right_player_paddle: int = 0
 
-var left_player_skin: SpriteType = SpriteType.REGULAR;
-var right_player_skin: SpriteType = SpriteType.REGULAR;
-
-var sound_vol: int = 100
-var music_vol: int = 100
-
 var arcade_mode = false
 var arcade_p1_id = -1
 var arcade_p2_id = 1
 
-enum SpriteType {REGULAR, BONE};
+enum Skins {SALMON, TUNA, SKELETON};
 
-# TODO: Fix this! Currently the index depends on the direction that selects the skins!!!!
-const BONE_INDEX1 = -1;
-const BONE_INDEX2 = 2;
+const SKIN_TO_SOUND_DICT: Dictionary[Skins, StringName] = {
+	Skins.SALMON: "fish_hit",
+	Skins.TUNA: "fish_hit",
+	Skins.SKELETON: "fishbone_hit"
+}
 
 signal score_changed
-signal sound_changed
 
 func reset():
 	left_player_score = 0
 	right_player_score = 0
 	score_changed.emit()
-
-func change_sound(new: int):
-	sound_vol = new
-	sound_changed.emit()
-
-func change_music(new: int):
-	music_vol = new
-	sound_changed.emit()
 
 # function returns true if the game should continue on
 func add_point(player : String) -> bool:

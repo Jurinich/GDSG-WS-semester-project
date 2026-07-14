@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://blfg1dymlh7ab" path="res://scripts/items/inventory.gd" id="2_rysoc"]
 [ext_resource type="PackedScene" uid="uid://bhb0kygy35pj3" path="res://scenes/ball.tscn" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://dcjct6o0k4moq" path="res://scripts/ball_spawner.gd" id="3_lnu2h"]
-[ext_resource type="Script" uid="uid://bpva8mtljkuns" path="res://scripts/GoalScript.gd" id="4_lbhrr"]
+[ext_resource type="Script" uid="uid://bpva8mtljkuns" path="res://scripts/goal.gd" id="4_lbhrr"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="5_dinhu"]
 [ext_resource type="Script" uid="uid://c0n866wxrwtu6" path="res://scripts/score_label.gd" id="6_p57ef"]
 [ext_resource type="Script" path="res://scripts/effect_timer_manager.gd" id="7_oaba0"]
@@ -33,7 +33,7 @@
 [ext_resource type="Resource" uid="uid://cgg4yxtv50a14" path="res://resources/SplitAll3.tres" id="24_05nbr"]
 [ext_resource type="PackedScene" uid="uid://dbl6pvi0yn2rt" path="res://scenes/laser_pointer.tscn" id="24_m4url"]
 [ext_resource type="Resource" uid="uid://sw61sqbvio2a" path="res://resources/LaserPointer.tres" id="25_0sl42"]
-[ext_resource type="Script" path="res://scripts/items/laser_pointer_item.gd" id="27_05nbr"]
+[ext_resource type="Script" uid="uid://cdl2ng8ia0gha" path="res://scripts/items/laser_pointer_item.gd" id="27_05nbr"]
 [ext_resource type="Script" path="res://scripts/items/split_all_balls.gd" id="34_458eo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]

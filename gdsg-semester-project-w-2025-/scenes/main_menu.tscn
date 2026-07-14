@@ -101,6 +101,7 @@ theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
 text = "Start Game"
 script = ExtResource("7_5dd4i")
+select_sound = &"game_start"
 
 [node name="SettingsButton" type="Button" parent="ButtonBox/VBoxContainer" unique_id=2017300482]
 layout_mode = 2
