@@ -43,7 +43,7 @@ func attempt_kitten_spawn(target_ball: Ball):
 
 func spawn_paw(target_ball: Ball):
 	if paw_scene:
-		GlobalSounds.playSound("paw_swiff");
+		GlobalSounds.playSound("Katze");
 		var paw = paw_scene.instantiate()
 		paw.add_to_group("KittenPaws")
 		get_tree().current_scene.add_child(paw)

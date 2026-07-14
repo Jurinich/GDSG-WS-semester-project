@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 const SPEED := 1100
@@ -8,22 +9,28 @@ const SPEED := 1100
 @export var HIT_ANIMATION_SCALE = 0.1
 @export var HIT_ANIMATION_ROTATION = 0.1
 
+enum SpriteType {REGULAR, BONE};
+const BONE_SPRITE = 1; #Scuffed for now, please fix this, didn't have time to do it better
+
 var fixed_x: float
 var arcade_input: float
 var device_id_cur: int
 var paddle: CollisionShape2D
 var sprite: Sprite2D
 var sprite_scale: Vector2
+var sprite_type: SpriteType = SpriteType.REGULAR;
 
 func _ready():
 	fixed_x = global_position.x
 
 	if (isP1):
 		paddle = paddles[GameManager.left_player_paddle].instantiate()
+		sprite_type = GameManager.left_player_paddle;
 		device_id_cur = GameManager.arcade_p1_id
 		paddle.scale.x = -paddle.scale.x
 	else:
 		paddle = paddles[GameManager.right_player_paddle].instantiate()
+		sprite_type = GameManager.right_player_paddle;
 		device_id_cur = GameManager.arcade_p2_id
 	add_child(paddle)
 	sprite = paddle.get_node("Sprite2D")

@@ -9,12 +9,21 @@ var right_player_score: int = 0
 var left_player_paddle: int = 0
 var right_player_paddle: int = 0
 
+var left_player_skin: SpriteType = SpriteType.REGULAR;
+var right_player_skin: SpriteType = SpriteType.REGULAR;
+
 var sound_vol: int = 100
 var music_vol: int = 100
 
 var arcade_mode = false
 var arcade_p1_id = -1
 var arcade_p2_id = 1
+
+enum SpriteType {REGULAR, BONE};
+
+# TODO: Fix this! Currently the index depends on the direction that selects the skins!!!!
+const BONE_INDEX1 = -1;
+const BONE_INDEX2 = 2;
 
 signal score_changed
 signal sound_changed

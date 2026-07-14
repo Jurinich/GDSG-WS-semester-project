@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bsxqvsxkbwq5h"
+path="res://.godot/imported/laser click.wav-4c37637abc4e4e35b26b07679a2cf9e6.sample"
+
+[deps]
+
+source_file="res://assets/sounds/game/powerup/laser click.wav"
+dest_files=["res://.godot/imported/laser click.wav-4c37637abc4e4e35b26b07679a2cf9e6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

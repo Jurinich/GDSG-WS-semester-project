@@ -59,8 +59,11 @@ func _physics_process(delta: float) -> void:
 				GlobalSounds.playSound("border_hit");
 			var normal := collision.get_normal()
 			velocity = velocity.bounce(normal)
-			if collider is CharacterBody2D:
-				GlobalSounds.playSound("paddle_hit");
+			if collider is Player:
+				if collider.sprite_type == Player.SpriteType.REGULAR:
+					GlobalSounds.playSound("fish_hit");
+				else:
+					GlobalSounds.playSound("fishbone_hit");
 				last_hit_by = collider
 				if collider.has_method("play_hit_animation"):
 					collider.play_hit_animation()

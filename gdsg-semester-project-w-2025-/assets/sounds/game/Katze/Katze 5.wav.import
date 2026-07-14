@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c6e3vu4dw8f20"
+path="res://.godot/imported/Katze 5.wav-a96fd4775351b88af9d6e4cdec7d458b.sample"
+
+[deps]
+
+source_file="res://assets/sounds/game/Katze/Katze 5.wav"
+dest_files=["res://.godot/imported/Katze 5.wav-a96fd4775351b88af9d6e4cdec7d458b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
