@@ -8,8 +8,6 @@ extends Control
 @export_range(0.0, 1.0) var fade_modifier: float = 0.35   # how quickly elements fade
 @export_range(0.0, 1.0) var scale_modifier: float = 0.20  # how quickly elements scale down
 
-signal button_pressed(button: Button)
-
 var selected_menu: int = 0
 var buttons: Array[Button] = []
 var alignment_position: float
@@ -24,8 +22,6 @@ func _ready() -> void:
 	alignment_position = size.x / 2
 	focus_entered.connect(_on_focused_changed.bind(true))
 	focus_exited.connect(_on_focused_changed.bind(false))
-	for button in buttons:
-		button.pressed.connect(_on_button_pressed.bind(button))
 
 func _process(delta: float) -> void:
 	var interpolation = clamp(rotation_speed * delta, 0.0, 1.0)
@@ -51,6 +47,11 @@ func _process(delta: float) -> void:
 
 		# depth gives (-1.0 to 1.0), need (0 to 1)
 		var depth_level = (depth + 1.0) / 2.0
+		
+		if depth_level >= 0.9:
+			button.mouse_filter = MouseFilter.MOUSE_FILTER_STOP
+		else:
+			button.mouse_filter = MouseFilter.MOUSE_FILTER_IGNORE
 
 		# fade_modifier is unusable atm
 		# as soon as it is turned on the elements in the back are visible, need to do it with another formula?
@@ -91,21 +92,18 @@ func _gui_input(event: InputEvent) -> void:
 		target_selected_menu -= 1.0
 		selected_menu = posmod(roundi(target_selected_menu), buttons.size())
 		return
-	if event.is_action_pressed("Start"):
+	if event.is_action_pressed("ui_accept"):
 		buttons[selected_menu].pressed.emit()
 
 func _increase_event(event: InputEvent) -> bool:
-	#if horizontal:
-		#return event.is_action_pressed("rightP1") || event.is_action_pressed("rightP2")
-	return event.is_action_pressed("downP1") || event.is_action_pressed("downP2")
+	if horizontal:
+		return event.is_action_pressed("ui_right")
+	return event.is_action_pressed("ui_down")
 
 func _decrease_event(event: InputEvent) -> bool:
-	#if horizontal:
-		#return event.is_action_pressed("leftP1") || event.is_action_pressed("leftP2")
-	return event.is_action_pressed("upP1") || event.is_action_pressed("upP2")
-
-func _on_button_pressed(button: Button):
-	button_pressed.emit(button)
+	if horizontal:
+		return event.is_action_pressed("ui_left")
+	return event.is_action_pressed("ui_up")
 
 func _on_focused_changed(focus: bool) -> void:
 	focused = focus;

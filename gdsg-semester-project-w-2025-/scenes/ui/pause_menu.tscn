@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://s7q2kt7ir0v0"]
 
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="1_n87rw"]
-[ext_resource type="Script" uid="uid://cdixmj78exahn" path="res://scripts/pause_menu.gd" id="2_kukqi"]
-[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/buttonsound_extension.gd" id="2_myx47"]
+[ext_resource type="Script" uid="uid://cdixmj78exahn" path="res://scripts/ui/pause_menu.gd" id="2_kukqi"]
+[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/ui/buttonsound_extension.gd" id="2_myx47"]
 
 [node name="PauseMenu" type="Control" unique_id=1402068368]
 process_mode = 2

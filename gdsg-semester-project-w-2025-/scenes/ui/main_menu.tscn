@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://b7uldkmwrx85"]
 
-[ext_resource type="Script" uid="uid://bvukho5xegmaq" path="res://scripts/main_menu_controller.gd" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://bvukho5xegmaq" path="res://scripts/ui/main_menu_controller.gd" id="1_l6cm7"]
 [ext_resource type="Texture2D" uid="uid://cdm15ogkivjxe" path="res://assets/sprites/Backgrounds/BG_StartScreenMenue.png" id="2_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://bkpwot3g78twl" path="res://assets/sprites/Kittens/UI_kittens/kitten_inbox.png" id="3_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://btg7cq10y06vr" path="res://assets/sprites/Popups/Popup_menue.png" id="3_wu84c"]
 [ext_resource type="Texture2D" uid="uid://c4vomr1gla4ut" path="res://assets/sprites/Logos/Logo_pink.png" id="4_8ln24"]
 [ext_resource type="Texture2D" uid="uid://br0nn0g3jab66" path="res://assets/sprites/Kittens/UI_kittens/kitten_lying.png" id="4_oa1go"]
-[ext_resource type="PackedScene" uid="uid://c1xmahmsx11f" path="res://scenes/LoopingMenu.tscn" id="6_lgwnu"]
+[ext_resource type="PackedScene" uid="uid://c1xmahmsx11f" path="res://scenes/ui/looping_menu.tscn" id="6_lgwnu"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="6_oa1go"]
-[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/buttonsound_extension.gd" id="7_5dd4i"]
-[ext_resource type="Script" uid="uid://bpt207xu16nw5" path="res://scripts/selection_controller.gd" id="8_jk1qb"]
-[ext_resource type="PackedScene" uid="uid://bj18d1fh7lipn" path="res://scenes/player_selection_node.tscn" id="8_tbmy8"]
+[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/ui/buttonsound_extension.gd" id="7_5dd4i"]
+[ext_resource type="Script" uid="uid://bpt207xu16nw5" path="res://scripts/ui/selection_controller.gd" id="8_jk1qb"]
+[ext_resource type="PackedScene" uid="uid://bj18d1fh7lipn" path="res://scenes/ui/player_selection_node.tscn" id="8_tbmy8"]
 [ext_resource type="Texture2D" uid="uid://bcam63poywcst" path="res://assets/Stick-LeftRight.svg" id="11_lgwnu"]
 
 [node name="MainMenu" type="Control" unique_id=1335995349]
@@ -87,7 +87,6 @@ offset_left = 358.5
 offset_top = 183.754
 offset_right = -358.5
 offset_bottom = -215.99304
-horizontal = false
 menu_radius = 80.0
 rotation_speed = 12.0
 fade_modifier = 0.0

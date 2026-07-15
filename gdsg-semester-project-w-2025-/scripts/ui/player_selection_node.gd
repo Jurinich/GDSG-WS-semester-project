@@ -51,8 +51,8 @@ func _unhandled_input(event):
 	else:
 		if event.device == GameManager.arcade_p1_id: return
 
-	if event.is_action_pressed("ArcadeLeft"):
+	if event.is_action_pressed("ui_left"):
 		_on_left_button_pressed()
 
-	elif event.is_action_pressed("ArcadeRight"):
+	elif event.is_action_pressed("ui_right"):
 		_on_right_button_pressed()

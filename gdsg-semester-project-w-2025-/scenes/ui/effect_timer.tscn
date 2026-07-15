@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d1vlks56dw34d" path="res://assets/sprites/UI/progress_back.png" id="1_rr3lt"]
 [ext_resource type="Texture2D" uid="uid://cktew06tilrd5" path="res://assets/sprites/UI/progress_front.png" id="2_8b465"]
 [ext_resource type="Texture2D" uid="uid://cmwbgcp4nvw2b" path="res://assets/sprites/UI/progress_fill.png" id="3_8b465"]
-[ext_resource type="Script" uid="uid://d1mb3tuxpptfj" path="res://scripts/effect_timer.gd" id="4_8b465"]
+[ext_resource type="Script" uid="uid://d1mb3tuxpptfj" path="res://scripts/ui/effect_timer.gd" id="4_8b465"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="4_mn3hi"]
 
 [node name="Wrapper" type="Control" unique_id=2112788345]

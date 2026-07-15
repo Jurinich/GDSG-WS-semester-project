@@ -48,7 +48,7 @@ func add_point(player : String) -> bool:
 
 	if (max_score > 0):
 		if (left_player_score >= max_score || right_player_score >= max_score):
-			get_tree().call_deferred("change_scene_to_file", "res://scenes/main_menu.tscn")
+			get_tree().call_deferred("change_scene_to_file", "res://scenes/ui/main_menu.tscn")
 			return false
 
 	return true

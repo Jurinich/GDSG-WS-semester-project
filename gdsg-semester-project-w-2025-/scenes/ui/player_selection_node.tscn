@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bj18d1fh7lipn"]
 
-[ext_resource type="Script" uid="uid://de4tr7w5a07aw" path="res://scripts/player_selection_node.gd" id="1_h4mwn"]
+[ext_resource type="Script" uid="uid://de4tr7w5a07aw" path="res://scripts/ui/player_selection_node.gd" id="1_h4mwn"]
 [ext_resource type="Texture2D" uid="uid://emd4k5xlqjpj" path="res://assets/paddle1.png" id="1_xkd2o"]
 [ext_resource type="Texture2D" uid="uid://cnp5k0xak4u2l" path="res://assets/sprites/Paddles/1_tuna.png" id="2_6uo20"]
 [ext_resource type="Texture2D" uid="uid://bkq5o2fbf7tci" path="res://assets/sprites/Paddles/0_salmon.png" id="3_gylrv"]
@@ -8,7 +8,7 @@
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="3_quxui"]
 [ext_resource type="Texture2D" uid="uid://b3lc8q2ny8vri" path="res://assets/sprites/Paddles/2_skeleton.png" id="4_gylrv"]
 [ext_resource type="Texture2D" uid="uid://bb80gnpm8par6" path="res://assets/sprites/Buttons/button_forward.png" id="5_ph6ke"]
-[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/buttonsound_extension.gd" id="7_0juo8"]
+[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/ui/buttonsound_extension.gd" id="7_0juo8"]
 
 [node name="PlayerSelectionNode" type="Control" unique_id=425702317]
 layout_mode = 3

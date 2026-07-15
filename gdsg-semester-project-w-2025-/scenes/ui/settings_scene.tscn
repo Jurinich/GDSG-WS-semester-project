@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://jnb7g07ibmtd"]
 
-[ext_resource type="Script" uid="uid://kocd13u0ou15" path="res://scripts/settings_scene.gd" id="1_kqt80"]
+[ext_resource type="Script" uid="uid://kocd13u0ou15" path="res://scripts/ui/settings_scene.gd" id="1_kqt80"]
 [ext_resource type="Texture2D" uid="uid://oc3myowet37o" path="res://assets/sprites/Backgrounds/BG Purple.png" id="2_5jacn"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="3_83w5s"]
-[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/buttonsound_extension.gd" id="4_tori7"]
+[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/ui/buttonsound_extension.gd" id="4_tori7"]
 
 [node name="SettingsScene" type="Control" unique_id=596093716]
 layout_mode = 3
