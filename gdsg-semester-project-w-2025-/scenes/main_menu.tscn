@@ -87,12 +87,14 @@ offset_left = 358.5
 offset_top = 183.754
 offset_right = -358.5
 offset_bottom = -215.99304
+horizontal = false
 menu_radius = 80.0
 rotation_speed = 12.0
 fade_modifier = 0.0
 scale_modifier = 0.473
 
 [node name="StartButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=2049458779]
+modulate = Color(0.74509805, 0.74509805, 0.74509805, 1)
 z_index = 1
 layout_mode = 0
 offset_left = -178.0
@@ -101,37 +103,23 @@ offset_right = 178.0
 offset_bottom = 39.500008
 pivot_offset = Vector2(178, 39.500008)
 size_flags_vertical = 3
+focus_mode = 0
 theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
 text = "Start Game"
 script = ExtResource("7_5dd4i")
 
-[node name="GamemodeButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=1624673556]
-modulate = Color(0.5, 0.5, 0.5, 0.5)
-layout_mode = 0
-offset_left = -179.0
-offset_top = 40.499947
-offset_right = 179.0
-offset_bottom = 119.50005
-scale = Vector2(0.7635, 0.7635)
-pivot_offset = Vector2(179, 39.5)
-size_flags_vertical = 3
-mouse_filter = 2
-theme = ExtResource("6_oa1go")
-theme_override_font_sizes/font_size = 48
-text = "Gamemodes"
-script = ExtResource("7_5dd4i")
-
 [node name="SettingsButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=2017300482]
-modulate = Color(0, 0, 0, 0)
+modulate = Color(0.18627451, 0.18627451, 0.18627451, 1)
 layout_mode = 0
 offset_left = -134.0
-offset_top = -39.500008
+offset_top = 29.782024
 offset_right = 134.0
-offset_bottom = 39.500008
-scale = Vector2(0.527, 0.527)
+offset_bottom = 108.78204
+scale = Vector2(0.64525, 0.64525)
 pivot_offset = Vector2(134, 39.500008)
 size_flags_vertical = 3
+focus_mode = 0
 mouse_filter = 2
 theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
@@ -148,6 +136,7 @@ offset_bottom = 39.5
 scale = Vector2(0.527, 0.527)
 pivot_offset = Vector2(120, 39.5)
 size_flags_vertical = 3
+focus_mode = 0
 mouse_filter = 2
 theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
@@ -155,15 +144,16 @@ text = "Credits"
 script = ExtResource("7_5dd4i")
 
 [node name="QuitButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=75757821]
-modulate = Color(0.5, 0.5, 0.5, 0.5)
+modulate = Color(0.18627451, 0.18627451, 0.18627451, 1)
 layout_mode = 0
 offset_left = -73.0
-offset_top = -119.5
+offset_top = -108.782036
 offset_right = 73.0
-offset_bottom = -40.5
-scale = Vector2(0.7635, 0.7635)
+offset_bottom = -29.782036
+scale = Vector2(0.64525, 0.64525)
 pivot_offset = Vector2(73, 39.5)
 size_flags_vertical = 3
+focus_mode = 0
 mouse_filter = 2
 theme = ExtResource("6_oa1go")
 theme_override_font_sizes/font_size = 48
@@ -279,9 +269,3 @@ grow_vertical = 0
 texture = ExtResource("11_lgwnu")
 expand_mode = 2
 stretch_mode = 4
-
-[connection signal="pressed" from="ButtonBox/LoopingMenu/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="ButtonBox/LoopingMenu/GamemodeButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="ButtonBox/LoopingMenu/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="ButtonBox/LoopingMenu/CreditsButton" to="." method="_on_credits_button_pressed"]
-[connection signal="pressed" from="ButtonBox/LoopingMenu/QuitButton" to="." method="_on_quit_button_pressed"]

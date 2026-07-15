@@ -6,6 +6,7 @@ extends Control
 
 
 func _ready():
+	looping_menu.grab_focus();
 	looping_menu.button_pressed.connect(_on_looping_menu_button_pressed)
 	if (GameManager.left_player_score <= 0 && GameManager.right_player_score <= 0):
 		info_label.text = ""

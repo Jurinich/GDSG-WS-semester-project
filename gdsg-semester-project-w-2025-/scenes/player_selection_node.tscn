@@ -80,6 +80,7 @@ alignment = 1
 [node name="SelectionLeft" type="TextureButton" parent="MarginContainer/HBoxContainer" unique_id=421449677]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 texture_normal = ExtResource("5_ph6ke")
 texture_pressed = ExtResource("5_ph6ke")
 texture_hover = ExtResource("5_ph6ke")
@@ -92,6 +93,7 @@ script = ExtResource("7_0juo8")
 [node name="SelectionRight" type="TextureButton" parent="MarginContainer/HBoxContainer" unique_id=1375249828]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 texture_normal = ExtResource("5_ph6ke")
 texture_pressed = ExtResource("5_ph6ke")
 texture_hover = ExtResource("5_ph6ke")

@@ -1,6 +1,7 @@
 @tool
 extends Control
 
+@export var horizontal: bool = false
 @export var menu_radius: float = 300.0  # affects 3d effect and how far up/down the menu goes
 @export var rotation_speed: float = 10  # how fast the menu should spin
 
@@ -16,11 +17,13 @@ var alignment_position: float
 var visual_selected_menu: float = selected_menu # used to smooth the animation
 var target_selected_menu: float = selected_menu # used to smooth the animation
 
-enum Direction {UP, DOWN}
+var focused: bool = false
 
 func _ready() -> void:
 	_populate_button_array()
 	alignment_position = size.x / 2
+	focus_entered.connect(_on_focused_changed.bind(true))
+	focus_exited.connect(_on_focused_changed.bind(false))
 	for button in buttons:
 		button.pressed.connect(_on_button_pressed.bind(button))
 
@@ -43,7 +46,7 @@ func _process(delta: float) -> void:
 		var offset = fposmod(i - visual_selected_menu + count / 2.0, count) - count / 2.0
 		
 		var angle = clamp(offset / max_index_range, -1.0, 1.0) * PI
-		var y = sin(angle) * menu_radius
+		var position_offset = sin(angle) * menu_radius
 		var depth = cos(angle)
 
 		# depth gives (-1.0 to 1.0), need (0 to 1)
@@ -55,15 +58,22 @@ func _process(delta: float) -> void:
 		var color_level = fade_modifier + (1 - fade_modifier) * depth_level
 		var scale_level = depth_level
 
-		var target_position = Vector2(center.x, center.y + y) - button.size / 2.0
+		var target_position = Vector2(center.x, center.y) - button.size / 2.0
+		if horizontal:
+			target_position.x += position_offset
+		else:
+			target_position.y += position_offset
+		
 		button.position = lerp(button.position, target_position, interpolation)
 
 		var target_scale = lerp(1.0 - scale_modifier, 1.0, scale_level)
 		button.scale = Vector2.ONE * target_scale
 
-		button.modulate = Color.WHITE * color_level
+		button.modulate = (Color.WHITE if focused else Color.GRAY) * color_level
+		if button.modulate.a > 0.1:
+			button.modulate.a = 1.0
 
-		button.z_index = int(depth_level)
+		button.z_index = round(depth_level)
 		
 	
 # Fill container with children (can also do buttons = get_children() but I wanted static typing)
@@ -71,19 +81,31 @@ func _populate_button_array() -> void:
 	for child in get_children():
 		if child is Button:
 			buttons.append(child)
-	
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("downP1") or event.is_action_pressed("downP2"):
+func _gui_input(event: InputEvent) -> void:
+	if _increase_event(event):
 		target_selected_menu += 1.0
 		selected_menu = posmod(roundi(target_selected_menu), buttons.size())
 		return
-	if event.is_action_pressed("upP1") or event.is_action_pressed("upP2"):
+	if _decrease_event(event):
 		target_selected_menu -= 1.0
 		selected_menu = posmod(roundi(target_selected_menu), buttons.size())
 		return
 	if event.is_action_pressed("Start"):
 		buttons[selected_menu].pressed.emit()
 
+func _increase_event(event: InputEvent) -> bool:
+	#if horizontal:
+		#return event.is_action_pressed("rightP1") || event.is_action_pressed("rightP2")
+	return event.is_action_pressed("downP1") || event.is_action_pressed("downP2")
+
+func _decrease_event(event: InputEvent) -> bool:
+	#if horizontal:
+		#return event.is_action_pressed("leftP1") || event.is_action_pressed("leftP2")
+	return event.is_action_pressed("upP1") || event.is_action_pressed("upP2")
+
 func _on_button_pressed(button: Button):
 	button_pressed.emit(button)
+
+func _on_focused_changed(focus: bool) -> void:
+	focused = focus;
