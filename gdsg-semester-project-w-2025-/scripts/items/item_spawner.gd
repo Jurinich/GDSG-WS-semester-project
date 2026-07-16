@@ -8,6 +8,10 @@ var item_drops : Array[ItemDrop] = []
 
 @export var item_scene : PackedScene 
 
+@export var min_items_to_spawn: int = 3
+@export var max_items_to_spawn: int = 5
+@export var delay_between_spawns: float = 0.2
+
 @export_range(-360.0, 360.0) var shoot_angle_degrees: float = 90.0 
 @export var min_shoot_speed: float = 250.0
 @export var max_shoot_speed: float = 600.0
@@ -26,9 +30,8 @@ func _process(delta: float) -> void:
 	if elapsed_time >= time_for_new_item:
 		var item = chooseItem()
 		if item != null: 
-			spawnItem(item)
+			spawn_burst()
 		elapsed_time = 0.0
-
 
 func load_drops_from_json():
 	var file = FileAccess.open(drop_data_file, FileAccess.READ)
@@ -51,7 +54,16 @@ func load_drops_from_json():
 	else:
 		push_error("JSON Parse Error!")
 
-
+func spawn_burst():
+	var amount = randi_range(min_items_to_spawn, max_items_to_spawn)
+	
+	for i in range(amount):
+		var item = chooseItem()
+		if item != null: 
+			spawnItem(item)
+			
+		await get_tree().create_timer(delay_between_spawns).timeout
+		
 func chooseItem() -> ItemData:
 	if item_drops.is_empty():
 		return null
@@ -70,7 +82,6 @@ func chooseItem() -> ItemData:
 			
 	return item_drops[0].item
 	
-	
 func spawnItem(item_data : ItemData):
 	powerup_spawn.play()
 	var item_node : CollectibleItem = item_scene.instantiate()
@@ -78,7 +89,6 @@ func spawnItem(item_data : ItemData):
 	item_node.top_level = true 
 	add_child(item_node) 
 	item_node.global_position = self.global_position
-
 
 	var random_angle = shoot_angle_degrees + randf_range(-spread_degrees, spread_degrees)
 	var direction = Vector2.RIGHT.rotated(deg_to_rad(random_angle))
