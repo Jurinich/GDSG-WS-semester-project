@@ -13,6 +13,9 @@ class_name CollectibleItem
 
 var item_data : ItemData
 
+var velocity: Vector2 = Vector2.ZERO
+@export var friction: float = 200.0 
+
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
@@ -21,15 +24,25 @@ func setup(_item_data : ItemData):
 	sprite.texture = item_data.sprite
 	$CollisionShape2D.scale = Vector2.ONE * tex_scale
 
-func _process(_delta: float) -> void:
+func shoot(initial_velocity: Vector2):
+	velocity = initial_velocity
+
+func _process(delta: float) -> void:
+	
+	if velocity.length() > 0:
+		position += velocity * delta
+		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+	
 	var value = sin(animation_speed * Time.get_ticks_msec())
 	sprite.position.y = value * animation_bounce_range
 	shadow.scale = Vector2.ONE * (1.0 + (value * animation_shadow_scale))
+
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Ball:
 		var player = body.last_hit_by
 		var inventory: PlayerInventory = null
+		
 		for child in player.get_children():
 			if child is PlayerInventory:
 				inventory = child

@@ -15,24 +15,12 @@
 [ext_resource type="Script" uid="uid://c0uvs62o1qka0" path="res://scripts/kitten_paw_spawner.gd" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cwwdjsm2bpjkx" path="res://scenes/kitten_paw.tscn" id="12_dinhu"]
 [ext_resource type="Script" uid="uid://b2oe7fsd38rx1" path="res://scripts/items/item_spawner.gd" id="13_ca42v"]
-[ext_resource type="Script" uid="uid://d2jgn4osg4v7x" path="res://scripts/items/item_drop.gd" id="15_37s47"]
-[ext_resource type="Resource" uid="uid://dmryy0puarxaq" path="res://resources/PawFrenzy.tres" id="15_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://bdme7ngk7uj84" path="res://scenes/CollectibleItem.tscn" id="16_264po"]
-[ext_resource type="Resource" uid="uid://b11nxukklyrfj" path="res://resources/BiggerBalls.tres" id="17_5newe"]
-[ext_resource type="Resource" uid="uid://be6ilvwrhaya8" path="res://resources/SmallerBalls.tres" id="18_bt5mj"]
 [ext_resource type="Script" uid="uid://cgj3m6cj7v0vx" path="res://scripts/items/paw_frenzy.gd" id="18_ssvqc"]
 [ext_resource type="Script" uid="uid://djw7e30kw63ep" path="res://scripts/items/bigger_balls.gd" id="19_264po"]
-[ext_resource type="Resource" uid="uid://dybmbgbo7ljub" path="res://resources/SplitBall2.tres" id="19_qnb83"]
 [ext_resource type="Script" uid="uid://bvhryv3l2ogbq" path="res://scripts/items/smaller_balls.gd" id="20_1kice"]
-[ext_resource type="Resource" uid="uid://t2saihw67sa5" path="res://resources/SplitBall3.tres" id="20_sww3w"]
-[ext_resource type="Resource" uid="uid://bhduho0tmw16w" path="res://resources/SplitBall4.tres" id="21_suyxu"]
-[ext_resource type="Resource" uid="uid://ckrkxy5ex4x7" path="res://resources/SplitBall10.tres" id="22_qnb83"]
-[ext_resource type="Resource" uid="uid://5m3rckxpy8ua" path="res://resources/SplitBall5.tres" id="22_sgl2t"]
 [ext_resource type="Script" uid="uid://bhm6sk7siveqy" path="res://scripts/items/split_ball.gd" id="23_bt5mj"]
-[ext_resource type="Resource" uid="uid://cdxv14p5rtxsw" path="res://resources/SplitAll2.tres" id="23_pr1ej"]
-[ext_resource type="Resource" uid="uid://cgg4yxtv50a14" path="res://resources/SplitAll3.tres" id="24_05nbr"]
 [ext_resource type="PackedScene" uid="uid://dbl6pvi0yn2rt" path="res://scenes/laser_pointer.tscn" id="24_m4url"]
-[ext_resource type="Resource" uid="uid://sw61sqbvio2a" path="res://resources/LaserPointer.tres" id="25_0sl42"]
 [ext_resource type="Script" path="res://scripts/items/laser_pointer_item.gd" id="27_05nbr"]
 [ext_resource type="AudioStream" uid="uid://d0xwonisrdwb5" path="res://assets/sounds/Goal Sound.wav" id="28_sww3w"]
 [ext_resource type="Script" uid="uid://d3gneryhnu1kv" path="res://scripts/audioextension.gd" id="29_7025r"]
@@ -63,72 +51,6 @@ size = Vector2(578, 228)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvuet"]
 size = Vector2(580, 246)
-
-[sub_resource type="Resource" id="Resource_e1j6l"]
-script = ExtResource("15_37s47")
-item = ExtResource("15_ssvqc")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_pl11u"]
-script = ExtResource("15_37s47")
-item = ExtResource("17_5newe")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_bhx41"]
-script = ExtResource("15_37s47")
-item = ExtResource("18_bt5mj")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_qouja"]
-script = ExtResource("15_37s47")
-item = ExtResource("19_qnb83")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_wljb1"]
-script = ExtResource("15_37s47")
-item = ExtResource("20_sww3w")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_v2yb1"]
-script = ExtResource("15_37s47")
-item = ExtResource("21_suyxu")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_js0lu"]
-script = ExtResource("15_37s47")
-item = ExtResource("22_sgl2t")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_sww3w"]
-script = ExtResource("15_37s47")
-item = ExtResource("22_qnb83")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_0sl42"]
-script = ExtResource("15_37s47")
-item = ExtResource("23_pr1ej")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_oaba0"]
-script = ExtResource("15_37s47")
-item = ExtResource("24_05nbr")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_458eo"]
-script = ExtResource("15_37s47")
-item = ExtResource("25_0sl42")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
 
 [node name="Game" type="Node2D" unique_id=1886297339]
 position = Vector2(0, -2)
@@ -304,9 +226,8 @@ paw_scene = ExtResource("12_dinhu")
 triggers = [NodePath("../PawTriggers/Area2D"), NodePath("../PawTriggers/Area2D2")]
 
 [node name="ItemSpawner" type="Node2D" parent="." unique_id=1014848990]
-position = Vector2(960, 618)
+position = Vector2(960, 144)
 script = ExtResource("13_ca42v")
-item_drops = Array[ExtResource("15_37s47")]([SubResource("Resource_e1j6l"), SubResource("Resource_pl11u"), SubResource("Resource_bhx41"), SubResource("Resource_qouja"), SubResource("Resource_wljb1"), SubResource("Resource_v2yb1"), SubResource("Resource_js0lu"), SubResource("Resource_sww3w"), SubResource("Resource_0sl42"), SubResource("Resource_oaba0"), SubResource("Resource_458eo")])
 item_scene = ExtResource("16_264po")
 
 [node name="LaserPointer" parent="." unique_id=274916930 instance=ExtResource("24_m4url")]
