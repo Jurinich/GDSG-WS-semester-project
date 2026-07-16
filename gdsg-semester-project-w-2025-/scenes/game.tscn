@@ -80,6 +80,7 @@ use_action = "useItemP2"
 [node name="TopWall" type="StaticBody2D" parent="Top_Bottom wall" unique_id=755887784]
 position = Vector2(960, 51)
 collision_layer = 8
+collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Bottom wall/TopWall" unique_id=2021686217]
 position = Vector2(0, 54)
@@ -89,6 +90,7 @@ shape = SubResource("RectangleShape2D_yqjtg")
 [node name="BotWall" type="StaticBody2D" parent="Top_Bottom wall" unique_id=1377988727]
 position = Vector2(960, 1080)
 collision_layer = 8
+collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Bottom wall/BotWall" unique_id=1409367302]
 position = Vector2(0, -52)

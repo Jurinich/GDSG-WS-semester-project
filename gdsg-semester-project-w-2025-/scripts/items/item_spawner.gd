@@ -10,11 +10,11 @@ var item_drops : Array[ItemDrop] = []
 
 @export var min_items_to_spawn: int = 3
 @export var max_items_to_spawn: int = 5
-@export var delay_between_spawns: float = 0.2
+@export var delay_between_spawns: float = 0.5
 
 @export_range(-360.0, 360.0) var shoot_angle_degrees: float = 90.0 
-@export var min_shoot_speed: float = 250.0
-@export var max_shoot_speed: float = 600.0
+@export var min_shoot_speed: float = 600.0
+@export var max_shoot_speed: float = 1000.0
 @export var spread_degrees: float = 45.0
 
 @onready var powerup_spawn: AudioStreamPlayer = $"/root/Game/powerup spawn"

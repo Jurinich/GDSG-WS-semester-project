@@ -1,37 +1,46 @@
-extends Area2D
+extends CharacterBody2D
 class_name CollectibleItem
 
 @export var tex_scale: float = 1.0
 
-@onready var sprite : Sprite2D = $CollisionShape2D/Sprite2D
-@onready var shadow : Sprite2D = $CollisionShape2D/Shadow
+@onready var sprite : Sprite2D = $Sprite2D
+@onready var shadow : Sprite2D = $Shadow
 @onready var player_1: CharacterBody2D = $"../../Player1"
 
 @export var animation_speed : float = 0.003
 @export var animation_bounce_range : float = 5.0
 @export var animation_shadow_scale : float = 0.1
 
-var item_data : ItemData
+@onready var pickup_area: Area2D = $PickupArea
 
-var velocity: Vector2 = Vector2.ZERO
-@export var friction: float = 200.0 
+var item_data : ItemData
+@export var friction: float = 200.0
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
+	pickup_area.body_entered.connect(_on_body_entered)
 
 func setup(_item_data : ItemData):
 	item_data = _item_data
 	sprite.texture = item_data.sprite
 	$CollisionShape2D.scale = Vector2.ONE * tex_scale
+	$PickupArea.scale = Vector2.ONE * tex_scale
 
 func shoot(initial_velocity: Vector2):
 	velocity = initial_velocity
 
-func _process(delta: float) -> void:
-	
+func _physics_process(delta: float) -> void:
 	if velocity.length() > 0:
-		position += velocity * delta
-		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+		var collision = move_and_collide(velocity * delta)
+		
+		if collision:
+			var collider = collision.get_collider()
+			if collider is CollectibleItem:
+				collider.velocity -= collision.get_normal() * (velocity.length() * 0.5)
+			
+			velocity = velocity.bounce(collision.get_normal()) * 0.9
+		else:
+			velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+	
 	
 	var value = sin(animation_speed * Time.get_ticks_msec())
 	sprite.position.y = value * animation_bounce_range

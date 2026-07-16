@@ -3,19 +3,30 @@
 [ext_resource type="Script" uid="uid://b3uuowwhpbj1f" path="res://scripts/items/collectible_item.gd" id="1_8id85"]
 [ext_resource type="Texture2D" uid="uid://bbrbfitp00t4k" path="res://assets/sprites/Items/shadow.png" id="2_s1fmu"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bx46p"]
-radius = 50.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_uaxfv"]
+radius = 76.05919
 
-[node name="Item" type="Area2D" unique_id=2033469594]
+[sub_resource type="CircleShape2D" id="CircleShape2D_s1fmu"]
+radius = 62.008064
+
+[node name="Item" type="CharacterBody2D" unique_id=2045909352]
+collision_layer = 16
+collision_mask = 24
 script = ExtResource("1_8id85")
 tex_scale = 0.75
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1165437942]
-shape = SubResource("CircleShape2D_bx46p")
-
-[node name="Shadow" type="Sprite2D" parent="CollisionShape2D" unique_id=598651249]
+[node name="Shadow" type="Sprite2D" parent="." unique_id=598651249]
 self_modulate = Color(0, 0, 0, 0.38039216)
 position = Vector2(10, 10)
 texture = ExtResource("2_s1fmu")
 
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=145808513]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=145808513]
+
+[node name="PickupArea" type="Area2D" parent="." unique_id=1582210993]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea" unique_id=1966674776]
+shape = SubResource("CircleShape2D_uaxfv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2072274311]
+shape = SubResource("CircleShape2D_s1fmu")
