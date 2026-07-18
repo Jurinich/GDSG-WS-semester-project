@@ -3,14 +3,20 @@ extends Node2D
 @onready var time_label: Label = $ForegroundUILayer/TimeLabel
 @onready var pause_menu: Control = $ForegroundUILayer/PauseMenu
 @export var game_duration: int = 180
-
+@export var layouts: Array[PackedScene]
+var current_layout: Node2D
 var cur_game_time: int
 
 func _ready():
 	cur_game_time = game_duration
 	update_time_label()
 	$GameTimer.start()
-
+	if not layouts.is_empty():
+		var random_scene: PackedScene = layouts.pick_random()
+		current_layout = random_scene.instantiate()
+		add_child(current_layout)
+	else:
+		push_warning("No layouts assigned in the inspector!")
 
 func timer_tick():
 	if (cur_game_time <= 0):

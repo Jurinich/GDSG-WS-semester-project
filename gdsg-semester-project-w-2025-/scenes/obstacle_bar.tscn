@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://du27v85gwfpb1"]
+
+[ext_resource type="Texture2D" uid="uid://cwi3ihyl1lb5e" path="res://assets/sprites/Obstacles/obstacle_bar.png" id="1_jb8xk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_spbkq"]
+radius = 10.970463
+height = 62.44725
+
+[node name="ObstacleBar" type="StaticBody2D" unique_id=132568581]
+collision_layer = 8
+collision_mask = 17
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1860884457]
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("1_jb8xk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=440535958]
+position = Vector2(0.99999994, 6.9999995)
+scale = Vector2(3.555, 3.555)
+shape = SubResource("CapsuleShape2D_spbkq")

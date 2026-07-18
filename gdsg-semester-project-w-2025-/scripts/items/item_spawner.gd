@@ -1,20 +1,20 @@
 extends Node2D
 class_name ItemSpawner
 
-@export var time_for_new_item : float = 8.0
 var elapsed_time : float = 0.0
 
 var item_drops : Array[ItemDrop] = [] 
 
 @export var item_scene : PackedScene 
 
-@export var min_items_to_spawn: int = 3
-@export var max_items_to_spawn: int = 5
+@export var time_for_new_item : float = 12.0
+@export var min_items_to_spawn: int = 2
+@export var max_items_to_spawn: int = 4
 @export var delay_between_spawns: float = 0.5
 
 @export_range(-360.0, 360.0) var shoot_angle_degrees: float = 90.0 
-@export var min_shoot_speed: float = 600.0
-@export var max_shoot_speed: float = 1000.0
+@export var min_shoot_speed: float = 400.0
+@export var max_shoot_speed: float = 700.0
 @export var spread_degrees: float = 45.0
 
 @onready var powerup_spawn: AudioStreamPlayer = $"/root/Game/powerup spawn"

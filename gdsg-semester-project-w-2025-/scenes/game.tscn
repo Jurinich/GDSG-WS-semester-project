@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dmngxbinp5ri7" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://dj7n4h024303j" path="res://assets/sprites/Backgrounds/playfield.png" id="2_gee14"]
 [ext_resource type="Script" uid="uid://blfg1dymlh7ab" path="res://scripts/items/inventory.gd" id="2_rysoc"]
+[ext_resource type="PackedScene" uid="uid://dqfvsq74n0rcp" path="res://scenes/layout_1.tscn" id="2_twgab"]
 [ext_resource type="PackedScene" uid="uid://bhb0kygy35pj3" path="res://scenes/ball.tscn" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://dcjct6o0k4moq" path="res://scripts/ball_spawner.gd" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://bpva8mtljkuns" path="res://scripts/GoalScript.gd" id="4_lbhrr"]
@@ -55,6 +56,7 @@ size = Vector2(580, 246)
 [node name="Game" type="Node2D" unique_id=1886297339]
 position = Vector2(0, -2)
 script = ExtResource("1_bhx41")
+layouts = Array[PackedScene]([ExtResource("2_twgab")])
 
 [node name="Player1" parent="." unique_id=477805542 instance=ExtResource("1_uwrxv")]
 position = Vector2(135, 609)
