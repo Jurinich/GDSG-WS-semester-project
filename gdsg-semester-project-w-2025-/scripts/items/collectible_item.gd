@@ -14,7 +14,7 @@ class_name CollectibleItem
 @onready var pickup_area: Area2D = $PickupArea
 
 var item_data : ItemData
-@export var friction: float = 200.0
+@export var friction: float = 235.0
 
 func _ready() -> void:
 	pickup_area.body_entered.connect(_on_body_entered)

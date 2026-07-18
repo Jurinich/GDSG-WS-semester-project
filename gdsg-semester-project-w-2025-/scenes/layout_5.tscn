@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://dqfvsq74n0rcp"]
+[gd_scene format=3 uid="uid://dva85iaccpp8c"]
 
 [ext_resource type="Texture2D" uid="uid://bfiqq6jpq1557" path="res://assets/sprites/Backgrounds/BG Dark.png" id="1_xjkio"]
 [ext_resource type="Texture2D" uid="uid://dj7n4h024303j" path="res://assets/sprites/Backgrounds/playfield.png" id="2_dco4i"]
-[ext_resource type="PackedScene" uid="uid://du27v85gwfpb1" path="res://scenes/obstacle_bar.tscn" id="3_xjkio"]
+[ext_resource type="PackedScene" uid="uid://cyxykq470krfh" path="res://scenes/obstacle_circle.tscn" id="4_j5ncy"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_p7rxp"]
 
@@ -23,22 +23,18 @@ scale = Vector2(1860, 957)
 mesh = SubResource("QuadMesh_p7rxp")
 texture = ExtResource("2_dco4i")
 
-[node name="ObstacleBar" parent="." unique_id=132568581 instance=ExtResource("3_xjkio")]
-position = Vector2(1600, 950)
-rotation = -2.3561945
-scale = Vector2(0.7, 0.7)
+[node name="ObstacleCircle" parent="." unique_id=577962476 instance=ExtResource("4_j5ncy")]
+position = Vector2(960, 805)
+rotation = -5.1225414
 
-[node name="ObstacleBar2" parent="." unique_id=2111107628 instance=ExtResource("3_xjkio")]
-position = Vector2(320, 950)
-rotation = 2.3561945
-scale = Vector2(0.7, 0.7)
+[node name="ObstacleCircle2" parent="." unique_id=793769199 instance=ExtResource("4_j5ncy")]
+position = Vector2(960, 325)
+rotation = 5.8451076
 
-[node name="ObstacleBar3" parent="." unique_id=925342398 instance=ExtResource("3_xjkio")]
-position = Vector2(320, 180)
-rotation = 0.7853982
-scale = Vector2(0.7, 0.7)
+[node name="ObstacleCircle3" parent="." unique_id=436159784 instance=ExtResource("4_j5ncy")]
+position = Vector2(560, 565)
+rotation = -0.41887903
 
-[node name="ObstacleBar4" parent="." unique_id=1660147084 instance=ExtResource("3_xjkio")]
-position = Vector2(1600, 180)
-rotation = -0.7853982
-scale = Vector2(0.7, 0.7)
+[node name="ObstacleCircle4" parent="." unique_id=1266107752 instance=ExtResource("4_j5ncy")]
+position = Vector2(1360, 565)
+rotation = 1.5358897
