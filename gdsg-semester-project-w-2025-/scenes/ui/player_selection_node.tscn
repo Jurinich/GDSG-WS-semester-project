@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://de4tr7w5a07aw" path="res://scripts/ui/player_selection_node.gd" id="1_h4mwn"]
 [ext_resource type="Texture2D" uid="uid://emd4k5xlqjpj" path="res://assets/paddle1.png" id="1_xkd2o"]
-[ext_resource type="Texture2D" uid="uid://cnp5k0xak4u2l" path="res://assets/sprites/Paddles/1_tuna.png" id="2_6uo20"]
-[ext_resource type="Texture2D" uid="uid://bkq5o2fbf7tci" path="res://assets/sprites/Paddles/0_salmon.png" id="3_gylrv"]
+[ext_resource type="Script" uid="uid://bl35ksw8rjatp" path="res://scripts/paddle.gd" id="2_uqnh8"]
+[ext_resource type="Resource" uid="uid://t4ec086vi30l" path="res://resources/paddles/0_salmon.tres" id="3_d6s4f"]
 [ext_resource type="Texture2D" uid="uid://ckntan25rrejh" path="res://assets/sprites/Popups/popup_catselection.png" id="3_k03x2"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="3_quxui"]
-[ext_resource type="Texture2D" uid="uid://b3lc8q2ny8vri" path="res://assets/sprites/Paddles/2_skeleton.png" id="4_gylrv"]
+[ext_resource type="Resource" uid="uid://2fala6tiko0h" path="res://resources/paddles/1_tuna.tres" id="4_c3mdi"]
+[ext_resource type="Resource" uid="uid://m2jywddari2d" path="res://resources/paddles/2_skeleton.tres" id="5_gmqxd"]
 [ext_resource type="Texture2D" uid="uid://bb80gnpm8par6" path="res://assets/sprites/Buttons/button_forward.png" id="5_ph6ke"]
 [ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/ui/buttonsound_extension.gd" id="7_0juo8"]
 
@@ -19,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h4mwn")
 player_name = "Player"
-possible_textures = Array[Texture2D]([ExtResource("3_gylrv"), ExtResource("2_6uo20"), ExtResource("4_gylrv")])
+paddles = Array[ExtResource("2_uqnh8")]([ExtResource("3_d6s4f"), ExtResource("4_c3mdi"), ExtResource("5_gmqxd")])
 
 [node name="Background" type="TextureRect" parent="." unique_id=606959779]
 layout_mode = 1

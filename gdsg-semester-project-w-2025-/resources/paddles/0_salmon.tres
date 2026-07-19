@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Paddle" format=3 uid="uid://t4ec086vi30l"]
+
+[ext_resource type="Script" uid="uid://bl35ksw8rjatp" path="res://scripts/paddle.gd" id="1_ycu32"]
+[ext_resource type="Texture2D" uid="uid://bkq5o2fbf7tci" path="res://assets/sprites/Paddles/0_salmon.png" id="2_ojx0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4up5"]
+size = Vector2(60, 220)
+
+[resource]
+script = ExtResource("1_ycu32")
+name = &"Salmon"
+sprite = ExtResource("2_ojx0o")
+shape = SubResource("RectangleShape2D_g4up5")
+metadata/_custom_type_script = "uid://bl35ksw8rjatp"

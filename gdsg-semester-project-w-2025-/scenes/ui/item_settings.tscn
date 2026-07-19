@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dqcqmeurfjtad"]
 
-[ext_resource type="PackedScene" uid="uid://d1fsv1oehdmet" path="res://scenes/looping_selection.tscn" id="1_gd0nh"]
-[ext_resource type="Script" uid="uid://bwsdwnw2rqq6h" path="res://scripts/looping_selection_item.gd" id="2_aqesv"]
+[ext_resource type="PackedScene" uid="uid://d1fsv1oehdmet" path="res://scenes/ui/looping_selection.tscn" id="1_gd0nh"]
+[ext_resource type="Script" uid="uid://bwsdwnw2rqq6h" path="res://scripts/ui/looping_selection_item.gd" id="2_aqesv"]
 
 [sub_resource type="Resource" id="Resource_84cth"]
 script = ExtResource("2_aqesv")

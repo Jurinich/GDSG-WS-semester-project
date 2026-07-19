@@ -66,7 +66,7 @@ func _physics_process(delta: float) -> void:
 			var normal := collision.get_normal()
 			velocity = velocity.bounce(normal)
 			if collider is Player:
-				AudioManager.playSound(collider.paddle_sound);
+				AudioManager.playSound(collider.paddle.hit_sound);
 				last_hit_by = collider
 				if collider.has_method("play_hit_animation"):
 					collider.play_hit_animation()

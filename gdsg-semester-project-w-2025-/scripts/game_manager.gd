@@ -7,8 +7,8 @@ var ball_limit: int = 20
 var left_player_score: int = 0
 var right_player_score: int = 0
 
-var left_player_paddle: int = 0
-var right_player_paddle: int = 0
+var left_player_paddle: Paddle
+var right_player_paddle: Paddle
 
 var arcade_mode = false
 var arcade_p1_id = -1
@@ -41,7 +41,7 @@ func add_point(player : String) -> bool:
 			right_player_score += 1
 	print("Score:", left_player_score, " - ", right_player_score)
 	score_changed.emit()
-
+	
 	if (settings.gamemode == Settings.GameMode.SCORE):
 		if (left_player_score >= settings.score || right_player_score >= settings.score):
 			get_tree().call_deferred("change_scene_to_file", "res://scenes/main_menu.tscn")

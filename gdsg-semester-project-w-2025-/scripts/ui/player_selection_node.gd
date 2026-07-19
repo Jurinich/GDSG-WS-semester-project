@@ -5,61 +5,65 @@ extends Control
 @onready var selection: TextureRect = $"Selection"
 
 @export var player_name: String
-@export var possible_textures: Array[Texture2D]
+@export var paddles: Array[Paddle]
 @export var start_index: int = 0
 @export var isP1: bool
 
-var cur_index: int
-var skin_count: int = GameManager.Skins.size();
+var index: int
 
 func _ready():
 	label.text = player_name
-	cur_index = start_index
-
+	index = start_index
 	update_texture()
-
 
 func _on_right_button_pressed():
-	cur_index = posmod(cur_index + 1, skin_count);
+	index = posmod(index + 1, paddles.size());
 	update_texture()
-
 
 func _on_left_button_pressed():
-	cur_index = posmod(cur_index - 1, skin_count);
+	index = posmod(index - 1, paddles.size());
 	update_texture()
 
+func get_selection() -> Paddle:
+	return paddles[index]
+
 func update_texture():
-	selection.texture = possible_textures[cur_index]
+	selection.texture = paddles[index].sprite
 	if isP1:
 		selection.flip_h = true;
 
 func _unhandled_input(event):
 	if GameManager.arcade_mode:
-		_check_input_arcade(event)
+		if _check_input_arcade(event):
+			AudioManager.playSound(&"menu_select");
+			get_viewport().set_input_as_handled()
 	else:
-		_check_input_desktop(event)
+		if _check_input_desktop(event):
+			AudioManager.playSound(&"menu_select");
+			get_viewport().set_input_as_handled()
 
-func _check_input_arcade(event: InputEvent) -> void:
+func _check_input_arcade(event: InputEvent) -> bool:
 	if event.device not in [GameManager.arcade_p1_id, GameManager.arcade_p2_id]:
-		return
-
+		return false
+	
 	if isP1:
-		if event.device == GameManager.arcade_p2_id: return
+		if event.device == GameManager.arcade_p2_id: return false
 	else:
-		if event.device == GameManager.arcade_p1_id: return
-
+		if event.device == GameManager.arcade_p1_id: return false
+	
 	if event.is_action_pressed("ui_left"):
 		_on_left_button_pressed()
-		get_viewport().set_input_as_handled()
+		return true
 	elif event.is_action_pressed("ui_right"):
 		_on_right_button_pressed()
-		get_viewport().set_input_as_handled()
-	
+		return true
+	return false
 
-func _check_input_desktop(event: InputEvent) -> void:
+func _check_input_desktop(event: InputEvent) -> bool:
 	if event.is_action_pressed("leftP1" if isP1 else "leftP2"):
 		_on_left_button_pressed()
-		get_viewport().set_input_as_handled()
+		return true
 	elif event.is_action_pressed("rightP1" if isP1 else "rightP2"):
 		_on_right_button_pressed()
-		get_viewport().set_input_as_handled()
+		return true
+	return false

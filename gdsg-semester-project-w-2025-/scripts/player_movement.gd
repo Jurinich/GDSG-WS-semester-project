@@ -2,35 +2,31 @@ class_name Player
 extends CharacterBody2D
 
 const SPEED := 1100
+
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var sprite: Sprite2D = $CollisionShape2D/Sprite2D
+
 @export var isP1: bool = false
-@export var paddles: Array[PackedScene]
 
 @export var HIT_ANIMATION_DURATION = 0.1
 @export var HIT_ANIMATION_SCALE = 0.1
 @export var HIT_ANIMATION_ROTATION = 0.1
 
+var paddle: Paddle
 var fixed_x: float
 var arcade_input: float
 var device_id_cur: int
-var paddle: CollisionShape2D
-var sprite: Sprite2D
 var sprite_scale: Vector2
-var paddle_sound: StringName;
 
 func _ready():
-	fixed_x = global_position.x
-
-	if (isP1):
-		paddle = paddles[GameManager.left_player_paddle].instantiate()
-		paddle_sound = GameManager.SKIN_TO_SOUND_DICT[GameManager.left_player_paddle];
-		device_id_cur = GameManager.arcade_p1_id
-		paddle.scale.x = -paddle.scale.x
+	if isP1:
+		collision_shape.scale.x = -collision_shape.scale.x
+		paddle = GameManager.left_player_paddle
 	else:
-		paddle = paddles[GameManager.right_player_paddle].instantiate()
-		paddle_sound = GameManager.SKIN_TO_SOUND_DICT[GameManager.right_player_paddle];
-		device_id_cur = GameManager.arcade_p2_id
-	add_child(paddle)
-	sprite = paddle.get_node("Sprite2D")
+		paddle = GameManager.right_player_paddle
+	sprite.texture = paddle.sprite
+	collision_shape.shape = paddle.shape
+	fixed_x = global_position.x
 	sprite_scale = sprite.scale
 
 func getYdir() -> float:
