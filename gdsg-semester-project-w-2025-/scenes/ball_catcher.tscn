@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b7r41vivhjnyg"]
+
+[ext_resource type="Script" uid="uid://dgfwjdirab11p" path="res://scripts/ball_catcher_asset.gd" id="1_ch6sr"]
+[ext_resource type="Texture2D" uid="uid://dolggwqa1p1kd" path="res://assets/sprites/ballcatcher.png" id="1_d8471"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ch6sr"]
+size = Vector2(27, 111)
+
+[node name="BallCatcher" type="Area2D" unique_id=1840135258]
+collision_layer = 32
+script = ExtResource("1_ch6sr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=729736197]
+texture = ExtResource("1_d8471")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=479992043]
+position = Vector2(-1.5, 1)
+shape = SubResource("RectangleShape2D_ch6sr")

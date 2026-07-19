@@ -27,12 +27,12 @@ texture = ExtResource("2_dco4i")
 [node name="ObstacleCircle" parent="." unique_id=577962476 instance=ExtResource("2_5hfok")]
 position = Vector2(660, 300)
 rotation = -0.7853982
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.65, 0.65)
 
 [node name="ObstacleCircle2" parent="." unique_id=1686231896 instance=ExtResource("2_5hfok")]
 position = Vector2(1260, 300)
 rotation = 0.7853982
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.65, 0.65)
 
 [node name="ObstacleBar" parent="." unique_id=132568581 instance=ExtResource("3_xjkio")]
 position = Vector2(1600, 950)
@@ -57,19 +57,19 @@ scale = Vector2(0.7, 0.7)
 [node name="ObstacleCircle3" parent="." unique_id=307794613 instance=ExtResource("2_5hfok")]
 position = Vector2(660, 826)
 rotation = -2.3561945
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.65, 0.65)
 
 [node name="ObstacleCircle4" parent="." unique_id=539226681 instance=ExtResource("2_5hfok")]
 position = Vector2(1260, 826)
 rotation = 2.3561945
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.65, 0.65)
 
 [node name="ObstacleCircle5" parent="." unique_id=721599877 instance=ExtResource("2_5hfok")]
 position = Vector2(800, 563)
 rotation = 1.5707964
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.65, 0.65)
 
 [node name="ObstacleCircle6" parent="." unique_id=991037502 instance=ExtResource("2_5hfok")]
 position = Vector2(1120, 563)
 rotation = -1.5707964
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.65, 0.65)

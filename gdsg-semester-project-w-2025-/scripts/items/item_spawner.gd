@@ -4,8 +4,8 @@ class_name ItemSpawner
 var elapsed_time : float = 0.0
 
 var item_drops : Array[ItemDrop] = [] 
-
 @export var item_scene : PackedScene 
+@export var paddle_item_scene: PackedScene 
 
 @export var time_for_new_item : float = 12.0
 @export var min_items_to_spawn: int = 2
@@ -82,9 +82,14 @@ func chooseItem() -> ItemData:
 			
 	return item_drops[0].item
 	
-func spawnItem(item_data : ItemData):
+func spawnItem(item_data: ItemData):
 	powerup_spawn.play()
-	var item_node : CollectibleItem = item_scene.instantiate()
+	
+	var item_node: Node2D
+	if item_data.is_paddle_powerup:
+		item_node = paddle_item_scene.instantiate() 
+	else:
+		item_node = item_scene.instantiate()
 	
 	item_node.top_level = true 
 	add_child(item_node) 

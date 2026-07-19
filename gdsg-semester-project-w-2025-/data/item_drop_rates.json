@@ -42,5 +42,9 @@
 	{
 		"item_path": "res://resources/SplitBall10.tres",
 		"weight": 5.0
+	},
+	{
+		"item_path": "res://resources/BallCatcher.tres",
+		"weight": 5.0
 	}
 ]
