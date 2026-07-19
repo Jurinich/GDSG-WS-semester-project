@@ -25,7 +25,7 @@ const SKIN_TO_SOUND_DICT: Dictionary[Skins, StringName] = {
 }
 
 func _ready() -> void:
-	settings.load_items()
+	settings.load()
 
 func reset():
 	left_player_score = 0

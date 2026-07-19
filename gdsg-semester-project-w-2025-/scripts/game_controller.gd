@@ -5,29 +5,28 @@ extends Node2D
 @onready var time_colon_label: Label = $BackgroundUILayer/TimeContainer/TimeColon
 @onready var time_seconds_label: Label = $BackgroundUILayer/TimeContainer/TimeSeconds
 @onready var pause_menu: Control = $ForegroundUILayer/PauseMenu
+@onready var timer: Timer = $GameTimer
 @export var game_duration: int = 180
 @export_range(1, 30, 1) var alarm_threshold: int = 15
 
 var cur_game_time: int
 
 func _ready():
-	cur_game_time = game_duration
+	if GameManager.settings.gamemode == Settings.GameMode.TIME:
+		cur_game_time = int(GameManager.settings.time)
+		timer.start()
 	update_time_label()
 	alarm_ui.set_alarm_state(cur_game_time, alarm_threshold)
-	if GameManager.settings.gamemode == Settings.GameMode.TIME:
-		$GameTimer.start()
-
 
 func timer_tick():
 	if (cur_game_time <= 0):
-		$GameTimer.stop()
+		timer.stop()
 		get_tree().call_deferred("change_scene_to_file", "res://scenes/ui/main_menu.tscn")
 		return
-
+	
 	cur_game_time -= 1
 	update_time_label()
 	alarm_ui.set_alarm_state(cur_game_time, alarm_threshold)
-
 
 func update_time_label():
 	var safe_time = cur_game_time if cur_game_time > 0 else 0

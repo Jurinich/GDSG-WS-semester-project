@@ -95,7 +95,7 @@ func _populate_label_array() -> void:
 	update_minimum_size()
 
 func select(index: int, animate: bool = false) -> void:
-	if items.is_empty():
+	if labels.is_empty():
 		return
 	
 	if animate:

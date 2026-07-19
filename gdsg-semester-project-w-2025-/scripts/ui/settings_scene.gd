@@ -1,16 +1,19 @@
 extends Control
 
-@onready var sound_slider: HSlider = $content/HBoxContainer2/HSlider
-@onready var music_slider: HSlider = $content/HBoxContainer/HSlider
-@onready var sound_button: Button = $content/Button
-@onready var music_button: Button = $content/Button2
-@onready var gamemode_menu: LoopingSelection = $content/Gamemode/LoopingSelection
-@onready var time_menu: LoopingSelection = $content/Time/LoopingSelection
-@onready var item_menu: LoopingSelection = $content/Item1/LoopingSelection
+@onready var sound_slider: HSlider = $Container/Content/HBoxContainer2/HSlider
+@onready var music_slider: HSlider = $Container/Content/HBoxContainer/HSlider
+@onready var sound_button: Button = $Container/Content/Button
+@onready var music_button: Button = $Container/Content/Button2
+@onready var gamemode_menu: LoopingSelection = $Container/Content/Gamemode/LoopingSelection
+@onready var time_menu: LoopingSelection = $Container/Content/Time/LoopingSelection
+@onready var items: Control = $Container/Content/Items
+
+var item_scene: PackedScene = preload("res://scenes/ui/item_settings.tscn")
 
 func _ready():
 	gamemode_menu.grab_focus()
 	_init_menus()
+	_init_item_settings()
 	init_music()
 	init_sound()
 
@@ -20,13 +23,15 @@ func _init_menus() -> void:
 	time_menu.select_value(GameManager.settings.time)
 	time_menu.value_changed.connect(_on_time_changed)
 
-func _get_spawn_rate_index(value: ItemSpawner.SpawnChance) -> int:
-	match value:
-		ItemSpawner.SpawnChance.NONE: return 0
-		ItemSpawner.SpawnChance.LOW: return 1
-		ItemSpawner.SpawnChance.MEDIUM: return 2
-		ItemSpawner.SpawnChance.HIGH: return 3
-	return -1
+func _init_item_settings() -> void:
+	for i in GameManager.settings.items.size():
+		var item: ItemDrop = GameManager.settings.items[i]
+		var item_setting = item_scene.instantiate();
+		item_setting.get_node("Label").text = item.item.power_up_effect
+		items.add_child(item_setting)
+		var selection: LoopingSelection = item_setting.get_node("LoopingSelection")
+		selection.value_changed.connect(_on_item_changed.bind(i))
+		selection.select_value(item.weight)
 
 func _on_gamemode_changed(value: Variant) -> void:
 	GameManager.settings.gamemode = value as Settings.GameMode
@@ -34,7 +39,11 @@ func _on_gamemode_changed(value: Variant) -> void:
 func _on_time_changed(value: Variant) -> void:
 	GameManager.settings.time = value as float
 
+func _on_item_changed(value: Variant, index: int) -> void:
+	GameManager.settings.items[index].weight = value as float
+
 func _on_back_button_pressed():
+	GameManager.settings.save()
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 
 func sound_button_pressed():

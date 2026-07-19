@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dqcqmeurfjtad"]
+
+[ext_resource type="PackedScene" uid="uid://d1fsv1oehdmet" path="res://scenes/looping_selection.tscn" id="1_gd0nh"]
+[ext_resource type="Script" uid="uid://bwsdwnw2rqq6h" path="res://scripts/looping_selection_item.gd" id="2_aqesv"]
+
+[sub_resource type="Resource" id="Resource_84cth"]
+script = ExtResource("2_aqesv")
+text = "None"
+value = 0.0
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_oow4c"]
+script = ExtResource("2_aqesv")
+text = "Low"
+value = 5.0
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_jmcw8"]
+script = ExtResource("2_aqesv")
+text = "Medium"
+value = 10.0
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_7jrx5"]
+script = ExtResource("2_aqesv")
+text = "High"
+value = 20.0
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[node name="Item" type="HBoxContainer" unique_id=1658887817]
+offset_left = 558.0
+offset_top = 4.0
+offset_right = 1362.0
+offset_bottom = 57.0
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="." unique_id=813177219]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Item"
+horizontal_alignment = 1
+
+[node name="LoopingSelection" parent="." unique_id=421652052 instance=ExtResource("1_gd0nh")]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+item_padding = 120.0
+font_size = 26
+selected_item = 2
+items = Array[ExtResource("2_aqesv")]([SubResource("Resource_84cth"), SubResource("Resource_oow4c"), SubResource("Resource_jmcw8"), SubResource("Resource_7jrx5")])

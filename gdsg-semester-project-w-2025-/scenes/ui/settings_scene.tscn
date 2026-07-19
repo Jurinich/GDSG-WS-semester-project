@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://kocd13u0ou15" path="res://scripts/ui/settings_scene.gd" id="1_kqt80"]
 [ext_resource type="Texture2D" uid="uid://oc3myowet37o" path="res://assets/sprites/Backgrounds/BG Purple.png" id="2_5jacn"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="3_83w5s"]
-[ext_resource type="PackedScene" uid="uid://d1fsv1oehdmet" path="res://scenes/LoopingSelection.tscn" id="4_jg5mx"]
+[ext_resource type="PackedScene" uid="uid://d1fsv1oehdmet" path="res://scenes/looping_selection.tscn" id="4_jg5mx"]
 [ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/ui/buttonsound_extension.gd" id="4_tori7"]
 [ext_resource type="Script" uid="uid://bwsdwnw2rqq6h" path="res://scripts/looping_selection_item.gd" id="5_hlosk"]
 
@@ -49,30 +49,6 @@ text = "5:00"
 value = 300.0
 metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
 
-[sub_resource type="Resource" id="Resource_84cth"]
-script = ExtResource("5_hlosk")
-text = "None"
-value = 0.0
-metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
-
-[sub_resource type="Resource" id="Resource_oow4c"]
-script = ExtResource("5_hlosk")
-text = "Low"
-value = 5.0
-metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
-
-[sub_resource type="Resource" id="Resource_jmcw8"]
-script = ExtResource("5_hlosk")
-text = "Medium"
-value = 10.0
-metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
-
-[sub_resource type="Resource" id="Resource_7jrx5"]
-script = ExtResource("5_hlosk")
-text = "High"
-value = 20.0
-metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
-
 [node name="SettingsScene" type="Control" unique_id=596093716]
 layout_mode = 3
 anchors_preset = 15
@@ -94,7 +70,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_5jacn")
 
-[node name="content" type="VBoxContainer" parent="." unique_id=304647815]
+[node name="Container" type="ScrollContainer" parent="." unique_id=1174330377]
+clip_contents = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -102,7 +79,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="heading" type="Label" parent="content" unique_id=101908018]
+[node name="Content" type="VBoxContainer" parent="Container" unique_id=304647815]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="heading" type="Label" parent="Container/Content" unique_id=101908018]
 layout_mode = 2
 theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 64
@@ -110,85 +91,18 @@ text = "This is our amazing settings page"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="content" unique_id=1826360755]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Gamemode" type="HBoxContainer" parent="content" unique_id=1116497581]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Label" type="Label" parent="content/Gamemode" unique_id=1485872062]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Gamemode"
-horizontal_alignment = 1
-
-[node name="LoopingSelection" parent="content/Gamemode" unique_id=421652052 instance=ExtResource("4_jg5mx")]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-item_padding = 110.0
-font_size = 32
-items = Array[ExtResource("5_hlosk")]([SubResource("Resource_byo6x"), SubResource("Resource_gfh8v"), SubResource("Resource_byo6x"), SubResource("Resource_gfh8v")])
-
-[node name="Time" type="HBoxContainer" parent="content" unique_id=1676327129]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Label" type="Label" parent="content/Time" unique_id=556961975]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Time"
-horizontal_alignment = 1
-
-[node name="LoopingSelection" parent="content/Time" unique_id=317700485 instance=ExtResource("4_jg5mx")]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-item_padding = 50.0
-font_size = 32
-items = Array[ExtResource("5_hlosk")]([SubResource("Resource_d3okq"), SubResource("Resource_jg5mx"), SubResource("Resource_hlosk"), SubResource("Resource_5j6q7"), SubResource("Resource_8ks4o")])
-
-[node name="Item1" type="HBoxContainer" parent="content" unique_id=1835489524]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Label" type="Label" parent="content/Item1" unique_id=1556742770]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Item"
-horizontal_alignment = 1
-
-[node name="LoopingSelection" parent="content/Item1" unique_id=959290415 instance=ExtResource("4_jg5mx")]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-item_padding = 120.0
-font_size = 32
-selected_item = 2
-items = Array[ExtResource("5_hlosk")]([SubResource("Resource_84cth"), SubResource("Resource_oow4c"), SubResource("Resource_jmcw8"), SubResource("Resource_7jrx5")])
-
-[node name="heading2" type="Label" parent="content" unique_id=162042890]
-layout_mode = 2
-theme = ExtResource("3_83w5s")
-theme_override_font_sizes/font_size = 48
-text = "Music"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button2" type="Button" parent="content" unique_id=976116096]
+[node name="Button2" type="Button" parent="Container/Content" unique_id=976116096]
 layout_mode = 2
 theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 32
 text = "Music: On"
 script = ExtResource("4_tori7")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="content" unique_id=405671482]
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/Content" unique_id=405671482]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="text" type="Label" parent="content/HBoxContainer" unique_id=1077343360]
+[node name="text" type="Label" parent="Container/Content/HBoxContainer" unique_id=1077343360]
 layout_mode = 2
 theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 32
@@ -196,7 +110,7 @@ text = "Volume   "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="content/HBoxContainer" unique_id=916181864]
+[node name="HSlider" type="HSlider" parent="Container/Content/HBoxContainer" unique_id=916181864]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -205,30 +119,22 @@ max_value = 2.0
 step = 0.01
 value = 1.0
 
-[node name="HSeparator3" type="HSeparator" parent="content" unique_id=1792964731]
+[node name="HSeparator3" type="HSeparator" parent="Container/Content" unique_id=1792964731]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="heading3" type="Label" parent="content" unique_id=887099296]
-layout_mode = 2
-theme = ExtResource("3_83w5s")
-theme_override_font_sizes/font_size = 48
-text = "Sound Effects"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="content" unique_id=551788857]
+[node name="Button" type="Button" parent="Container/Content" unique_id=551788857]
 layout_mode = 2
 theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 32
 text = "Sound: On"
 script = ExtResource("4_tori7")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="content" unique_id=1012310735]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Container/Content" unique_id=1012310735]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="text" type="Label" parent="content/HBoxContainer2" unique_id=1008157770]
+[node name="text" type="Label" parent="Container/Content/HBoxContainer2" unique_id=1008157770]
 layout_mode = 2
 theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 32
@@ -236,7 +142,7 @@ text = "Volume   "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="content/HBoxContainer2" unique_id=1856957105]
+[node name="HSlider" type="HSlider" parent="Container/Content/HBoxContainer2" unique_id=1856957105]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -245,11 +151,54 @@ max_value = 2.0
 step = 0.01
 value = 1.0
 
-[node name="HSeparator2" type="HSeparator" parent="content" unique_id=1777799279]
+[node name="HSeparator2" type="HSeparator" parent="Container/Content" unique_id=1777799279]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="BackButton" type="Button" parent="content" unique_id=41829431]
+[node name="Gamemode" type="HBoxContainer" parent="Container/Content" unique_id=1116497581]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Container/Content/Gamemode" unique_id=1485872062]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Gamemode"
+horizontal_alignment = 1
+
+[node name="LoopingSelection" parent="Container/Content/Gamemode" unique_id=421652052 instance=ExtResource("4_jg5mx")]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+item_padding = 110.0
+font_size = 26
+items = Array[ExtResource("5_hlosk")]([SubResource("Resource_byo6x"), SubResource("Resource_gfh8v"), SubResource("Resource_byo6x"), SubResource("Resource_gfh8v")])
+
+[node name="Time" type="HBoxContainer" parent="Container/Content" unique_id=1676327129]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Container/Content/Time" unique_id=556961975]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Time"
+horizontal_alignment = 1
+
+[node name="LoopingSelection" parent="Container/Content/Time" unique_id=317700485 instance=ExtResource("4_jg5mx")]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+item_padding = 50.0
+font_size = 26
+items = Array[ExtResource("5_hlosk")]([SubResource("Resource_d3okq"), SubResource("Resource_jg5mx"), SubResource("Resource_hlosk"), SubResource("Resource_5j6q7"), SubResource("Resource_8ks4o")])
+
+[node name="Items" type="VBoxContainer" parent="Container/Content" unique_id=507344027]
+layout_mode = 2
+
+[node name="HSeparator4" type="HSeparator" parent="Container/Content" unique_id=154403020]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BackButton" type="Button" parent="Container/Content" unique_id=41829431]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_vertical = 8
@@ -258,8 +207,8 @@ theme_override_font_sizes/font_size = 64
 text = "Back"
 script = ExtResource("4_tori7")
 
-[connection signal="pressed" from="content/Button2" to="." method="music_button_pressed"]
-[connection signal="drag_ended" from="content/HBoxContainer/HSlider" to="." method="on_music_slider_drag_end"]
-[connection signal="pressed" from="content/Button" to="." method="sound_button_pressed"]
-[connection signal="drag_ended" from="content/HBoxContainer2/HSlider" to="." method="on_sound_slider_drag_end"]
-[connection signal="pressed" from="content/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Container/Content/Button2" to="." method="music_button_pressed"]
+[connection signal="drag_ended" from="Container/Content/HBoxContainer/HSlider" to="." method="on_music_slider_drag_end"]
+[connection signal="pressed" from="Container/Content/Button" to="." method="sound_button_pressed"]
+[connection signal="drag_ended" from="Container/Content/HBoxContainer2/HSlider" to="." method="on_sound_slider_drag_end"]
+[connection signal="pressed" from="Container/Content/BackButton" to="." method="_on_back_button_pressed"]

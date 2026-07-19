@@ -40,14 +40,17 @@ size = Vector2(580, 246)
 position = Vector2(0, -2)
 script = ExtResource("1_bhx41")
 
-[node name="Background" type="MeshInstance2D" parent="." unique_id=723960218]
-position = Vector2(960, 542)
+[node name="Background" type="CanvasLayer" parent="." unique_id=586626256]
+layer = -1
+
+[node name="Background" type="MeshInstance2D" parent="Background" unique_id=723960218]
+position = Vector2(960, 540)
 scale = Vector2(1920, 1080)
 mesh = SubResource("QuadMesh_8cj0n")
 texture = ExtResource("1_u5sy4")
 
-[node name="PlayingField" type="MeshInstance2D" parent="." unique_id=1248166817]
-position = Vector2(960, 570.5)
+[node name="PlayingField" type="MeshInstance2D" parent="Background" unique_id=1248166817]
+position = Vector2(960, 568.5)
 scale = Vector2(1860, 957)
 mesh = SubResource("QuadMesh_8cj0n")
 texture = ExtResource("2_gee14")
