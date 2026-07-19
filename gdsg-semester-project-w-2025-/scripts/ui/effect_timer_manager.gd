@@ -1,7 +1,7 @@
 class_name EffectTimerManager
 extends VBoxContainer
 
-var timer = preload("res://scenes/effect_timer.tscn")
+var timer = preload("res://scenes/ui/effect_timer.tscn")
 
 @export var HIDDEN_Y: float = 500
 

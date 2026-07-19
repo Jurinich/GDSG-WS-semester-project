@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://x71s57sxup44"]
 
 [ext_resource type="Texture2D" uid="uid://cdm15ogkivjxe" path="res://assets/sprites/Backgrounds/BG_StartScreenMenue.png" id="1_gp2so"]
-[ext_resource type="Script" uid="uid://cvs6ldw801lxx" path="res://scripts/arcade_calibration.gd" id="1_kt86t"]
+[ext_resource type="Script" uid="uid://cvs6ldw801lxx" path="res://scripts/ui/arcade_calibration.gd" id="1_kt86t"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="2_sw76w"]
 
 [node name="ArcadeCalibration" type="Control" unique_id=1317257259]

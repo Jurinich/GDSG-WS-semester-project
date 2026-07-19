@@ -28,9 +28,9 @@ func _on_looping_menu_button_pressed(button: String) -> void:
 			selection_controller.set_selections()
 			get_tree().change_scene_to_file("res://scenes/game.tscn")
 		"Settings":
-			get_tree().change_scene_to_file("res://scenes/settings_scene.tscn")
+			get_tree().change_scene_to_file("res://scenes/ui/settings_scene.tscn")
 		"Credits":
-			get_tree().change_scene_to_file("res://scenes/credits_scene.tscn")
+			get_tree().change_scene_to_file("res://scenes/ui/credits_scene.tscn")
 		"Quit":
 			get_tree().quit()
 

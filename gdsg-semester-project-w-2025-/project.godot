@@ -21,7 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameManager="*res://scripts/GameManager.gd"
+GameManager="*res://scripts/game_manager.gd"
 GlobalSounds="*uid://c0xs4ukdtvhso"
 
 [display]
@@ -209,6 +209,70 @@ ui_text_caret_word_right={
 "events": []
 }
 ui_text_caret_word_right.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_up={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_down={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_line_start={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_line_start.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_line_end={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_line_end.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_page_up={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_page_down={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_document_start={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_document_start.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_document_end={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_document_end.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_add_below={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_add_below.macos={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_add_above={
+"deadzone": 0.5,
+"events": []
+}
+ui_text_caret_add_above.macos={
 "deadzone": 0.5,
 "events": []
 }

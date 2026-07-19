@@ -57,6 +57,11 @@ func _process(delta: float) -> void:
 
 		# depth gives (-1.0 to 1.0), need (0 to 1)
 		var depth_level = (depth + 1.0) / 2.0
+		
+		if depth_level >= 0.9:
+			button.mouse_filter = MouseFilter.MOUSE_FILTER_STOP
+		else:
+			button.mouse_filter = MouseFilter.MOUSE_FILTER_IGNORE
 
 		var target_position = Vector2(center.x, center.y) - button.size / 2.0
 		if horizontal:
@@ -108,7 +113,7 @@ func _gui_input(event: InputEvent) -> void:
 		select(selected_menu - 1, true)
 		get_viewport().set_input_as_handled()
 		return
-	if event.is_action_pressed("Start"):
+	if event.is_action_pressed("ui_accept"):
 		buttons[selected_menu].pressed.emit()
 
 func _increase_event(event: InputEvent) -> bool:

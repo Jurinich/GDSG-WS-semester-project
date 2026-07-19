@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c1xmahmsx11f"]
 
-[ext_resource type="Script" uid="uid://cvrxycaf00xkl" path="res://scripts/looping_menu.gd" id="1_47ct2"]
+[ext_resource type="Script" uid="uid://cvrxycaf00xkl" path="res://scripts/ui/looping_menu.gd" id="1_47ct2"]
 
 [node name="LoopingMenu" type="Control" unique_id=421652052]
 layout_mode = 3
@@ -17,3 +17,4 @@ grow_vertical = 2
 focus_mode = 2
 script = ExtResource("1_47ct2")
 items = null
+

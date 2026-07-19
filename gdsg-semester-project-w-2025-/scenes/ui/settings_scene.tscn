@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://jnb7g07ibmtd"]
 
-[ext_resource type="Script" uid="uid://kocd13u0ou15" path="res://scripts/settings_scene.gd" id="1_kqt80"]
+[ext_resource type="Script" uid="uid://kocd13u0ou15" path="res://scripts/ui/settings_scene.gd" id="1_kqt80"]
 [ext_resource type="Texture2D" uid="uid://oc3myowet37o" path="res://assets/sprites/Backgrounds/BG Purple.png" id="2_5jacn"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="3_83w5s"]
 [ext_resource type="PackedScene" uid="uid://d1fsv1oehdmet" path="res://scenes/LoopingSelection.tscn" id="4_jg5mx"]

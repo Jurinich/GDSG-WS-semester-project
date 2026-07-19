@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://kp2i7srp3rv"]
 
-[ext_resource type="Script" uid="uid://cn3r8vwakigix" path="res://scenes/gamemode_menu.gd" id="1_3i4tr"]
+[ext_resource type="Script" uid="uid://cn3r8vwakigix" path="res://scripts/items/gamemode_menu.gd" id="1_3i4tr"]
 [ext_resource type="Texture2D" uid="uid://cdm15ogkivjxe" path="res://assets/sprites/Backgrounds/BG_StartScreenMenue.png" id="2_ehqck"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="7_h70ai"]
-[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/buttonsound_extension.gd" id="8_tkr0y"]
+[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/ui/buttonsound_extension.gd" id="8_tkr0y"]
 
 [node name="GamemodeMenu" type="Control" unique_id=1335995349]
 layout_mode = 3
