@@ -8,7 +8,7 @@ extends Node
 @export_group("References")
 @export var triggers: Array[Area2D] 
 @onready var paw_swiff_sound: AudioStreamPlayer = $"../paw swiff sound"
-@onready var effects: EffectTimerManager = $"../BackgroundUILayer/EffectTimers"
+@onready var effects: EffectTimerManager = $"../ForegroundUILayer/EffectTimers"
 
 var base_hit_chance: float
 var frenzy_timer: Timer

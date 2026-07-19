@@ -21,24 +21,17 @@ func _ready():
 		$"SelectionController/PlayerSelectionNode1/ArControls".visible = false
 		$"SelectionController/PlayerSelectionNode2/ArControls2".visible = false
 
-
-func _on_looping_menu_button_pressed(button: Button) -> void:
-	match button.name:
-		"StartButton":
+func _on_looping_menu_button_pressed(button: String) -> void:
+	match button:
+		"Start Game":
 			GameManager.reset()
 			selection_controller.set_selections()
 			get_tree().change_scene_to_file("res://scenes/game.tscn")
-			
-		"GamemodeButton":
-			get_tree().change_scene_to_file("res://scenes/gamemode_menu.tscn")
-			
-		"SettingsButton":
+		"Settings":
 			get_tree().change_scene_to_file("res://scenes/settings_scene.tscn")
-			
-		"CreditsButton":
+		"Credits":
 			get_tree().change_scene_to_file("res://scenes/credits_scene.tscn")
-			
-		"QuitButton":
+		"Quit":
 			get_tree().quit()
 
 func get_winner_text() -> String:

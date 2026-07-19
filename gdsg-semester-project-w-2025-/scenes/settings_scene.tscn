@@ -3,7 +3,63 @@
 [ext_resource type="Script" uid="uid://kocd13u0ou15" path="res://scripts/settings_scene.gd" id="1_kqt80"]
 [ext_resource type="Texture2D" uid="uid://oc3myowet37o" path="res://assets/sprites/Backgrounds/BG Purple.png" id="2_5jacn"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="3_83w5s"]
+[ext_resource type="PackedScene" uid="uid://d1fsv1oehdmet" path="res://scenes/LoopingSelection.tscn" id="4_jg5mx"]
 [ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/buttonsound_extension.gd" id="4_tori7"]
+[ext_resource type="Script" uid="uid://bwsdwnw2rqq6h" path="res://scripts/looping_selection_item.gd" id="5_hlosk"]
+
+[sub_resource type="Resource" id="Resource_byo6x"]
+script = ExtResource("5_hlosk")
+text = "Score"
+value = 0
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_gfh8v"]
+script = ExtResource("5_hlosk")
+text = "Time"
+value = 1
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_d3okq"]
+script = ExtResource("5_hlosk")
+text = "1:00"
+value = 60.0
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_jg5mx"]
+script = ExtResource("5_hlosk")
+text = "2:00"
+value = 120.0
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_hlosk"]
+script = ExtResource("5_hlosk")
+text = "3:00"
+value = 180.0
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_5j6q7"]
+script = ExtResource("5_hlosk")
+text = "4:00"
+value = 240.0
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_8ks4o"]
+script = ExtResource("5_hlosk")
+text = "5:00"
+value = 300.0
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_84cth"]
+script = ExtResource("5_hlosk")
+text = "1:00"
+value = 60.0
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_yyc1c"]
+script = ExtResource("5_hlosk")
+text = "Time"
+value = 1
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
 
 [node name="SettingsScene" type="Control" unique_id=596093716]
 layout_mode = 3
@@ -12,6 +68,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_83w5s")
 script = ExtResource("1_kqt80")
 
 [node name="Background" type="Control" parent="." unique_id=1731582913]
@@ -44,6 +101,59 @@ vertical_alignment = 1
 [node name="HSeparator" type="HSeparator" parent="content" unique_id=1826360755]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="Gamemode" type="HBoxContainer" parent="content" unique_id=1116497581]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="content/Gamemode" unique_id=1485872062]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Gamemode"
+horizontal_alignment = 1
+
+[node name="LoopingSelection" parent="content/Gamemode" unique_id=421652052 instance=ExtResource("4_jg5mx")]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+item_padding = 110.0
+font_size = 32
+items = Array[ExtResource("5_hlosk")]([SubResource("Resource_byo6x"), SubResource("Resource_gfh8v"), SubResource("Resource_byo6x"), SubResource("Resource_gfh8v")])
+
+[node name="Time" type="HBoxContainer" parent="content" unique_id=1676327129]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="content/Time" unique_id=556961975]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Time"
+horizontal_alignment = 1
+
+[node name="LoopingSelection" parent="content/Time" unique_id=317700485 instance=ExtResource("4_jg5mx")]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+item_padding = 50.0
+font_size = 32
+items = Array[ExtResource("5_hlosk")]([SubResource("Resource_d3okq"), SubResource("Resource_jg5mx"), SubResource("Resource_hlosk"), SubResource("Resource_5j6q7"), SubResource("Resource_8ks4o")])
+
+[node name="Item1" type="HBoxContainer" parent="content" unique_id=1835489524]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="content/Item1" unique_id=1556742770]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Item"
+horizontal_alignment = 1
+
+[node name="LoopingSelection" parent="content/Item1" unique_id=959290415 instance=ExtResource("4_jg5mx")]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+font_size = 32
+items = Array[ExtResource("5_hlosk")]([SubResource("Resource_84cth"), SubResource("Resource_yyc1c"), SubResource("Resource_84cth"), SubResource("Resource_yyc1c")])
 
 [node name="heading2" type="Label" parent="content" unique_id=162042890]
 layout_mode = 2

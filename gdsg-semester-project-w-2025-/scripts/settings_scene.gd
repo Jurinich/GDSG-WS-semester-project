@@ -4,10 +4,35 @@ extends Control
 @onready var music_slider: HSlider = $content/HBoxContainer/HSlider
 @onready var sound_button: Button = $content/Button
 @onready var music_button: Button = $content/Button2
+@onready var gamemode_menu: LoopingSelection = $content/Gamemode/LoopingSelection
+@onready var time_menu: LoopingSelection = $content/Time/LoopingSelection
+@onready var item_menu: LoopingSelection = $content/Item1/LoopingSelection
 
 func _ready():
+	gamemode_menu.grab_focus()
+	_init_menus()
 	init_music()
 	init_sound()
+
+func _init_menus() -> void:
+	gamemode_menu.select_value(GameManager.settings.gamemode)
+	gamemode_menu.value_changed.connect(_on_gamemode_changed)
+	time_menu.select_value(GameManager.settings.time)
+	time_menu.value_changed.connect(_on_time_changed)
+
+func _get_spawn_rate_index(value: ItemSpawner.SpawnChance) -> int:
+	match value:
+		ItemSpawner.SpawnChance.NONE: return 0
+		ItemSpawner.SpawnChance.LOW: return 1
+		ItemSpawner.SpawnChance.MEDIUM: return 2
+		ItemSpawner.SpawnChance.HIGH: return 3
+	return -1
+
+func _on_gamemode_changed(value: Variant) -> void:
+	GameManager.settings.gamemode = value as Settings.GameMode
+
+func _on_time_changed(value: Variant) -> void:
+	GameManager.settings.time = value as float
 
 func _on_back_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

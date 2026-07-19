@@ -7,7 +7,7 @@ extends Node2D
 @onready var paw_wrapper: Node2D = $"Path/Kitty/PawWrapper"
 @onready var line: Line2D = $"Line"
 @onready var sprite: Sprite2D = $"Sprite"
-@onready var effects: EffectTimerManager = $"../BackgroundUILayer/EffectTimers"
+@onready var effects: EffectTimerManager = $"../ForegroundUILayer/EffectTimers"
 
 @export var paths: Array[Curve2D]
 

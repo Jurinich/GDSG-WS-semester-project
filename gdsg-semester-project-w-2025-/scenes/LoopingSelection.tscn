@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://d1fsv1oehdmet"]
+
+[ext_resource type="Script" uid="uid://b1d0ntsa32q57" path="res://scripts/looping_selection.gd" id="1_ocomr"]
+
+[node name="LoopingSelection" type="Control" unique_id=421652052]
+layout_mode = 3
+anchors_preset = 0
+focus_mode = 2
+script = ExtResource("1_ocomr")
+horizontal = true
+item_padding = 80.0
+scale_modifier = 0.4

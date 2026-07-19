@@ -16,38 +16,23 @@
 [ext_resource type="Script" uid="uid://c0uvs62o1qka0" path="res://scripts/kitten_paw_spawner.gd" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cwwdjsm2bpjkx" path="res://scenes/kitten_paw.tscn" id="12_dinhu"]
 [ext_resource type="Script" uid="uid://b2oe7fsd38rx1" path="res://scripts/items/item_spawner.gd" id="13_ca42v"]
-[ext_resource type="Script" uid="uid://d2jgn4osg4v7x" path="res://scripts/items/item_drop.gd" id="15_37s47"]
-[ext_resource type="Resource" uid="uid://dmryy0puarxaq" path="res://resources/PawFrenzy.tres" id="15_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://bdme7ngk7uj84" path="res://scenes/CollectibleItem.tscn" id="16_264po"]
-[ext_resource type="Resource" uid="uid://b11nxukklyrfj" path="res://resources/BiggerBalls.tres" id="17_5newe"]
-[ext_resource type="Resource" uid="uid://be6ilvwrhaya8" path="res://resources/SmallerBalls.tres" id="18_bt5mj"]
-[ext_resource type="Script" uid="uid://cgj3m6cj7v0vx" path="res://scripts/items/paw_frenzy.gd" id="18_ssvqc"]
-[ext_resource type="Script" uid="uid://djw7e30kw63ep" path="res://scripts/items/bigger_balls.gd" id="19_264po"]
-[ext_resource type="Resource" uid="uid://dybmbgbo7ljub" path="res://resources/SplitBall2.tres" id="19_qnb83"]
-[ext_resource type="Script" uid="uid://bvhryv3l2ogbq" path="res://scripts/items/smaller_balls.gd" id="20_1kice"]
-[ext_resource type="Resource" uid="uid://t2saihw67sa5" path="res://resources/SplitBall3.tres" id="20_sww3w"]
-[ext_resource type="Resource" uid="uid://bhduho0tmw16w" path="res://resources/SplitBall4.tres" id="21_suyxu"]
-[ext_resource type="Resource" uid="uid://ckrkxy5ex4x7" path="res://resources/SplitBall10.tres" id="22_qnb83"]
-[ext_resource type="Resource" uid="uid://5m3rckxpy8ua" path="res://resources/SplitBall5.tres" id="22_sgl2t"]
-[ext_resource type="Script" uid="uid://bhm6sk7siveqy" path="res://scripts/items/split_ball.gd" id="23_bt5mj"]
-[ext_resource type="Resource" uid="uid://cdxv14p5rtxsw" path="res://resources/SplitAll2.tres" id="23_pr1ej"]
-[ext_resource type="Resource" uid="uid://cgg4yxtv50a14" path="res://resources/SplitAll3.tres" id="24_05nbr"]
 [ext_resource type="PackedScene" uid="uid://dbl6pvi0yn2rt" path="res://scenes/laser_pointer.tscn" id="24_m4url"]
-[ext_resource type="Resource" uid="uid://sw61sqbvio2a" path="res://resources/LaserPointer.tres" id="25_0sl42"]
-[ext_resource type="Script" uid="uid://cdl2ng8ia0gha" path="res://scripts/items/laser_pointer_item.gd" id="27_05nbr"]
 [ext_resource type="AudioStream" uid="uid://d0xwonisrdwb5" path="res://assets/sounds/Goal Sound.wav" id="28_sww3w"]
 [ext_resource type="Script" uid="uid://d3gneryhnu1kv" path="res://scripts/audioextension.gd" id="29_7025r"]
 [ext_resource type="AudioStream" uid="uid://cl1o4ab4wtbi" path="res://assets/sounds/border sound.wav" id="29_suyxu"]
 [ext_resource type="AudioStream" uid="uid://y6dsn7s0mt7x" path="res://assets/sounds/paw swiff sound.wav" id="30_sgl2t"]
+[ext_resource type="PackedScene" uid="uid://btffbe4kdyktl" path="res://scenes/item_effects.tscn" id="31_05nbr"]
 [ext_resource type="AudioStream" uid="uid://cjjm5ye1xclu7" path="res://assets/sounds/fish paddle sound.wav" id="31_qouja"]
 [ext_resource type="AudioStream" uid="uid://dfj07w1gkp5rd" path="res://assets/sounds/menu hover.wav" id="32_twgab"]
 [ext_resource type="AudioStream" uid="uid://yhqh3quecu5b" path="res://assets/sounds/menu select.wav" id="33_02fa5"]
-[ext_resource type="Script" uid="uid://dt6u7umxvjhdo" path="res://scripts/items/split_all_balls.gd" id="34_458eo"]
 [ext_resource type="AudioStream" uid="uid://gjxvv3b3fxsw" path="res://assets/sounds/powerup spawn.wav" id="34_nepv3"]
 [ext_resource type="AudioStream" uid="uid://rojt8w7y0lib" path="res://assets/sounds/powerup use.wav" id="36_m4url"]
 [ext_resource type="AudioStream" uid="uid://cpbwo62dnkmoo" path="res://assets/sounds/after run score 1.wav" id="37_7025r"]
 [ext_resource type="AudioStream" uid="uid://hwdmsocn8116" path="res://assets/sounds/after run score 2.wav" id="38_m4url"]
 [ext_resource type="AudioStream" uid="uid://dv0pe3el3sujs" path="res://assets/sounds/after run score 3.wav" id="39_8ool0"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_8cj0n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 
@@ -57,83 +42,27 @@ size = Vector2(64, 980)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
 size = Vector2(60, 980)
 
-[sub_resource type="QuadMesh" id="QuadMesh_8cj0n"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dinhu"]
 size = Vector2(578, 228)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvuet"]
 size = Vector2(580, 246)
 
-[sub_resource type="Resource" id="Resource_e1j6l"]
-script = ExtResource("15_37s47")
-item = ExtResource("15_ssvqc")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_pl11u"]
-script = ExtResource("15_37s47")
-item = ExtResource("17_5newe")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_bhx41"]
-script = ExtResource("15_37s47")
-item = ExtResource("18_bt5mj")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_qouja"]
-script = ExtResource("15_37s47")
-item = ExtResource("19_qnb83")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_wljb1"]
-script = ExtResource("15_37s47")
-item = ExtResource("20_sww3w")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_v2yb1"]
-script = ExtResource("15_37s47")
-item = ExtResource("21_suyxu")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_js0lu"]
-script = ExtResource("15_37s47")
-item = ExtResource("22_sgl2t")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_sww3w"]
-script = ExtResource("15_37s47")
-item = ExtResource("22_qnb83")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_0sl42"]
-script = ExtResource("15_37s47")
-item = ExtResource("23_pr1ej")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_oaba0"]
-script = ExtResource("15_37s47")
-item = ExtResource("24_05nbr")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
-[sub_resource type="Resource" id="Resource_458eo"]
-script = ExtResource("15_37s47")
-item = ExtResource("25_0sl42")
-weight = 5.0
-metadata/_custom_type_script = "uid://d2jgn4osg4v7x"
-
 [node name="Game" type="Node2D" unique_id=1886297339]
 position = Vector2(0, -2)
 script = ExtResource("1_bhx41")
+
+[node name="Background" type="MeshInstance2D" parent="." unique_id=723960218]
+position = Vector2(960, 542)
+scale = Vector2(1920, 1080)
+mesh = SubResource("QuadMesh_8cj0n")
+texture = ExtResource("1_u5sy4")
+
+[node name="PlayingField" type="MeshInstance2D" parent="." unique_id=1248166817]
+position = Vector2(960, 570.5)
+scale = Vector2(1860, 957)
+mesh = SubResource("QuadMesh_8cj0n")
+texture = ExtResource("2_gee14")
 
 [node name="Player1" parent="." unique_id=477805542 instance=ExtResource("1_uwrxv")]
 position = Vector2(135, 609)
@@ -154,22 +83,22 @@ script = ExtResource("2_rysoc")
 cycle_action = "cycleP2"
 use_action = "useItemP2"
 
-[node name="Top_Bottom wall" type="Node" parent="." unique_id=1365690129]
+[node name="Walls" type="Node" parent="." unique_id=1365690129]
 
-[node name="TopWall" type="StaticBody2D" parent="Top_Bottom wall" unique_id=755887784]
+[node name="TopWall" type="StaticBody2D" parent="Walls" unique_id=755887784]
 position = Vector2(960, 51)
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Bottom wall/TopWall" unique_id=2021686217]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall" unique_id=2021686217]
 position = Vector2(0, 54)
 scale = Vector2(96, 1)
 shape = SubResource("RectangleShape2D_yqjtg")
 
-[node name="BotWall" type="StaticBody2D" parent="Top_Bottom wall" unique_id=1377988727]
+[node name="BotWall" type="StaticBody2D" parent="Walls" unique_id=1377988727]
 position = Vector2(960, 1080)
 collision_layer = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Top_Bottom wall/BotWall" unique_id=1409367302]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BotWall" unique_id=1409367302]
 position = Vector2(0, -52)
 scale = Vector2(96, 1)
 shape = SubResource("RectangleShape2D_yqjtg")
@@ -200,6 +129,22 @@ shape = SubResource("RectangleShape2D_lbhrr")
 
 [node name="PauseMenu" parent="ForegroundUILayer" unique_id=1402068368 instance=ExtResource("8_458eo")]
 visible = false
+
+[node name="EffectTimers" type="VBoxContainer" parent="ForegroundUILayer" unique_id=1260301999]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -380.0
+offset_right = 350.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+alignment = 2
+script = ExtResource("7_oaba0")
 
 [node name="BackgroundUILayer" type="CanvasLayer" parent="." unique_id=163368148]
 layer = -1
@@ -277,21 +222,6 @@ theme_override_font_sizes/font_size = 64
 text = "00"
 vertical_alignment = 1
 
-[node name="EffectTimers" type="VBoxContainer" parent="BackgroundUILayer" unique_id=1260301999]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -350.0
-offset_top = -380.0
-offset_right = 350.0
-offset_bottom = -80.0
-grow_horizontal = 2
-grow_vertical = 0
-alignment = 2
-script = ExtResource("7_oaba0")
-
 [node name="WinConditionLabel" type="Label" parent="BackgroundUILayer" unique_id=297263883]
 offset_right = 1.0
 offset_bottom = 23.0
@@ -304,21 +234,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 0.121569, 0.121569, 0)
-
-[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=1144167311]
-layer = -2
-
-[node name="Background" type="MeshInstance2D" parent="BackgroundLayer" unique_id=723960218]
-position = Vector2(960, 540)
-scale = Vector2(1920, 1080)
-mesh = SubResource("QuadMesh_8cj0n")
-texture = ExtResource("1_u5sy4")
-
-[node name="PlayingField" type="MeshInstance2D" parent="BackgroundLayer" unique_id=1248166817]
-position = Vector2(960, 568.5)
-scale = Vector2(1860, 957)
-mesh = SubResource("QuadMesh_8cj0n")
-texture = ExtResource("2_gee14")
 
 [node name="BallSpawnTimer" type="Timer" parent="." unique_id=1409921296]
 one_shot = true
@@ -350,51 +265,11 @@ triggers = [NodePath("../PawTriggers/Area2D"), NodePath("../PawTriggers/Area2D2"
 [node name="ItemSpawner" type="Node2D" parent="." unique_id=1014848990]
 position = Vector2(960, 618)
 script = ExtResource("13_ca42v")
-item_drops = Array[ExtResource("15_37s47")]([SubResource("Resource_e1j6l"), SubResource("Resource_pl11u"), SubResource("Resource_bhx41"), SubResource("Resource_qouja"), SubResource("Resource_wljb1"), SubResource("Resource_v2yb1"), SubResource("Resource_js0lu"), SubResource("Resource_sww3w"), SubResource("Resource_0sl42"), SubResource("Resource_oaba0"), SubResource("Resource_458eo")])
 item_scene = ExtResource("16_264po")
 
 [node name="LaserPointer" parent="." unique_id=274916930 instance=ExtResource("24_m4url")]
 
-[node name="ItemEffects" type="Node" parent="." unique_id=1580273483 groups=["item_effects"]]
-
-[node name="LaserPointer" type="Node" parent="ItemEffects" unique_id=335343451]
-script = ExtResource("27_05nbr")
-
-[node name="PawFrenzy" type="Node" parent="ItemEffects" unique_id=1745424071]
-script = ExtResource("18_ssvqc")
-
-[node name="BiggerBalls" type="Node" parent="ItemEffects" unique_id=188373093]
-script = ExtResource("19_264po")
-
-[node name="SmallerBalls" type="Node" parent="ItemEffects" unique_id=90983725]
-script = ExtResource("20_1kice")
-
-[node name="SplitBall2" type="Node" parent="ItemEffects" unique_id=8699232]
-script = ExtResource("23_bt5mj")
-split_amount = 2
-
-[node name="SplitBall3" type="Node" parent="ItemEffects" unique_id=673146280]
-script = ExtResource("23_bt5mj")
-
-[node name="SplitBall4" type="Node" parent="ItemEffects" unique_id=1114381143]
-script = ExtResource("23_bt5mj")
-split_amount = 4
-
-[node name="SplitBall5" type="Node" parent="ItemEffects" unique_id=1700692553]
-script = ExtResource("23_bt5mj")
-split_amount = 5
-
-[node name="SplitBall10" type="Node" parent="ItemEffects" unique_id=1048310688]
-script = ExtResource("23_bt5mj")
-split_amount = 10
-
-[node name="SplitAll3" type="Node" parent="ItemEffects" unique_id=1110411090]
-script = ExtResource("34_458eo")
-split_amount = 3
-
-[node name="SplitAll2" type="Node" parent="ItemEffects" unique_id=1080954376]
-script = ExtResource("34_458eo")
-split_amount = 2
+[node name="ItemEffects" parent="." unique_id=1153352364 instance=ExtResource("31_05nbr")]
 
 [node name="Goal Sound" type="AudioStreamPlayer" parent="." unique_id=125741821]
 stream = ExtResource("28_sww3w")

@@ -14,7 +14,8 @@ func _ready():
 	cur_game_time = game_duration
 	update_time_label()
 	alarm_ui.set_alarm_state(cur_game_time, alarm_threshold)
-	$GameTimer.start()
+	if GameManager.settings.gamemode == Settings.GameMode.TIME:
+		$GameTimer.start()
 
 
 func timer_tick():

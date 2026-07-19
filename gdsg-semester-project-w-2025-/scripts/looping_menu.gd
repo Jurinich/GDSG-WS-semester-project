@@ -1,31 +1,37 @@
 @tool
-extends Control
+class_name LoopingMenu extends Control
+
+signal button_pressed(button: String)
 
 @export var horizontal: bool = false
 @export var menu_radius: float = 300.0  # affects 3d effect and how far up/down the menu goes
 @export var rotation_speed: float = 10  # how fast the menu should spin
+@export var font_size: int = 40
 
-@export_range(0.0, 1.0) var fade_modifier: float = 0.35   # how quickly elements fade
 @export_range(0.0, 1.0) var scale_modifier: float = 0.20  # how quickly elements scale down
 
-signal button_pressed(button: Button)
+@export var selected_menu: int = 0
+@export var items: Array[String]:
+	set(value):
+		items = value
+		if is_node_ready():
+			_populate_button_array()
 
-var selected_menu: int = 0
 var buttons: Array[Button] = []
-var alignment_position: float
 
 var visual_selected_menu: float = selected_menu # used to smooth the animation
 var target_selected_menu: float = selected_menu # used to smooth the animation
 
 var focused: bool = false
 
+var largest_button: float = 0.0
+
 func _ready() -> void:
 	_populate_button_array()
-	alignment_position = size.x / 2
 	focus_entered.connect(_on_focused_changed.bind(true))
 	focus_exited.connect(_on_focused_changed.bind(false))
-	for button in buttons:
-		button.pressed.connect(_on_button_pressed.bind(button))
+	for i in range(buttons.size()):
+		buttons[i].pressed.connect(_on_button_pressed.bind(i))
 
 func _process(delta: float) -> void:
 	var interpolation = clamp(rotation_speed * delta, 0.0, 1.0)
@@ -52,12 +58,6 @@ func _process(delta: float) -> void:
 		# depth gives (-1.0 to 1.0), need (0 to 1)
 		var depth_level = (depth + 1.0) / 2.0
 
-		# fade_modifier is unusable atm
-		# as soon as it is turned on the elements in the back are visible, need to do it with another formula?
-		# exponential instead of linear
-		var color_level = fade_modifier + (1 - fade_modifier) * depth_level
-		var scale_level = depth_level
-
 		var target_position = Vector2(center.x, center.y) - button.size / 2.0
 		if horizontal:
 			target_position.x += position_offset
@@ -66,46 +66,75 @@ func _process(delta: float) -> void:
 		
 		button.position = lerp(button.position, target_position, interpolation)
 
-		var target_scale = lerp(1.0 - scale_modifier, 1.0, scale_level)
+		var target_scale = lerp(1.0 - scale_modifier, 1.0, depth_level)
 		button.scale = Vector2.ONE * target_scale
 
-		button.modulate = (Color.WHITE if focused else Color.GRAY) * color_level
-		if button.modulate.a > 0.1:
-			button.modulate.a = 1.0
+		button.modulate = (Color.WHITE if focused else Color.GRAY) * (depth_level * 0.6 + 0.4)
+		button.modulate.a = 1.0 if depth_level > 0.1 else depth_level
 
 		button.z_index = round(depth_level)
-		
-	
-# Fill container with children (can also do buttons = get_children() but I wanted static typing)
+
 func _populate_button_array() -> void:
 	for child in get_children():
 		if child is Button:
-			buttons.append(child)
+			child.queue_free()
+	buttons.clear()
+	largest_button = 0.0
+	for item in items:
+		var button := Button.new()
+		button.text = item
+		button.add_theme_font_size_override("font_size", font_size)
+		button.pivot_offset_ratio = Vector2(0.5, 0.5)
+		add_child(button)
+		buttons.append(button)
+		var button_size : Vector2 = button.get_combined_minimum_size()
+		largest_button = max(largest_button, button_size.x if horizontal else button_size.y)
+	update_minimum_size()
+
+func select(index: int, animate: bool = false) -> void:
+	if animate:
+		target_selected_menu += (index - selected_menu)
+	else:
+		target_selected_menu = index
+		visual_selected_menu = index
+	selected_menu = posmod(index, buttons.size())
 
 func _gui_input(event: InputEvent) -> void:
 	if _increase_event(event):
-		target_selected_menu += 1.0
-		selected_menu = posmod(roundi(target_selected_menu), buttons.size())
+		select(selected_menu + 1, true)
+		get_viewport().set_input_as_handled()
 		return
 	if _decrease_event(event):
-		target_selected_menu -= 1.0
-		selected_menu = posmod(roundi(target_selected_menu), buttons.size())
+		select(selected_menu - 1, true)
+		get_viewport().set_input_as_handled()
 		return
 	if event.is_action_pressed("Start"):
 		buttons[selected_menu].pressed.emit()
 
 func _increase_event(event: InputEvent) -> bool:
-	#if horizontal:
-		#return event.is_action_pressed("rightP1") || event.is_action_pressed("rightP2")
-	return event.is_action_pressed("downP1") || event.is_action_pressed("downP2")
+	if horizontal:
+		return event.is_action_pressed("ui_right")
+	return event.is_action_pressed("ui_down")
 
 func _decrease_event(event: InputEvent) -> bool:
-	#if horizontal:
-		#return event.is_action_pressed("leftP1") || event.is_action_pressed("leftP2")
-	return event.is_action_pressed("upP1") || event.is_action_pressed("upP2")
+	if horizontal:
+		return event.is_action_pressed("ui_left")
+	return event.is_action_pressed("ui_up")
 
-func _on_button_pressed(button: Button):
-	button_pressed.emit(button)
+func _on_button_pressed(index: int):
+	button_pressed.emit(items[index])
 
 func _on_focused_changed(focus: bool) -> void:
 	focused = focus;
+
+func _get_minimum_size() -> Vector2:
+	var largest := Vector2.ZERO
+	for button in buttons:
+		largest = largest.max(button.get_combined_minimum_size())
+		
+	if buttons.size() > 1:
+		if horizontal:
+			largest.x += menu_radius * 2.0
+		else:
+			largest.y += menu_radius * 2.0
+	return largest

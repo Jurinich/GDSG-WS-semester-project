@@ -2,29 +2,23 @@ extends Node2D
 
 class_name ItemSpawner
 
-enum SpawnChance{
-	NONE,
-	LOW,
-	MEDIUM,
-	HIGH
+enum SpawnChance {
+	NONE = 0,
+	LOW = 5,
+	MEDIUM = 10,
+	HIGH = 20
 }
-
-
 
 @export var time_for_new_item : float = 8.0 #maybe later this could be a range using a Vector2ii
 var elapsed_time : float = 0.0
-@export var item_drops : Array[ItemDrop]
+var item_drops : Array[ItemDrop]
 @export var item_scene : PackedScene 
 @export var spawn_area_size: Vector2 = Vector2(800, 600)
 @onready var powerup_spawn: AudioStreamPlayer = $"/root/Game/powerup spawn"
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	item_drops = GameManager.settings.items
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	elapsed_time += delta
 	if elapsed_time >= time_for_new_item:

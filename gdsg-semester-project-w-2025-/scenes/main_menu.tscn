@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://br0nn0g3jab66" path="res://assets/sprites/Kittens/UI_kittens/kitten_lying.png" id="4_oa1go"]
 [ext_resource type="PackedScene" uid="uid://c1xmahmsx11f" path="res://scenes/LoopingMenu.tscn" id="6_lgwnu"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="6_oa1go"]
-[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/buttonsound_extension.gd" id="7_5dd4i"]
 [ext_resource type="Script" uid="uid://bpt207xu16nw5" path="res://scripts/selection_controller.gd" id="8_jk1qb"]
 [ext_resource type="PackedScene" uid="uid://bj18d1fh7lipn" path="res://scenes/player_selection_node.tscn" id="8_tbmy8"]
 [ext_resource type="Texture2D" uid="uid://bcam63poywcst" path="res://assets/Stick-LeftRight.svg" id="11_lgwnu"]
@@ -87,78 +86,11 @@ offset_left = 358.5
 offset_top = 183.754
 offset_right = -358.5
 offset_bottom = -215.99304
-horizontal = false
+theme = ExtResource("6_oa1go")
 menu_radius = 80.0
 rotation_speed = 12.0
-fade_modifier = 0.0
 scale_modifier = 0.473
-
-[node name="StartButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=2049458779]
-modulate = Color(0.74509805, 0.74509805, 0.74509805, 1)
-z_index = 1
-layout_mode = 0
-offset_left = -178.0
-offset_top = -39.500008
-offset_right = 178.0
-offset_bottom = 39.500008
-pivot_offset = Vector2(178, 39.500008)
-size_flags_vertical = 3
-focus_mode = 0
-theme = ExtResource("6_oa1go")
-theme_override_font_sizes/font_size = 48
-text = "Start Game"
-script = ExtResource("7_5dd4i")
-
-[node name="SettingsButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=2017300482]
-modulate = Color(0.18627451, 0.18627451, 0.18627451, 1)
-layout_mode = 0
-offset_left = -134.0
-offset_top = 29.782024
-offset_right = 134.0
-offset_bottom = 108.78204
-scale = Vector2(0.64525, 0.64525)
-pivot_offset = Vector2(134, 39.500008)
-size_flags_vertical = 3
-focus_mode = 0
-mouse_filter = 2
-theme = ExtResource("6_oa1go")
-theme_override_font_sizes/font_size = 48
-text = "Settings"
-script = ExtResource("7_5dd4i")
-
-[node name="CreditsButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=1033975307]
-modulate = Color(0, 0, 0, 0)
-layout_mode = 0
-offset_left = -120.0
-offset_top = -39.5
-offset_right = 120.0
-offset_bottom = 39.5
-scale = Vector2(0.527, 0.527)
-pivot_offset = Vector2(120, 39.5)
-size_flags_vertical = 3
-focus_mode = 0
-mouse_filter = 2
-theme = ExtResource("6_oa1go")
-theme_override_font_sizes/font_size = 48
-text = "Credits"
-script = ExtResource("7_5dd4i")
-
-[node name="QuitButton" type="Button" parent="ButtonBox/LoopingMenu" unique_id=75757821]
-modulate = Color(0.18627451, 0.18627451, 0.18627451, 1)
-layout_mode = 0
-offset_left = -73.0
-offset_top = -108.782036
-offset_right = 73.0
-offset_bottom = -29.782036
-scale = Vector2(0.64525, 0.64525)
-pivot_offset = Vector2(73, 39.5)
-size_flags_vertical = 3
-focus_mode = 0
-mouse_filter = 2
-theme = ExtResource("6_oa1go")
-theme_override_font_sizes/font_size = 48
-text = "Quit"
-script = ExtResource("7_5dd4i")
+items = Array[String](["Start Game", "Settings", "Quit", "Credits"])
 
 [node name="Title" type="TextureRect" parent="." unique_id=475323065]
 layout_mode = 1

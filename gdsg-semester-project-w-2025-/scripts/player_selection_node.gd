@@ -40,9 +40,12 @@ func update_texture():
 		selection.flip_h = true;
 
 func _unhandled_input(event):
-	if GameManager.arcade_mode == false:
-		return
+	if GameManager.arcade_mode:
+		_check_input_arcade(event)
+	else:
+		_check_input_desktop(event)
 
+func _check_input_arcade(event: InputEvent) -> void:
 	if event.device not in [GameManager.arcade_p1_id, GameManager.arcade_p2_id]:
 		return
 
@@ -53,6 +56,16 @@ func _unhandled_input(event):
 
 	if event.is_action_pressed("ArcadeLeft"):
 		_on_left_button_pressed()
-
+		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed("ArcadeRight"):
 		_on_right_button_pressed()
+		get_viewport().set_input_as_handled()
+	
+
+func _check_input_desktop(event: InputEvent) -> void:
+	if event.is_action_pressed("leftP1" if isP1 else "leftP2"):
+		_on_left_button_pressed()
+		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("rightP1" if isP1 else "rightP2"):
+		_on_right_button_pressed()
+		get_viewport().set_input_as_handled()

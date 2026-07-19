@@ -1,7 +1,9 @@
 extends Node
 
-var max_score: int = -1
-var ball_limit: int = 20;
+signal score_changed
+signal sound_changed
+
+var ball_limit: int = 20
 
 var left_player_score: int = 0
 var right_player_score: int = 0
@@ -16,12 +18,10 @@ var arcade_mode = false
 var arcade_p1_id = -1
 var arcade_p2_id = 1
 
-var game_mode = GameMode.TIME
+var settings: Settings = Settings.new()
 
-signal score_changed
-signal sound_changed
-
-enum GameMode {TIME, SCORE}
+func _ready() -> void:
+	settings.load_items()
 
 func reset():
 	left_player_score = 0
@@ -46,8 +46,8 @@ func add_point(player : String) -> bool:
 	print("Score:", left_player_score, " - ", right_player_score)
 	score_changed.emit()
 
-	if (max_score > 0):
-		if (left_player_score >= max_score || right_player_score >= max_score):
+	if (settings.gamemode == Settings.GameMode.SCORE):
+		if (left_player_score >= settings.score || right_player_score >= settings.score):
 			get_tree().call_deferred("change_scene_to_file", "res://scenes/main_menu.tscn")
 			return false
 
@@ -62,5 +62,4 @@ func _unhandled_input(event):
 
 func can_spawn_more() -> bool:
 	var current_ball_count = get_tree().get_nodes_in_group("balls").size()
-	print("balls ", current_ball_count)
 	return current_ball_count < ball_limit

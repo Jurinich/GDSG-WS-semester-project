@@ -16,4 +16,4 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 2
 script = ExtResource("1_47ct2")
-horizontal = null
+items = null
