@@ -1,7 +1,6 @@
 extends Node
 
 signal score_changed
-signal sound_changed
 
 var ball_limit: int = 20
 
@@ -11,14 +10,19 @@ var right_player_score: int = 0
 var left_player_paddle: int = 0
 var right_player_paddle: int = 0
 
-var sound_vol: int = 100
-var music_vol: int = 100
-
 var arcade_mode = false
 var arcade_p1_id = -1
 var arcade_p2_id = 1
 
 var settings: Settings = Settings.new()
+
+enum Skins {SALMON, TUNA, SKELETON};
+
+const SKIN_TO_SOUND_DICT: Dictionary[Skins, StringName] = {
+	Skins.SALMON: "fish_hit",
+	Skins.TUNA: "fish_hit",
+	Skins.SKELETON: "fishbone_hit"
+}
 
 func _ready() -> void:
 	settings.load_items()
@@ -27,14 +31,6 @@ func reset():
 	left_player_score = 0
 	right_player_score = 0
 	score_changed.emit()
-
-func change_sound(new: int):
-	sound_vol = new
-	sound_changed.emit()
-
-func change_music(new: int):
-	music_vol = new
-	sound_changed.emit()
 
 # function returns true if the game should continue on
 func add_point(player : String) -> bool:

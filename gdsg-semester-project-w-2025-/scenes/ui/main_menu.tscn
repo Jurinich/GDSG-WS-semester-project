@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://br0nn0g3jab66" path="res://assets/sprites/Kittens/UI_kittens/kitten_lying.png" id="4_oa1go"]
 [ext_resource type="PackedScene" uid="uid://c1xmahmsx11f" path="res://scenes/ui/looping_menu.tscn" id="6_lgwnu"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="6_oa1go"]
-[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/ui/buttonsound_extension.gd" id="7_5dd4i"]
 [ext_resource type="Script" uid="uid://bpt207xu16nw5" path="res://scripts/ui/selection_controller.gd" id="8_jk1qb"]
 [ext_resource type="PackedScene" uid="uid://bj18d1fh7lipn" path="res://scenes/ui/player_selection_node.tscn" id="8_tbmy8"]
 [ext_resource type="Texture2D" uid="uid://bcam63poywcst" path="res://assets/Stick-LeftRight.svg" id="11_lgwnu"]
@@ -81,17 +80,12 @@ stretch_mode = 5
 [node name="LoopingMenu" parent="ButtonBox" unique_id=421652052 instance=ExtResource("6_lgwnu")]
 layout_mode = 1
 anchor_left = 0.0
-anchor_top = 0.158
+anchor_top = 0.215
 anchor_bottom = 0.83900005
-offset_left = 358.5
-offset_top = 183.754
-offset_right = -358.5
-offset_bottom = -215.99304
 theme = ExtResource("6_oa1go")
-
-menu_radius = 80.0
-rotation_speed = 12.0
-scale_modifier = 0.473
+menu_radius = 75.0
+font_size = 50
+scale_modifier = 0.4
 items = Array[String](["Start Game", "Settings", "Quit", "Credits"])
 
 [node name="Title" type="TextureRect" parent="." unique_id=475323065]

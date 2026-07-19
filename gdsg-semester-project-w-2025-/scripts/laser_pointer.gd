@@ -105,11 +105,13 @@ func start_next_path() -> void:
 		tween.tween_property(paw_wrapper, "position:y", 0, PAW_HIDE_DURATION)
 
 func turn_on_laser():
+	AudioManager.playSound("laser_click");
 	line.set_point_position(1, dot.global_position)
 	laser_on = true
 	line.show()
 
 func turn_off_laser():
+	AudioManager.playSound("laser_click");
 	laser_on = false
 	line.hide()
 

@@ -40,6 +40,7 @@ func update_time_label():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("Pause"):
+		AudioManager.playSound("pause_menu")
 		get_tree().paused = true
 		pause_menu.show()
 		get_viewport().set_input_as_handled()

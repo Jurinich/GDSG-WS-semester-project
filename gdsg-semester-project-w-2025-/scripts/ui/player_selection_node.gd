@@ -10,6 +10,7 @@ extends Control
 @export var isP1: bool
 
 var cur_index: int
+var skin_count: int = GameManager.Skins.size();
 
 func _ready():
 	label.text = player_name
@@ -19,20 +20,13 @@ func _ready():
 
 
 func _on_right_button_pressed():
-	cur_index = cur_index + 1
-	if (cur_index > possible_textures.size() - 1):
-		cur_index = 0
-
+	cur_index = posmod(cur_index + 1, skin_count);
 	update_texture()
 
 
 func _on_left_button_pressed():
-	cur_index = cur_index - 1
-	if (cur_index < 0):
-		cur_index = possible_textures.size() - 1
-
+	cur_index = posmod(cur_index - 1, skin_count);
 	update_texture()
-
 
 func update_texture():
 	selection.texture = possible_textures[cur_index]

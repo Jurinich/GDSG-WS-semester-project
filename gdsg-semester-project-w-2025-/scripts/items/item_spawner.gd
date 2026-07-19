@@ -12,9 +12,8 @@ enum SpawnChance {
 @export var time_for_new_item : float = 8.0 #maybe later this could be a range using a Vector2ii
 var elapsed_time : float = 0.0
 var item_drops : Array[ItemDrop]
-@export var item_scene : PackedScene 
+@export var item_scene : PackedScene
 @export var spawn_area_size: Vector2 = Vector2(800, 600)
-@onready var powerup_spawn: AudioStreamPlayer = $"/root/Game/powerup spawn"
 
 func _ready() -> void:
 	item_drops = GameManager.settings.items
@@ -37,7 +36,6 @@ func chooseItem() -> ItemData:
 		total_weight += drop.weight
 		
 	var roll = randf_range(0.0, total_weight)
-	
 	var current_weight: float = 0.0
 	for drop in item_drops:
 		current_weight += drop.weight
@@ -50,7 +48,7 @@ func chooseItem() -> ItemData:
 	
 ##Spawn the actual item, by instantiating its scene with the corresponding Data
 func spawnItem(item_data : ItemData):
-	powerup_spawn.play()
+	AudioManager.playSound("powerup_spawned");
 	var item_node : CollectibleItem = item_scene.instantiate()
 	var half_size = spawn_area_size / 2.0
 	var random_x = randf_range(-half_size.x, half_size.x)

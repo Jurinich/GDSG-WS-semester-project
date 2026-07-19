@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 const SPEED := 1100
@@ -14,16 +15,19 @@ var device_id_cur: int
 var paddle: CollisionShape2D
 var sprite: Sprite2D
 var sprite_scale: Vector2
+var paddle_sound: StringName;
 
 func _ready():
 	fixed_x = global_position.x
 
 	if (isP1):
 		paddle = paddles[GameManager.left_player_paddle].instantiate()
+		paddle_sound = GameManager.SKIN_TO_SOUND_DICT[GameManager.left_player_paddle];
 		device_id_cur = GameManager.arcade_p1_id
 		paddle.scale.x = -paddle.scale.x
 	else:
 		paddle = paddles[GameManager.right_player_paddle].instantiate()
+		paddle_sound = GameManager.SKIN_TO_SOUND_DICT[GameManager.right_player_paddle];
 		device_id_cur = GameManager.arcade_p2_id
 	add_child(paddle)
 	sprite = paddle.get_node("Sprite2D")

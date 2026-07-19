@@ -19,8 +19,6 @@ var tile_offset := Vector2.ZERO
 
 @onready var sprite_material: ShaderMaterial = $Visuals/Ball.material
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
-@onready var border_sound: AudioStreamPlayer = $"../border sound"
-@onready var fish_paddle_sound: AudioStreamPlayer = $"../fish paddle sound"
 
 @onready var player_1: CharacterBody2D = $"../Player1"
 
@@ -58,11 +56,11 @@ func _physics_process(delta: float) -> void:
 		#print("Ball hit:",collider, " at pos ", collider.global_position)
 		if collider is CharacterBody2D or collider is StaticBody2D:
 			if collider is StaticBody2D:
-				border_sound.play()
+				AudioManager.playSound("border_hit");
 			var normal := collision.get_normal()
 			velocity = velocity.bounce(normal)
-			if collider is CharacterBody2D:
-				fish_paddle_sound.play()
+			if collider is Player:
+				AudioManager.playSound(collider.paddle_sound);
 				last_hit_by = collider
 				if collider.has_method("play_hit_animation"):
 					collider.play_hit_animation()

@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://blfg1dymlh7ab" path="res://scripts/items/inventory.gd" id="2_rysoc"]
 [ext_resource type="PackedScene" uid="uid://bhb0kygy35pj3" path="res://scenes/ball.tscn" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://dcjct6o0k4moq" path="res://scripts/ball_spawner.gd" id="3_lnu2h"]
-[ext_resource type="Script" uid="uid://bpva8mtljkuns" path="res://scripts/goal_script.gd" id="4_lbhrr"]
+[ext_resource type="Script" uid="uid://bpva8mtljkuns" path="res://scripts/goal.gd" id="4_lbhrr"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="5_dinhu"]
 [ext_resource type="Script" uid="uid://c0n866wxrwtu6" path="res://scripts/ui/score_label.gd" id="6_p57ef"]
 [ext_resource type="Script" uid="uid://cj72ehiqj5b7e" path="res://scripts/ui/effect_timer_manager.gd" id="7_oaba0"]
@@ -16,38 +16,9 @@
 [ext_resource type="Script" uid="uid://c0uvs62o1qka0" path="res://scripts/kitten_paw_spawner.gd" id="11_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://cwwdjsm2bpjkx" path="res://scenes/kitten_paw.tscn" id="12_dinhu"]
 [ext_resource type="Script" uid="uid://b2oe7fsd38rx1" path="res://scripts/items/item_spawner.gd" id="13_ca42v"]
-[ext_resource type="Script" uid="uid://d2jgn4osg4v7x" path="res://scripts/items/item_drop.gd" id="15_37s47"]
-[ext_resource type="Resource" uid="uid://dmryy0puarxaq" path="res://resources/items/PawFrenzy.tres" id="15_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://bdme7ngk7uj84" path="res://scenes/collectible_item.tscn" id="16_264po"]
-[ext_resource type="Resource" uid="uid://b11nxukklyrfj" path="res://resources/items/BiggerBalls.tres" id="17_5newe"]
-[ext_resource type="Resource" uid="uid://be6ilvwrhaya8" path="res://resources/items/SmallerBalls.tres" id="18_bt5mj"]
-[ext_resource type="Script" uid="uid://cgj3m6cj7v0vx" path="res://scripts/items/paw_frenzy.gd" id="18_ssvqc"]
-[ext_resource type="Script" uid="uid://djw7e30kw63ep" path="res://scripts/items/bigger_balls.gd" id="19_264po"]
-[ext_resource type="Resource" uid="uid://dybmbgbo7ljub" path="res://resources/items/SplitBall2.tres" id="19_qnb83"]
-[ext_resource type="Script" uid="uid://bvhryv3l2ogbq" path="res://scripts/items/smaller_balls.gd" id="20_1kice"]
-[ext_resource type="Resource" uid="uid://t2saihw67sa5" path="res://resources/items/SplitBall3.tres" id="20_sww3w"]
-[ext_resource type="Resource" uid="uid://bhduho0tmw16w" path="res://resources/items/SplitBall4.tres" id="21_suyxu"]
-[ext_resource type="Resource" uid="uid://ckrkxy5ex4x7" path="res://resources/items/SplitBall10.tres" id="22_qnb83"]
-[ext_resource type="Resource" uid="uid://5m3rckxpy8ua" path="res://resources/items/SplitBall5.tres" id="22_sgl2t"]
-[ext_resource type="Script" uid="uid://bhm6sk7siveqy" path="res://scripts/items/split_ball.gd" id="23_bt5mj"]
-[ext_resource type="Resource" uid="uid://cdxv14p5rtxsw" path="res://resources/items/SplitAll2.tres" id="23_pr1ej"]
-[ext_resource type="Resource" uid="uid://cgg4yxtv50a14" path="res://resources/items/SplitAll3.tres" id="24_05nbr"]
 [ext_resource type="PackedScene" uid="uid://dbl6pvi0yn2rt" path="res://scenes/laser_pointer.tscn" id="24_m4url"]
-[ext_resource type="Resource" uid="uid://sw61sqbvio2a" path="res://resources/items/LaserPointer.tres" id="25_0sl42"]
-[ext_resource type="Script" uid="uid://cdl2ng8ia0gha" path="res://scripts/items/laser_pointer_item.gd" id="27_05nbr"]
-[ext_resource type="AudioStream" uid="uid://d0xwonisrdwb5" path="res://assets/sounds/Goal Sound.wav" id="28_sww3w"]
-[ext_resource type="Script" uid="uid://d3gneryhnu1kv" path="res://scripts/audioextension.gd" id="29_7025r"]
-[ext_resource type="AudioStream" uid="uid://cl1o4ab4wtbi" path="res://assets/sounds/border sound.wav" id="29_suyxu"]
-[ext_resource type="AudioStream" uid="uid://y6dsn7s0mt7x" path="res://assets/sounds/paw swiff sound.wav" id="30_sgl2t"]
 [ext_resource type="PackedScene" uid="uid://btffbe4kdyktl" path="res://scenes/item_effects.tscn" id="31_05nbr"]
-[ext_resource type="AudioStream" uid="uid://cjjm5ye1xclu7" path="res://assets/sounds/fish paddle sound.wav" id="31_qouja"]
-[ext_resource type="AudioStream" uid="uid://dfj07w1gkp5rd" path="res://assets/sounds/menu hover.wav" id="32_twgab"]
-[ext_resource type="AudioStream" uid="uid://yhqh3quecu5b" path="res://assets/sounds/menu select.wav" id="33_02fa5"]
-[ext_resource type="AudioStream" uid="uid://gjxvv3b3fxsw" path="res://assets/sounds/powerup spawn.wav" id="34_nepv3"]
-[ext_resource type="AudioStream" uid="uid://rojt8w7y0lib" path="res://assets/sounds/powerup use.wav" id="36_m4url"]
-[ext_resource type="AudioStream" uid="uid://cpbwo62dnkmoo" path="res://assets/sounds/after run score 1.wav" id="37_7025r"]
-[ext_resource type="AudioStream" uid="uid://hwdmsocn8116" path="res://assets/sounds/after run score 2.wav" id="38_m4url"]
-[ext_resource type="AudioStream" uid="uid://dv0pe3el3sujs" path="res://assets/sounds/after run score 3.wav" id="39_8ool0"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_8cj0n"]
 
@@ -258,6 +229,8 @@ script = ExtResource("3_lnu2h")
 ball_scene = ExtResource("2_yqjtg")
 spawn_position = Vector2(960, 540)
 
+[node name="GameTimer" type="Timer" parent="." unique_id=1728957633]
+
 [node name="PawTriggers" type="Node" parent="." unique_id=1998233890]
 
 [node name="Area2D" type="Area2D" parent="PawTriggers" unique_id=1583465132]
@@ -287,65 +260,5 @@ item_scene = ExtResource("16_264po")
 [node name="LaserPointer" parent="." unique_id=274916930 instance=ExtResource("24_m4url")]
 
 [node name="ItemEffects" parent="." unique_id=1153352364 instance=ExtResource("31_05nbr")]
-
-[node name="Goal Sound" type="AudioStreamPlayer" parent="." unique_id=125741821]
-stream = ExtResource("28_sww3w")
-bus = &"Sounds"
-script = ExtResource("29_7025r")
-
-[node name="border sound" type="AudioStreamPlayer" parent="." unique_id=184895502]
-stream = ExtResource("29_suyxu")
-volume_db = 6.0
-bus = &"Sounds"
-script = ExtResource("29_7025r")
-
-[node name="paw swiff sound" type="AudioStreamPlayer" parent="." unique_id=1106187023]
-stream = ExtResource("30_sgl2t")
-volume_db = 6.0
-bus = &"Sounds"
-script = ExtResource("29_7025r")
-
-[node name="fish paddle sound" type="AudioStreamPlayer" parent="." unique_id=951044112]
-stream = ExtResource("31_qouja")
-volume_db = -3.0
-bus = &"Sounds"
-script = ExtResource("29_7025r")
-
-[node name="menu hover" type="AudioStreamPlayer" parent="." unique_id=1385162994]
-stream = ExtResource("32_twgab")
-bus = &"Sounds"
-script = ExtResource("29_7025r")
-
-[node name="menu select" type="AudioStreamPlayer" parent="." unique_id=208994679]
-stream = ExtResource("33_02fa5")
-bus = &"Sounds"
-script = ExtResource("29_7025r")
-
-[node name="powerup spawn" type="AudioStreamPlayer" parent="." unique_id=1204851298]
-stream = ExtResource("34_nepv3")
-bus = &"Sounds"
-script = ExtResource("29_7025r")
-
-[node name="powerup use" type="AudioStreamPlayer" parent="." unique_id=1067459218]
-stream = ExtResource("36_m4url")
-bus = &"Sounds"
-script = ExtResource("29_7025r")
-
-[node name="scoring beginning" type="AudioStreamPlayer" parent="." unique_id=1898465809]
-stream = ExtResource("37_7025r")
-bus = &"Sounds"
-script = ExtResource("29_7025r")
-
-[node name="scoring mid" type="AudioStreamPlayer" parent="." unique_id=270743905]
-stream = ExtResource("38_m4url")
-bus = &"Sounds"
-script = ExtResource("29_7025r")
-
-[node name="scoring end" type="AudioStreamPlayer" parent="." unique_id=738499081]
-stream = ExtResource("39_8ool0")
-bus = &"Sounds"
-script = ExtResource("29_7025r")
-
-[node name="GameTimer" type="Timer" parent="." unique_id=1728957633]
 
 [connection signal="timeout" from="GameTimer" to="." method="timer_tick"]

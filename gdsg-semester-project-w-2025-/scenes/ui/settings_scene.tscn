@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://oc3myowet37o" path="res://assets/sprites/Backgrounds/BG Purple.png" id="2_5jacn"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="3_83w5s"]
 [ext_resource type="PackedScene" uid="uid://d1fsv1oehdmet" path="res://scenes/LoopingSelection.tscn" id="4_jg5mx"]
-[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/buttonsound_extension.gd" id="4_tori7"]
+[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/ui/buttonsound_extension.gd" id="4_tori7"]
 [ext_resource type="Script" uid="uid://bwsdwnw2rqq6h" path="res://scripts/looping_selection_item.gd" id="5_hlosk"]
 
 [sub_resource type="Resource" id="Resource_byo6x"]
@@ -51,14 +51,26 @@ metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
 
 [sub_resource type="Resource" id="Resource_84cth"]
 script = ExtResource("5_hlosk")
-text = "1:00"
-value = 60.0
+text = "None"
+value = 0.0
 metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
 
-[sub_resource type="Resource" id="Resource_yyc1c"]
+[sub_resource type="Resource" id="Resource_oow4c"]
 script = ExtResource("5_hlosk")
-text = "Time"
-value = 1
+text = "Low"
+value = 5.0
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_jmcw8"]
+script = ExtResource("5_hlosk")
+text = "Medium"
+value = 10.0
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_7jrx5"]
+script = ExtResource("5_hlosk")
+text = "High"
+value = 20.0
 metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
 
 [node name="SettingsScene" type="Control" unique_id=596093716]
@@ -152,8 +164,10 @@ horizontal_alignment = 1
 [node name="LoopingSelection" parent="content/Item1" unique_id=959290415 instance=ExtResource("4_jg5mx")]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+item_padding = 120.0
 font_size = 32
-items = Array[ExtResource("5_hlosk")]([SubResource("Resource_84cth"), SubResource("Resource_yyc1c"), SubResource("Resource_84cth"), SubResource("Resource_yyc1c")])
+selected_item = 2
+items = Array[ExtResource("5_hlosk")]([SubResource("Resource_84cth"), SubResource("Resource_oow4c"), SubResource("Resource_jmcw8"), SubResource("Resource_7jrx5")])
 
 [node name="heading2" type="Label" parent="content" unique_id=162042890]
 layout_mode = 2
@@ -187,7 +201,9 @@ custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-value = 100.0
+max_value = 2.0
+step = 0.01
+value = 1.0
 
 [node name="HSeparator3" type="HSeparator" parent="content" unique_id=1792964731]
 layout_mode = 2
@@ -225,7 +241,9 @@ custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-value = 100.0
+max_value = 2.0
+step = 0.01
+value = 1.0
 
 [node name="HSeparator2" type="HSeparator" parent="content" unique_id=1777799279]
 layout_mode = 2

@@ -97,6 +97,9 @@ func _populate_button_array() -> void:
 	update_minimum_size()
 
 func select(index: int, animate: bool = false) -> void:
+	if items.is_empty():
+		return
+	
 	if animate:
 		target_selected_menu += (index - selected_menu)
 	else:
