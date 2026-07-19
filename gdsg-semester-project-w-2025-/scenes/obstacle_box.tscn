@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://n3ryqnujluly"]
+
+[ext_resource type="Texture2D" uid="uid://bx0pfejofjdg" path="res://assets/sprites/Obstacles/obstacle_box.png" id="1_fpu52"]
+
+[node name="ObstacleBox" type="StaticBody2D" unique_id=1782744075]
+collision_layer = 8
+collision_mask = 17
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1222336164]
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("1_fpu52")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1493384008]
+polygon = PackedVector2Array(-61, -71, 56, -71, 68, 87, 55, 104, -62, 104, -74, 87)

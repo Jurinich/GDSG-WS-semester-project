@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://hnc22i22lehf"]
+
+[ext_resource type="Texture2D" uid="uid://bfiqq6jpq1557" path="res://assets/sprites/Backgrounds/BG Dark.png" id="1_xjkio"]
+[ext_resource type="Texture2D" uid="uid://dj7n4h024303j" path="res://assets/sprites/Backgrounds/playfield.png" id="2_dco4i"]
+[ext_resource type="PackedScene" uid="uid://du27v85gwfpb1" path="res://scenes/obstacle_bar.tscn" id="3_xjkio"]
+[ext_resource type="PackedScene" uid="uid://cyxykq470krfh" path="res://scenes/obstacle_circle.tscn" id="4_j5ncy"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_p7rxp"]
+
+[node name="Layout1" type="Node2D" unique_id=1939009019]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=527930151]
+layer = -2
+
+[node name="Background" type="MeshInstance2D" parent="BackgroundLayer" unique_id=451616174]
+position = Vector2(960, 540)
+scale = Vector2(1920, 1080)
+mesh = SubResource("QuadMesh_p7rxp")
+texture = ExtResource("1_xjkio")
+
+[node name="PlayingField" type="MeshInstance2D" parent="BackgroundLayer" unique_id=106614439]
+position = Vector2(960, 568.5)
+scale = Vector2(1860, 957)
+mesh = SubResource("QuadMesh_p7rxp")
+texture = ExtResource("2_dco4i")
+
+[node name="ObstacleBar" parent="." unique_id=132568581 instance=ExtResource("3_xjkio")]
+position = Vector2(760, 360)
+rotation = 6.2831855
+scale = Vector2(1.15, 1.15)
+
+[node name="ObstacleBar2" parent="." unique_id=1316795158 instance=ExtResource("3_xjkio")]
+position = Vector2(1160, 360)
+scale = Vector2(1.15, 1.15)
+
+[node name="ObstacleCircle" parent="." unique_id=577962476 instance=ExtResource("4_j5ncy")]
+position = Vector2(750, 900)
+scale = Vector2(0.8, 0.8)
+
+[node name="ObstacleCircle2" parent="." unique_id=1451870992 instance=ExtResource("4_j5ncy")]
+position = Vector2(610, 780)
+scale = Vector2(0.8, 0.8)
+
+[node name="ObstacleCircle3" parent="." unique_id=1017411295 instance=ExtResource("4_j5ncy")]
+position = Vector2(1170, 900)
+scale = Vector2(0.8, 0.8)
+
+[node name="ObstacleCircle4" parent="." unique_id=1975045651 instance=ExtResource("4_j5ncy")]
+position = Vector2(1310, 780)
+scale = Vector2(0.8, 0.8)
+
+[node name="ObstacleCircle5" parent="." unique_id=84042481 instance=ExtResource("4_j5ncy")]
+position = Vector2(960, 950)
+scale = Vector2(0.8, 0.8)

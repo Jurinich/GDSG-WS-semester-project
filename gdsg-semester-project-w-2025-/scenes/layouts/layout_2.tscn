@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://biahrs1r8b1tl"]
+
+[ext_resource type="Texture2D" uid="uid://bfiqq6jpq1557" path="res://assets/sprites/Backgrounds/BG Dark.png" id="1_xjkio"]
+[ext_resource type="PackedScene" uid="uid://cyxykq470krfh" path="res://scenes/obstacle_circle.tscn" id="2_5hfok"]
+[ext_resource type="Texture2D" uid="uid://dj7n4h024303j" path="res://assets/sprites/Backgrounds/playfield.png" id="2_dco4i"]
+[ext_resource type="PackedScene" uid="uid://du27v85gwfpb1" path="res://scenes/obstacle_bar.tscn" id="3_xjkio"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_p7rxp"]
+
+[node name="Layout1" type="Node2D" unique_id=1939009019]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=527930151]
+layer = -2
+
+[node name="Background" type="MeshInstance2D" parent="BackgroundLayer" unique_id=451616174]
+position = Vector2(960, 540)
+scale = Vector2(1920, 1080)
+mesh = SubResource("QuadMesh_p7rxp")
+texture = ExtResource("1_xjkio")
+
+[node name="PlayingField" type="MeshInstance2D" parent="BackgroundLayer" unique_id=106614439]
+position = Vector2(960, 568.5)
+scale = Vector2(1860, 957)
+mesh = SubResource("QuadMesh_p7rxp")
+texture = ExtResource("2_dco4i")
+
+[node name="ObstacleCircle" parent="." unique_id=577962476 instance=ExtResource("2_5hfok")]
+position = Vector2(660, 300)
+rotation = -0.7853982
+scale = Vector2(0.65, 0.65)
+
+[node name="ObstacleCircle2" parent="." unique_id=1686231896 instance=ExtResource("2_5hfok")]
+position = Vector2(1260, 300)
+rotation = 0.7853982
+scale = Vector2(0.65, 0.65)
+
+[node name="ObstacleBar" parent="." unique_id=132568581 instance=ExtResource("3_xjkio")]
+position = Vector2(1600, 950)
+rotation = -2.3561945
+scale = Vector2(0.7, 0.7)
+
+[node name="ObstacleBar2" parent="." unique_id=2111107628 instance=ExtResource("3_xjkio")]
+position = Vector2(320, 950)
+rotation = 2.3561945
+scale = Vector2(0.7, 0.7)
+
+[node name="ObstacleBar3" parent="." unique_id=925342398 instance=ExtResource("3_xjkio")]
+position = Vector2(320, 180)
+rotation = 0.7853982
+scale = Vector2(0.7, 0.7)
+
+[node name="ObstacleBar4" parent="." unique_id=1660147084 instance=ExtResource("3_xjkio")]
+position = Vector2(1600, 180)
+rotation = -0.7853982
+scale = Vector2(0.7, 0.7)
+
+[node name="ObstacleCircle3" parent="." unique_id=307794613 instance=ExtResource("2_5hfok")]
+position = Vector2(660, 826)
+rotation = -2.3561945
+scale = Vector2(0.65, 0.65)
+
+[node name="ObstacleCircle4" parent="." unique_id=539226681 instance=ExtResource("2_5hfok")]
+position = Vector2(1260, 826)
+rotation = 2.3561945
+scale = Vector2(0.65, 0.65)
+
+[node name="ObstacleCircle5" parent="." unique_id=721599877 instance=ExtResource("2_5hfok")]
+position = Vector2(800, 563)
+rotation = 1.5707964
+scale = Vector2(0.65, 0.65)
+
+[node name="ObstacleCircle6" parent="." unique_id=991037502 instance=ExtResource("2_5hfok")]
+position = Vector2(1120, 563)
+rotation = -1.5707964
+scale = Vector2(0.65, 0.65)

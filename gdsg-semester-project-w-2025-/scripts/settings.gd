@@ -36,5 +36,5 @@ func load() -> void:
 	time = config.get_value("game", "time", 180.0)
 	score = config.get_value("game", "score", 20)
 	for item in items:
-		var weight = config.get_value("items", item.item.power_up_effect, [10.0])
+		var weight = config.get_value("items", item.item.power_up_effect, 10.0)
 		item.weight = weight

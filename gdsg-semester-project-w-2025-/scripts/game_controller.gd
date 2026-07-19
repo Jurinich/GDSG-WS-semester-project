@@ -7,9 +7,12 @@ extends Node2D
 @onready var pause_menu: Control = $ForegroundUILayer/PauseMenu
 @onready var timer: Timer = $GameTimer
 @export var game_duration: int = 180
-@export_range(1, 30, 1) var alarm_threshold: int = 15
 
+@export_range(1, 30, 1) var alarm_threshold: int = 15
 var cur_game_time: int
+
+@export var layouts: Array[PackedScene]
+var current_layout: Node2D
 
 func _ready():
 	if GameManager.settings.gamemode == Settings.GameMode.TIME:
@@ -17,6 +20,12 @@ func _ready():
 		timer.start()
 	update_time_label()
 	alarm_ui.set_alarm_state(cur_game_time, alarm_threshold)
+	if not layouts.is_empty():
+		var random_scene: PackedScene = layouts.pick_random()
+		current_layout = random_scene.instantiate()
+		add_child(current_layout)
+	else:
+		push_warning("No layouts assigned in the inspector!")
 
 func timer_tick():
 	if (cur_game_time <= 0):

@@ -10,6 +10,9 @@ extends CharacterBody2D
 @export var MAX_SCALE: float = 1.5
 @export var ROLL_SPEED: float = 0.01
 
+@export var SPEED_INCREASE_PER_PLAYER_HIT: float = 50.0
+@export var SPEED_INCREASE_PER_WALL_HIT: float = 10.0
+
 var current_scale: float = 1.0
 var current_speed: float
 var last_hit_by: CharacterBody2D = player_1
@@ -57,6 +60,9 @@ func _physics_process(delta: float) -> void:
 		if collider is CharacterBody2D or collider is StaticBody2D:
 			if collider is StaticBody2D:
 				AudioManager.playSound("border_hit");
+				BASE_SPEED += SPEED_INCREASE_PER_WALL_HIT
+				if current_speed < BASE_SPEED:
+					current_speed = BASE_SPEED
 			var normal := collision.get_normal()
 			velocity = velocity.bounce(normal)
 			if collider is Player:
@@ -64,6 +70,10 @@ func _physics_process(delta: float) -> void:
 				last_hit_by = collider
 				if collider.has_method("play_hit_animation"):
 					collider.play_hit_animation()
+				
+				BASE_SPEED += SPEED_INCREASE_PER_PLAYER_HIT
+				if current_speed < BASE_SPEED:
+					current_speed = BASE_SPEED
 				
 				velocity.y += collider.velocity.y * PADDLE_DIRECTION_INFLUENCE
 				current_speed += abs(collider.velocity.y) * PADDLE_SPEED_INFLUENCE

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bb4yvoi3fr5kg"]
+
+[ext_resource type="Texture2D" uid="uid://bfiqq6jpq1557" path="res://assets/sprites/Backgrounds/BG Dark.png" id="1_xjkio"]
+[ext_resource type="PackedScene" uid="uid://cyxykq470krfh" path="res://scenes/obstacle_circle.tscn" id="2_5hfok"]
+[ext_resource type="Texture2D" uid="uid://dj7n4h024303j" path="res://assets/sprites/Backgrounds/playfield.png" id="2_dco4i"]
+[ext_resource type="PackedScene" uid="uid://n3ryqnujluly" path="res://scenes/obstacle_box.tscn" id="3_ny7cx"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_p7rxp"]
+
+[node name="Layout1" type="Node2D" unique_id=1939009019]
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=527930151]
+layer = -2
+
+[node name="Background" type="MeshInstance2D" parent="BackgroundLayer" unique_id=451616174]
+position = Vector2(960, 540)
+scale = Vector2(1920, 1080)
+mesh = SubResource("QuadMesh_p7rxp")
+texture = ExtResource("1_xjkio")
+
+[node name="PlayingField" type="MeshInstance2D" parent="BackgroundLayer" unique_id=106614439]
+position = Vector2(960, 568.5)
+scale = Vector2(1860, 957)
+mesh = SubResource("QuadMesh_p7rxp")
+texture = ExtResource("2_dco4i")
+
+[node name="ObstacleBox" parent="." unique_id=1782744075 instance=ExtResource("3_ny7cx")]
+position = Vector2(560, 900)
+
+[node name="ObstacleBox2" parent="." unique_id=650175660 instance=ExtResource("3_ny7cx")]
+position = Vector2(1360, 900)
+
+[node name="ObstacleCircle" parent="." unique_id=577962476 instance=ExtResource("2_5hfok")]
+position = Vector2(960, 315)
+rotation = 0.6483965
+
+[node name="ObstacleCircle2" parent="." unique_id=1657061017 instance=ExtResource("2_5hfok")]
+position = Vector2(960, 720)
+scale = Vector2(0.6, 0.6)
