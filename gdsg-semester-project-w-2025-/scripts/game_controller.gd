@@ -15,9 +15,8 @@ var cur_game_time: int
 var current_layout: Node2D
 
 func _ready():
-	if GameManager.settings.gamemode == Settings.GameMode.TIME:
-		cur_game_time = int(GameManager.settings.time)
-		timer.start()
+	cur_game_time = int(GameManager.settings.time)
+	timer.start()
 	update_time_label()
 	alarm_ui.set_alarm_state(cur_game_time, alarm_threshold)
 	if not layouts.is_empty():

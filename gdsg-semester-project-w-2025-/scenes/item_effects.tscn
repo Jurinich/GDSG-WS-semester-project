@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://btffbe4kdyktl"]
 
 [ext_resource type="Script" uid="uid://cdl2ng8ia0gha" path="res://scripts/items/laser_pointer_item.gd" id="1_e6tw8"]
+[ext_resource type="Script" uid="uid://cwy5oqgrd4ctq" path="res://scripts/items/ball_catcher.gd" id="1_kuvpl"]
+[ext_resource type="PackedScene" uid="uid://b7r41vivhjnyg" path="res://scenes/ball_catcher.tscn" id="2_4mrva"]
 [ext_resource type="Script" uid="uid://cgj3m6cj7v0vx" path="res://scripts/items/paw_frenzy.gd" id="2_kuvpl"]
 [ext_resource type="Script" uid="uid://djw7e30kw63ep" path="res://scripts/items/bigger_balls.gd" id="3_4mrva"]
 [ext_resource type="Script" uid="uid://bvhryv3l2ogbq" path="res://scripts/items/smaller_balls.gd" id="4_o2uyb"]
@@ -8,6 +10,10 @@
 [ext_resource type="Script" uid="uid://dt6u7umxvjhdo" path="res://scripts/items/split_all_balls.gd" id="6_8l3bf"]
 
 [node name="ItemEffects" type="Node" unique_id=1153352364 groups=["item_effects"]]
+
+[node name="BallCatcher" type="Node" parent="." unique_id=241800269]
+script = ExtResource("1_kuvpl")
+catcher_scene = ExtResource("2_4mrva")
 
 [node name="LaserPointer" type="Node" parent="." unique_id=1381159384]
 script = ExtResource("1_e6tw8")
