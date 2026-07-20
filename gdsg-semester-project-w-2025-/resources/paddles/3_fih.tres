@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Paddle" format=3 uid="uid://c8dp5os0kbfs4"]
+
+[ext_resource type="Script" uid="uid://bl35ksw8rjatp" path="res://scripts/paddle.gd" id="1_88o68"]
+[ext_resource type="Texture2D" uid="uid://d3hm71vvk20xj" path="res://assets/sprites/Paddles/3_fih.png" id="2_a6i8i"]
+
+[resource]
+script = ExtResource("1_88o68")
+name = &"fih"
+sprite = ExtResource("2_a6i8i")
+metadata/_custom_type_script = "uid://bl35ksw8rjatp"

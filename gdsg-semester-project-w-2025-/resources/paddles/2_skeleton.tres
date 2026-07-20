@@ -7,7 +7,7 @@ load_path = "res://.godot/imported/2_skeleton.png-3952c0c4d4bea19c497a386e861030
 
 [resource]
 script = ExtResource("1_lbglk")
-name = &"Skeleton"
+name = &"???"
 sprite = SubResource("CompressedTexture2D_lbglk")
 hit_sound = &"fishbone_hit"
 metadata/_custom_type_script = "uid://bl35ksw8rjatp"

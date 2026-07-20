@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://2fala6tiko0h" path="res://resources/paddles/1_tuna.tres" id="4_c3mdi"]
 [ext_resource type="Resource" uid="uid://m2jywddari2d" path="res://resources/paddles/2_skeleton.tres" id="5_gmqxd"]
 [ext_resource type="Texture2D" uid="uid://bb80gnpm8par6" path="res://assets/sprites/Buttons/button_forward.png" id="5_ph6ke"]
+[ext_resource type="Resource" uid="uid://c8dp5os0kbfs4" path="res://resources/paddles/3_fih.tres" id="6_d6s4f"]
 [ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/ui/buttonsound_extension.gd" id="7_0juo8"]
 
 [node name="PlayerSelectionNode" type="Control" unique_id=425702317]
@@ -20,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h4mwn")
 player_name = "Player"
-paddles = Array[ExtResource("2_uqnh8")]([ExtResource("3_d6s4f"), ExtResource("4_c3mdi"), ExtResource("5_gmqxd")])
+paddles = Array[ExtResource("2_uqnh8")]([ExtResource("3_d6s4f"), ExtResource("4_c3mdi"), ExtResource("5_gmqxd"), ExtResource("6_d6s4f")])
 
 [node name="Background" type="TextureRect" parent="." unique_id=606959779]
 layout_mode = 1
@@ -75,7 +76,6 @@ theme_override_constants/margin_right = 80
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=2050260758]
 layout_mode = 2
-theme_override_constants/separation = 64
 alignment = 1
 
 [node name="SelectionLeft" type="TextureButton" parent="MarginContainer/HBoxContainer" unique_id=421449677]
@@ -90,6 +90,29 @@ texture_focused = ExtResource("5_ph6ke")
 stretch_mode = 5
 flip_h = true
 script = ExtResource("7_0juo8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1125547447]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="Fish" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=966466496]
+layout_mode = 2
+theme = ExtResource("3_quxui")
+theme_override_font_sizes/font_size = 56
+text = "Fish"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Emoji" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1906627020]
+visible = false
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 48
+text = "🥀"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="SelectionRight" type="TextureButton" parent="MarginContainer/HBoxContainer" unique_id=1375249828]
 layout_mode = 2
