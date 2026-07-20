@@ -12,6 +12,10 @@ const SPEED := 1100
 @export var HIT_ANIMATION_SCALE = 0.1
 @export var HIT_ANIMATION_ROTATION = 0.1
 
+@export var MOVE_ANIMATION_SPEED = 10.0
+@export var MOVE_ANIMATION_SCALE = 0.03
+@export var MOVE_ANIMATION_ROTATION = 0.15
+
 var paddle: Paddle
 var fixed_x: float
 var arcade_input: float
@@ -25,7 +29,8 @@ func _ready():
 	else:
 		paddle = GameManager.right_player_paddle
 	sprite.texture = paddle.sprite
-	collision_shape.shape = paddle.shape
+	if paddle.custom_shape != null:
+		collision_shape.shape = paddle.shape
 	fixed_x = global_position.x
 	sprite_scale = sprite.scale
 
@@ -57,8 +62,20 @@ func play_hit_animation():
 	tween_rotation.tween_property(sprite, "rotation", HIT_ANIMATION_ROTATION, HIT_ANIMATION_DURATION)
 	tween_rotation.tween_property(sprite, "rotation", 0, HIT_ANIMATION_DURATION)
 
-func _physics_process(_delta: float) -> void:
-	var dir:Vector2=Vector2(0, getYdir())
+func _play_move_animation(dir: Vector2, delta: float) -> void:
+	var animation_delta = delta * MOVE_ANIMATION_SPEED
+	
+	var target_rotation = -dir.y * MOVE_ANIMATION_ROTATION
+	sprite.rotation = lerp(sprite.rotation, target_rotation, animation_delta)
+
+	var target_scale = sprite_scale
+	target_scale.x += abs(dir.y) * MOVE_ANIMATION_SCALE
+	target_scale.y -= abs(dir.y) * MOVE_ANIMATION_SCALE
+	sprite.scale = sprite.scale.lerp(target_scale, animation_delta)
+
+func _physics_process(delta: float) -> void:
+	var dir: Vector2 = Vector2(0, getYdir())
 	velocity = dir * SPEED
 	move_and_slide()
 	global_position.x = fixed_x
+	_play_move_animation(dir, delta)

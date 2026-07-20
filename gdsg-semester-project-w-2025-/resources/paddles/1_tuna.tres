@@ -3,12 +3,8 @@
 [ext_resource type="Script" uid="uid://bl35ksw8rjatp" path="res://scripts/paddle.gd" id="1_qg2ns"]
 [ext_resource type="Texture2D" uid="uid://cnp5k0xak4u2l" path="res://assets/sprites/Paddles/1_tuna.png" id="2_glagb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_unrwl"]
-size = Vector2(60, 220)
-
 [resource]
 script = ExtResource("1_qg2ns")
 name = &"Tuna"
 sprite = ExtResource("2_glagb")
-shape = SubResource("RectangleShape2D_unrwl")
 metadata/_custom_type_script = "uid://bl35ksw8rjatp"

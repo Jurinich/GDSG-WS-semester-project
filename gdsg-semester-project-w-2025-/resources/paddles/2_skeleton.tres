@@ -2,9 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bl35ksw8rjatp" path="res://scripts/paddle.gd" id="1_lbglk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6b7g"]
-size = Vector2(60, 220)
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lbglk"]
 load_path = "res://.godot/imported/2_skeleton.png-3952c0c4d4bea19c497a386e8610308c.ctex"
 
@@ -12,6 +9,5 @@ load_path = "res://.godot/imported/2_skeleton.png-3952c0c4d4bea19c497a386e861030
 script = ExtResource("1_lbglk")
 name = &"Skeleton"
 sprite = SubResource("CompressedTexture2D_lbglk")
-shape = SubResource("RectangleShape2D_n6b7g")
 hit_sound = &"fishbone_hit"
 metadata/_custom_type_script = "uid://bl35ksw8rjatp"

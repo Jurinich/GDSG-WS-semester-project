@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ccn35788kwhso" path="res://scripts/ui/alarm_ui.gd" id="1_alarmui"]
 [ext_resource type="Script" uid="uid://b5bt2fewnslhs" path="res://scripts/game_controller.gd" id="1_bhx41"]
-[ext_resource type="Texture2D" uid="uid://bfiqq6jpq1557" path="res://assets/sprites/Backgrounds/BG Dark.png" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://dmngxbinp5ri7" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="Texture2D" uid="uid://dj7n4h024303j" path="res://assets/sprites/Backgrounds/playfield.png" id="2_gee14"]
 [ext_resource type="PackedScene" uid="uid://cbmbpna6rb4eq" path="res://scenes/layouts/layout_0.tscn" id="2_nepv3"]
 [ext_resource type="Script" uid="uid://blfg1dymlh7ab" path="res://scripts/items/inventory.gd" id="2_rysoc"]
 [ext_resource type="PackedScene" uid="uid://dqfvsq74n0rcp" path="res://scenes/layouts/layout_1.tscn" id="2_twgab"]
@@ -23,22 +21,24 @@
 [ext_resource type="PackedScene" uid="uid://hnc22i22lehf" path="res://scenes/layouts/layout_7.tscn" id="9_458eo"]
 [ext_resource type="PackedScene" uid="uid://ctfylu16qf3jn" path="res://scenes/layouts/layout_8.tscn" id="10_h3rex"]
 [ext_resource type="Script" uid="uid://c0uvs62o1qka0" path="res://scripts/kitten_paw_spawner.gd" id="11_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://fdafysk863vw" path="res://assets/sprites/Backgrounds/background.png" id="11_sww3w"]
 [ext_resource type="PackedScene" uid="uid://cwwdjsm2bpjkx" path="res://scenes/kitten_paw.tscn" id="12_dinhu"]
-[ext_resource type="PackedScene" uid="uid://b7r41vivhjnyg" path="res://scenes/ball_catcher.tscn" id="12_oaba0"]
 [ext_resource type="Script" uid="uid://b2oe7fsd38rx1" path="res://scripts/items/item_spawner.gd" id="13_ca42v"]
+[ext_resource type="Texture2D" uid="uid://ch1l6i4g3vi77" path="res://assets/sprites/Backgrounds/carpet.png" id="14_sgl2t"]
+[ext_resource type="Texture2D" uid="uid://cud167dalbhdi" path="res://assets/sprites/Obstacles/cardboard.png" id="14_suyxu"]
 [ext_resource type="PackedScene" uid="uid://bdme7ngk7uj84" path="res://scenes/collectible_item.tscn" id="16_264po"]
 [ext_resource type="PackedScene" uid="uid://dbl6pvi0yn2rt" path="res://scenes/laser_pointer.tscn" id="24_m4url"]
 [ext_resource type="PackedScene" uid="uid://cm4uq6fy2yi30" path="res://scenes/paddle_collectible_item.tscn" id="26_h3rex"]
 [ext_resource type="PackedScene" uid="uid://btffbe4kdyktl" path="res://scenes/item_effects.tscn" id="31_05nbr"]
-[sub_resource type="QuadMesh" id="QuadMesh_8cj0n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
+size = Vector2(16.0625, 90)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
-size = Vector2(64, 980)
+size = Vector2(30, 944)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
-size = Vector2(60, 980)
+size = Vector2(30, 944)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dinhu"]
 size = Vector2(578, 228)
@@ -51,23 +51,8 @@ position = Vector2(0, -2)
 script = ExtResource("1_bhx41")
 layouts = Array[PackedScene]([ExtResource("2_nepv3"), ExtResource("2_twgab"), ExtResource("4_7025r"), ExtResource("5_m4url"), ExtResource("6_8ool0"), ExtResource("7_0sl42"), ExtResource("8_oaba0"), ExtResource("9_458eo"), ExtResource("10_h3rex")])
 
-[node name="Background" type="CanvasLayer" parent="." unique_id=586626256]
-layer = -1
-
-[node name="Background" type="MeshInstance2D" parent="Background" unique_id=723960218]
-position = Vector2(960, 540)
-scale = Vector2(1920, 1080)
-mesh = SubResource("QuadMesh_8cj0n")
-texture = ExtResource("1_u5sy4")
-
-[node name="PlayingField" type="MeshInstance2D" parent="Background" unique_id=1248166817]
-position = Vector2(960, 568.5)
-scale = Vector2(1860, 957)
-mesh = SubResource("QuadMesh_8cj0n")
-texture = ExtResource("2_gee14")
-
 [node name="Player1" parent="." unique_id=477805542 instance=ExtResource("1_uwrxv")]
-position = Vector2(135, 609)
+position = Vector2(250, 610)
 collision_mask = 8
 isP1 = true
 
@@ -77,7 +62,7 @@ cycle_action = "cycleP1"
 use_action = "useItemP1"
 
 [node name="Player2" parent="." unique_id=279027391 instance=ExtResource("1_uwrxv")]
-position = Vector2(1789, 540)
+position = Vector2(1670, 610)
 collision_mask = 9
 
 [node name="InventoryP2" type="Node" parent="Player2" unique_id=1757685381]
@@ -85,27 +70,47 @@ script = ExtResource("2_rysoc")
 cycle_action = "cycleP2"
 use_action = "useItemP2"
 
-[node name="Walls" type="Node" parent="." unique_id=1365690129]
+[node name="Background" type="CanvasLayer" parent="." unique_id=586626256]
+layer = -1
 
-[node name="TopWall" type="StaticBody2D" parent="Walls" unique_id=755887784]
-position = Vector2(960, 51)
+[node name="Background" type="Sprite2D" parent="Background" unique_id=1390642153]
+position = Vector2(960, 540)
+texture = ExtResource("11_sww3w")
+
+[node name="Carpet" type="Sprite2D" parent="Background" unique_id=2035571409]
+position = Vector2(966, 618)
+texture = ExtResource("14_sgl2t")
+
+[node name="Walls" type="Node" parent="Background" unique_id=1365690129]
+
+[node name="TopWall" type="StaticBody2D" parent="Background/Walls" unique_id=755887784]
+position = Vector2(960, -40)
 collision_layer = 8
 collision_mask = 17
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall" unique_id=2021686217]
-position = Vector2(0, 54)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/TopWall" unique_id=2021686217]
+position = Vector2(0, 281)
 scale = Vector2(96, 1)
 shape = SubResource("RectangleShape2D_yqjtg")
 
-[node name="BotWall" type="StaticBody2D" parent="Walls" unique_id=1377988727]
+[node name="Sprite2D" type="Sprite2D" parent="Background/Walls/TopWall" unique_id=1107529535]
+position = Vector2(0, 270)
+texture = ExtResource("14_suyxu")
+flip_v = true
+
+[node name="BotWall" type="StaticBody2D" parent="Background/Walls" unique_id=1377988727]
 position = Vector2(960, 1080)
 collision_layer = 8
 collision_mask = 17
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BotWall" unique_id=1409367302]
-position = Vector2(0, -52)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/BotWall" unique_id=1409367302]
+position = Vector2(-4, -87)
 scale = Vector2(96, 1)
 shape = SubResource("RectangleShape2D_yqjtg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Walls/BotWall" unique_id=354455970]
+position = Vector2(0, -76)
+texture = ExtResource("14_suyxu")
 
 [node name="Goals" type="Node2D" parent="." unique_id=279516246]
 
@@ -116,7 +121,7 @@ script = ExtResource("4_lbhrr")
 player = "right"
 
 [node name="LeftGoal" type="CollisionShape2D" parent="Goals/LeftGoal" unique_id=884299002]
-position = Vector2(63, 11)
+position = Vector2(10, 70)
 shape = SubResource("RectangleShape2D_lnu2h")
 
 [node name="RightGoal" type="Area2D" parent="Goals" unique_id=1500528154]
@@ -126,7 +131,7 @@ script = ExtResource("4_lbhrr")
 player = "left"
 
 [node name="RightGoal" type="CollisionShape2D" parent="Goals/RightGoal" unique_id=22805758]
-position = Vector2(-62, 14)
+position = Vector2(-10, 70)
 shape = SubResource("RectangleShape2D_lbhrr")
 
 [node name="ForegroundUILayer" type="CanvasLayer" parent="." unique_id=1084581396]
@@ -158,7 +163,8 @@ script = ExtResource("1_alarmui")
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.994
-offset_bottom = 0.47998047
+offset_top = 67.0
+offset_bottom = 67.47998
 
 [node name="ScoreRight" type="Label" parent="BackgroundUILayer/HBoxContainer" unique_id=377718216]
 layout_mode = 2
@@ -253,14 +259,13 @@ spawn_position = Vector2(960, 540)
 position = Vector2(960, 158)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PawTriggers/Area2D" unique_id=627959169]
-position = Vector2(0, 104)
+position = Vector2(0, 149)
 shape = SubResource("RectangleShape2D_dinhu")
 
 [node name="Area2D2" type="Area2D" parent="PawTriggers" unique_id=563170104]
 position = Vector2(960, 910)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PawTriggers/Area2D2" unique_id=1154801488]
-position = Vector2(0, -50)
 shape = SubResource("RectangleShape2D_kvuet")
 
 [node name="KittenPawSpawner" type="Node2D" parent="." unique_id=1737106517 node_paths=PackedStringArray("triggers")]
@@ -269,7 +274,7 @@ paw_scene = ExtResource("12_dinhu")
 triggers = [NodePath("../PawTriggers/Area2D"), NodePath("../PawTriggers/Area2D2")]
 
 [node name="ItemSpawner" type="Node2D" parent="." unique_id=1014848990]
-position = Vector2(960, 144)
+position = Vector2(960, 335)
 script = ExtResource("13_ca42v")
 item_scene = ExtResource("16_264po")
 paddle_item_scene = ExtResource("26_h3rex")
