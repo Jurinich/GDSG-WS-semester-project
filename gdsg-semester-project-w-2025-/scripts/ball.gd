@@ -12,7 +12,7 @@ extends CharacterBody2D
 
 @export var SPEED_INCREASE_PER_PLAYER_HIT: float = 50.0
 @export var SPEED_INCREASE_PER_WALL_HIT: float = 10.0
-
+@export var BALL_MAX_SPEED: float = 2000.0
 var current_scale: float = 1.0
 var current_speed: float
 var last_hit_by: CharacterBody2D = player_1
@@ -51,6 +51,7 @@ func launch_ball():
 func _physics_process(delta: float) -> void:
 	if current_speed != BASE_SPEED:
 		current_speed = move_toward(current_speed, BASE_SPEED, SPEED_DECAY * delta)
+	current_speed = min(current_speed, BALL_MAX_SPEED)
 	velocity = velocity.normalized() * current_speed
 	
 	var collision := move_and_collide(velocity * delta)
