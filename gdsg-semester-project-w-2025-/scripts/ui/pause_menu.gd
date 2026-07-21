@@ -23,11 +23,11 @@ func _on_quit_button_pressed():
 
 func _on_continue():
 	get_tree().paused = false;
-	AudioManager.playSound("pause_menu")
 	hide();
 
 func _unhandled_input(event):
 	if event.is_action_pressed("Pause"):
+		AudioManager.playSound("pause_menu")
 		_on_continue();
 		get_viewport().set_input_as_handled();
 

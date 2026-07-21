@@ -16,15 +16,6 @@ var arcade_p2_id = 1
 
 var settings: Settings = Settings.new()
 
-enum Skins {SALMON, TUNA, SKELETON, FIH};
-
-const SKIN_TO_SOUND_DICT: Dictionary[Skins, StringName] = {
-	Skins.SALMON: "fish_hit",
-	Skins.TUNA: "fish_hit",
-	Skins.SKELETON: "fishbone_hit",
-	Skins.FIH: "fih"
-}
-
 func _ready() -> void:
 	settings.load()
 

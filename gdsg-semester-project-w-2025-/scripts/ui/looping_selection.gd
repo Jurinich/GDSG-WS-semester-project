@@ -137,6 +137,7 @@ func _decrease_event(event: InputEvent) -> bool:
 
 func _on_focused_changed(focus: bool) -> void:
 	focused = focus;
+	AudioManager.playSound(&"menu_hover")
 
 func _get_minimum_size() -> Vector2:
 	var largest := Vector2.ZERO
