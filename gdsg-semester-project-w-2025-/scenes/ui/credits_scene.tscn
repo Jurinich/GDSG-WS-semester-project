@@ -7,6 +7,9 @@
 [ext_resource type="FontFile" uid="uid://cyq138krrqg2p" path="res://assets/fonts/Holtwood_One_SC/HoltwoodOneSC-Regular.ttf" id="4_s6411"]
 [ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/ui/buttonsound_extension.gd" id="6_s6411"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v6tre"]
+load_path = "res://.godot/imported/findusandbowser.png-beeb094d5864b948579ae92346833324.ctex"
+
 [node name="CreditsScene" type="Control" unique_id=1474240653]
 layout_mode = 3
 anchors_preset = 15
@@ -66,7 +69,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_utjet")
 theme_override_font_sizes/font_size = 32
-text = "Ivan, Max, Alex, Ida, Marlene, Marco (not good)"
+text = "Ivan, Max, Ida, Sandro, Flo, Flochi"
 
 [node name="subheading2" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1496383330]
 custom_minimum_size = Vector2(0, 80)
@@ -82,7 +85,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_utjet")
 theme_override_font_sizes/font_size = 32
-text = "Alex, Lisa, Ralev, Jonas"
+text = "Alex, Lisa, Flo"
 
 [node name="subheading3" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=679296202]
 custom_minimum_size = Vector2(0, 80)
@@ -114,7 +117,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_utjet")
 theme_override_font_sizes/font_size = 32
-text = "Sina, Marlene, Thomas"
+text = "Marly"
 
 [node name="subheading5" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2022854532]
 custom_minimum_size = Vector2(0, 80)
@@ -130,7 +133,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_utjet")
 theme_override_font_sizes/font_size = 32
-text = "Ida, Lisa"
+text = "Lisa, Flo"
 
 [node name="subheading6" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1939386649]
 custom_minimum_size = Vector2(0, 80)
@@ -146,23 +149,30 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_utjet")
 theme_override_font_sizes/font_size = 32
-text = "Alex, Marco, Marlene, Lisa, Thomas, Ivan, Ida, Sina"
+text = "Alex, Marco, Marlene, Lisa, Thomas, Ivan, Ida, Sina, Flo"
 
-[node name="subheading7" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=883804319]
+[node name="subheading8" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=564794964]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_utjet")
 theme_override_font_sizes/font_size = 48
-text = "Team Lead"
+text = "Voice Actors"
 
-[node name="person8" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1236501104]
+[node name="person9" type="Label" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1501607640]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_utjet")
 theme_override_font_sizes/font_size = 32
-text = "Ida"
+text = "Findus, Bowser"
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1200803210]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("CompressedTexture2D_v6tre")
+stretch_mode = 5
 
 [node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1757132302]
 layout_mode = 2
