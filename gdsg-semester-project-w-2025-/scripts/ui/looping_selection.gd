@@ -116,12 +116,12 @@ func select_value(value: Variant) -> bool:
 func _gui_input(event: InputEvent) -> void:
 	if _increase_event(event):
 		select(selected_item + 1, true)
-		AudioManager.playSound(&"menu_select");
+		AudioManager.playSound(&"menu_hover");
 		get_viewport().set_input_as_handled()
 		return
 	if _decrease_event(event):
 		select(selected_item - 1, true)
-		AudioManager.playSound(&"menu_select");
+		AudioManager.playSound(&"menu_hover");
 		get_viewport().set_input_as_handled()
 		return
 

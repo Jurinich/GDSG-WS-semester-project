@@ -110,16 +110,20 @@ func select(index: int, animate: bool = false) -> void:
 func _gui_input(event: InputEvent) -> void:
 	if _increase_event(event):
 		select(selected_menu + 1, true)
-		AudioManager.playSound(&"menu_select");
+		AudioManager.playSound(&"menu_hover");
 		get_viewport().set_input_as_handled()
 		return
 	if _decrease_event(event):
 		select(selected_menu - 1, true)
-		AudioManager.playSound(&"menu_select");
+		AudioManager.playSound(&"menu_hover");
 		get_viewport().set_input_as_handled()
 		return
 	if event.is_action_pressed("ui_accept"):
-		AudioManager.playSound(&"menu_select");
+		print(buttons[selected_menu].text)
+		if buttons[selected_menu].text == "Start Game":
+			AudioManager.playSound(&"game_start")
+		else:
+			AudioManager.playSound(&"menu_select");
 		buttons[selected_menu].pressed.emit()
 
 func _increase_event(event: InputEvent) -> bool:
