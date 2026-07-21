@@ -22,6 +22,8 @@ func _init_menus() -> void:
 	gamemode_menu.value_changed.connect(_on_gamemode_changed)
 	time_menu.select_value(GameManager.settings.time)
 	time_menu.value_changed.connect(_on_time_changed)
+	sound_slider.value_changed.connect(AudioManager.set_sound_volume)
+	music_slider.value_changed.connect(AudioManager.set_music_volume)
 
 func _init_item_settings() -> void:
 	for i in GameManager.settings.items.size():
@@ -65,12 +67,6 @@ func music_button_pressed():
 		AudioManager.set_music_volume(0.0);
 		music_slider.editable = false;
 		music_button.text = "Music: Off";
-
-func on_sound_slider_drag_end(_unused):
-	AudioManager.set_sound_volume(sound_slider.value);
-
-func on_music_slider_drag_end(_unused):
-	AudioManager.set_music_volume(music_slider.value);
 
 func init_music():
 	if (AudioManager.get_music_volume() <= 0):
