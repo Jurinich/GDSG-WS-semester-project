@@ -3,7 +3,6 @@
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="1_7i8ph"]
 [ext_resource type="Script" uid="uid://b1d0ntsa32q57" path="res://scripts/ui/looping_selection.gd" id="1_s2ng2"]
 [ext_resource type="Texture2D" uid="uid://5mnixfh2re8d" path="res://assets/sprites/UI/arrow.png" id="3_pmrvi"]
-[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/ui/buttonsound_extension.gd" id="4_pmrvi"]
 
 [node name="LoopingSelection" type="Control" unique_id=421652052]
 layout_mode = 3
@@ -27,14 +26,11 @@ alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="TextureButton" parent="HBoxContainer/Left" unique_id=1170610165]
-custom_minimum_size = Vector2(52.8, 52.8)
+[node name="Arrow" type="TextureRect" parent="HBoxContainer/Left" unique_id=791369466]
 layout_mode = 2
-focus_mode = 0
-texture_normal = ExtResource("3_pmrvi")
-ignore_texture_size = true
+texture = ExtResource("3_pmrvi")
+expand_mode = 1
 stretch_mode = 4
-script = ExtResource("4_pmrvi")
 
 [node name="Label" type="Label" parent="HBoxContainer" unique_id=1023310139]
 layout_mode = 2
@@ -45,12 +41,9 @@ text = "Text"
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="TextureButton" parent="HBoxContainer/Right" unique_id=644399649]
-custom_minimum_size = Vector2(52.8, 52.8)
+[node name="Arrow" type="TextureRect" parent="HBoxContainer/Right" unique_id=282881845]
 layout_mode = 2
-focus_mode = 0
-texture_normal = ExtResource("3_pmrvi")
-ignore_texture_size = true
+texture = ExtResource("3_pmrvi")
+expand_mode = 1
 stretch_mode = 4
 flip_h = true
-script = ExtResource("4_pmrvi")

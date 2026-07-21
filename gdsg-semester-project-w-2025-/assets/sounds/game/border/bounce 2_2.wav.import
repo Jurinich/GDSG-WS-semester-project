@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://rmarxiq6lidv"
+path="res://.godot/imported/bounce 2_2.wav-aae36a4f9aa4f02793d9245c46ea1868.sample"
+
+[deps]
+
+source_file="res://assets/sounds/game/border/bounce 2_2.wav"
+dest_files=["res://.godot/imported/bounce 2_2.wav-aae36a4f9aa4f02793d9245c46ea1868.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

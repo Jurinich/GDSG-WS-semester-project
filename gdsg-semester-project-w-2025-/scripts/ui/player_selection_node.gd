@@ -39,11 +39,11 @@ func update_texture():
 func _unhandled_input(event):
 	if GameManager.arcade_mode:
 		if _check_input_arcade(event):
-			AudioManager.playSound(&"menu_select");
+			AudioManager.playSound(&"menu_hover");
 			get_viewport().set_input_as_handled()
 	else:
 		if _check_input_desktop(event):
-			AudioManager.playSound(&"menu_select");
+			AudioManager.playSound(&"menu_hover");
 			get_viewport().set_input_as_handled()
 
 func _check_input_arcade(event: InputEvent) -> bool:

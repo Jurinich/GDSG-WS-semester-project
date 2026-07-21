@@ -4,8 +4,8 @@ class_name LoopingSelection extends Control
 signal value_changed(value: Variant)
 
 @onready var label: Label = $HBoxContainer/Label
-@onready var left_button: TextureButton = $HBoxContainer/Left/Button
-@onready var right_button: TextureButton = $HBoxContainer/Right/Button
+@onready var left_button: TextureRect = $HBoxContainer/Left/Arrow
+@onready var right_button: TextureRect = $HBoxContainer/Right/Arrow
 
 @export var font_size: int = 40:
 	set(value):
@@ -40,8 +40,6 @@ func _ready() -> void:
 	var arrow_size = label.size.y * 0.8
 	left_button.custom_minimum_size = Vector2(arrow_size, arrow_size)
 	right_button.custom_minimum_size = Vector2(arrow_size, arrow_size)
-	left_button.pressed.connect(_on_button_input.bind(-1))
-	right_button.pressed.connect(_on_button_input.bind(1))
 	focus_entered.connect(_on_focused_changed.bind(true))
 	focus_exited.connect(_on_focused_changed.bind(false))
 
@@ -82,14 +80,12 @@ func _gui_input(event: InputEvent) -> void:
 		if hold_timer > 0.0:
 			return
 	
-	if direction == 1:
-		right_button.pressed.emit()
-	elif direction == -1:
-		left_button.pressed.emit()
-	
 	hold_timer = hold_repeat
+	select(selected_item + direction)
+	AudioManager.playSound(&"menu_hover")
 
 func _on_focused_changed(focus: bool) -> void:
 	focused = focus
 	left_button.visible = focused
 	right_button.visible = focused
+	AudioManager.playSound(&"menu_hover")

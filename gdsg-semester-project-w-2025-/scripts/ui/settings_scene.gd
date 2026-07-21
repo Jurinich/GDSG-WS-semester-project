@@ -4,6 +4,7 @@ extends Control
 @onready var music_slider: HSlider = $Container/Content/HBoxContainer/HSlider
 @onready var sound_button: Button = $Container/Content/Button
 @onready var music_button: Button = $Container/Content/Button2
+@onready var back_button: Button = $Container/Content/BackButton
 @onready var gamemode_menu: LoopingSelection = $Container/Content/Gamemode/LoopingSelection
 @onready var time_menu: LoopingSelection = $Container/Content/Time/LoopingSelection
 @onready var items: Control = $Container/Content/Items
@@ -12,10 +13,14 @@ var item_scene: PackedScene = preload("res://scenes/ui/item_settings.tscn")
 
 func _ready():
 	gamemode_menu.grab_focus()
+	_set_focus_sound([sound_slider, music_slider, sound_button, music_button, back_button])
 	_init_menus()
 	_init_item_settings()
-	init_music()
-	init_sound()
+	_init_sound()
+
+func _set_focus_sound(elements: Array[Control]) -> void:
+	for element in elements:
+		element.focus_entered.connect(AudioManager.playSound.bind(&"menu_hover"))
 
 func _init_menus() -> void:
 	gamemode_menu.select_value(GameManager.settings.gamemode)
@@ -49,35 +54,27 @@ func _on_back_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 
 func sound_button_pressed():
-	if AudioManager.sound_muted():
-		AudioManager.set_sound_volume(1.0);
-		sound_slider.editable = true;
-		sound_button.text = "Sound: On";
-	else:
-		AudioManager.set_sound_volume(0.0);
-		sound_slider.editable = false;
-		sound_button.text = "Sound: Off";
+	AudioManager.mute_sound(!AudioManager.sound_muted())
+	_update_sound_button()
 
 func music_button_pressed():
-	if AudioManager.music_muted():
-		AudioManager.set_music_volume(1.0);
-		music_slider.editable = true;
-		music_button.text = "Music: On";
-	else:
-		AudioManager.set_music_volume(0.0);
-		music_slider.editable = false;
-		music_button.text = "Music: Off";
+	AudioManager.mute_music(!AudioManager.music_muted())
+	_update_music_buttons()
 
-func init_music():
-	if (AudioManager.get_music_volume() <= 0):
-		music_slider.editable = false;
-		music_button.text = "Music: Off";
-		return;
+func _init_sound():
+	_update_sound_button()
+	_update_music_buttons()
+	sound_slider.value = AudioManager.get_sound_volume();
 	music_slider.value = AudioManager.get_music_volume();
 
-func init_sound():
-	if (AudioManager.get_sound_volume() <= 0):
-		sound_slider.editable = false;
-		sound_button.text = "Sound: Off";
-		return;
-	sound_slider.value = AudioManager.get_sound_volume();
+func _update_music_buttons() -> void:
+	var music_muted = AudioManager.music_muted()
+	music_button.text = "Music: " + ("Off" if music_muted else "On")
+	music_slider.editable = !music_muted
+	music_slider.focus_mode = Control.FOCUS_NONE if music_muted else Control.FOCUS_ALL
+
+func _update_sound_button() -> void:
+	var sound_muted = AudioManager.sound_muted()
+	sound_button.text = "Sound: " + ("Off" if sound_muted else "On")
+	sound_slider.editable = !sound_muted
+	sound_slider.focus_mode = Control.FOCUS_NONE if sound_muted else Control.FOCUS_ALL

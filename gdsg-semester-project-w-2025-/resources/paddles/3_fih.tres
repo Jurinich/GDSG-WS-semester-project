@@ -7,4 +7,5 @@
 script = ExtResource("1_88o68")
 name = &"fih"
 sprite = ExtResource("2_a6i8i")
+hit_sound = &"fih"
 metadata/_custom_type_script = "uid://bl35ksw8rjatp"
