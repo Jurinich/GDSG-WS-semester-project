@@ -32,13 +32,13 @@
 [ext_resource type="PackedScene" uid="uid://btffbe4kdyktl" path="res://scenes/item_effects.tscn" id="31_05nbr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
-size = Vector2(16.0625, 90)
+size = Vector2(1560, 58)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
-size = Vector2(30, 944)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sgl2t"]
+normal = Vector2(1, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbhrr"]
-size = Vector2(30, 944)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qouja"]
+normal = Vector2(-1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dinhu"]
 size = Vector2(578, 228)
@@ -91,8 +91,7 @@ collision_layer = 8
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/TopWall" unique_id=2021686217]
-position = Vector2(0, 281)
-scale = Vector2(96, 1)
+position = Vector2(0, 297)
 shape = SubResource("RectangleShape2D_yqjtg")
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Walls/TopWall" unique_id=1107529535]
@@ -106,8 +105,7 @@ collision_layer = 8
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/BotWall" unique_id=1409367302]
-position = Vector2(-4, -87)
-scale = Vector2(96, 1)
+position = Vector2(0, -97)
 shape = SubResource("RectangleShape2D_yqjtg")
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Walls/BotWall" unique_id=354455970]
@@ -124,7 +122,7 @@ player = "right"
 
 [node name="LeftGoal" type="CollisionShape2D" parent="Goals/LeftGoal" unique_id=884299002]
 position = Vector2(10, 70)
-shape = SubResource("RectangleShape2D_lnu2h")
+shape = SubResource("WorldBoundaryShape2D_sgl2t")
 
 [node name="RightGoal" type="Area2D" parent="Goals" unique_id=1500528154]
 position = Vector2(1920, 540)
@@ -134,7 +132,7 @@ player = "left"
 
 [node name="RightGoal" type="CollisionShape2D" parent="Goals/RightGoal" unique_id=22805758]
 position = Vector2(-10, 70)
-shape = SubResource("RectangleShape2D_lbhrr")
+shape = SubResource("WorldBoundaryShape2D_qouja")
 
 [node name="ForegroundUILayer" type="CanvasLayer" parent="." unique_id=1084581396]
 
