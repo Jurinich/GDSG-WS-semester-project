@@ -49,6 +49,8 @@ size = Vector2(580, 246)
 [node name="Game" type="Node2D" unique_id=1886297339]
 position = Vector2(0, -2)
 script = ExtResource("1_bhx41")
+game_duration = null
+alarm_threshold = null
 layouts = Array[PackedScene]([ExtResource("2_nepv3"), ExtResource("2_twgab"), ExtResource("4_7025r"), ExtResource("5_m4url"), ExtResource("6_8ool0"), ExtResource("7_0sl42"), ExtResource("8_oaba0"), ExtResource("9_458eo"), ExtResource("10_h3rex")])
 
 [node name="Player1" parent="." unique_id=477805542 instance=ExtResource("1_uwrxv")]

@@ -1,4 +1,4 @@
-extends Control
+class_name PauseMenu extends Control
 
 @onready var sound_slider: HSlider = $content/HBoxContainer2/HSlider;
 @onready var music_slider: HSlider = $content/HBoxContainer/HSlider;
@@ -8,14 +8,25 @@ extends Control
 @onready var continue_button: Button = $content/ContinueButton;
 
 func _ready():
-	init_music()
-	init_sound()
 	quit_button.pressed.connect(_on_quit_button_pressed);
 	continue_button.pressed.connect(_on_continue);
 	sound_button.pressed.connect(sound_button_pressed);
 	music_button.pressed.connect(music_button_pressed);
-	sound_slider.drag_ended.connect(on_sound_slider_drag_end);
-	music_slider.drag_ended.connect(on_music_slider_drag_end);
+	sound_slider.value_changed.connect(AudioManager.set_sound_volume)
+	music_slider.value_changed.connect(AudioManager.set_music_volume)
+	_set_focus_sound([sound_slider, music_slider, sound_button, music_button, continue_button, quit_button])
+	_init_sound()
+
+func show_menu() -> void:
+	AudioManager.playSound("pause_menu")
+	get_tree().paused = true
+	show()
+	continue_button.grab_focus()
+	print(get_viewport().gui_get_focus_owner())
+
+func _set_focus_sound(elements: Array[Control]) -> void:
+	for element in elements:
+		element.focus_entered.connect(AudioManager.playSound.bind(&"menu_hover"))
 
 func _on_quit_button_pressed():
 	get_tree().paused = false
@@ -32,41 +43,27 @@ func _unhandled_input(event):
 		get_viewport().set_input_as_handled();
 
 func sound_button_pressed():
-	if AudioManager.sound_muted():
-		AudioManager.set_sound_volume(1.0);
-		sound_slider.editable = true;
-		sound_button.text = "Sound: On";
-	else:
-		AudioManager.set_sound_volume(0.0);
-		sound_slider.editable = false;
-		sound_button.text = "Sound: Off";
+	AudioManager.mute_sound(!AudioManager.sound_muted())
+	_update_sound_button()
 
 func music_button_pressed():
-	if AudioManager.music_muted():
-		AudioManager.set_music_volume(1.0);
-		music_slider.editable = true;
-		music_button.text = "Music: On";
-	else:
-		AudioManager.set_music_volume(0.0);
-		music_slider.editable = false;
-		music_button.text = "Music: Off";
+	AudioManager.mute_music(!AudioManager.music_muted())
+	_update_music_buttons()
 
-func on_sound_slider_drag_end(_unused):
-	AudioManager.set_sound_volume(sound_slider.value);
-
-func on_music_slider_drag_end(_unused):
-	AudioManager.set_music_volume(music_slider.value);
-
-func init_music():
-	if (AudioManager.get_music_volume() <= 0):
-		music_slider.editable = false;
-		music_button.text = "Music: Off";
-		return;
+func _init_sound():
+	_update_sound_button()
+	_update_music_buttons()
+	sound_slider.value = AudioManager.get_sound_volume();
 	music_slider.value = AudioManager.get_music_volume();
 
-func init_sound():
-	if (AudioManager.get_sound_volume() <= 0):
-		sound_slider.editable = false;
-		sound_button.text = "Sound: Off";
-		return;
-	sound_slider.value = AudioManager.get_sound_volume();
+func _update_music_buttons() -> void:
+	var music_muted = AudioManager.music_muted()
+	music_button.text = "Music: " + ("Off" if music_muted else "On")
+	music_slider.editable = !music_muted
+	music_slider.focus_mode = Control.FOCUS_NONE if music_muted else Control.FOCUS_ALL
+
+func _update_sound_button() -> void:
+	var sound_muted = AudioManager.sound_muted()
+	sound_button.text = "Sound: " + ("Off" if sound_muted else "On")
+	sound_slider.editable = !sound_muted
+	sound_slider.focus_mode = Control.FOCUS_NONE if sound_muted else Control.FOCUS_ALL

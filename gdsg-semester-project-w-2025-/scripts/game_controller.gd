@@ -4,7 +4,7 @@ extends Node2D
 @onready var time_minutes_label: Label = $BackgroundUILayer/TimeContainer/TimeMinutes
 @onready var time_colon_label: Label = $BackgroundUILayer/TimeContainer/TimeColon
 @onready var time_seconds_label: Label = $BackgroundUILayer/TimeContainer/TimeSeconds
-@onready var pause_menu: Control = $ForegroundUILayer/PauseMenu
+@onready var pause_menu: PauseMenu = $ForegroundUILayer/PauseMenu
 @onready var timer: Timer = $GameTimer
 @export var game_duration: int = 180
 
@@ -47,7 +47,5 @@ func update_time_label():
 
 func _unhandled_input(event):
 	if event.is_action_pressed("Pause"):
-		AudioManager.playSound("pause_menu")
-		get_tree().paused = true
-		pause_menu.show()
+		pause_menu.show_menu()
 		get_viewport().set_input_as_handled()
