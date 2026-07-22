@@ -7,6 +7,7 @@ var current_speed: float
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var sprite: Sprite2D = $CollisionShape2D/Sprite2D
+@onready var shadow_sprite: Sprite2D = $Shadow
 
 @export var isP1: bool = false
 
@@ -85,10 +86,12 @@ func _physics_process(delta: float) -> void:
 
 func scale_paddle(multiplier: float, duration: float = 5.0):
 	collision_shape.scale *= multiplier
+	shadow_sprite.scale *= multiplier
 	
 	await get_tree().create_timer(duration).timeout
 	
 	collision_shape.scale /= multiplier
+	shadow_sprite.scale /= multiplier
 
 func change_speed(multiplier: float, duration: float = 5.0):
 	current_speed = multiplier
