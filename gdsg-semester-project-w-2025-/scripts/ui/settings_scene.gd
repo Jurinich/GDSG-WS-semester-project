@@ -32,7 +32,7 @@ func _set_focus_sound(elements: Array[Control]) -> void:
 	for element in elements:
 		element.focus_entered.connect(AudioManager.playSound.bind(&"menu_hover"))
 
-func _on_control_focused(control: Control):	
+func _on_control_focused(control: Control):
 	var control_rect = control.get_global_rect()
 	var scroll_rect = scroll_container.get_global_rect()
 	
