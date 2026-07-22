@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bhb0kygy35pj3" path="res://scenes/ball.tscn" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://dcjct6o0k4moq" path="res://scripts/ball_spawner.gd" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://biahrs1r8b1tl" path="res://scenes/layouts/layout_2.tscn" id="4_7025r"]
-[ext_resource type="Script" uid="uid://bpva8mtljkuns" path="res://scripts/goal.gd" id="4_lbhrr"]
+[ext_resource type="Script" path="res://scripts/goal.gd" id="4_lbhrr"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="5_dinhu"]
 [ext_resource type="PackedScene" uid="uid://bb4yvoi3fr5kg" path="res://scenes/layouts/layout_3.tscn" id="5_m4url"]
 [ext_resource type="PackedScene" uid="uid://crco56e7pwt6i" path="res://scenes/layouts/layout_4.tscn" id="6_8ool0"]
