@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://btffbe4kdyktl"]
 
-[ext_resource type="Script" uid="uid://cdl2ng8ia0gha" path="res://scripts/items/laser_pointer_item.gd" id="1_e6tw8"]
+[ext_resource type="Script" path="res://scripts/items/laser_pointer_item.gd" id="1_e6tw8"]
 [ext_resource type="Script" uid="uid://cwy5oqgrd4ctq" path="res://scripts/items/ball_catcher.gd" id="1_kuvpl"]
 [ext_resource type="PackedScene" uid="uid://b7r41vivhjnyg" path="res://scenes/ball_catcher.tscn" id="2_4mrva"]
 [ext_resource type="Script" uid="uid://cgj3m6cj7v0vx" path="res://scripts/items/paw_frenzy.gd" id="2_kuvpl"]
@@ -8,6 +8,10 @@
 [ext_resource type="Script" uid="uid://bvhryv3l2ogbq" path="res://scripts/items/smaller_balls.gd" id="4_o2uyb"]
 [ext_resource type="Script" uid="uid://bhm6sk7siveqy" path="res://scripts/items/split_ball.gd" id="5_xrfhu"]
 [ext_resource type="Script" uid="uid://dt6u7umxvjhdo" path="res://scripts/items/split_all_balls.gd" id="6_8l3bf"]
+[ext_resource type="Script" uid="uid://cdwh6q3obncxy" path="res://scripts/items/paddle_speed_up.gd" id="9_xrfhu"]
+[ext_resource type="Script" uid="uid://crjlt1pnu7nux" path="res://scripts/items/paddle_speed_down.gd" id="10_8l3bf"]
+[ext_resource type="Script" uid="uid://b2rub3jv1u7uf" path="res://scripts/items/paddle_size_up.gd" id="11_o5ow2"]
+[ext_resource type="Script" uid="uid://cn5sfbsqk1db1" path="res://scripts/items/paddle_size_down.gd" id="12_8p3ks"]
 
 [node name="ItemEffects" type="Node" unique_id=1153352364 groups=["item_effects"]]
 
@@ -53,3 +57,15 @@ split_amount = 3
 [node name="SplitAll2" type="Node" parent="." unique_id=667477374]
 script = ExtResource("6_8l3bf")
 split_amount = 2
+
+[node name="PaddleSpeedUP" type="Node" parent="." unique_id=423860526]
+script = ExtResource("9_xrfhu")
+
+[node name="PaddleSpeedDOWN" type="Node" parent="." unique_id=1828570334]
+script = ExtResource("10_8l3bf")
+
+[node name="PaddleSizeUP" type="Node" parent="." unique_id=1625197334]
+script = ExtResource("11_o5ow2")
+
+[node name="PaddleSizeDOWN" type="Node" parent="." unique_id=233002201]
+script = ExtResource("12_8p3ks")

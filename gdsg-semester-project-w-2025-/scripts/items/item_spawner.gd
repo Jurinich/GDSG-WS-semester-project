@@ -8,8 +8,8 @@ var item_drops : Array[ItemDrop] = []
 @export var paddle_item_scene: PackedScene 
 
 @export var time_for_new_item : float = 12.0
-@export var min_items_to_spawn: int = 2
-@export var max_items_to_spawn: int = 4
+@export var min_items_to_spawn: int = 3
+@export var max_items_to_spawn: int = 5
 @export var delay_between_spawns: float = 0.5
 
 @export_range(-360.0, 360.0) var shoot_angle_degrees: float = 90.0 

@@ -1,7 +1,9 @@
 class_name Player
 extends CharacterBody2D
 
-const SPEED := 1100
+const BASE_SPEED := 1100
+var current_speed: float
+
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var sprite: Sprite2D = $CollisionShape2D/Sprite2D
@@ -33,6 +35,7 @@ func _ready():
 		collision_shape.shape = paddle.shape
 	fixed_x = global_position.x
 	sprite_scale = sprite.scale
+	current_speed = BASE_SPEED
 
 func getYdir() -> float:
 	if GameManager.arcade_mode:
@@ -75,7 +78,21 @@ func _play_move_animation(dir: Vector2, delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	var dir: Vector2 = Vector2(0, getYdir())
-	velocity = dir * SPEED
+	velocity = dir * current_speed
 	move_and_slide()
 	global_position.x = fixed_x
 	_play_move_animation(dir, delta)
+
+func scale_paddle(multiplier: float, duration: float = 5.0):
+	collision_shape.scale *= multiplier
+	
+	await get_tree().create_timer(duration).timeout
+	
+	collision_shape.scale /= multiplier
+
+func change_speed(multiplier: float, duration: float = 5.0):
+	current_speed = multiplier
+	
+	await get_tree().create_timer(duration).timeout
+	
+	current_speed = BASE_SPEED

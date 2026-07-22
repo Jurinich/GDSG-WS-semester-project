@@ -46,5 +46,21 @@
 	{
 		"item_path": "res://resources/BallCatcher.tres",
 		"weight": 5.0
+	},
+	{
+		"item_path": "res://resources/PaddleSpeedUP.tres",
+		"weight": 5.0
+	},
+	{
+		"item_path": "res://resources/PaddleSpeedDOWN.tres",
+		"weight": 5.0
+	},
+	{
+		"item_path": "res://resources/PaddleSizeUP.tres",
+		"weight": 5.0
+	},
+	{
+		"item_path": "res://resources/PaddleSizeDOWN.tres",
+		"weight": 5.0
 	}
 ]

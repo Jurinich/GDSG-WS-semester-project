@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://cd70ffnxym0up"]
+
+[ext_resource type="Script" uid="uid://cjxfeo0s5d5yr" path="res://scripts/items/item_data.gd" id="1_7vai0"]
+[ext_resource type="Texture2D" uid="uid://boluwrx1pww2a" path="res://assets/sprites/Items/PlaceholderItemorange.png" id="2_cdx5y"]
+
+[resource]
+script = ExtResource("1_7vai0")
+sprite = ExtResource("2_cdx5y")
+power_up_effect = "PaddleSizeDOWN"
+is_paddle_powerup = true
+metadata/_custom_type_script = "uid://cjxfeo0s5d5yr"
