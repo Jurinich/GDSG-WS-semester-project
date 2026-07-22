@@ -20,8 +20,11 @@ func _ready():
 	update_time_label()
 	alarm_ui.set_alarm_state(cur_game_time, alarm_threshold)
 	if not layouts.is_empty():
-		var random_scene: PackedScene = layouts.pick_random()
-		current_layout = random_scene.instantiate()
+		var index = GameManager.settings.layout
+		if index < 0:
+			current_layout = layouts.pick_random().instantiate()
+		else:
+			current_layout = layouts[index].instantiate()
 		add_child(current_layout)
 	else:
 		push_warning("No layouts assigned in the inspector!")

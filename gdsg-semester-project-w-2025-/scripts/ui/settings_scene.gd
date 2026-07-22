@@ -1,13 +1,15 @@
 extends Control
 
-@onready var sound_slider: HSlider = $Container/Content/HBoxContainer2/HSlider
-@onready var music_slider: HSlider = $Container/Content/HBoxContainer/HSlider
-@onready var sound_button: Button = $Container/Content/Button
-@onready var music_button: Button = $Container/Content/Button2
-@onready var back_button: Button = $Container/Content/BackButton
-@onready var gamemode_menu: LoopingSelection = $Container/Content/Gamemode/LoopingSelection
-@onready var time_menu: LoopingSelection = $Container/Content/Time/LoopingSelection
-@onready var items: Control = $Container/Content/Items
+@onready var sound_slider: HSlider = $Container/HBoxContainer2/HSlider
+@onready var music_slider: HSlider = $Container/HBoxContainer/HSlider
+@onready var sound_button: Button = $Container/Button
+@onready var music_button: Button = $Container/Button2
+@onready var back_button: Button = $Container/BackButton
+@onready var gamemode_menu: LoopingSelection = $Container/ScrollContainer/Content/Gamemode/LoopingSelection
+@onready var time_menu: LoopingSelection = $Container/ScrollContainer/Content/Time/LoopingSelection
+@onready var layout_menu: LoopingSelection = $Container/ScrollContainer/Content/MapLayout/LoopingSelection
+@onready var items: Control = $Container/ScrollContainer/Content/Items
+@onready var scroll_container: ScrollContainer = $Container/ScrollContainer
 
 var item_scene: PackedScene = preload("res://scenes/ui/item_settings.tscn")
 
@@ -17,16 +19,40 @@ func _ready():
 	_init_menus()
 	_init_item_settings()
 	_init_sound()
+	connect_focus_signals(scroll_container)
+
+func connect_focus_signals(node: Node):
+	if node is LoopingSelection:
+		node.focus_entered.connect(_on_control_focused.bind(node))
+	
+	for child in node.get_children():
+		connect_focus_signals(child)
 
 func _set_focus_sound(elements: Array[Control]) -> void:
 	for element in elements:
 		element.focus_entered.connect(AudioManager.playSound.bind(&"menu_hover"))
+
+func _on_control_focused(control: Control):	
+	var control_rect = control.get_global_rect()
+	var scroll_rect = scroll_container.get_global_rect()
+	
+	var control_top = control_rect.position.y - scroll_rect.position.y
+	var control_bottom = control_top + control_rect.size.y
+	
+	var margin = control_rect.size.y
+	
+	if control_top < margin:
+		scroll_container.scroll_vertical -= margin - control_top
+	elif control_bottom > scroll_rect.size.y - margin:
+		scroll_container.scroll_vertical += control_bottom - (scroll_rect.size.y - margin)
 
 func _init_menus() -> void:
 	gamemode_menu.select_value(GameManager.settings.gamemode)
 	gamemode_menu.value_changed.connect(_on_gamemode_changed)
 	time_menu.select_value(GameManager.settings.time)
 	time_menu.value_changed.connect(_on_time_changed)
+	layout_menu.select_value(GameManager.settings.layout)
+	layout_menu.value_changed.connect(_on_layout_changed)
 	sound_slider.value_changed.connect(AudioManager.set_sound_volume)
 	music_slider.value_changed.connect(AudioManager.set_music_volume)
 
@@ -45,6 +71,9 @@ func _on_gamemode_changed(value: Variant) -> void:
 
 func _on_time_changed(value: Variant) -> void:
 	GameManager.settings.time = value as float
+
+func _on_layout_changed(value: Variant) -> void:
+	GameManager.settings.layout = value as int
 
 func _on_item_changed(value: Variant, index: int) -> void:
 	GameManager.settings.items[index].weight = value as float

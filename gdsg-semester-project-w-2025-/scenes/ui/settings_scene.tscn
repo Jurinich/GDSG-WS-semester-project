@@ -49,6 +49,66 @@ text = "5:00"
 value = 300.0
 metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
 
+[sub_resource type="Resource" id="Resource_oow4c"]
+script = ExtResource("5_hlosk")
+text = "Random"
+value = -1
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_jmcw8"]
+script = ExtResource("5_hlosk")
+text = "Layout 1"
+value = 0
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_7jrx5"]
+script = ExtResource("5_hlosk")
+text = "Layout 2"
+value = 1
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_j3wk1"]
+script = ExtResource("5_hlosk")
+text = "Layout 3"
+value = 2
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_jp740"]
+script = ExtResource("5_hlosk")
+text = "Layout 4"
+value = 3
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_h3gt1"]
+script = ExtResource("5_hlosk")
+text = "Layout 5"
+value = 4
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_fohb0"]
+script = ExtResource("5_hlosk")
+text = "Layout 6"
+value = 5
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_smxgj"]
+script = ExtResource("5_hlosk")
+text = "Layout 7"
+value = 6
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_p2udf"]
+script = ExtResource("5_hlosk")
+text = "Layout 8"
+value = 7
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_ryeki"]
+script = ExtResource("5_hlosk")
+text = "Layout 9"
+value = 8
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
 [node name="SettingsScene" type="Control" unique_id=596093716]
 layout_mode = 3
 anchors_preset = 15
@@ -70,20 +130,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_5jacn")
 
-[node name="Container" type="ScrollContainer" parent="." unique_id=1174330377]
-clip_contents = false
+[node name="Container" type="VBoxContainer" parent="." unique_id=1770324105]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
-[node name="Content" type="VBoxContainer" parent="Container" unique_id=304647815]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="heading" type="Label" parent="Container/Content" unique_id=101908018]
+[node name="heading" type="Label" parent="Container" unique_id=101908018]
 layout_mode = 2
 theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 64
@@ -91,18 +147,18 @@ text = "This is our amazing settings page"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button2" type="Button" parent="Container/Content" unique_id=976116096]
+[node name="Button2" type="Button" parent="Container" unique_id=976116096]
 layout_mode = 2
 theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 32
 text = "Music: On"
 script = ExtResource("4_tori7")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Container/Content" unique_id=405671482]
+[node name="HBoxContainer" type="HBoxContainer" parent="Container" unique_id=405671482]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="text" type="Label" parent="Container/Content/HBoxContainer" unique_id=1077343360]
+[node name="text" type="Label" parent="Container/HBoxContainer" unique_id=1077343360]
 layout_mode = 2
 theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 32
@@ -110,7 +166,7 @@ text = "Volume   "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="Container/Content/HBoxContainer" unique_id=916181864]
+[node name="HSlider" type="HSlider" parent="Container/HBoxContainer" unique_id=916181864]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -119,22 +175,21 @@ max_value = 2.0
 step = 0.05
 value = 1.0
 
-[node name="HSeparator3" type="HSeparator" parent="Container/Content" unique_id=1792964731]
+[node name="HSeparator3" type="HSeparator" parent="Container" unique_id=1792964731]
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="Container/Content" unique_id=551788857]
+[node name="Button" type="Button" parent="Container" unique_id=551788857]
 layout_mode = 2
 theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 32
 text = "Sound: On"
 script = ExtResource("4_tori7")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Container/Content" unique_id=1012310735]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Container" unique_id=1012310735]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="text" type="Label" parent="Container/Content/HBoxContainer2" unique_id=1008157770]
+[node name="text" type="Label" parent="Container/HBoxContainer2" unique_id=1008157770]
 layout_mode = 2
 theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 32
@@ -142,7 +197,7 @@ text = "Volume   "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="Container/Content/HBoxContainer2" unique_id=1856957105]
+[node name="HSlider" type="HSlider" parent="Container/HBoxContainer2" unique_id=1856957105]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -151,56 +206,89 @@ max_value = 2.0
 step = 0.05
 value = 1.0
 
-[node name="HSeparator2" type="HSeparator" parent="Container/Content" unique_id=1777799279]
+[node name="HSeparator2" type="HSeparator" parent="Container" unique_id=1777799279]
+layout_mode = 2
+
+[node name="text" type="Label" parent="Container" unique_id=1412077300]
+layout_mode = 2
+theme = ExtResource("3_83w5s")
+theme_override_font_sizes/font_size = 38
+text = "Game Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Container" unique_id=1174330377]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Gamemode" type="HBoxContainer" parent="Container/Content" unique_id=1116497581]
+[node name="Content" type="VBoxContainer" parent="Container/ScrollContainer" unique_id=304647815]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Gamemode" type="HBoxContainer" parent="Container/ScrollContainer/Content" unique_id=1116497581]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="Container/Content/Gamemode" unique_id=1485872062]
+[node name="Label" type="Label" parent="Container/ScrollContainer/Content/Gamemode" unique_id=1485872062]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 28
 text = "Gamemode"
 horizontal_alignment = 1
 
-[node name="LoopingSelection" parent="Container/Content/Gamemode" unique_id=421652052 instance=ExtResource("4_jg5mx")]
+[node name="LoopingSelection" parent="Container/ScrollContainer/Content/Gamemode" unique_id=421652052 instance=ExtResource("4_jg5mx")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-font_size = 26
+font_size = 28
 items = Array[ExtResource("5_hlosk")]([SubResource("Resource_byo6x"), SubResource("Resource_gfh8v"), SubResource("Resource_byo6x"), SubResource("Resource_gfh8v")])
 hold_delay = 0.4
 hold_repeat = 0.08
 
-[node name="Time" type="HBoxContainer" parent="Container/Content" unique_id=1676327129]
+[node name="Time" type="HBoxContainer" parent="Container/ScrollContainer/Content" unique_id=1676327129]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="Container/Content/Time" unique_id=556961975]
+[node name="Label" type="Label" parent="Container/ScrollContainer/Content/Time" unique_id=556961975]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 28
 text = "Time"
 horizontal_alignment = 1
 
-[node name="LoopingSelection" parent="Container/Content/Time" unique_id=317700485 instance=ExtResource("4_jg5mx")]
+[node name="LoopingSelection" parent="Container/ScrollContainer/Content/Time" unique_id=317700485 instance=ExtResource("4_jg5mx")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-font_size = 26
+font_size = 28
 items = Array[ExtResource("5_hlosk")]([SubResource("Resource_d3okq"), SubResource("Resource_jg5mx"), SubResource("Resource_hlosk"), SubResource("Resource_5j6q7"), SubResource("Resource_8ks4o")])
 hold_delay = 0.4
 hold_repeat = 0.08
 
-[node name="Items" type="VBoxContainer" parent="Container/Content" unique_id=507344027]
+[node name="MapLayout" type="HBoxContainer" parent="Container/ScrollContainer/Content" unique_id=1477998104]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Container/ScrollContainer/Content/MapLayout" unique_id=1662711342]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Layout"
+horizontal_alignment = 1
+
+[node name="LoopingSelection" parent="Container/ScrollContainer/Content/MapLayout" unique_id=685089173 instance=ExtResource("4_jg5mx")]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+font_size = 28
+items = Array[ExtResource("5_hlosk")]([SubResource("Resource_oow4c"), SubResource("Resource_jmcw8"), SubResource("Resource_7jrx5"), SubResource("Resource_j3wk1"), SubResource("Resource_jp740"), SubResource("Resource_h3gt1"), SubResource("Resource_fohb0"), SubResource("Resource_smxgj"), SubResource("Resource_p2udf"), SubResource("Resource_ryeki")])
+hold_delay = 0.4
+hold_repeat = 0.08
+
+[node name="Items" type="VBoxContainer" parent="Container/ScrollContainer/Content" unique_id=507344027]
 layout_mode = 2
 
-[node name="HSeparator4" type="HSeparator" parent="Container/Content" unique_id=154403020]
+[node name="HSeparator4" type="HSeparator" parent="Container" unique_id=154403020]
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="BackButton" type="Button" parent="Container/Content" unique_id=41829431]
+[node name="BackButton" type="Button" parent="Container" unique_id=41829431]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_vertical = 8
@@ -209,7 +297,7 @@ theme_override_font_sizes/font_size = 64
 text = "Back"
 script = ExtResource("4_tori7")
 
-[connection signal="pressed" from="Container/Content/Button2" to="." method="music_button_pressed"]
-[connection signal="drag_ended" from="Container/Content/HBoxContainer/HSlider" to="." method="on_music_slider_drag_end"]
-[connection signal="pressed" from="Container/Content/Button" to="." method="sound_button_pressed"]
-[connection signal="pressed" from="Container/Content/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Container/Button2" to="." method="music_button_pressed"]
+[connection signal="drag_ended" from="Container/HBoxContainer/HSlider" to="." method="on_music_slider_drag_end"]
+[connection signal="pressed" from="Container/Button" to="." method="sound_button_pressed"]
+[connection signal="pressed" from="Container/BackButton" to="." method="_on_back_button_pressed"]

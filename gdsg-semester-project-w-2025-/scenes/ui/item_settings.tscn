@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dqcqmeurfjtad"]
 
+[ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="1_aqesv"]
 [ext_resource type="PackedScene" uid="uid://d1fsv1oehdmet" path="res://scenes/ui/looping_selection.tscn" id="1_gd0nh"]
 [ext_resource type="Script" uid="uid://bwsdwnw2rqq6h" path="res://scripts/ui/looping_selection_item.gd" id="2_aqesv"]
 
@@ -28,23 +29,22 @@ value = 20.0
 metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
 
 [node name="Item" type="HBoxContainer" unique_id=1658887817]
-offset_left = 558.0
-offset_top = 4.0
-offset_right = 1362.0
-offset_bottom = 57.0
+offset_right = 604.0
+offset_bottom = 46.0
 size_flags_horizontal = 4
+theme = ExtResource("1_aqesv")
 
 [node name="Label" type="Label" parent="." unique_id=813177219]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 28
 text = "Item"
 horizontal_alignment = 1
 
 [node name="LoopingSelection" parent="." unique_id=421652052 instance=ExtResource("1_gd0nh")]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-font_size = 26
+font_size = 28
 items = Array[ExtResource("2_aqesv")]([SubResource("Resource_84cth"), SubResource("Resource_oow4c"), SubResource("Resource_jmcw8"), SubResource("Resource_7jrx5")])
 hold_delay = 0.4
 hold_repeat = 0.08
