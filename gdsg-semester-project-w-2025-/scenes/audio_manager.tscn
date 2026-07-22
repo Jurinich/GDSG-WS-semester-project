@@ -34,9 +34,11 @@
 [ext_resource type="AudioStream" uid="uid://bsxqvsxkbwq5h" path="res://assets/sounds/game/powerup/laser click.wav" id="31_2fqsb"]
 [ext_resource type="AudioStream" uid="uid://b7xy2hf065x34" path="res://assets/sounds/menu/game start.wav" id="32_fcxyy"]
 [ext_resource type="AudioStream" uid="uid://8tr8xfn5eppt" path="res://assets/sounds/menu/pause menu.wav" id="33_1y43m"]
-[ext_resource type="AudioStream" uid="uid://b5x4twtyv1y3h" path="res://assets/sounds/game/paddle/fih 1.wav" id="36_26ibh"]
-[ext_resource type="AudioStream" uid="uid://bdr4jajbua3ev" path="res://assets/sounds/game/paddle/fih 2.wav" id="37_d55hy"]
-[ext_resource type="AudioStream" uid="uid://cn0sfvjjf4n6u" path="res://assets/sounds/game/paddle/fih 3.wav" id="38_1cnjy"]
+[ext_resource type="AudioStream" uid="uid://bq8ycgjf07mej" path="res://assets/sounds/game/paddle/fih 1.wav" id="36_26ibh"]
+[ext_resource type="AudioStream" uid="uid://dcueekf0g1wxm" path="res://assets/sounds/game/paddle/fih 2.wav" id="37_d55hy"]
+[ext_resource type="AudioStream" uid="uid://dgddmlt8dc78j" path="res://assets/sounds/game/paddle/fih 3.wav" id="38_1cnjy"]
+[ext_resource type="AudioStream" uid="uid://dce11nqsbnmiw" path="res://assets/sounds/menu/Timer 1.wav" id="38_d55hy"]
+[ext_resource type="AudioStream" uid="uid://tyf8ha45cxr2" path="res://assets/sounds/menu/Timer 2.wav" id="39_1cnjy"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_sbao2"]
 clip_count = 1
@@ -109,6 +111,16 @@ script = ExtResource("4_1y43m")
 name = &"fih"
 audiostreams = Array[AudioStream]([ExtResource("36_26ibh"), ExtResource("37_d55hy"), ExtResource("38_1cnjy")])
 
+[sub_resource type="Resource" id="Resource_gi52w"]
+script = ExtResource("4_1y43m")
+name = &"Time beep"
+audiostreams = Array[AudioStream]([ExtResource("38_d55hy")])
+
+[sub_resource type="Resource" id="Resource_g71vj"]
+script = ExtResource("4_1y43m")
+name = &"Time end"
+audiostreams = Array[AudioStream]([ExtResource("39_1cnjy")])
+
 [node name="AudioManager" type="Node" unique_id=1047763007]
 process_mode = 3
 script = ExtResource("1_yt2vs")
@@ -118,5 +130,5 @@ stream = SubResource("AudioStreamInteractive_sbao2")
 autoplay = true
 
 [node name="SoundPlayer" parent="." unique_id=647762911 instance=ExtResource("3_fcxyy")]
-sounds = Array[ExtResource("4_1y43m")]([SubResource("Resource_ch668"), SubResource("Resource_10vkx"), SubResource("Resource_0q7qy"), SubResource("Resource_7js83"), SubResource("Resource_ttt2c"), SubResource("Resource_pfob2"), SubResource("Resource_eyy75"), SubResource("Resource_c6kha"), SubResource("Resource_5lp4t"), SubResource("Resource_yt2vs"), SubResource("Resource_1y43m"), SubResource("Resource_fcxyy"), SubResource("Resource_2igfy")])
+sounds = Array[ExtResource("4_1y43m")]([SubResource("Resource_ch668"), SubResource("Resource_10vkx"), SubResource("Resource_0q7qy"), SubResource("Resource_7js83"), SubResource("Resource_ttt2c"), SubResource("Resource_pfob2"), SubResource("Resource_eyy75"), SubResource("Resource_c6kha"), SubResource("Resource_5lp4t"), SubResource("Resource_yt2vs"), SubResource("Resource_1y43m"), SubResource("Resource_fcxyy"), SubResource("Resource_2igfy"), SubResource("Resource_gi52w"), SubResource("Resource_g71vj")])
 audio_player_amount = 30
