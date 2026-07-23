@@ -4,15 +4,25 @@ extends Timer
 @export var ball_scene : PackedScene
 @export var spawn_position: Vector2
 @export var split_all_balls: bool = false
+@export var spawn_interval: float = 8.0 # Change how often a ball spawns here!
+
 @onready var player_1: CharacterBody2D = $"../Player1"
 var balls_spawning_this_frame: int = 0
 
 func _process(_delta):
+	var current_balls = get_tree().get_nodes_in_group("balls").size()
+	if current_balls + balls_spawning_this_frame == 0:
+		spawn_ball()
+		
 	balls_spawning_this_frame = 0
 
 func _ready():
 	add_to_group("ball_spawner")
+	
+	wait_time = spawn_interval
+	one_shot = false
 	timeout.connect(spawn_ball)
+	
 	trigger_spawn()
 
 
@@ -24,6 +34,8 @@ func spawn_ball():
 		var ball = ball_scene.instantiate()
 		ball.global_position = spawn_position
 		get_parent().add_child.call_deferred(ball) 
+		
+		balls_spawning_this_frame += 1
 	else:
 		print("Spawn blocked: Ball limit reached.")
 
