@@ -47,9 +47,10 @@ func set_alarm_state(game_time: int, new_alarm_threshold: int):
 	alarm_threshold = new_alarm_threshold
 	target_animation_speed_factor = get_animation_speed_factor()
 	_update_alarm_visuals()
+	_set_display_time(current_game_time)
 
 
-func set_display_time(display_time: int):
+func _set_display_time(display_time: int):
 	var safe_time = display_time if display_time > 0 else 0
 	@warning_ignore("integer_division")
 	var minute = safe_time / 60

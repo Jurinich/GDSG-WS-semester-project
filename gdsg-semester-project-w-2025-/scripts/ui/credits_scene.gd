@@ -1,7 +1,7 @@
 extends Control
 
 func _on_back_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+	GameManager.change_scene(GameManager.Scene.MAIN_MENU)
 
 func _unhandled_input(event):
 	# Now we safely know this event belongs to THIS player

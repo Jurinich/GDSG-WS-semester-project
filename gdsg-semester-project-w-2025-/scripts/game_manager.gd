@@ -16,6 +16,18 @@ var arcade_p2_id = 1
 
 var settings: Settings = Settings.new()
 
+enum Scene {
+	MAIN_MENU, GAME, SETTINGS, CREDITS, ARCADE_CALIBRATION
+}
+
+const SCENE_FILES: Dictionary = {
+	Scene.MAIN_MENU: "res://scenes/ui/main_menu.tscn",
+	Scene.GAME: "res://scenes/game.tscn",
+	Scene.SETTINGS: "res://scenes/ui/settings_scene.tscn",
+	Scene.CREDITS: "res://scenes/ui/credits_scene.tscn",
+	Scene.ARCADE_CALIBRATION: "res://scenes/ui/arcade_calibration.tscn"
+}
+
 func _ready() -> void:
 	settings.load()
 
@@ -36,10 +48,16 @@ func add_point(player : String) -> bool:
 	
 	if (settings.gamemode == Settings.GameMode.SCORE):
 		if (left_player_score >= settings.score || right_player_score >= settings.score):
-			get_tree().call_deferred("change_scene_to_file", "res://scenes/main_menu.tscn")
+			change_scene(Scene.MAIN_MENU, true)
 			return false
 
 	return true
+
+func change_scene(scene: Scene, deferred: bool = false) -> void:
+	if deferred:
+		get_tree().call_deferred("change_scene_to_file", SCENE_FILES[scene])
+	else:
+		get_tree().change_scene_to_file(SCENE_FILES[scene])
 
 func get_score_formatted() -> String:
 	return str(left_player_score) + ":" + str(right_player_score)

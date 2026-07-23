@@ -46,5 +46,3 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 font_size = 28
 items = Array[ExtResource("2_aqesv")]([SubResource("Resource_84cth"), SubResource("Resource_oow4c"), SubResource("Resource_jmcw8"), SubResource("Resource_7jrx5")])
-hold_delay = 0.4
-hold_repeat = 0.08

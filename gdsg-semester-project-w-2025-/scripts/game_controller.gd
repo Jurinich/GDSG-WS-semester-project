@@ -1,9 +1,6 @@
 extends Node2D
 
 @onready var alarm_ui: CanvasLayer = $BackgroundUILayer
-@onready var time_minutes_label: Label = $BackgroundUILayer/TimeContainer/TimeMinutes
-@onready var time_colon_label: Label = $BackgroundUILayer/TimeContainer/TimeColon
-@onready var time_seconds_label: Label = $BackgroundUILayer/TimeContainer/TimeSeconds
 @onready var pause_menu: PauseMenu = $ForegroundUILayer/PauseMenu
 @onready var timer: Timer = $GameTimer
 @export var game_duration: int = 180
@@ -15,9 +12,11 @@ var cur_game_time: int
 var current_layout: Node2D
 
 func _ready():
-	cur_game_time = int(GameManager.settings.time)
-	timer.start()
-	update_time_label()
+	if GameManager.settings.gamemode == Settings.GameMode.TIME:
+		cur_game_time = int(GameManager.settings.time)
+		timer.start()
+	else:
+		alarm_threshold = -1
 	alarm_ui.set_alarm_state(cur_game_time, alarm_threshold)
 	if not layouts.is_empty():
 		var index = GameManager.settings.layout
@@ -32,21 +31,11 @@ func _ready():
 func timer_tick():
 	if (cur_game_time <= 0):
 		timer.stop()
-		get_tree().call_deferred("change_scene_to_file", "res://scenes/ui/main_menu.tscn")
+		GameManager.change_scene(GameManager.Scene.MAIN_MENU, true)
 		return
 	
 	cur_game_time -= 1
-	update_time_label()
 	alarm_ui.set_alarm_state(cur_game_time, alarm_threshold)
-
-func update_time_label():
-	var safe_time = cur_game_time if cur_game_time > 0 else 0
-	@warning_ignore("integer_division")
-	var minute = safe_time / 60
-	var second = safe_time % 60
-	time_minutes_label.text = str(minute)
-	time_colon_label.text = ":"
-	time_seconds_label.text = "%02d" % second
 
 func _unhandled_input(event):
 	if event.is_action_pressed("Pause"):

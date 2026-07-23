@@ -7,6 +7,9 @@ extends Control
 @onready var back_button: Button = $Container/BackButton
 @onready var gamemode_menu: LoopingSelection = $Container/ScrollContainer/Content/Gamemode/LoopingSelection
 @onready var time_menu: LoopingSelection = $Container/ScrollContainer/Content/Time/LoopingSelection
+@onready var score_menu: LoopingSelection = $Container/ScrollContainer/Content/Score/LoopingSelection
+@onready var time_container: Control = $Container/ScrollContainer/Content/Time
+@onready var score_container: Control = $Container/ScrollContainer/Content/Score
 @onready var layout_menu: LoopingSelection = $Container/ScrollContainer/Content/MapLayout/LoopingSelection
 @onready var items: Control = $Container/ScrollContainer/Content/Items
 @onready var scroll_container: ScrollContainer = $Container/ScrollContainer
@@ -46,11 +49,25 @@ func _on_control_focused(control: Control):
 	elif control_bottom > scroll_rect.size.y - margin:
 		scroll_container.scroll_vertical += control_bottom - (scroll_rect.size.y - margin)
 
+func _setup_score_menu() -> void:
+	var score_items: Array[LoopingSelectionItem]
+	for i in range(1, 51):
+		var item: LoopingSelectionItem = LoopingSelectionItem.new()
+		item.text = str(i)
+		item.value = i
+		score_items.append(item)
+	score_menu.items = score_items
+
 func _init_menus() -> void:
 	gamemode_menu.select_value(GameManager.settings.gamemode)
 	gamemode_menu.value_changed.connect(_on_gamemode_changed)
 	time_menu.select_value(GameManager.settings.time)
 	time_menu.value_changed.connect(_on_time_changed)
+	time_container.visible = GameManager.settings.gamemode == Settings.GameMode.TIME
+	_setup_score_menu()
+	score_menu.select_value(GameManager.settings.score)
+	score_menu.value_changed.connect(_on_score_changed)
+	score_container.visible = GameManager.settings.gamemode == Settings.GameMode.SCORE
 	layout_menu.select_value(GameManager.settings.layout)
 	layout_menu.value_changed.connect(_on_layout_changed)
 	sound_slider.value_changed.connect(AudioManager.set_sound_volume)
@@ -66,21 +83,26 @@ func _init_item_settings() -> void:
 		selection.value_changed.connect(_on_item_changed.bind(i))
 		selection.select_value(item.weight)
 
-func _on_gamemode_changed(value: Variant) -> void:
-	GameManager.settings.gamemode = value as Settings.GameMode
+func _on_gamemode_changed(value: Settings.GameMode) -> void:
+	GameManager.settings.gamemode = value
+	time_container.visible = value == Settings.GameMode.TIME
+	score_container.visible = value == Settings.GameMode.SCORE
 
-func _on_time_changed(value: Variant) -> void:
-	GameManager.settings.time = value as float
+func _on_time_changed(value: float) -> void:
+	GameManager.settings.time = value
 
-func _on_layout_changed(value: Variant) -> void:
-	GameManager.settings.layout = value as int
+func _on_score_changed(value: int) -> void:
+	GameManager.settings.score = value
 
-func _on_item_changed(value: Variant, index: int) -> void:
-	GameManager.settings.items[index].weight = value as float
+func _on_layout_changed(value: int) -> void:
+	GameManager.settings.layout = value
+
+func _on_item_changed(value: float, index: int) -> void:
+	GameManager.settings.items[index].weight = value
 
 func _on_back_button_pressed():
 	GameManager.settings.save()
-	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+	GameManager.change_scene(GameManager.Scene.MAIN_MENU)
 
 func sound_button_pressed():
 	AudioManager.mute_sound(!AudioManager.sound_muted())

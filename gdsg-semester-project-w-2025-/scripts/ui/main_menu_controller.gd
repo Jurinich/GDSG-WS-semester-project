@@ -15,7 +15,7 @@ func _ready():
 
 	if GameManager.arcade_mode:
 		if GameManager.arcade_p1_id == -1:
-			get_tree().change_scene_to_file("res://scenes/ArcadeCalibration.tscn")
+			GameManager.change_scene(GameManager.Scene.ARCADE_CALIBRATION)
 
 	else:
 		$"SelectionController/PlayerSelectionNode1/ArControls".visible = false
@@ -26,11 +26,11 @@ func _on_looping_menu_button_pressed(button: String) -> void:
 		"Start Game":
 			GameManager.reset()
 			selection_controller.set_selections()
-			get_tree().change_scene_to_file("res://scenes/game.tscn")
+			GameManager.change_scene(GameManager.Scene.GAME)
 		"Settings":
-			get_tree().change_scene_to_file("res://scenes/ui/settings_scene.tscn")
+			GameManager.change_scene(GameManager.Scene.SETTINGS)
 		"Credits":
-			get_tree().change_scene_to_file("res://scenes/ui/credits_scene.tscn")
+			GameManager.change_scene(GameManager.Scene.CREDITS)
 		"Quit":
 			get_tree().quit()
 

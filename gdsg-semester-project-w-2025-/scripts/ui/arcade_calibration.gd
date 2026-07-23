@@ -20,4 +20,4 @@ func _unhandled_input(event):
 
 		GameManager.arcade_p2_id = event.device
 		print("p2 is device: " + str(GameManager.arcade_p1_id))
-		get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+		GameManager.change_scene(GameManager.Scene.MAIN_MENU)

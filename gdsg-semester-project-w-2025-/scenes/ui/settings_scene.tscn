@@ -241,8 +241,6 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 font_size = 28
 items = Array[ExtResource("5_hlosk")]([SubResource("Resource_byo6x"), SubResource("Resource_gfh8v")])
-hold_delay = 0.4
-hold_repeat = 0.08
 
 [node name="Time" type="HBoxContainer" parent="Container/ScrollContainer/Content" unique_id=1676327129]
 layout_mode = 2
@@ -260,8 +258,22 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 font_size = 28
 items = Array[ExtResource("5_hlosk")]([SubResource("Resource_d3okq"), SubResource("Resource_jg5mx"), SubResource("Resource_hlosk"), SubResource("Resource_5j6q7"), SubResource("Resource_8ks4o")])
-hold_delay = 0.4
-hold_repeat = 0.08
+
+[node name="Score" type="HBoxContainer" parent="Container/ScrollContainer/Content" unique_id=1990897801]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Container/ScrollContainer/Content/Score" unique_id=99393218]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Score"
+horizontal_alignment = 1
+
+[node name="LoopingSelection" parent="Container/ScrollContainer/Content/Score" unique_id=594182437 instance=ExtResource("4_jg5mx")]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+font_size = 28
 
 [node name="MapLayout" type="HBoxContainer" parent="Container/ScrollContainer/Content" unique_id=1477998104]
 layout_mode = 2
@@ -279,8 +291,6 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 font_size = 28
 items = Array[ExtResource("5_hlosk")]([SubResource("Resource_oow4c"), SubResource("Resource_jmcw8"), SubResource("Resource_7jrx5"), SubResource("Resource_j3wk1"), SubResource("Resource_jp740"), SubResource("Resource_h3gt1"), SubResource("Resource_fohb0"), SubResource("Resource_smxgj"), SubResource("Resource_p2udf"), SubResource("Resource_ryeki")])
-hold_delay = 0.4
-hold_repeat = 0.08
 
 [node name="Items" type="VBoxContainer" parent="Container/ScrollContainer/Content" unique_id=507344027]
 layout_mode = 2

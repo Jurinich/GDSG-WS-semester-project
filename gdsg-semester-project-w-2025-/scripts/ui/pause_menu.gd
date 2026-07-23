@@ -30,7 +30,7 @@ func _set_focus_sound(elements: Array[Control]) -> void:
 
 func _on_quit_button_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+	GameManager.change_scene(GameManager.Scene.MAIN_MENU)
 
 func _on_continue():
 	get_tree().paused = false;
