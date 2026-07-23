@@ -2,7 +2,8 @@ class_name Settings
 
 enum GameMode {TIME, SCORE}
 
-const SETTINGS_FILE := "user://settings.cfg"
+const SETTINGS_FILE: String = "user://settings.cfg"
+const DEBUG_SETTINGS: String = "res://settings.cfg"
 const ITEM_DIRECTORY: String = "res://resources/items/"
 
 var gamemode: GameMode
@@ -27,13 +28,12 @@ func save() -> void:
 	config.set_value("game", "layout", layout)
 	for item: ItemDrop in items:
 		config.set_value("items", item.item.power_up_effect, item.weight)
-	config.save(SETTINGS_FILE)
+	config.save(DEBUG_SETTINGS if OS.is_debug_build() else SETTINGS_FILE)
 
 func load() -> void:
 	_load_items();
 	var config := ConfigFile.new()
-	if config.load(SETTINGS_FILE) != OK:
-		return
+	config.load(DEBUG_SETTINGS if OS.is_debug_build() else SETTINGS_FILE)
 	gamemode = config.get_value("game", "gamemode", GameMode.TIME)
 	time = config.get_value("game", "time", 180.0)
 	score = config.get_value("game", "score", 20)

@@ -10,8 +10,6 @@ anchors_preset = 0
 focus_mode = 2
 theme = ExtResource("1_7i8ph")
 script = ExtResource("1_s2ng2")
-hold_delay = null
-hold_repeat = null
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2111096274]
 layout_mode = 1
@@ -27,6 +25,8 @@ layout_mode = 2
 alignment = 1
 
 [node name="Arrow" type="TextureRect" parent="HBoxContainer/Left" unique_id=791369466]
+visible = false
+custom_minimum_size = Vector2(52.8, 52.8)
 layout_mode = 2
 texture = ExtResource("3_pmrvi")
 expand_mode = 1
@@ -42,6 +42,8 @@ layout_mode = 2
 alignment = 1
 
 [node name="Arrow" type="TextureRect" parent="HBoxContainer/Right" unique_id=282881845]
+visible = false
+custom_minimum_size = Vector2(52.8, 52.8)
 layout_mode = 2
 texture = ExtResource("3_pmrvi")
 expand_mode = 1
