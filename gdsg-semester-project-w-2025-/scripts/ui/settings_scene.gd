@@ -51,7 +51,7 @@ func _on_control_focused(control: Control):
 
 func _setup_score_menu() -> void:
 	var score_items: Array[LoopingSelectionItem]
-	for i in range(1, 51):
+	for i in range(5, 51):
 		var item: LoopingSelectionItem = LoopingSelectionItem.new()
 		item.text = str(i)
 		item.value = i

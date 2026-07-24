@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var alarm_ui: CanvasLayer = $BackgroundUILayer
+@onready var score_ui: ScoreOverlay = $ForegroundUILayer/ScoreOverlay
 @onready var pause_menu: PauseMenu = $ForegroundUILayer/PauseMenu
 @onready var timer: Timer = $GameTimer
 @export var game_duration: int = 180
@@ -14,10 +14,10 @@ var current_layout: Node2D
 func _ready():
 	if GameManager.settings.gamemode == Settings.GameMode.TIME:
 		cur_game_time = int(GameManager.settings.time)
+		score_ui.set_time(cur_game_time)
 		timer.start()
 	else:
 		alarm_threshold = -1
-	alarm_ui.set_alarm_state(cur_game_time, alarm_threshold)
 	if not layouts.is_empty():
 		var index = GameManager.settings.layout
 		if index < 0:
@@ -35,7 +35,7 @@ func timer_tick():
 		return
 	
 	cur_game_time -= 1
-	alarm_ui.set_alarm_state(cur_game_time, alarm_threshold)
+	score_ui.set_time(cur_game_time)
 
 func _unhandled_input(event):
 	if event.is_action_pressed("Pause"):

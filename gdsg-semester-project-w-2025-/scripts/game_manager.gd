@@ -1,6 +1,6 @@
 extends Node
 
-signal score_changed
+signal score_changed(left: int, right: int)
 
 var ball_limit: int = 20
 
@@ -44,7 +44,7 @@ func add_point(player : String) -> bool:
 		"right":
 			right_player_score += 1
 	print("Score:", left_player_score, " - ", right_player_score)
-	score_changed.emit()
+	score_changed.emit(left_player_score, right_player_score)
 	
 	if (settings.gamemode == Settings.GameMode.SCORE):
 		if (left_player_score >= settings.score || right_player_score >= settings.score):

@@ -49,12 +49,12 @@ func select(index: int) -> void:
 	selected_item = index
 	value_changed.emit(items[selected_item].value)
 
-func select_value(value: Variant) -> bool:
+func select_value(value: Variant) -> void:
 	for i in range(items.size()):
 		if items[i].value == value:
 			select(i)
-			return true
-	return false
+			return
+	select(0)
 
 func _on_button_input(change: int) -> void:
 	select(selected_item + change)

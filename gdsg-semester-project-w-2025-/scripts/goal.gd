@@ -1,6 +1,6 @@
 extends Area2D
 
-signal goal_scored()
+signal goal_scored
 
 @export var player : String
 

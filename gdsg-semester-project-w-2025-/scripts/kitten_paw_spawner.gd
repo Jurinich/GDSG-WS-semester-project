@@ -42,7 +42,7 @@ func attempt_kitten_spawn(target_ball: Ball):
 	call_deferred("spawn_paw", target_ball)
 
 func spawn_paw(target_ball: Ball):
-	if paw_scene:
+	if paw_scene && get_tree().current_scene != null:
 		AudioManager.playSound("Katze");
 		var paw = paw_scene.instantiate()
 		paw.add_to_group("KittenPaws")

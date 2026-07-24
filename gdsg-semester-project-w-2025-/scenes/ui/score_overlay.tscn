@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://3g2p7di1b5ju"]
+
+[ext_resource type="Texture2D" uid="uid://bskoxnuejx2qw" path="res://assets/sprites/Backgrounds/tablet.png" id="1_mrvhk"]
+[ext_resource type="Script" uid="uid://b4rxklo37qfsl" path="res://scripts/ui/score_overlay.gd" id="1_xllah"]
+[ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="2_xllah"]
+[ext_resource type="Texture2D" uid="uid://d1x2nuqie6xi0" path="res://assets/sprites/UI/timer.png" id="4_bnryo"]
+[ext_resource type="FontFile" uid="uid://b7fjye2dkrp0k" path="res://assets/fonts/segment7/Segment7-4Gml.otf" id="5_cgstu"]
+[ext_resource type="FontFile" uid="uid://cyq138krrqg2p" path="res://assets/fonts/Holtwood_One_SC/HoltwoodOneSC-Regular.ttf" id="6_0dq1e"]
+
+[node name="ScoreOverlay" type="Control" unique_id=1222020656]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xllah")
+ALARM_COLOR = Color(0.98, 0.44377664, 0.3234, 1)
+
+[node name="Score" type="TextureRect" parent="." unique_id=782080517]
+layout_mode = 0
+offset_left = 689.0
+offset_top = -40.22814
+offset_right = 1089.0005
+offset_bottom = 259.77185
+rotation = -0.034906585
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("1_mrvhk")
+
+[node name="ScoreLeft" type="Label" parent="Score" unique_id=1571249872]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 100.0
+offset_right = 236.0
+offset_bottom = 225.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("2_xllah")
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreRight" type="Label" parent="Score" unique_id=1774417067]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 100.0
+offset_right = 348.0
+offset_bottom = 225.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("2_xllah")
+theme_override_font_sizes/font_size = 60
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="TextureRect" parent="." unique_id=727800993]
+layout_mode = 0
+offset_left = 963.0001
+offset_top = 34.771854
+offset_right = 1203.0007
+offset_bottom = 134.77185
+rotation = 0.101229094
+scale = Vector2(0.6, 0.6)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("4_bnryo")
+
+[node name="Minutes" type="Label" parent="Timer" unique_id=979697155]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.117729
+offset_top = 16.892044
+offset_right = -123.35468
+offset_bottom = -4.107956
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.9529412, 1, 0.69803923, 1)
+theme_override_fonts/font = ExtResource("5_cgstu")
+theme_override_font_sizes/font_size = 78
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Seconds" type="Label" parent="Timer" unique_id=1643256100]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 121.173706
+offset_top = 17.845997
+offset_right = -27.826294
+offset_bottom = -3.154007
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.955, 1, 0.7, 1)
+theme_override_fonts/font = ExtResource("5_cgstu")
+theme_override_font_sizes/font_size = 78
+text = "00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Colon" type="Label" parent="Timer" unique_id=1854100336]
+visible = false
+layout_mode = 0
+offset_left = 113.62125
+offset_top = 13.587402
+offset_right = 125.62125
+offset_bottom = 62.587402
+rotation = 0.034906585
+scale = Vector2(1, 1.4)
+theme_override_colors/font_color = Color(0.9529412, 1, 0.69803923, 1)
+theme_override_fonts/font = ExtResource("6_0dq1e")
+theme_override_font_sizes/font_size = 30
+text = ":"
+vertical_alignment = 1
+
+[node name="AlarmOverlay" type="ColorRect" parent="." unique_id=449830133]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.7603108, 0, 0.003610384, 0)
