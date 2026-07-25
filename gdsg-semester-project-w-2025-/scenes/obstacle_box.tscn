@@ -4,7 +4,7 @@
 
 [node name="ObstacleBox" type="StaticBody2D" unique_id=1782744075]
 collision_layer = 8
-collision_mask = 17
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1222336164]
 scale = Vector2(0.24, 0.24)

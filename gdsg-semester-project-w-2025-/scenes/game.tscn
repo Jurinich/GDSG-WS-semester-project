@@ -53,7 +53,7 @@ layouts = Array[PackedScene]([ExtResource("2_nepv3"), ExtResource("2_twgab"), Ex
 
 [node name="Player1" parent="." unique_id=477805542 instance=ExtResource("1_uwrxv")]
 position = Vector2(250, 610)
-collision_mask = 8
+collision_mask = 9
 isP1 = true
 
 [node name="InventoryP1" type="Node" parent="Player1" unique_id=800816381]
@@ -91,7 +91,7 @@ texture = ExtResource("15_qouja")
 position = Vector2(960, 123)
 scale = Vector2(1, 0.5)
 collision_layer = 8
-collision_mask = 17
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/TopWall" unique_id=2021686217]
 position = Vector2(0, 297)
@@ -106,7 +106,7 @@ flip_v = true
 position = Vector2(960, 1080)
 scale = Vector2(1, 0.5)
 collision_layer = 8
-collision_mask = 17
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/BotWall" unique_id=1409367302]
 position = Vector2(0, -97)
@@ -120,7 +120,8 @@ texture = ExtResource("14_suyxu")
 
 [node name="LeftGoal" type="Area2D" parent="Goals" unique_id=792546164]
 position = Vector2(0, 540)
-collision_layer = 4
+collision_layer = 16
+collision_mask = 5
 script = ExtResource("4_lbhrr")
 player = "right"
 
@@ -130,7 +131,8 @@ shape = SubResource("WorldBoundaryShape2D_sgl2t")
 
 [node name="RightGoal" type="Area2D" parent="Goals" unique_id=1500528154]
 position = Vector2(1920, 540)
-collision_layer = 4
+collision_layer = 16
+collision_mask = 5
 script = ExtResource("4_lbhrr")
 player = "left"
 
@@ -173,6 +175,7 @@ spawn_position = Vector2(960, 540)
 
 [node name="Area2D" type="Area2D" parent="PawTriggers" unique_id=1583465132]
 position = Vector2(960, 158)
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PawTriggers/Area2D" unique_id=627959169]
 position = Vector2(0, 200)
@@ -180,6 +183,7 @@ shape = SubResource("RectangleShape2D_dinhu")
 
 [node name="Area2D2" type="Area2D" parent="PawTriggers" unique_id=563170104]
 position = Vector2(960, 910)
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PawTriggers/Area2D2" unique_id=1154801488]
 shape = SubResource("RectangleShape2D_kvuet")
@@ -190,7 +194,7 @@ paw_scene = ExtResource("12_dinhu")
 triggers = [NodePath("../PawTriggers/Area2D"), NodePath("../PawTriggers/Area2D2")]
 
 [node name="ItemSpawner" type="Node2D" parent="." unique_id=1014848990]
-position = Vector2(960, 335)
+position = Vector2(960, 400)
 script = ExtResource("13_ca42v")
 item_scene = ExtResource("16_264po")
 paddle_item_scene = ExtResource("26_h3rex")

@@ -8,7 +8,7 @@ height = 62.44725
 
 [node name="ObstacleBar" type="StaticBody2D" unique_id=132568581]
 collision_layer = 8
-collision_mask = 17
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1860884457]
 scale = Vector2(0.16, 0.16)

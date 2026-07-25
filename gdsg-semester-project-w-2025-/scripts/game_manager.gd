@@ -43,7 +43,6 @@ func add_point(player : String) -> bool:
 			left_player_score += 1
 		"right":
 			right_player_score += 1
-	print("Score:", left_player_score, " - ", right_player_score)
 	score_changed.emit(left_player_score, right_player_score)
 	
 	if (settings.gamemode == Settings.GameMode.SCORE):

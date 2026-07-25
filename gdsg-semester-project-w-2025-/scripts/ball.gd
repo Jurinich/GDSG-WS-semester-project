@@ -31,7 +31,6 @@ func _ready():
 	current_speed = 150.0
 	add_to_group("balls")
 	last_hit_by = player_1
-	print("Balls ", last_hit_by)
 	if size_multiplier != 1.0:
 		scale_ball(size_multiplier)
 	if not is_split_spawn:
@@ -57,7 +56,6 @@ func _physics_process(delta: float) -> void:
 	var collision := move_and_collide(velocity * delta)
 	if collision:
 		var collider = collision.get_collider()
-		#print("Ball hit:",collider, " at pos ", collider.global_position)
 		if collider is CharacterBody2D or collider is StaticBody2D:
 			if collider is StaticBody2D:
 				AudioManager.playSound("border_hit");

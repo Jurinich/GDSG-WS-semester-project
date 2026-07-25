@@ -50,11 +50,9 @@ func spawn_paw(target_ball: Ball):
 		paw.attack(target_ball)
 
 func activate_frenzy(duration: float):
-	print("Paw Frenzy 100% chance for ", duration, " seconds")
 	hit_chance = 1.0
 	frenzy_timer.start(duration)
 	effects.show_effect_timer("PAW FRENZY", duration)
 
 func _on_frenzy_timeout():
-	print("Paw Frenzy over")
 	hit_chance = base_hit_chance

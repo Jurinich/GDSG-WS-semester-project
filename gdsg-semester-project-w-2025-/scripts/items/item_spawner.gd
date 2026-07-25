@@ -65,16 +65,15 @@ func spawnItem(item_data: ItemData):
 		item_node = paddle_item_scene.instantiate() 
 	else:
 		item_node = item_scene.instantiate()
+	item_node.item_data = item_data
+	add_child(item_node)
+	item_node.top_level = true
+	item_node.global_position = global_position
 	
-	item_node.top_level = true 
-	add_child(item_node) 
-	item_node.global_position = self.global_position
-
 	var random_angle = shoot_angle_degrees + randf_range(-spread_degrees, spread_degrees)
 	var direction = Vector2.RIGHT.rotated(deg_to_rad(random_angle))
 	var random_speed = randf_range(min_shoot_speed, max_shoot_speed)
 	var velocity = direction * random_speed
-
-	item_node.setup(item_data)
+	
 	if item_node.has_method("shoot"):
 		item_node.shoot(velocity)

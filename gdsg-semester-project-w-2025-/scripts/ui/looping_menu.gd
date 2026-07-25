@@ -150,7 +150,6 @@ func _gui_input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		return
 	if event.is_action_pressed("ui_accept"):
-		print(buttons[selected_menu].text)
 		if buttons[selected_menu].text == "Start Game":
 			AudioManager.playSound(&"game_start")
 		else:

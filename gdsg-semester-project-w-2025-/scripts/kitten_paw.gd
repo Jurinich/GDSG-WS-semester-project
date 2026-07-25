@@ -94,7 +94,6 @@ func compute_hit_power():
 	
 	if time_elapsed_sec >= (swing_duration * 0.9):
 		hit_power = current_boost_power * 0.1
-		print("Late Hit! Reduced power.")
 	else:
 		hit_power = current_boost_power
 	

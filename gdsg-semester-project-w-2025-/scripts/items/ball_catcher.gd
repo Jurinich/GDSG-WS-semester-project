@@ -2,9 +2,7 @@ extends Node
 
 @export var catcher_scene: PackedScene
 
-func apply_effect(player: CharacterBody2D, _triggering_ball: Ball = null):
-	print(player.name, " used the Paddle Catcher")
-	
+func apply_effect(player: CharacterBody2D, _triggering_ball: Ball = null):	
 	if player.has_node("BallCatcher"):
 		return
 		

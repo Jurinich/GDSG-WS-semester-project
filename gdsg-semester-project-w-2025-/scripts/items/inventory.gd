@@ -17,7 +17,6 @@ func _process(_delta: float) -> void:
 func add_item(new_item: ItemData) -> bool:
 	if items.size() < max_items:
 		items.append(new_item)
-		print(get_parent().name, " picked up an item, total: ", items.size())
 		return true 
 	else:#full inventory
 		return false 

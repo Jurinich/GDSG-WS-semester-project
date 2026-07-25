@@ -22,7 +22,6 @@ func show_menu() -> void:
 	get_tree().paused = true
 	show()
 	continue_button.grab_focus()
-	print(get_viewport().gui_get_focus_owner())
 
 func _set_focus_sound(elements: Array[Control]) -> void:
 	for element in elements:

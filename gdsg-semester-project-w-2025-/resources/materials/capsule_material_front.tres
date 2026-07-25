@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ds1j7bgptq1ts"]
+
+[ext_resource type="Texture2D" uid="uid://c2npr7m8vcvk3" path="res://assets/sprites/Ball/ball_mask.png" id="1_pkvtb"]
+[ext_resource type="Shader" uid="uid://dwgw4rglt4xky" path="res://resources/materials/capsule_shader.gdshader" id="1_qqgvu"]
+[ext_resource type="Texture2D" uid="uid://df6aiqqpon302" path="res://assets/sprites/Ball/capsule_texture.png" id="2_qqgvu"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_qqgvu")
+shader_parameter/tile_texture = ExtResource("2_qqgvu")
+shader_parameter/mask_texture = ExtResource("1_pkvtb")
+shader_parameter/sphere_scale = 0.8
+shader_parameter/offset_radius = 0.2
+shader_parameter/alpha_modifier = 1.0
+shader_parameter/texture_rotation = 0.0
+shader_parameter/offset = 0.0

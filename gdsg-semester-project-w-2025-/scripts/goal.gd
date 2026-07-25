@@ -11,7 +11,6 @@ func _ready():
 
 func _on_body_entered(body):
 	if body is Ball:
-		print("Goal hit by:", body, " at pos ", body.global_position)
 		AudioManager.playSound("goal");
 		body.remove_from_group("balls")
 		var balls_in_play = get_tree().get_nodes_in_group("balls").size()
@@ -19,3 +18,5 @@ func _on_body_entered(body):
 		if GameManager.add_point(player) and balls_in_play < 1:
 			ball_spawner.trigger_spawn()
 		goal_scored.emit()
+	elif body is Item:
+		body.queue_free()
