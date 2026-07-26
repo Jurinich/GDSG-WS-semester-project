@@ -1,39 +1,78 @@
-[gd_scene format=3 uid="uid://bb4yvoi3fr5kg"]
+[gd_scene format=3 uid="uid://dqfvsq74n0rcp"]
 
-[ext_resource type="Texture2D" uid="uid://bfiqq6jpq1557" path="res://assets/sprites/Backgrounds/BG Dark.png" id="1_xjkio"]
-[ext_resource type="PackedScene" uid="uid://cyxykq470krfh" path="res://scenes/obstacle_circle.tscn" id="2_5hfok"]
-[ext_resource type="Texture2D" uid="uid://dj7n4h024303j" path="res://assets/sprites/Backgrounds/playfield.png" id="2_dco4i"]
-[ext_resource type="PackedScene" uid="uid://n3ryqnujluly" path="res://scenes/obstacle_box.tscn" id="3_ny7cx"]
+[ext_resource type="Texture2D" uid="uid://fdafysk863vw" path="res://assets/sprites/Backgrounds/background.png" id="2_fe10l"]
+[ext_resource type="Texture2D" uid="uid://ch1l6i4g3vi77" path="res://assets/sprites/Backgrounds/carpet.png" id="3_4gxup"]
+[ext_resource type="PackedScene" uid="uid://du27v85gwfpb1" path="res://scenes/obstacle_bar.tscn" id="3_xjkio"]
+[ext_resource type="Texture2D" uid="uid://d0lfr5dqjirip" path="res://assets/sprites/Backgrounds/drawer.png" id="4_y8bci"]
+[ext_resource type="Texture2D" uid="uid://cud167dalbhdi" path="res://assets/sprites/Obstacles/cardboard.png" id="5_arxdb"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_p7rxp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ais3t"]
+size = Vector2(1560, 58)
 
 [node name="Layout1" type="Node2D" unique_id=1939009019]
 
-[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=527930151]
-layer = -2
+[node name="ObstacleBar" parent="." unique_id=132568581 instance=ExtResource("3_xjkio")]
+position = Vector2(1540, 895)
+rotation = -2.0943952
+scale = Vector2(0.8, 0.8)
 
-[node name="Background" type="MeshInstance2D" parent="BackgroundLayer" unique_id=451616174]
+[node name="ObstacleBar2" parent="." unique_id=2111107628 instance=ExtResource("3_xjkio")]
+position = Vector2(380, 894.00006)
+rotation = 2.0943952
+scale = Vector2(0.8, 0.8)
+
+[node name="ObstacleBar3" parent="." unique_id=925342398 instance=ExtResource("3_xjkio")]
+position = Vector2(380, 416)
+rotation = 1.0471976
+scale = Vector2(0.8, 0.8)
+
+[node name="ObstacleBar4" parent="." unique_id=1660147084 instance=ExtResource("3_xjkio")]
+position = Vector2(1540, 416)
+rotation = -1.0471976
+scale = Vector2(0.8, 0.8)
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=664598170]
+layer = -1
+
+[node name="Background" type="Sprite2D" parent="Background" unique_id=428174372]
 position = Vector2(960, 540)
-scale = Vector2(1920, 1080)
-mesh = SubResource("QuadMesh_p7rxp")
-texture = ExtResource("1_xjkio")
+texture = ExtResource("2_fe10l")
 
-[node name="PlayingField" type="MeshInstance2D" parent="BackgroundLayer" unique_id=106614439]
-position = Vector2(960, 568.5)
-scale = Vector2(1860, 957)
-mesh = SubResource("QuadMesh_p7rxp")
-texture = ExtResource("2_dco4i")
+[node name="Carpet" type="Sprite2D" parent="Background" unique_id=608084628]
+position = Vector2(960, 648)
+texture = ExtResource("3_4gxup")
 
-[node name="ObstacleBox" parent="." unique_id=1782744075 instance=ExtResource("3_ny7cx")]
-position = Vector2(560, 900)
+[node name="Drawer" type="Sprite2D" parent="Background" unique_id=794516739]
+position = Vector2(960, 75)
+texture = ExtResource("4_y8bci")
 
-[node name="ObstacleBox2" parent="." unique_id=650175660 instance=ExtResource("3_ny7cx")]
-position = Vector2(1360, 900)
+[node name="Walls" type="Node" parent="Background" unique_id=1817928444]
 
-[node name="ObstacleCircle" parent="." unique_id=577962476 instance=ExtResource("2_5hfok")]
-position = Vector2(960, 315)
-rotation = 0.6483965
+[node name="TopWall" type="StaticBody2D" parent="Background/Walls" unique_id=1716976718]
+position = Vector2(960, 123)
+scale = Vector2(1, 0.5)
+collision_layer = 8
+collision_mask = 0
 
-[node name="ObstacleCircle2" parent="." unique_id=1657061017 instance=ExtResource("2_5hfok")]
-position = Vector2(960, 720)
-scale = Vector2(0.6, 0.6)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/TopWall" unique_id=962371423]
+position = Vector2(0, 297)
+shape = SubResource("RectangleShape2D_ais3t")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Walls/TopWall" unique_id=2010909902]
+position = Vector2(0, 274)
+texture = ExtResource("5_arxdb")
+flip_v = true
+
+[node name="BotWall" type="StaticBody2D" parent="Background/Walls" unique_id=899689427]
+position = Vector2(960, 1080)
+scale = Vector2(1, 0.5)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/BotWall" unique_id=1828220202]
+position = Vector2(0, -97)
+shape = SubResource("RectangleShape2D_ais3t")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Walls/BotWall" unique_id=1625485084]
+position = Vector2(0, -76)
+texture = ExtResource("5_arxdb")
