@@ -39,6 +39,7 @@
 [ext_resource type="AudioStream" uid="uid://38kd3khra6n3" path="res://assets/sounds/game/paddle/fih 3.wav" id="38_1cnjy"]
 [ext_resource type="AudioStream" uid="uid://dce11nqsbnmiw" path="res://assets/sounds/menu/Timer 1.wav" id="38_d55hy"]
 [ext_resource type="AudioStream" uid="uid://tyf8ha45cxr2" path="res://assets/sounds/menu/Timer 2.wav" id="39_1cnjy"]
+[ext_resource type="AudioStream" uid="uid://dsbh6a3ps0t07" path="res://assets/sounds/game/canon/Canon 1.wav" id="40_1cnjy"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_sbao2"]
 clip_count = 1
@@ -121,6 +122,11 @@ script = ExtResource("4_1y43m")
 name = &"Time end"
 audiostreams = Array[AudioStream]([ExtResource("39_1cnjy")])
 
+[sub_resource type="Resource" id="Resource_ladlq"]
+script = ExtResource("4_1y43m")
+name = &"Canon"
+audiostreams = Array[AudioStream]([ExtResource("40_1cnjy")])
+
 [node name="AudioManager" type="Node" unique_id=1047763007]
 process_mode = 3
 script = ExtResource("1_yt2vs")
@@ -130,5 +136,5 @@ stream = SubResource("AudioStreamInteractive_sbao2")
 autoplay = true
 
 [node name="SoundPlayer" parent="." unique_id=647762911 instance=ExtResource("3_fcxyy")]
-sounds = Array[ExtResource("4_1y43m")]([SubResource("Resource_ch668"), SubResource("Resource_10vkx"), SubResource("Resource_0q7qy"), SubResource("Resource_7js83"), SubResource("Resource_ttt2c"), SubResource("Resource_pfob2"), SubResource("Resource_eyy75"), SubResource("Resource_c6kha"), SubResource("Resource_5lp4t"), SubResource("Resource_yt2vs"), SubResource("Resource_1y43m"), SubResource("Resource_fcxyy"), SubResource("Resource_2igfy"), SubResource("Resource_gi52w"), SubResource("Resource_g71vj")])
+sounds = Array[ExtResource("4_1y43m")]([SubResource("Resource_ch668"), SubResource("Resource_10vkx"), SubResource("Resource_0q7qy"), SubResource("Resource_7js83"), SubResource("Resource_ttt2c"), SubResource("Resource_pfob2"), SubResource("Resource_eyy75"), SubResource("Resource_c6kha"), SubResource("Resource_5lp4t"), SubResource("Resource_yt2vs"), SubResource("Resource_1y43m"), SubResource("Resource_fcxyy"), SubResource("Resource_2igfy"), SubResource("Resource_gi52w"), SubResource("Resource_g71vj"), SubResource("Resource_ladlq")])
 audio_player_amount = 30
