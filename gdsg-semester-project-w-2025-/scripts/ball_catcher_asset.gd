@@ -41,6 +41,10 @@ func catch_ball(ball: Ball):
 	ball.visible = false
 	ball.collision_shape.set_deferred("disabled", true)
 	ball.velocity = Vector2.ZERO
+	if caught_balls.size() == get_tree().get_node_count_in_group("balls"):
+		var remaining_time = min(collection_timer.time_left, 0.5)
+		collection_timer.stop()
+		collection_timer.start(remaining_time)
 
 func _on_collection_timeout():
 	is_shooting = true
