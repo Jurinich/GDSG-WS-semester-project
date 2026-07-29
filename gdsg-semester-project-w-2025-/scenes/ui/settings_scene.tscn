@@ -319,6 +319,5 @@ text = "Back"
 script = ExtResource("4_tori7")
 
 [connection signal="pressed" from="Container/ScrollContainer/Content/Music" to="." method="music_button_pressed"]
-[connection signal="drag_ended" from="Container/ScrollContainer/Content/MusicContainer/Slider" to="." method="on_music_slider_drag_end"]
 [connection signal="pressed" from="Container/ScrollContainer/Content/Sound" to="." method="sound_button_pressed"]
 [connection signal="pressed" from="Container/BackButton" to="." method="_on_back_button_pressed"]

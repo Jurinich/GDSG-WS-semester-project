@@ -3,8 +3,7 @@ extends Control
 
 @onready var label: Label = $Label
 @onready var selection: TextureRect = $Selection
-@onready var fish_name: Label = $MarginContainer/HBoxContainer/HBoxContainer/Fish
-@onready var emoji: Label = $MarginContainer/HBoxContainer/HBoxContainer/Emoji
+@onready var fish_name: Label = $MarginContainer/HBoxContainer/Name
 
 @export var player_name: String
 @export var paddles: Array[Paddle]
@@ -32,7 +31,6 @@ func get_selection() -> Paddle:
 func update_texture():
 	selection.texture = paddles[index].sprite
 	fish_name.text = paddles[index].name
-	emoji.visible = paddles[index].name == "fih"
 	if isP1:
 		selection.flip_h = true;
 

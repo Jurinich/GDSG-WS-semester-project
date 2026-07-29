@@ -11,6 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://bb80gnpm8par6" path="res://assets/sprites/Buttons/button_forward.png" id="5_ph6ke"]
 [ext_resource type="Resource" uid="uid://c8dp5os0kbfs4" path="res://resources/paddles/3_fih.tres" id="6_d6s4f"]
 [ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/ui/buttonsound_extension.gd" id="7_0juo8"]
+[ext_resource type="FontFile" uid="uid://c8ew4ubjel38x" path="res://assets/fonts/Noto_Color_Emoji/NotoColorEmoji-Regular.ttf" id="12_c3mdi"]
+[ext_resource type="FontFile" uid="uid://cyq138krrqg2p" path="res://assets/fonts/Holtwood_One_SC/HoltwoodOneSC-Regular.ttf" id="12_gmqxd"]
+
+[sub_resource type="FontVariation" id="FontVariation_0ls0v"]
+fallbacks = Array[Font]([ExtResource("12_c3mdi")])
+base_font = ExtResource("12_gmqxd")
 
 [node name="PlayerSelectionNode" type="Control" unique_id=425702317]
 layout_mode = 3
@@ -91,26 +97,13 @@ stretch_mode = 5
 flip_h = true
 script = ExtResource("7_0juo8")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1125547447]
+[node name="Name" type="Label" parent="MarginContainer/HBoxContainer" unique_id=966466496]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-alignment = 1
-
-[node name="Fish" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=966466496]
-layout_mode = 2
 theme = ExtResource("3_quxui")
+theme_override_fonts/font = SubResource("FontVariation_0ls0v")
 theme_override_font_sizes/font_size = 56
-text = "Fish"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Emoji" type="Label" parent="MarginContainer/HBoxContainer/HBoxContainer" unique_id=1906627020]
-visible = false
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-theme_override_constants/outline_size = 0
-theme_override_font_sizes/font_size = 48
-text = "🥀"
+text = "Fish 🥀"
 horizontal_alignment = 1
 vertical_alignment = 1
 
