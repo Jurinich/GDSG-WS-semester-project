@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource("1_176fm")
+name = "Speed Down"
+category = "Fish Food"
 sprite = ExtResource("2_wtmai")
 power_up_effect = "PaddleSpeedDOWN"
 is_paddle_powerup = true

@@ -1,9 +1,9 @@
 extends Control
 
-@onready var sound_slider: HSlider = $Container/HBoxContainer2/HSlider
-@onready var music_slider: HSlider = $Container/HBoxContainer/HSlider
-@onready var sound_button: Button = $Container/Button
-@onready var music_button: Button = $Container/Button2
+@onready var sound_slider: HSlider = $Container/ScrollContainer/Content/SoundContainer/Slider
+@onready var music_slider: HSlider = $Container/ScrollContainer/Content/MusicContainer/Slider
+@onready var sound_button: Button = $Container/ScrollContainer/Content/Sound
+@onready var music_button: Button = $Container/ScrollContainer/Content/Music
 @onready var back_button: Button = $Container/BackButton
 @onready var gamemode_menu: LoopingSelection = $Container/ScrollContainer/Content/Gamemode/LoopingSelection
 @onready var time_menu: LoopingSelection = $Container/ScrollContainer/Content/Time/LoopingSelection
@@ -14,40 +14,29 @@ extends Control
 @onready var items: Control = $Container/ScrollContainer/Content/Items
 @onready var scroll_container: ScrollContainer = $Container/ScrollContainer
 
+var focusable_controls: Array[Control] = []
 var item_scene: PackedScene = preload("res://scenes/ui/item_settings.tscn")
 
 func _ready():
 	gamemode_menu.grab_focus()
-	_set_focus_sound([sound_slider, music_slider, sound_button, music_button, back_button])
 	_init_menus()
 	_init_item_settings()
 	_init_sound()
-	connect_focus_signals(scroll_container)
+	_connect_focus_signals(scroll_container)
 
-func connect_focus_signals(node: Node):
-	if node is LoopingSelection:
-		node.focus_entered.connect(_on_control_focused.bind(node))
-	
+func _connect_focus_signals(node: Node):
+	if node is Control && node.focus_mode != FOCUS_NONE:
+		node.focus_entered.connect(_on_control_focused_item.bind(focusable_controls.size()))
+		focusable_controls.append(node)
 	for child in node.get_children():
-		connect_focus_signals(child)
+		_connect_focus_signals(child)
 
-func _set_focus_sound(elements: Array[Control]) -> void:
-	for element in elements:
-		element.focus_entered.connect(AudioManager.playSound.bind(&"menu_hover"))
-
-func _on_control_focused(control: Control):
-	var control_rect = control.get_global_rect()
-	var scroll_rect = scroll_container.get_global_rect()
-	
-	var control_top = control_rect.position.y - scroll_rect.position.y
-	var control_bottom = control_top + control_rect.size.y
-	
-	var margin = control_rect.size.y
-	
-	if control_top < margin:
-		scroll_container.scroll_vertical -= margin - control_top
-	elif control_bottom > scroll_rect.size.y - margin:
-		scroll_container.scroll_vertical += control_bottom - (scroll_rect.size.y - margin)
+func _on_control_focused_item(index: int):
+	AudioManager.playSound.bind(&"menu_hover")
+	if index > 0:
+		scroll_container.ensure_control_visible(focusable_controls[index - 1])
+	if index < focusable_controls.size() - 1:
+		scroll_container.ensure_control_visible(focusable_controls[index + 1])
 
 func _setup_score_menu() -> void:
 	var score_items: Array[LoopingSelectionItem]
@@ -74,14 +63,25 @@ func _init_menus() -> void:
 	music_slider.value_changed.connect(AudioManager.set_music_volume)
 
 func _init_item_settings() -> void:
+	var last_category = -1
 	for i in GameManager.settings.items.size():
 		var item: ItemDrop = GameManager.settings.items[i]
+		if last_category != item.item.category:
+			last_category = item.item.category
+			items.add_child(_create_label(ItemData.CATEGORY_NAMES[last_category]))
 		var item_setting = item_scene.instantiate();
-		item_setting.get_node("Label").text = item.item.power_up_effect
+		item_setting.get_node("Label").text = item.item.name
 		items.add_child(item_setting)
 		var selection: LoopingSelection = item_setting.get_node("LoopingSelection")
 		selection.value_changed.connect(_on_item_changed.bind(i))
 		selection.select_value(item.weight)
+
+func _create_label(text: String) -> Label:
+	var label = Label.new()
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.text = text
+	label.add_theme_font_size_override("font_size", 30)
+	return label
 
 func _on_gamemode_changed(value: Settings.GameMode) -> void:
 	GameManager.settings.gamemode = value

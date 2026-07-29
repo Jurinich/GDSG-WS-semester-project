@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource("1_v5ldw")
+name = "Cat Food"
+category = 2
 sprite = ExtResource("2_v5ldw")
 power_up_effect = "PawFrenzy"
 metadata/_custom_type_script = "uid://cjxfeo0s5d5yr"

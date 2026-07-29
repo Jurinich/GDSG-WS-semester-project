@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource("1_3g6fk")
+name = "Vacuum Cleaner"
+category = 2
 sprite = ExtResource("2_6pi8w")
 power_up_effect = "BallCatcher"
 is_paddle_powerup = true

@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource("1_vte6g")
+name = "Size Up"
+category = "Fish Food"
 sprite = ExtResource("2_dgt03")
 power_up_effect = "PaddleSizeUP"
 is_paddle_powerup = true

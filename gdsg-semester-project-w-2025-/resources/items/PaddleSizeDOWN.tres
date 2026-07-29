@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource("1_7vai0")
+name = "Size Down"
+category = "Fish Food"
 sprite = ExtResource("2_cdx5y")
 power_up_effect = "PaddleSizeDOWN"
 is_paddle_powerup = true

@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource("1_s407s")
+name = "Laser Pointer"
+category = 2
 sprite = ExtResource("2_s407s")
 power_up_effect = "LaserPointer"
 metadata/_custom_type_script = "uid://cjxfeo0s5d5yr"

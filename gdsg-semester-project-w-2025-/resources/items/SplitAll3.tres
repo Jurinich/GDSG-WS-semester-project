@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource("1_shpuf")
+name = "All x3"
+category = 1
 sprite = ExtResource("2_shpuf")
 power_up_effect = "SplitAll3"
 metadata/_custom_type_script = "uid://cjxfeo0s5d5yr"

@@ -5,6 +5,8 @@
 
 [resource]
 script = ExtResource("1_nord7")
+name = "Size Down"
+category = 1
 sprite = ExtResource("2_p4y8f")
 power_up_effect = "SmallerBalls"
 metadata/_custom_type_script = "uid://cjxfeo0s5d5yr"

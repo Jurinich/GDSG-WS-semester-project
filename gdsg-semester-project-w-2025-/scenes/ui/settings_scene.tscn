@@ -119,15 +119,13 @@ grow_vertical = 2
 theme = ExtResource("3_83w5s")
 script = ExtResource("1_kqt80")
 
-[node name="Background" type="Control" parent="." unique_id=1731582913]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureRect" parent="Background" unique_id=1435932134]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Background" type="TextureRect" parent="." unique_id=1435932134]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_5jacn")
 
 [node name="Container" type="VBoxContainer" parent="." unique_id=1770324105]
@@ -139,81 +137,11 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="heading" type="Label" parent="Container" unique_id=101908018]
+[node name="Title" type="Label" parent="Container" unique_id=101908018]
 layout_mode = 2
 theme = ExtResource("3_83w5s")
 theme_override_font_sizes/font_size = 64
 text = "This is our amazing settings page"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button2" type="Button" parent="Container" unique_id=976116096]
-layout_mode = 2
-theme = ExtResource("3_83w5s")
-theme_override_font_sizes/font_size = 32
-text = "Music: On"
-script = ExtResource("4_tori7")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Container" unique_id=405671482]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="text" type="Label" parent="Container/HBoxContainer" unique_id=1077343360]
-layout_mode = 2
-theme = ExtResource("3_83w5s")
-theme_override_font_sizes/font_size = 32
-text = "Volume   "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSlider" type="HSlider" parent="Container/HBoxContainer" unique_id=916181864]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-max_value = 2.0
-step = 0.05
-value = 1.0
-
-[node name="HSeparator3" type="HSeparator" parent="Container" unique_id=1792964731]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="Container" unique_id=551788857]
-layout_mode = 2
-theme = ExtResource("3_83w5s")
-theme_override_font_sizes/font_size = 32
-text = "Sound: On"
-script = ExtResource("4_tori7")
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Container" unique_id=1012310735]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="text" type="Label" parent="Container/HBoxContainer2" unique_id=1008157770]
-layout_mode = 2
-theme = ExtResource("3_83w5s")
-theme_override_font_sizes/font_size = 32
-text = "Volume   "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSlider" type="HSlider" parent="Container/HBoxContainer2" unique_id=1856957105]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-max_value = 2.0
-step = 0.05
-value = 1.0
-
-[node name="HSeparator2" type="HSeparator" parent="Container" unique_id=1777799279]
-layout_mode = 2
-
-[node name="text" type="Label" parent="Container" unique_id=1412077300]
-layout_mode = 2
-theme = ExtResource("3_83w5s")
-theme_override_font_sizes/font_size = 38
-text = "Game Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -224,6 +152,80 @@ size_flags_vertical = 3
 [node name="Content" type="VBoxContainer" parent="Container/ScrollContainer" unique_id=304647815]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="AudioSettings" type="Label" parent="Container/ScrollContainer/Content" unique_id=1944768194]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme = ExtResource("3_83w5s")
+theme_override_font_sizes/font_size = 38
+text = "Audio Settings"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Music" type="Button" parent="Container/ScrollContainer/Content" unique_id=976116096]
+layout_mode = 2
+theme = ExtResource("3_83w5s")
+theme_override_font_sizes/font_size = 32
+text = "Music: On"
+script = ExtResource("4_tori7")
+
+[node name="MusicContainer" type="HBoxContainer" parent="Container/ScrollContainer/Content" unique_id=405671482]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Container/ScrollContainer/Content/MusicContainer" unique_id=1077343360]
+layout_mode = 2
+theme = ExtResource("3_83w5s")
+theme_override_font_sizes/font_size = 32
+text = "Volume   "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slider" type="HSlider" parent="Container/ScrollContainer/Content/MusicContainer" unique_id=916181864]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 2.0
+step = 0.05
+value = 1.0
+
+[node name="Sound" type="Button" parent="Container/ScrollContainer/Content" unique_id=551788857]
+layout_mode = 2
+theme = ExtResource("3_83w5s")
+theme_override_font_sizes/font_size = 32
+text = "Sound: On"
+script = ExtResource("4_tori7")
+
+[node name="SoundContainer" type="HBoxContainer" parent="Container/ScrollContainer/Content" unique_id=1012310735]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="Container/ScrollContainer/Content/SoundContainer" unique_id=1008157770]
+layout_mode = 2
+theme = ExtResource("3_83w5s")
+theme_override_font_sizes/font_size = 32
+text = "Volume   "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Slider" type="HSlider" parent="Container/ScrollContainer/Content/SoundContainer" unique_id=1856957105]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 2.0
+step = 0.05
+value = 1.0
+
+[node name="GameSettings" type="Label" parent="Container/ScrollContainer/Content" unique_id=1412077300]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme = ExtResource("3_83w5s")
+theme_override_font_sizes/font_size = 38
+text = "Game Settings"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="Gamemode" type="HBoxContainer" parent="Container/ScrollContainer/Content" unique_id=1116497581]
 layout_mode = 2
@@ -292,10 +294,19 @@ layout_mode = 2
 font_size = 28
 items = Array[ExtResource("5_hlosk")]([SubResource("Resource_oow4c"), SubResource("Resource_jmcw8"), SubResource("Resource_7jrx5"), SubResource("Resource_j3wk1"), SubResource("Resource_jp740"), SubResource("Resource_h3gt1"), SubResource("Resource_fohb0"), SubResource("Resource_smxgj"), SubResource("Resource_p2udf"), SubResource("Resource_ryeki")])
 
+[node name="ItemSettings" type="Label" parent="Container/ScrollContainer/Content" unique_id=2831950]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+theme = ExtResource("3_83w5s")
+theme_override_font_sizes/font_size = 38
+text = "Item Settings"
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="Items" type="VBoxContainer" parent="Container/ScrollContainer/Content" unique_id=507344027]
 layout_mode = 2
 
-[node name="HSeparator4" type="HSeparator" parent="Container" unique_id=154403020]
+[node name="HSeparator" type="HSeparator" parent="Container" unique_id=154403020]
 layout_mode = 2
 
 [node name="BackButton" type="Button" parent="Container" unique_id=41829431]
@@ -307,7 +318,7 @@ theme_override_font_sizes/font_size = 64
 text = "Back"
 script = ExtResource("4_tori7")
 
-[connection signal="pressed" from="Container/Button2" to="." method="music_button_pressed"]
-[connection signal="drag_ended" from="Container/HBoxContainer/HSlider" to="." method="on_music_slider_drag_end"]
-[connection signal="pressed" from="Container/Button" to="." method="sound_button_pressed"]
+[connection signal="pressed" from="Container/ScrollContainer/Content/Music" to="." method="music_button_pressed"]
+[connection signal="drag_ended" from="Container/ScrollContainer/Content/MusicContainer/Slider" to="." method="on_music_slider_drag_end"]
+[connection signal="pressed" from="Container/ScrollContainer/Content/Sound" to="." method="sound_button_pressed"]
 [connection signal="pressed" from="Container/BackButton" to="." method="_on_back_button_pressed"]

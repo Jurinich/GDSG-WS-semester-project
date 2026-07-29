@@ -19,6 +19,10 @@ func _load_items() -> void:
 		var item: ItemDrop = ItemDrop.new()
 		item.item = ResourceLoader.load(ITEM_DIRECTORY + file)
 		items.push_back(item)
+	items.sort_custom(_sort_by_category)
+
+func _sort_by_category(a, b) -> bool:
+	return a.item.category < b.item.category
 
 func save() -> void:
 	var config := ConfigFile.new()
