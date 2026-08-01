@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dqwcoahirl7v5"
-path="res://.godot/imported/fih 1.wav-8f85537982a443b80d8ecca3b67c69e8.sample"
+uid="uid://tyf8ha45cxr2"
+path="res://.godot/imported/Timer 2.wav-f51fa029f20af2daa3ffbb3170619519.sample"
 
 [deps]
 
-source_file="res://assets/sounds/game/paddle/fih 1.wav"
-dest_files=["res://.godot/imported/fih 1.wav-8f85537982a443b80d8ecca3b67c69e8.sample"]
+source_file="res://assets/sounds/menu/Timer 2.wav"
+dest_files=["res://.godot/imported/Timer 2.wav-f51fa029f20af2daa3ffbb3170619519.sample"]
 
 [params]
 

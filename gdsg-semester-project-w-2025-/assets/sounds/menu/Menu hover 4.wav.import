@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cj761crw5bpoa"
+uid="uid://3o1lw30gritp"
 path="res://.godot/imported/Menu hover 4.wav-098129ad8caef1e284d5b0fc39992758.sample"
 
 [deps]
@@ -21,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=2
+compress/mode=0

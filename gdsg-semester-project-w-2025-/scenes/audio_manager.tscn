@@ -4,10 +4,10 @@
 [ext_resource type="AudioStream" uid="uid://dghu87athimbe" path="res://assets/Music/kitty_pong_bgm.mp3" id="2_2fqsb"]
 [ext_resource type="PackedScene" path="res://scenes/sound_component.tscn" id="3_fcxyy"]
 [ext_resource type="Script" path="res://scripts/sound_resource.gd" id="4_1y43m"]
-[ext_resource type="AudioStream" uid="uid://limqjvxaf6mn" path="res://assets/sounds/menu/Menu hover 1.wav" id="5_n1t8p"]
-[ext_resource type="AudioStream" uid="uid://c4vx7sn0h16cg" path="res://assets/sounds/menu/Menu hover 2.wav" id="6_bne8e"]
-[ext_resource type="AudioStream" uid="uid://cj761crw5bpoa" path="res://assets/sounds/menu/Menu hover 4.wav" id="7_24ib7"]
-[ext_resource type="AudioStream" uid="uid://b0tg22mvmpdot" path="res://assets/sounds/menu/Menu hover 3.wav" id="7_c6r4u"]
+[ext_resource type="AudioStream" uid="uid://c6qmpp11487qw" path="res://assets/sounds/menu/Menu hover 1.wav" id="5_n1t8p"]
+[ext_resource type="AudioStream" uid="uid://mj1m2tbrynff" path="res://assets/sounds/menu/Menu hover 2.wav" id="6_bne8e"]
+[ext_resource type="AudioStream" uid="uid://3o1lw30gritp" path="res://assets/sounds/menu/Menu hover 4.wav" id="7_24ib7"]
+[ext_resource type="AudioStream" uid="uid://b7whbqx373psc" path="res://assets/sounds/menu/Menu hover 3.wav" id="7_c6r4u"]
 [ext_resource type="AudioStream" uid="uid://56wnede1k1iv" path="res://assets/sounds/menu/menu select.wav" id="8_785fq"]
 [ext_resource type="AudioStream" uid="uid://14u27vrd30rb" path="res://assets/sounds/game/goal.wav" id="9_26ibh"]
 [ext_resource type="AudioStream" uid="uid://c4gyuf34mcjfx" path="res://assets/sounds/game/Katze/Katze 1.wav" id="10_d55hy"]
@@ -34,9 +34,13 @@
 [ext_resource type="AudioStream" uid="uid://bsxqvsxkbwq5h" path="res://assets/sounds/game/powerup/laser click.wav" id="31_2fqsb"]
 [ext_resource type="AudioStream" uid="uid://b7xy2hf065x34" path="res://assets/sounds/menu/game start.wav" id="32_fcxyy"]
 [ext_resource type="AudioStream" uid="uid://8tr8xfn5eppt" path="res://assets/sounds/menu/pause menu.wav" id="33_1y43m"]
-[ext_resource type="AudioStream" uid="uid://b5x4twtyv1y3h" path="res://assets/sounds/game/paddle/fih 1.wav" id="36_26ibh"]
-[ext_resource type="AudioStream" uid="uid://bdr4jajbua3ev" path="res://assets/sounds/game/paddle/fih 2.wav" id="37_d55hy"]
-[ext_resource type="AudioStream" uid="uid://cn0sfvjjf4n6u" path="res://assets/sounds/game/paddle/fih 3.wav" id="38_1cnjy"]
+[ext_resource type="AudioStream" uid="uid://dqwcoahirl7v5" path="res://assets/sounds/game/paddle/fih 1.wav" id="36_26ibh"]
+[ext_resource type="AudioStream" uid="uid://3c5yputrrifo" path="res://assets/sounds/game/paddle/fih 2.wav" id="37_d55hy"]
+[ext_resource type="AudioStream" uid="uid://38kd3khra6n3" path="res://assets/sounds/game/paddle/fih 3.wav" id="38_1cnjy"]
+[ext_resource type="AudioStream" uid="uid://dce11nqsbnmiw" path="res://assets/sounds/menu/Timer 1.wav" id="38_d55hy"]
+[ext_resource type="AudioStream" uid="uid://tyf8ha45cxr2" path="res://assets/sounds/menu/Timer 2.wav" id="39_1cnjy"]
+[ext_resource type="AudioStream" uid="uid://dsbh6a3ps0t07" path="res://assets/sounds/game/canon/Canon 1.wav" id="40_1cnjy"]
+[ext_resource type="AudioStream" uid="uid://5hxh8p756q5e" path="res://assets/sounds/game/canon/Canon 2.wav" id="41_2igfy"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_sbao2"]
 clip_count = 1
@@ -47,7 +51,7 @@ clip_0/auto_advance = 0
 [sub_resource type="Resource" id="Resource_ch668"]
 script = ExtResource("4_1y43m")
 name = &"menu_hover"
-audiostreams = Array[AudioStream]([ExtResource("5_n1t8p"), ExtResource("6_bne8e"), ExtResource("7_c6r4u"), ExtResource("7_24ib7")])
+audiostreams = Array[AudioStream]([ExtResource("5_n1t8p"), ExtResource("7_c6r4u"), ExtResource("6_bne8e"), ExtResource("7_24ib7")])
 
 [sub_resource type="Resource" id="Resource_10vkx"]
 script = ExtResource("4_1y43m")
@@ -109,6 +113,21 @@ script = ExtResource("4_1y43m")
 name = &"fih"
 audiostreams = Array[AudioStream]([ExtResource("36_26ibh"), ExtResource("37_d55hy"), ExtResource("38_1cnjy")])
 
+[sub_resource type="Resource" id="Resource_gi52w"]
+script = ExtResource("4_1y43m")
+name = &"Time beep"
+audiostreams = Array[AudioStream]([ExtResource("38_d55hy")])
+
+[sub_resource type="Resource" id="Resource_g71vj"]
+script = ExtResource("4_1y43m")
+name = &"Time end"
+audiostreams = Array[AudioStream]([ExtResource("39_1cnjy")])
+
+[sub_resource type="Resource" id="Resource_ladlq"]
+script = ExtResource("4_1y43m")
+name = &"Canon"
+audiostreams = Array[AudioStream]([ExtResource("40_1cnjy"), ExtResource("41_2igfy")])
+
 [node name="AudioManager" type="Node" unique_id=1047763007]
 process_mode = 3
 script = ExtResource("1_yt2vs")
@@ -118,5 +137,5 @@ stream = SubResource("AudioStreamInteractive_sbao2")
 autoplay = true
 
 [node name="SoundPlayer" parent="." unique_id=647762911 instance=ExtResource("3_fcxyy")]
-sounds = Array[ExtResource("4_1y43m")]([SubResource("Resource_ch668"), SubResource("Resource_10vkx"), SubResource("Resource_0q7qy"), SubResource("Resource_7js83"), SubResource("Resource_ttt2c"), SubResource("Resource_pfob2"), SubResource("Resource_eyy75"), SubResource("Resource_c6kha"), SubResource("Resource_5lp4t"), SubResource("Resource_yt2vs"), SubResource("Resource_1y43m"), SubResource("Resource_fcxyy"), SubResource("Resource_2igfy")])
+sounds = Array[ExtResource("4_1y43m")]([SubResource("Resource_ch668"), SubResource("Resource_10vkx"), SubResource("Resource_0q7qy"), SubResource("Resource_7js83"), SubResource("Resource_ttt2c"), SubResource("Resource_pfob2"), SubResource("Resource_eyy75"), SubResource("Resource_c6kha"), SubResource("Resource_5lp4t"), SubResource("Resource_yt2vs"), SubResource("Resource_1y43m"), SubResource("Resource_fcxyy"), SubResource("Resource_2igfy"), SubResource("Resource_gi52w"), SubResource("Resource_g71vj"), SubResource("Resource_ladlq")])
 audio_player_amount = 30
