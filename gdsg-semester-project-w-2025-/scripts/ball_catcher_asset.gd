@@ -120,6 +120,7 @@ func _play_collect_animation() -> void:
 
 func shoot_ball(ball: Ball):
 	_play_collect_animation()
+	AudioManager.playSound(&"Canon")
 	
 	ball.visible = true
 	ball.collision_shape.set_deferred("disabled", false)

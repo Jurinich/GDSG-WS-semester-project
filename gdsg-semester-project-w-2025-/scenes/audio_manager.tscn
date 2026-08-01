@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ca0u01v4akhj3" path="res://scripts/audio_manager.gd" id="1_yt2vs"]
 [ext_resource type="AudioStream" uid="uid://dghu87athimbe" path="res://assets/Music/kitty_pong_bgm.mp3" id="2_2fqsb"]
-[ext_resource type="PackedScene" path="res://scenes/sound_component.tscn" id="3_fcxyy"]
-[ext_resource type="Script" path="res://scripts/sound_resource.gd" id="4_1y43m"]
+[ext_resource type="PackedScene" uid="uid://bink6xfeoi6jk" path="res://scenes/sound_component.tscn" id="3_fcxyy"]
+[ext_resource type="Script" uid="uid://b07gdu4yupssq" path="res://scripts/sound_resource.gd" id="4_1y43m"]
 [ext_resource type="AudioStream" uid="uid://c6qmpp11487qw" path="res://assets/sounds/menu/Menu hover 1.wav" id="5_n1t8p"]
 [ext_resource type="AudioStream" uid="uid://mj1m2tbrynff" path="res://assets/sounds/menu/Menu hover 2.wav" id="6_bne8e"]
 [ext_resource type="AudioStream" uid="uid://3o1lw30gritp" path="res://assets/sounds/menu/Menu hover 4.wav" id="7_24ib7"]
