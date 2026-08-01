@@ -4,7 +4,6 @@ extends CharacterBody2D
 const BASE_SPEED := 1100
 var current_speed: float
 
-
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var sprite: Sprite2D = $CollisionShape2D/Sprite2D
 @onready var shadow_sprite: Sprite2D = $Shadow
@@ -37,6 +36,11 @@ func _ready():
 	fixed_x = global_position.x
 	sprite_scale = sprite.scale
 	current_speed = BASE_SPEED
+
+func hide_paddle(paddle_hidden: bool) -> void:
+	sprite.visible = !paddle_hidden
+	shadow_sprite.visible = !paddle_hidden
+	collision_layer = 0 if paddle_hidden else 2
 
 func getYdir() -> float:
 	if GameManager.arcade_mode:

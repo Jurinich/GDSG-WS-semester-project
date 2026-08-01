@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bcwl1k4aqpoc7"]
 
 [ext_resource type="Script" uid="uid://cjxfeo0s5d5yr" path="res://scripts/items/item_data.gd" id="1_3g6fk"]
-[ext_resource type="Texture2D" uid="uid://bawk534bmwboq" path="res://assets/sprites/Items/PlaceholderItemblue.png" id="2_6pi8w"]
+[ext_resource type="Texture2D" uid="uid://crqnyrulo4bkl" path="res://assets/sprites/Items/vacuum_item.png" id="2_ibpmm"]
 
 [resource]
 script = ExtResource("1_3g6fk")
 name = "Vacuum Cleaner"
 category = 2
-sprite = ExtResource("2_6pi8w")
+sprite = ExtResource("2_ibpmm")
 power_up_effect = "BallCatcher"
 is_paddle_powerup = true
 metadata/_custom_type_script = "uid://cjxfeo0s5d5yr"

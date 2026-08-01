@@ -1,4 +1,7 @@
-extends Area2D
+class_name VacuumCleaner extends Area2D
+
+@onready var air_sprite: Sprite2D = $Air
+@onready var air_material: ShaderMaterial = $Air.material
 
 var caught_balls: Array[Ball] = []
 var is_shooting: bool = false
@@ -8,12 +11,20 @@ var shoot_direction: Vector2 = Vector2.RIGHT
 var collection_timer: Timer
 var shoot_timer: Timer
 
+var active: bool = false
+var shake_strength: float = 0.0
+var inactive_position: Vector2 = Vector2(-200, 0)
+
 @export var catch_time : float = 5.0
 @export var shoot_delay : float = 0.25
 @export var shoot_angle : float = 10.0
+
 func _ready():
 	if paddle_owner and not paddle_owner.isP1:
 		shoot_direction = Vector2.LEFT
+		inactive_position *= -1
+
+	position = inactive_position
 
 	collection_timer = Timer.new()
 	collection_timer.wait_time = catch_time
@@ -28,6 +39,15 @@ func _ready():
 	add_child(shoot_timer)
 
 	body_entered.connect(_on_body_entered)
+	
+	_play_spawn_animation()
+
+func _process(_delta):
+	if !active:
+		return
+	var offset = Vector2(randf_range(-1.0, 1.0), randf_range(-1.0, 1.0))
+	offset *= 2 * shake_strength if is_shooting else shake_strength
+	position = offset
 
 func _on_body_entered(body: Node2D):
 	if is_shooting: return 
@@ -35,7 +55,24 @@ func _on_body_entered(body: Node2D):
 	if body is Ball:
 		catch_ball(body)
 
+func _play_spawn_animation():
+	var tween = create_tween()
+	tween.tween_property(self, "position", Vector2.ZERO, 0.1)
+	tween.tween_callback(get_parent().hide_paddle.bind(true))
+	tween.tween_property(self, "active", true, 0.0)
+	tween.tween_method(set_shader_value.bind(&"line_color"), Color.TRANSPARENT, Color.WHITE, 1.0)
+	tween.parallel().tween_property(self, "shake_strength", 2.0, 1.0)
+
+func _play_despawn_animation():
+	var tween = create_tween()
+	tween.tween_property(self, "active", false, 0.0)
+	tween.tween_callback(get_parent().hide_paddle.bind(false))
+	tween.tween_property(self, "position", inactive_position, 0.1)
+	tween.tween_callback(queue_free)
+
 func catch_ball(ball: Ball):
+	_play_collect_animation()
+	
 	caught_balls.append(ball)
 	ball.set_physics_process(false)
 	ball.visible = false
@@ -43,22 +80,43 @@ func catch_ball(ball: Ball):
 	ball.velocity = Vector2.ZERO
 
 func _on_collection_timeout():
-	is_shooting = true
+	var tween = create_tween()
+	tween.tween_method(set_shader_value.bind(&"line_color"), Color.WHITE, Color.TRANSPARENT, 1.0)
+	tween.parallel().tween_property(self, "shake_strength", 0.0, 1.0)
+	tween.tween_callback(_start_shooting)
+
+func set_shader_value(value: Variant, property: StringName):
+	air_material.set_shader_parameter(property, value);
+
+func _start_shooting():
 	if caught_balls.is_empty():
-		queue_free()
-	else:
-		shoot_timer.start()
+		_play_despawn_animation()
+		return
+	
+	is_shooting = true
+	var tween = create_tween()
+	tween.tween_method(set_shader_value.bind(&"line_color"), Color.TRANSPARENT, Color.WHITE, 0.5)
+	tween.parallel().tween_method(set_shader_value.bind(&"speed"), 0.0, -35.0, 0.5)
+	tween.parallel().tween_property(self, "shake_strength", 2.0, 0.5)
+	tween.tween_callback(shoot_timer.start)
 
 func _on_shoot_tick():
 	if caught_balls.is_empty():
-		shoot_timer.stop()
-		queue_free()
+		_on_collection_timeout()
 		return
-		
+	
 	var ball = caught_balls.pop_front()
 	shoot_ball(ball)
 
+func _play_collect_animation() -> void:
+	var original_scale = scale
+	var tween = create_tween()
+	tween.tween_property(self, "scale", original_scale * 1.1, 0.05)
+	tween.tween_property(self, "scale", original_scale, 0.1)
+
 func shoot_ball(ball: Ball):
+	_play_collect_animation()
+	
 	ball.visible = true
 	ball.collision_shape.set_deferred("disabled", false)
 	ball.set_physics_process(true)

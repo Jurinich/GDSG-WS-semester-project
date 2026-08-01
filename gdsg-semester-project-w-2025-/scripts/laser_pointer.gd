@@ -2,10 +2,10 @@ extends Node2D
 
 @onready var path: Path2D = $"Path"
 @onready var dot: PathFollow2D = $"Path/Dot"
+@onready var dot_sprite: Sprite2D = $"Path/Dot/Sprite"
 @onready var kitty: PathFollow2D = $"Path/Kitty"
 @onready var paw: KittenPaw = $"Path/Kitty/PawWrapper/Paw"
 @onready var paw_wrapper: Node2D = $"Path/Kitty/PawWrapper"
-@onready var line: Line2D = $"Line"
 @onready var sprite: Sprite2D = $"Sprite"
 @onready var effects: EffectTimerManager = $"../ForegroundUILayer/EffectTimers"
 
@@ -50,7 +50,6 @@ func activate(counter: int, right_player: bool) -> void:
 		sprite.position = pointer_position + pointer_hidden_óffset
 		var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(sprite, "position", pointer_position, SPAWN_DURATION)
-		tween.tween_callback(line.set_point_position.bind(0, pointer_position))
 		tween.tween_callback(start_next_path)
 	path_counter = counter
 	effects.show_effect_counter("LASER POINTER", path_counter, counter)
@@ -106,14 +105,13 @@ func start_next_path() -> void:
 
 func turn_on_laser():
 	AudioManager.playSound("laser_click");
-	line.set_point_position(1, dot.global_position)
 	laser_on = true
-	line.show()
+	dot_sprite.show()
 
 func turn_off_laser():
 	AudioManager.playSound("laser_click");
 	laser_on = false
-	line.hide()
+	dot_sprite.hide()
 
 func update_paw(delta: float) -> void:
 	speed_timer = speed_timer - delta
@@ -136,8 +134,7 @@ func randomize_paw() -> void:
 	tween.tween_property(kitty, "rotation", paw_rotation, PAW_ROTATION_DURATION)
 
 func update_laser(delta: float) -> void:
-	line.set_point_position(1, dot.global_position)
-	sprite.look_at(line.get_point_position(1))
+	sprite.look_at(dot.global_position)
 	dot.progress += (delta * SPEED)
 
 func _process(delta: float) -> void:

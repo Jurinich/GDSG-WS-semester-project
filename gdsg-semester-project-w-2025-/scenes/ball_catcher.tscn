@@ -1,18 +1,39 @@
 [gd_scene format=3 uid="uid://b7r41vivhjnyg"]
 
 [ext_resource type="Script" uid="uid://dgfwjdirab11p" path="res://scripts/ball_catcher_asset.gd" id="1_ch6sr"]
-[ext_resource type="Texture2D" uid="uid://dolggwqa1p1kd" path="res://assets/sprites/ballcatcher.png" id="1_d8471"]
+[ext_resource type="Texture2D" uid="uid://q1rbly0n2ykn" path="res://assets/sprites/vacuum_cleaner.png" id="2_ch6sr"]
+[ext_resource type="Material" uid="uid://dl2yasj36kjla" path="res://resources/materials/vacuum.tres" id="3_hsoyf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ch6sr"]
-size = Vector2(27, 111)
+size = Vector2(75, 250)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hsoyf"]
+size = Vector2(61.75, 230)
 
 [node name="BallCatcher" type="Area2D" unique_id=1840135258]
-collision_layer = 32
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_ch6sr")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=729736197]
-texture = ExtResource("1_d8471")
+[node name="Air" type="Sprite2D" parent="." unique_id=1368736998]
+material = ExtResource("3_hsoyf")
+position = Vector2(-50, 0)
+scale = Vector2(0.25, 0.5)
+texture = ExtResource("2_ch6sr")
+
+[node name="Vacuum" type="Sprite2D" parent="." unique_id=729736197]
+position = Vector2(90, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ch6sr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=479992043]
-position = Vector2(-1.5, 1)
+position = Vector2(42, 0)
 shape = SubResource("RectangleShape2D_ch6sr")
+
+[node name="Hitbox" type="StaticBody2D" parent="." unique_id=763244685]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1481372575]
+position = Vector2(71.875, 0)
+shape = SubResource("RectangleShape2D_hsoyf")

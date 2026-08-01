@@ -13,6 +13,7 @@ extends CharacterBody2D
 @export var SPEED_INCREASE_PER_PLAYER_HIT: float = 50.0
 @export var SPEED_INCREASE_PER_WALL_HIT: float = 10.0
 @export var BALL_MAX_SPEED: float = 2000.0
+
 var current_scale: float = 1.0
 var current_speed: float
 var last_hit_by: CharacterBody2D = player_1
@@ -22,6 +23,7 @@ var tile_offset := Vector2.ZERO
 
 @onready var sprite_material: ShaderMaterial = $Visuals/Ball.material
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var trail: Trail = $Visuals/Ball/Trail
 
 @onready var player_1: CharacterBody2D = $"../Player1"
 
@@ -79,6 +81,8 @@ func _physics_process(delta: float) -> void:
 				
 		if check_velocity_threshold():
 			kitten_spawner.call_deferred("spawn_paw", self)
+		
+		trail.update_path()
 
 func check_velocity_threshold() -> bool:
 	if velocity.x < VELOCITY_THRESHOLD && velocity.x > -VELOCITY_THRESHOLD:

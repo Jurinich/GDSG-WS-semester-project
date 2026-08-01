@@ -2,7 +2,7 @@ extends Node
 
 @export var catcher_scene: PackedScene
 
-func apply_effect(player: CharacterBody2D, _triggering_ball: Ball = null):	
+func apply_effect(player: CharacterBody2D, _triggering_ball: Ball = null):
 	if player.has_node("BallCatcher"):
 		return
 		
@@ -13,8 +13,6 @@ func apply_effect(player: CharacterBody2D, _triggering_ball: Ball = null):
 		catcher.paddle_owner = player
 		player.add_child.call_deferred(catcher)
 		
-		var offset_x = 60.0 if player.isP1 else -60.0
-		catcher.position = Vector2(offset_x, 0)
 		if player.isP1:
 			catcher.scale.x = -1
 	else:

@@ -5,7 +5,7 @@ extends Control
 @onready var looping_menu = $"ButtonBox/LoopingMenu"
 
 func _ready():
-	#Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	looping_menu.grab_focus();
 	looping_menu.button_pressed.connect(_on_looping_menu_button_pressed)
 	if (GameManager.left_player_score <= 0 && GameManager.right_player_score <= 0):

@@ -8,23 +8,12 @@
 [ext_resource type="Curve2D" uid="uid://dncmpt1r2j0or" path="res://resources/laser_paths/path2.tres" id="4_scom1"]
 [ext_resource type="Curve2D" uid="uid://dwtg8lnqwkgu4" path="res://resources/laser_paths/path3.tres" id="5_kdy3q"]
 [ext_resource type="Curve2D" uid="uid://d2r0k3a3uv8ic" path="res://resources/laser_paths/path4.tres" id="6_myn0h"]
-
-[sub_resource type="Curve" id="Curve_mjepj"]
-_data = [Vector2(0, 0.50561804), 0.0, 0.40858018, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
+[ext_resource type="Texture2D" uid="uid://bixbpe2iituc6" path="res://assets/circle.png" id="8_nvrk8"]
 
 [node name="LaserPointer" type="Node2D" unique_id=274916930]
+z_index = 2
 script = ExtResource("1_0fpsi")
 paths = Array[Curve2D]([ExtResource("2_jt3tt"), ExtResource("3_nvrk8"), ExtResource("4_scom1"), ExtResource("5_kdy3q"), ExtResource("6_myn0h")])
-
-[node name="Line" type="Line2D" parent="." unique_id=556823877]
-visible = false
-points = PackedVector2Array(0, 0, 0, 0)
-width = 20.0
-width_curve = SubResource("Curve_mjepj")
-default_color = Color(0.80784315, 0, 0, 0.5411765)
-begin_cap_mode = 2
-end_cap_mode = 2
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=2026829126]
 position = Vector2(0, -300)
@@ -37,6 +26,11 @@ texture = ExtResource("2_mjepj")
 [node name="Dot" type="PathFollow2D" parent="Path" unique_id=432045609]
 rotates = false
 loop = false
+
+[node name="Sprite" type="Sprite2D" parent="Path/Dot" unique_id=2033427936]
+modulate = Color(0.80784315, 0, 0, 0.58431375)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("8_nvrk8")
 
 [node name="Kitty" type="PathFollow2D" parent="Path" unique_id=1858367327]
 rotates = false

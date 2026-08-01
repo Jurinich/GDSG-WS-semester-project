@@ -33,7 +33,7 @@ func spawn_ball():
 	if GameManager.can_spawn_more():
 		var ball = ball_scene.instantiate()
 		ball.global_position = spawn_position
-		get_parent().add_child.call_deferred(ball) 
+		get_parent().add_child.call_deferred(ball)
 		
 		balls_spawning_this_frame += 1
 	else:
