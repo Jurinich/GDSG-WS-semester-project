@@ -100,7 +100,7 @@ func _start_shooting():
 	is_shooting = true
 	var tween = create_tween()
 	tween.tween_method(set_shader_value.bind(&"line_color"), Color.TRANSPARENT, Color.WHITE, 0.5)
-	tween.parallel().tween_method(set_shader_value.bind(&"speed"), 0.0, -35.0, 0.5)
+	tween.parallel().tween_method(set_shader_value.bind(&"speed"), -25.0, -35.0, 0.5)
 	tween.parallel().tween_property(self, "shake_strength", 2.0, 0.5)
 	tween.tween_callback(shoot_timer.start)
 
