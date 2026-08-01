@@ -11,6 +11,7 @@ extends Node
 
 var base_hit_chance: float
 var frenzy_timer: Timer
+var max_paws: int = 1
 
 func _ready():
 	add_to_group("kitten_spawner")
@@ -33,15 +34,12 @@ func _on_trigger_entered(body):
 func attempt_kitten_spawn(target_ball: Ball):
 	var roll = randf()
 	if roll > hit_chance:
-		return 
-
-		# max 1 paw
-	if get_tree().get_node_count_in_group("KittenPaws") > 0:
 		return
-
 	call_deferred("spawn_paw", target_ball)
 
 func spawn_paw(target_ball: Ball):
+	if get_tree().get_node_count_in_group("KittenPaws") >= max_paws:
+		return
 	if paw_scene && get_tree().current_scene != null:
 		AudioManager.playSound("Katze");
 		var paw = paw_scene.instantiate()
@@ -51,8 +49,10 @@ func spawn_paw(target_ball: Ball):
 
 func activate_frenzy(duration: float):
 	hit_chance = 1.0
+	max_paws = 5
 	frenzy_timer.start(duration)
 	effects.show_effect_timer("PAW FRENZY", duration)
 
 func _on_frenzy_timeout():
 	hit_chance = base_hit_chance
+	max_paws = 1
