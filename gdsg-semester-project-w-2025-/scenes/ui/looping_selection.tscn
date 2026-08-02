@@ -24,10 +24,20 @@ alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="Arrow" type="TextureRect" parent="HBoxContainer/Left" unique_id=791369466]
+[node name="Control" type="Control" parent="HBoxContainer/Left" unique_id=1627970779]
 visible = false
 custom_minimum_size = Vector2(52.8, 52.8)
 layout_mode = 2
+
+[node name="Arrow" type="TextureRect" parent="HBoxContainer/Left/Control" unique_id=791369466]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.792694
+offset_right = 1.7926979
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_pmrvi")
 expand_mode = 1
 stretch_mode = 4
@@ -41,10 +51,20 @@ text = "Text"
 layout_mode = 2
 alignment = 1
 
-[node name="Arrow" type="TextureRect" parent="HBoxContainer/Right" unique_id=282881845]
+[node name="Control" type="Control" parent="HBoxContainer/Right" unique_id=230246643]
 visible = false
 custom_minimum_size = Vector2(52.8, 52.8)
 layout_mode = 2
+
+[node name="Arrow" type="TextureRect" parent="HBoxContainer/Right/Control" unique_id=282881845]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.792694
+offset_right = -1.7926979
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("3_pmrvi")
 expand_mode = 1
 stretch_mode = 4

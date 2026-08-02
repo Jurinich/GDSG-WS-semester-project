@@ -4,8 +4,10 @@ class_name LoopingSelection extends Control
 signal value_changed(value: Variant)
 
 @onready var label: Label = $HBoxContainer/Label
-@onready var left_button: TextureRect = $HBoxContainer/Left/Arrow
-@onready var right_button: TextureRect = $HBoxContainer/Right/Arrow
+@onready var left_wrapper: Control = $HBoxContainer/Left/Control
+@onready var right_wrapper: Control = $HBoxContainer/Right/Control
+@onready var left_arrow: TextureRect = $HBoxContainer/Left/Control/Arrow
+@onready var right_arrow: TextureRect = $HBoxContainer/Right/Control/Arrow
 
 @export var font_size: int = 40:
 	set(value):
@@ -27,6 +29,9 @@ signal value_changed(value: Variant)
 @export var hold_delay: float = 0.4
 @export var hold_repeat: float = 0.08
 
+@export var arrow_animation_speed: float = 0.005
+@export var arrow_animation_distance: float = 3.0
+
 var hold_timer: float = 0.0
 var held_direction: int = 0
 
@@ -35,13 +40,18 @@ var focused: bool = false
 func _ready() -> void:
 	label.remove_theme_font_size_override("font_size")
 	label.add_theme_font_size_override("font_size", font_size)
-	left_button.visible = focused
-	right_button.visible = focused
+	left_wrapper.visible = focused
+	right_wrapper.visible = focused
 	var arrow_size = label.size.y * 0.8
-	left_button.custom_minimum_size = Vector2(arrow_size, arrow_size)
-	right_button.custom_minimum_size = Vector2(arrow_size, arrow_size)
+	left_wrapper.custom_minimum_size = Vector2(arrow_size, arrow_size)
+	right_wrapper.custom_minimum_size = Vector2(arrow_size, arrow_size)
 	focus_entered.connect(_on_focused_changed.bind(true))
 	focus_exited.connect(_on_focused_changed.bind(false))
+
+func _process(_delta: float) -> void:
+	var offset = sin(Time.get_ticks_msec() * arrow_animation_speed) * arrow_animation_distance
+	left_arrow.position.x = offset
+	right_arrow.position.x = -offset
 
 func select(index: int) -> void:
 	if items.is_empty():
@@ -86,6 +96,6 @@ func _gui_input(event: InputEvent) -> void:
 
 func _on_focused_changed(focus: bool) -> void:
 	focused = focus
-	left_button.visible = focused
-	right_button.visible = focused
+	left_wrapper.visible = focused
+	right_wrapper.visible = focused
 	AudioManager.playSound(&"menu_hover")

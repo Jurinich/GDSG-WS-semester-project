@@ -24,6 +24,11 @@ func _ready():
 	_init_sound()
 	_connect_focus_signals(scroll_container)
 
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_viewport().set_input_as_handled()
+		_on_back_button_pressed()
+
 func _connect_focus_signals(node: Node):
 	if node is Control && node.focus_mode != FOCUS_NONE:
 		node.focus_entered.connect(_on_control_focused_item.bind(focusable_controls.size()))

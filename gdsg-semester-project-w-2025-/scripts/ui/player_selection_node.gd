@@ -3,12 +3,18 @@ extends Control
 
 @onready var label: Label = $Label
 @onready var selection: TextureRect = $Selection
-@onready var fish_name: Label = $MarginContainer/HBoxContainer/Name
+@onready var fish_name: Label = $Container/Name
+
+@onready var left_arrow: TextureRect = $Container/Left/Arrow
+@onready var right_arrow: TextureRect = $Container/Right/Arrow
 
 @export var player_name: String
 @export var paddles: Array[Paddle]
 @export var start_index: int = 0
 @export var isP1: bool
+
+@export var arrow_animation_speed: float = 0.005
+@export var arrow_animation_distance: float = 8.0
 
 var index: int
 
@@ -16,6 +22,11 @@ func _ready():
 	label.text = player_name
 	index = start_index
 	update_texture()
+
+func _process(_delta: float) -> void:
+	var offset = sin(Time.get_ticks_msec() * arrow_animation_speed) * arrow_animation_distance
+	left_arrow.position.x = -offset
+	right_arrow.position.x = offset
 
 func _on_right_button_pressed():
 	index = posmod(index + 1, paddles.size());
