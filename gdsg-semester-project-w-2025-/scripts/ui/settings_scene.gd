@@ -4,6 +4,7 @@ extends Control
 @onready var gamemode_menu: LoopingSelection = $Container/ScrollContainer/Content/Gamemode/LoopingSelection
 @onready var time_menu: LoopingSelection = $Container/ScrollContainer/Content/Time/LoopingSelection
 @onready var score_menu: LoopingSelection = $Container/ScrollContainer/Content/Score/LoopingSelection
+@onready var item_menu: LoopingSelection = $Container/ScrollContainer/Content/ItemSpawns/LoopingSelection
 @onready var time_container: Control = $Container/ScrollContainer/Content/Time
 @onready var score_container: Control = $Container/ScrollContainer/Content/Score
 @onready var layout_menu: LoopingSelection = $Container/ScrollContainer/Content/MapLayout/LoopingSelection
@@ -59,6 +60,9 @@ func _init_menus() -> void:
 	score_container.visible = GameManager.settings.gamemode == Settings.GameMode.SCORE
 	layout_menu.select_value(GameManager.settings.layout)
 	layout_menu.value_changed.connect(_on_layout_changed)
+	item_menu.select_value(GameManager.settings.spawn_rates)
+	item_menu.value_changed.connect(_on_items_changed)
+	items.visible = GameManager.settings.spawn_rates == Settings.ItemSpawns.CUSTOM
 
 func _init_item_settings() -> void:
 	var last_category = -1
@@ -88,6 +92,10 @@ func _on_gamemode_changed(value: Settings.GameMode) -> void:
 
 func _on_time_changed(value: float) -> void:
 	GameManager.settings.time = value
+	
+func _on_items_changed(value: Settings.ItemSpawns) -> void:
+	GameManager.settings.spawn_rates = value
+	items.visible = value == Settings.ItemSpawns.CUSTOM
 
 func _on_score_changed(value: int) -> void:
 	GameManager.settings.score = value

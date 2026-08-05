@@ -34,7 +34,7 @@ var animation_time := 0.0
 
 func _ready() -> void:
 	base_position = position
-	item_drops = GameManager.settings.items
+	item_drops = GameManager.settings.get_item_drops()
 	if chooseItem() == null:
 		min_items_to_spawn = 0
 		max_items_to_spawn = 0

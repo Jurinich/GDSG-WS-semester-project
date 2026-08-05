@@ -38,7 +38,6 @@ var held_direction: int = 0
 var focused: bool = false
 
 func _ready() -> void:
-	select(0)
 	label.remove_theme_font_size_override("font_size")
 	label.add_theme_font_size_override("font_size", font_size)
 	left_wrapper.visible = focused

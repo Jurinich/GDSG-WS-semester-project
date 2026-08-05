@@ -86,6 +86,24 @@ text = "Layout 5"
 value = 4
 metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
 
+[sub_resource type="Resource" id="Resource_fohb0"]
+script = ExtResource("5_hlosk")
+text = "None"
+value = 0
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_smxgj"]
+script = ExtResource("5_hlosk")
+text = "Standard"
+value = 1
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_p2udf"]
+script = ExtResource("5_hlosk")
+text = "Custom"
+value = 2
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
 [node name="SettingsScene" type="Control" unique_id=596093716]
 layout_mode = 3
 anchors_preset = 15
@@ -117,6 +135,7 @@ alignment = 1
 [node name="Title" type="Label" parent="Container" unique_id=101908018]
 layout_mode = 2
 theme = ExtResource("3_83w5s")
+theme_override_colors/font_color = Color(1, 0.6392157, 0.6745098, 1)
 theme_override_font_sizes/font_size = 64
 text = "Settings"
 horizontal_alignment = 1
@@ -134,6 +153,7 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 theme = ExtResource("3_83w5s")
+theme_override_colors/font_color = Color(1, 0.6392157, 0.6745098, 1)
 theme_override_font_sizes/font_size = 38
 text = "Audio"
 horizontal_alignment = 1
@@ -150,6 +170,7 @@ bus = 1
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 theme = ExtResource("3_83w5s")
+theme_override_colors/font_color = Color(1, 0.6392157, 0.6745098, 1)
 theme_override_font_sizes/font_size = 38
 text = "Game"
 horizontal_alignment = 1
@@ -222,14 +243,25 @@ layout_mode = 2
 font_size = 28
 items = Array[ExtResource("5_hlosk")]([SubResource("Resource_oow4c"), SubResource("Resource_jmcw8"), SubResource("Resource_7jrx5"), SubResource("Resource_j3wk1"), SubResource("Resource_jp740"), SubResource("Resource_h3gt1")])
 
-[node name="ItemSettings" type="Label" parent="Container/ScrollContainer/Content" unique_id=2831950]
+[node name="ItemSpawns" type="HBoxContainer" parent="Container/ScrollContainer/Content" unique_id=763463068]
 custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
-theme = ExtResource("3_83w5s")
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="Container/ScrollContainer/Content/ItemSpawns" unique_id=2110387954]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6392157, 0.6745098, 1)
 theme_override_font_sizes/font_size = 38
 text = "Items"
 horizontal_alignment = 1
-vertical_alignment = 2
+
+[node name="LoopingSelection" parent="Container/ScrollContainer/Content/ItemSpawns" unique_id=226557765 instance=ExtResource("4_jg5mx")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+font_size = 28
+items = Array[ExtResource("5_hlosk")]([SubResource("Resource_fohb0"), SubResource("Resource_smxgj"), SubResource("Resource_p2udf")])
 
 [node name="Items" type="VBoxContainer" parent="Container/ScrollContainer/Content" unique_id=507344027]
 layout_mode = 2
