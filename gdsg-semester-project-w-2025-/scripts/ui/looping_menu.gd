@@ -38,8 +38,12 @@ func _ready() -> void:
 	focus_exited.connect(_on_focused_changed.bind(false))
 	for i in range(buttons.size()):
 		buttons[i].pressed.connect(_on_button_pressed.bind(i))
+	_compute_positions(1.0)
 
 func _process(delta: float) -> void:
+	_compute_positions(delta)
+
+func _compute_positions(delta: float) -> void:
 	var interpolation = clamp(rotation_speed * delta, 0.0, 1.0)
 
 	visual_selected_menu = lerpf(visual_selected_menu, target_selected_menu, interpolation)
