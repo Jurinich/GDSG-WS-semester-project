@@ -2,10 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b3uuowwhpbj1f" path="res://scripts/items/collectible_item.gd" id="1_8id85"]
 [ext_resource type="Texture2D" uid="uid://bbrbfitp00t4k" path="res://assets/sprites/Items/shadow.png" id="2_s1fmu"]
-[ext_resource type="Material" uid="uid://chfsctpy5rqe7" path="res://resources/materials/capsule_material_back.tres" id="3_s5oeu"]
-[ext_resource type="Material" uid="uid://ds1j7bgptq1ts" path="res://resources/materials/capsule_material_front.tres" id="6_hq2xc"]
-[ext_resource type="Texture2D" uid="uid://bp0pf3xk7k3yt" path="res://assets/sprites/Items/grow_item.png" id="7_shw8p"]
-[ext_resource type="Texture2D" uid="uid://dcfj6p6d212dm" path="res://assets/sprites/Ball/capsule.png" id="8_klrk1"]
+[ext_resource type="PackedScene" uid="uid://cvd4r253ky4ty" path="res://scenes/item_capsule.tscn" id="3_2t1da"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uaxfv"]
 radius = 86.0
@@ -25,18 +22,7 @@ position = Vector2(22.000002, 20)
 scale = Vector2(1.6679688, 1.4921874)
 texture = ExtResource("2_s1fmu")
 
-[node name="CapsuleBack" type="Sprite2D" parent="." unique_id=1099912794]
-material = ExtResource("3_s5oeu")
-scale = Vector2(1.7, 1.7)
-texture = ExtResource("8_klrk1")
-
-[node name="Item" type="Sprite2D" parent="." unique_id=145808513]
-texture = ExtResource("7_shw8p")
-
-[node name="CapsuleFront" type="Sprite2D" parent="." unique_id=1510181852]
-material = ExtResource("6_hq2xc")
-scale = Vector2(1.7, 1.7)
-texture = ExtResource("8_klrk1")
+[node name="Item" parent="." unique_id=67378116 instance=ExtResource("3_2t1da")]
 
 [node name="PickupArea" type="Area2D" parent="." unique_id=1582210993]
 visible = false

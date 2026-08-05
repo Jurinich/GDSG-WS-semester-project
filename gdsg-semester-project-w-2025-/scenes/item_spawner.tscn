@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dbo6c63ddgyf0"]
+
+[ext_resource type="Script" uid="uid://b2oe7fsd38rx1" path="res://scripts/items/item_spawner.gd" id="1_n0x5h"]
+[ext_resource type="PackedScene" uid="uid://bdme7ngk7uj84" path="res://scenes/collectible_item.tscn" id="2_2vh2f"]
+[ext_resource type="PackedScene" uid="uid://cm4uq6fy2yi30" path="res://scenes/paddle_collectible_item.tscn" id="3_jqlno"]
+[ext_resource type="Texture2D" uid="uid://c5t5w2gex5w3a" path="res://assets/sprites/gacha_machine_back.png" id="4_f0s60"]
+[ext_resource type="PackedScene" uid="uid://cvd4r253ky4ty" path="res://scenes/item_capsule.tscn" id="5_2vh2f"]
+[ext_resource type="Texture2D" uid="uid://un5nsqwp0uwo" path="res://assets/sprites/gacha_machine_front.png" id="5_ld3wv"]
+
+[node name="ItemSpawner" type="Node2D" unique_id=560337352]
+script = ExtResource("1_n0x5h")
+item_scene = ExtResource("2_2vh2f")
+paddle_item_scene = ExtResource("3_jqlno")
+
+[node name="Back" type="Sprite2D" parent="." unique_id=358067178]
+z_index = -1
+texture = ExtResource("4_f0s60")
+
+[node name="Capsules" type="Node2D" parent="." unique_id=1369938417]
+
+[node name="Item" parent="Capsules" unique_id=67378116 instance=ExtResource("5_2vh2f")]
+position = Vector2(-4.000004, -11.000004)
+scale = Vector2(0.25, 0.25)
+
+[node name="Item2" parent="Capsules" unique_id=241107400 instance=ExtResource("5_2vh2f")]
+position = Vector2(15, 15.999992)
+scale = Vector2(0.25, 0.25)
+
+[node name="Item3" parent="Capsules" unique_id=774551598 instance=ExtResource("5_2vh2f")]
+position = Vector2(-50, 9)
+scale = Vector2(0.25, 0.25)
+
+[node name="Item4" parent="Capsules" unique_id=1565969026 instance=ExtResource("5_2vh2f")]
+position = Vector2(-23.999992, 17.999992)
+scale = Vector2(0.25, 0.25)
+
+[node name="Item5" parent="Capsules" unique_id=534845340 instance=ExtResource("5_2vh2f")]
+position = Vector2(45, 10.999992)
+scale = Vector2(0.25, 0.25)
+
+[node name="Item6" parent="Capsules" unique_id=1548300341 instance=ExtResource("5_2vh2f")]
+position = Vector2(-5.999999, 39.999996)
+scale = Vector2(0.25, 0.25)
+
+[node name="Item7" parent="Capsules" unique_id=1802791943 instance=ExtResource("5_2vh2f")]
+position = Vector2(32, 45.999996)
+scale = Vector2(0.25, 0.25)
+
+[node name="Item8" parent="Capsules" unique_id=147805325 instance=ExtResource("5_2vh2f")]
+position = Vector2(-37, 44)
+scale = Vector2(0.25, 0.25)
+
+[node name="Item9" parent="Capsules" unique_id=948057475 instance=ExtResource("5_2vh2f")]
+position = Vector2(32.999992, -17.999996)
+scale = Vector2(0.25, 0.25)
+
+[node name="Item10" parent="Capsules" unique_id=2061559135 instance=ExtResource("5_2vh2f")]
+position = Vector2(-17, -41)
+scale = Vector2(0.25, 0.25)
+
+[node name="Item11" parent="Capsules" unique_id=1657466404 instance=ExtResource("5_2vh2f")]
+position = Vector2(-34, -15.000002)
+scale = Vector2(0.25, 0.25)
+
+[node name="Front" type="Sprite2D" parent="." unique_id=1854611552]
+z_index = 10
+texture = ExtResource("5_ld3wv")
+
+[node name="Polygon" type="Polygon2D" parent="." unique_id=2050749747]
+visible = false
+scale = Vector2(0.9866667, 0.9935065)
+polygon = PackedVector2Array(-54.729733, 48.31373, 50.67568, 48.31373, 55.743248, -45.29412, -61.824326, -45.29412)
+
+[node name="ItemStartingPoint" type="Node2D" parent="." unique_id=448725921]
+position = Vector2(-28, 92)

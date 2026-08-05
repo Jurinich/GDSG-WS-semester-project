@@ -16,14 +16,12 @@
 [ext_resource type="Script" uid="uid://c0uvs62o1qka0" path="res://scripts/kitten_paw_spawner.gd" id="11_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://fdafysk863vw" path="res://assets/sprites/Backgrounds/background.png" id="11_sww3w"]
 [ext_resource type="PackedScene" uid="uid://cwwdjsm2bpjkx" path="res://scenes/kitten_paw.tscn" id="12_dinhu"]
-[ext_resource type="Script" uid="uid://b2oe7fsd38rx1" path="res://scripts/items/item_spawner.gd" id="13_ca42v"]
 [ext_resource type="Texture2D" uid="uid://ch1l6i4g3vi77" path="res://assets/sprites/Backgrounds/carpet.png" id="14_sgl2t"]
 [ext_resource type="Texture2D" uid="uid://cud167dalbhdi" path="res://assets/sprites/Obstacles/cardboard.png" id="14_suyxu"]
 [ext_resource type="Texture2D" uid="uid://d0lfr5dqjirip" path="res://assets/sprites/Backgrounds/drawer.png" id="15_qouja"]
-[ext_resource type="PackedScene" uid="uid://bdme7ngk7uj84" path="res://scenes/collectible_item.tscn" id="16_264po"]
 [ext_resource type="PackedScene" uid="uid://3g2p7di1b5ju" path="res://scenes/ui/score_overlay.tscn" id="18_wljb1"]
+[ext_resource type="PackedScene" uid="uid://dbo6c63ddgyf0" path="res://scenes/item_spawner.tscn" id="19_bt5mj"]
 [ext_resource type="PackedScene" uid="uid://dbl6pvi0yn2rt" path="res://scenes/laser_pointer.tscn" id="24_m4url"]
-[ext_resource type="PackedScene" uid="uid://cm4uq6fy2yi30" path="res://scenes/paddle_collectible_item.tscn" id="26_h3rex"]
 [ext_resource type="PackedScene" uid="uid://btffbe4kdyktl" path="res://scenes/item_effects.tscn" id="31_05nbr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
@@ -66,49 +64,51 @@ script = ExtResource("2_rysoc")
 cycle_action = "cycleP2"
 use_action = "useItemP2"
 
-[node name="Background" type="CanvasLayer" parent="." unique_id=586626256]
-layer = -1
-
-[node name="Background" type="Sprite2D" parent="Background" unique_id=1390642153]
+[node name="Background2" type="Sprite2D" parent="." unique_id=1390642153]
+z_index = -1
 position = Vector2(960, 540)
 texture = ExtResource("11_sww3w")
 
-[node name="Carpet" type="Sprite2D" parent="Background" unique_id=2035571409]
+[node name="Carpet" type="Sprite2D" parent="." unique_id=2035571409]
+z_index = -1
 position = Vector2(960, 648)
 texture = ExtResource("14_sgl2t")
 
-[node name="Drawer" type="Sprite2D" parent="Background" unique_id=1429199871]
+[node name="Drawer" type="Sprite2D" parent="." unique_id=1429199871]
+z_index = -1
 position = Vector2(960, 75)
 texture = ExtResource("15_qouja")
 
-[node name="Walls" type="Node" parent="Background" unique_id=1365690129]
+[node name="Walls" type="Node" parent="." unique_id=1365690129]
 
-[node name="TopWall" type="StaticBody2D" parent="Background/Walls" unique_id=755887784]
+[node name="TopWall" type="StaticBody2D" parent="Walls" unique_id=755887784]
+z_index = -1
 position = Vector2(960, 123)
 scale = Vector2(1, 0.5)
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/TopWall" unique_id=2021686217]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall" unique_id=2021686217]
 position = Vector2(0, 297)
 shape = SubResource("RectangleShape2D_yqjtg")
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/Walls/TopWall" unique_id=1107529535]
+[node name="Sprite2D" type="Sprite2D" parent="Walls/TopWall" unique_id=1107529535]
 position = Vector2(0, 274)
 texture = ExtResource("14_suyxu")
 flip_v = true
 
-[node name="BotWall" type="StaticBody2D" parent="Background/Walls" unique_id=1377988727]
+[node name="BotWall" type="StaticBody2D" parent="Walls" unique_id=1377988727]
+z_index = -1
 position = Vector2(960, 1080)
 scale = Vector2(1, 0.5)
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Walls/BotWall" unique_id=1409367302]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BotWall" unique_id=1409367302]
 position = Vector2(0, -97)
 shape = SubResource("RectangleShape2D_yqjtg")
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/Walls/BotWall" unique_id=354455970]
+[node name="Sprite2D" type="Sprite2D" parent="Walls/BotWall" unique_id=354455970]
 position = Vector2(0, -76)
 texture = ExtResource("14_suyxu")
 
@@ -184,16 +184,16 @@ collision_layer = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PawTriggers/Area2D2" unique_id=1154801488]
 shape = SubResource("RectangleShape2D_kvuet")
 
+[node name="ItemSpawner" parent="." unique_id=560337352 instance=ExtResource("19_bt5mj")]
+position = Vector2(1342, 105)
+
+[node name="SpawnPoint" type="Node2D" parent="ItemSpawner" unique_id=71984302]
+position = Vector2(-382, 300)
+
 [node name="KittenPawSpawner" type="Node2D" parent="." unique_id=1737106517 node_paths=PackedStringArray("triggers")]
 script = ExtResource("11_kvpfn")
 paw_scene = ExtResource("12_dinhu")
 triggers = [NodePath("../PawTriggers/Area2D"), NodePath("../PawTriggers/Area2D2")]
-
-[node name="ItemSpawner" type="Node2D" parent="." unique_id=1014848990]
-position = Vector2(960, 400)
-script = ExtResource("13_ca42v")
-item_scene = ExtResource("16_264po")
-paddle_item_scene = ExtResource("26_h3rex")
 
 [node name="LaserPointer" parent="." unique_id=274916930 instance=ExtResource("24_m4url")]
 

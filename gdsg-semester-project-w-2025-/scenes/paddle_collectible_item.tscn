@@ -2,33 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wxfertp0sb12" path="res://scripts/items/paddle_colectible_item.gd" id="1_2r1d1"]
 [ext_resource type="Texture2D" uid="uid://bbrbfitp00t4k" path="res://assets/sprites/Items/shadow.png" id="2_s1fmu"]
-[ext_resource type="Shader" uid="uid://dwgw4rglt4xky" path="res://resources/materials/capsule_shader.gdshader" id="3_aqigx"]
-[ext_resource type="Texture2D" uid="uid://c2npr7m8vcvk3" path="res://assets/sprites/Ball/ball_mask.png" id="4_pjgo7"]
-[ext_resource type="Texture2D" uid="uid://df6aiqqpon302" path="res://assets/sprites/Ball/capsule_texture.png" id="5_d5c41"]
-[ext_resource type="Texture2D" uid="uid://dcfj6p6d212dm" path="res://assets/sprites/Ball/capsule.png" id="6_mum4l"]
-[ext_resource type="Texture2D" uid="uid://bp0pf3xk7k3yt" path="res://assets/sprites/Items/grow_item.png" id="7_pjgo7"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d5c41"]
-resource_local_to_scene = true
-shader = ExtResource("3_aqigx")
-shader_parameter/tile_texture = ExtResource("5_d5c41")
-shader_parameter/mask_texture = ExtResource("4_pjgo7")
-shader_parameter/sphere_scale = 0.8
-shader_parameter/offset_radius = 0.2
-shader_parameter/alpha_modifier = 0.5
-shader_parameter/texture_rotation = 0.0
-shader_parameter/offset = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mum4l"]
-resource_local_to_scene = true
-shader = ExtResource("3_aqigx")
-shader_parameter/tile_texture = ExtResource("5_d5c41")
-shader_parameter/mask_texture = ExtResource("4_pjgo7")
-shader_parameter/sphere_scale = 0.8
-shader_parameter/offset_radius = 0.2
-shader_parameter/alpha_modifier = 1.0
-shader_parameter/texture_rotation = 0.0
-shader_parameter/offset = 0.0
+[ext_resource type="PackedScene" uid="uid://cvd4r253ky4ty" path="res://scenes/item_capsule.tscn" id="3_fk5ou"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f5hfd"]
 radius = 86.0
@@ -49,18 +23,7 @@ position = Vector2(22.000002, 20)
 scale = Vector2(1.6679688, 1.4921874)
 texture = ExtResource("2_s1fmu")
 
-[node name="CapsuleBack" type="Sprite2D" parent="." unique_id=1029628352]
-material = SubResource("ShaderMaterial_d5c41")
-scale = Vector2(1.7, 1.7)
-texture = ExtResource("6_mum4l")
-
-[node name="Item" type="Sprite2D" parent="." unique_id=630434545]
-texture = ExtResource("7_pjgo7")
-
-[node name="CapsuleFront" type="Sprite2D" parent="." unique_id=88499151]
-material = SubResource("ShaderMaterial_mum4l")
-scale = Vector2(1.7, 1.7)
-texture = ExtResource("6_mum4l")
+[node name="Item" parent="." unique_id=67378116 instance=ExtResource("3_fk5ou")]
 
 [node name="PickupArea" type="Area2D" parent="." unique_id=1179003824]
 visible = false

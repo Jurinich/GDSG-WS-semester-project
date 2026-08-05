@@ -8,6 +8,7 @@ radius = 56.0
 height = 136.0
 
 [node name="Area2D" type="Area2D" unique_id=1350999620]
+z_index = 5
 script = ExtResource("1_q3ek6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=104630120]

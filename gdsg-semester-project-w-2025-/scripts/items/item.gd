@@ -1,25 +1,20 @@
 class_name Item extends CharacterBody2D
 
-@onready var sprite : Sprite2D = $Item
-@onready var shadow: Sprite2D = $Shadow
+@onready var capsule: ItemCapsule = $Item
 @onready var pickup_area: Area2D = $PickupArea
 
-@export var animation_speed: float = 0.003
-@export var animation_scale: float = 0.1
 @export var roll_speed: float = 0.0045
-
-@onready var back_material: ShaderMaterial = $CapsuleBack.material
-@onready var front_material: ShaderMaterial = $CapsuleFront.material
-
 @export var friction: float = 235.0
 
 var offset: float = 0.0
 var capsule_rotation: float = randf_range(0, PI / 2.0)
-var item_data : ItemData
+var item_data: ItemData
+var layers: int
 
 func _ready() -> void:
-	pickup_area.body_entered.connect(_on_body_entered)
-	sprite.texture = item_data.sprite
+	layers = collision_layer
+	collision_layer = 0
+	capsule.set_sprite(item_data)
 
 func shoot(initial_velocity: Vector2):
 	velocity = initial_velocity
@@ -28,13 +23,8 @@ func _process(delta: float) -> void:
 	var tangent = Vector2.RIGHT.rotated(capsule_rotation)
 	var direction := velocity.normalized().dot(tangent)
 	offset -= velocity.length() * direction * delta * roll_speed
-	
-	back_material.set_shader_parameter("offset", -offset)
-	front_material.set_shader_parameter("offset", offset)
-	back_material.set_shader_parameter("texture_rotation", capsule_rotation)
-	front_material.set_shader_parameter("texture_rotation", capsule_rotation)
-	var scale_modifier = sin(Time.get_ticks_msec() * animation_speed) * animation_scale
-	sprite.scale = Vector2.ONE * (1 + scale_modifier)
+	capsule.set_capsule_offset(offset)
+	capsule.set_capsule_rotation(capsule_rotation)
 
 func _physics_process(delta: float) -> void:
 	if velocity.length() > 0:
@@ -48,6 +38,10 @@ func _physics_process(delta: float) -> void:
 			velocity = velocity.bounce(collision.get_normal()) * 0.9
 		else:
 			velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+
+func enable() -> void:
+	collision_layer = layers
+	pickup_area.body_entered.connect(_on_body_entered)
 
 func _on_body_entered(_body: Node2D) -> void:
 	pass

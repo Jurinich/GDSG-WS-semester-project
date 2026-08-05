@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cvd4r253ky4ty"]
+
+[ext_resource type="Shader" uid="uid://dwgw4rglt4xky" path="res://resources/materials/capsule_shader.gdshader" id="1_8mrpd"]
+[ext_resource type="Script" uid="uid://cjk67p1x4cuml" path="res://scripts/item_capsule.gd" id="1_j8hhx"]
+[ext_resource type="Texture2D" uid="uid://c2npr7m8vcvk3" path="res://assets/sprites/Ball/ball_mask.png" id="2_j8hhx"]
+[ext_resource type="Texture2D" uid="uid://df6aiqqpon302" path="res://assets/sprites/Ball/capsule_texture.png" id="3_t8ayh"]
+[ext_resource type="Texture2D" uid="uid://dcfj6p6d212dm" path="res://assets/sprites/Ball/capsule.png" id="4_g4yxc"]
+[ext_resource type="Texture2D" uid="uid://bp0pf3xk7k3yt" path="res://assets/sprites/Items/grow_item.png" id="5_2coj0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jrkat"]
+resource_local_to_scene = true
+shader = ExtResource("1_8mrpd")
+shader_parameter/tile_texture = ExtResource("3_t8ayh")
+shader_parameter/mask_texture = ExtResource("2_j8hhx")
+shader_parameter/sphere_scale = 0.8
+shader_parameter/offset_radius = 0.2
+shader_parameter/alpha_modifier = 0.5
+shader_parameter/texture_rotation = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t25ou"]
+resource_local_to_scene = true
+shader = ExtResource("1_8mrpd")
+shader_parameter/tile_texture = ExtResource("3_t8ayh")
+shader_parameter/mask_texture = ExtResource("2_j8hhx")
+shader_parameter/sphere_scale = 0.8
+shader_parameter/offset_radius = 0.2
+shader_parameter/alpha_modifier = 1.0
+shader_parameter/texture_rotation = 0.0
+shader_parameter/offset = 0.0
+
+[node name="Item" type="Node2D" unique_id=67378116]
+script = ExtResource("1_j8hhx")
+
+[node name="CapsuleBack" type="Sprite2D" parent="." unique_id=1496688893]
+material = SubResource("ShaderMaterial_jrkat")
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("4_g4yxc")
+
+[node name="Item" type="Sprite2D" parent="." unique_id=947569144]
+texture = ExtResource("5_2coj0")
+
+[node name="CapsuleFront" type="Sprite2D" parent="." unique_id=336268232]
+material = SubResource("ShaderMaterial_t25ou")
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("4_g4yxc")
