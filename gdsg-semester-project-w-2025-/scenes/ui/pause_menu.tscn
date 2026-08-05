@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cdixmj78exahn" path="res://scripts/ui/pause_menu.gd" id="2_kukqi"]
 [ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/ui/buttonsound_extension.gd" id="2_myx47"]
 [ext_resource type="Texture2D" uid="uid://btg7cq10y06vr" path="res://assets/sprites/Popups/Popup_menue.png" id="3_8uki6"]
+[ext_resource type="PackedScene" uid="uid://tl0eirbqug0a" path="res://scenes/ui/audio_slider.tscn" id="4_0bnpd"]
 
 [node name="PauseMenu" type="Control" unique_id=1402068368]
 process_mode = 2
@@ -66,65 +67,16 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button2" type="Button" parent="content" unique_id=1675805832]
+[node name="MusicSlider" parent="content" unique_id=286722270 instance=ExtResource("4_0bnpd")]
 layout_mode = 2
-theme = ExtResource("1_n87rw")
-theme_override_font_sizes/font_size = 32
-text = "Music: On"
-script = ExtResource("2_myx47")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="content" unique_id=1378527678]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="text" type="Label" parent="content/HBoxContainer" unique_id=1442203090]
-layout_mode = 2
-theme = ExtResource("1_n87rw")
-theme_override_font_sizes/font_size = 32
-text = "Volume   "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSlider" type="HSlider" parent="content/HBoxContainer" unique_id=1146667382]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-max_value = 2.0
-step = 0.05
-value = 1.0
 
 [node name="HSeparator3" type="HSeparator" parent="content" unique_id=1159428512]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="content" unique_id=878951999]
+[node name="SoundSlider2" parent="content" unique_id=298458789 instance=ExtResource("4_0bnpd")]
 layout_mode = 2
-theme = ExtResource("1_n87rw")
-theme_override_font_sizes/font_size = 32
-text = "Sound: On"
-script = ExtResource("2_myx47")
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="content" unique_id=1411531107]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="text" type="Label" parent="content/HBoxContainer2" unique_id=1223571521]
-layout_mode = 2
-theme = ExtResource("1_n87rw")
-theme_override_font_sizes/font_size = 32
-text = "Volume   "
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HSlider" type="HSlider" parent="content/HBoxContainer2" unique_id=450798366]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-max_value = 2.0
-step = 0.05
-value = 1.0
+bus = 1
 
 [node name="HSeparator2" type="HSeparator" parent="content" unique_id=1826009328]
 layout_mode = 2

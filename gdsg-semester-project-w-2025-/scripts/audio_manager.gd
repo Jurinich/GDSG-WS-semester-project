@@ -7,6 +7,8 @@ var master_index = AudioServer.get_bus_index("Master");
 var sound_index = AudioServer.get_bus_index("Sounds");
 var music_index = AudioServer.get_bus_index("Music");
 
+enum Bus {MASTER, SOUND, MUSIC}
+
 func _ready() -> void:
 	music_player.bus = "Music";
 	music_player.play();
@@ -17,32 +19,21 @@ func playSound(sound_name: StringName) -> void:
 func playMusic(music_name: StringName) -> void:
 	music_player.get_stream_playback().switch_to_clip_by_name(music_name);
 
-func set_master_volume(volume: float) -> void:
-	AudioServer.set_bus_volume_linear(master_index, volume);
+func set_volume(bus: Bus, volume: float) -> void:
+	AudioServer.set_bus_volume_linear(_get_index(bus), volume);
 
-func set_sound_volume(volume: float) -> void:
-	AudioServer.set_bus_volume_linear(sound_index, volume);
+func mute(bus: Bus, muted: bool) -> void:
+	AudioServer.set_bus_mute(_get_index(bus), muted)
 
-func set_music_volume(volume: float) -> void:
-	AudioServer.set_bus_volume_linear(music_index, volume);
+func get_volume(bus: Bus) -> float:
+	return AudioServer.get_bus_volume_linear(_get_index(bus));
 
-func mute_sound(mute: bool) -> void:
-	AudioServer.set_bus_mute(sound_index, mute)
+func is_mute(bus: Bus) -> bool:
+	return AudioServer.is_bus_mute(_get_index(bus));
 
-func mute_music(mute: bool) -> void:
-	AudioServer.set_bus_mute(music_index, mute)
-
-func get_master_volume() -> float:
-	return AudioServer.get_bus_volume_linear(master_index);
-
-func get_sound_volume() -> float:
-	return AudioServer.get_bus_volume_linear(sound_index);
-
-func get_music_volume() -> float:
-	return AudioServer.get_bus_volume_linear(music_index);
-
-func sound_muted() -> bool:
-	return AudioServer.is_bus_mute(sound_index);
-
-func music_muted() -> bool:
-	return AudioServer.is_bus_mute(music_index);
+func _get_index(bus: Bus) -> int:
+	match bus:
+		Bus.MASTER: return master_index
+		Bus.SOUND: return sound_index
+		Bus.MUSIC: return music_index
+	return -1

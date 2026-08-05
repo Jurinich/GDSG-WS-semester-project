@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://tl0eirbqug0a"]
+
+[ext_resource type="PackedScene" uid="uid://d1fsv1oehdmet" path="res://scenes/ui/looping_selection.tscn" id="1_ugmtn"]
+[ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="1_uw540"]
+[ext_resource type="Script" uid="uid://bwsdwnw2rqq6h" path="res://scripts/ui/looping_selection_item.gd" id="2_ecltu"]
+[ext_resource type="Script" uid="uid://cvkrdtkaxotxi" path="res://scripts/ui/audio_slider.gd" id="2_ugmtn"]
+[ext_resource type="Texture2D" uid="uid://bu7x7pg2bfnrq" path="res://assets/sprites/UI/volume_icon.png" id="3_ugmtn"]
+
+[sub_resource type="Resource" id="Resource_5rwak"]
+script = ExtResource("2_ecltu")
+text = "On"
+value = false
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="Resource" id="Resource_duas3"]
+script = ExtResource("2_ecltu")
+text = "Off"
+value = true
+metadata/_custom_type_script = "uid://bwsdwnw2rqq6h"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmcw8"]
+resource_local_to_scene = true
+atlas = ExtResource("3_ugmtn")
+region = Rect2(0, 0, 128, 128)
+
+[node name="MusicSlider" type="VBoxContainer" unique_id=286722270]
+theme = ExtResource("1_uw540")
+script = ExtResource("2_ugmtn")
+bus = 2
+
+[node name="LabelContainer" type="HBoxContainer" parent="." unique_id=2128369923]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="LabelContainer" unique_id=1199866642]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Music: "
+
+[node name="LoopingSelection" parent="LabelContainer" unique_id=421652052 instance=ExtResource("1_ugmtn")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+font_size = 32
+items = Array[ExtResource("2_ecltu")]([SubResource("Resource_5rwak"), SubResource("Resource_duas3")])
+
+[node name="SliderContainer" type="HBoxContainer" parent="." unique_id=1418408279]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Icon" type="TextureRect" parent="SliderContainer" unique_id=843421944]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("AtlasTexture_jmcw8")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Padding" type="Control" parent="SliderContainer" unique_id=1410158054]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="Slider" type="HSlider" parent="SliderContainer" unique_id=593061609]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 2.0
+step = 0.05
+value = 1.0

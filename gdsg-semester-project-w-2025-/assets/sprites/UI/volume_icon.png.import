@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx71umlvtg2xe"
-path="res://.godot/imported/gacha_machine_front.png-fbecd14ff80220a1cc891f52cfc781ee.ctex"
+uid="uid://bu7x7pg2bfnrq"
+path="res://.godot/imported/volume_icon.png-d2ed34ccae3cb995e87066069d8760f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/UI/gacha_machine_front.png"
-dest_files=["res://.godot/imported/gacha_machine_front.png-fbecd14ff80220a1cc891f52cfc781ee.ctex"]
+source_file="res://assets/sprites/UI/volume_icon.png"
+dest_files=["res://.godot/imported/volume_icon.png-d2ed34ccae3cb995e87066069d8760f6.ctex"]
 
 [params]
 
