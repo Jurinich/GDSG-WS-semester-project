@@ -144,6 +144,7 @@ vertical_alignment = 1
 [node name="ScrollContainer" type="ScrollContainer" parent="Container" unique_id=1174330377]
 layout_mode = 2
 size_flags_vertical = 3
+vertical_scroll_mode = 3
 
 [node name="Content" type="VBoxContainer" parent="Container/ScrollContainer" unique_id=304647815]
 layout_mode = 2
