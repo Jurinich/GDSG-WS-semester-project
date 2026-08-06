@@ -46,7 +46,14 @@ func save() -> void:
 	config.set_value("game", "spawn_rates", spawn_rates)
 	for item: ItemDrop in items:
 		config.set_value("items", item.item.power_up_effect, item.weight)
+	_save_audio_settings(config)
 	config.save(DEBUG_SETTINGS if OS.is_debug_build() else SETTINGS_FILE)
+
+func _save_audio_settings(config: ConfigFile) -> void:
+	for bus: AudioManager.Bus in AudioManager.Bus.values():
+		var key: String = AudioManager.Bus.keys()[bus].to_lower()
+		config.set_value("audio", key + "_volume", AudioManager.get_volume(bus))
+		config.set_value("audio", key + "_mute", AudioManager.is_mute(bus))
 
 func load() -> void:
 	_load_items();
@@ -61,3 +68,10 @@ func load() -> void:
 		var weight = config.get_value("items", items[i].item.power_up_effect, 10.0)
 		items_standard[i].weight = 10.0
 		items[i].weight = weight
+	_load_audio_settings(config)
+
+func _load_audio_settings(config: ConfigFile) -> void:
+	for bus: AudioManager.Bus in AudioManager.Bus.values():
+		var key: String = AudioManager.Bus.keys()[bus].to_lower()
+		AudioManager.set_volume(bus, config.get_value("audio", key + "_volume", 1.0))
+		AudioManager.mute(bus, config.get_value("audio", key + "_mute", false))
