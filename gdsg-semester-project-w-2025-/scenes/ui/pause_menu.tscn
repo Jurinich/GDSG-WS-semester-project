@@ -2,9 +2,9 @@
 
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="1_n87rw"]
 [ext_resource type="Script" uid="uid://cdixmj78exahn" path="res://scripts/ui/pause_menu.gd" id="2_kukqi"]
-[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/ui/buttonsound_extension.gd" id="2_myx47"]
 [ext_resource type="Texture2D" uid="uid://btg7cq10y06vr" path="res://assets/sprites/Popups/Popup_menue.png" id="3_8uki6"]
 [ext_resource type="PackedScene" uid="uid://tl0eirbqug0a" path="res://scenes/ui/audio_slider.tscn" id="4_0bnpd"]
+[ext_resource type="PackedScene" uid="uid://dnr1y4qqnyqmt" path="res://scenes/ui/custom_button.tscn" id="5_0bnpd"]
 
 [node name="PauseMenu" type="Control" unique_id=1402068368]
 process_mode = 2
@@ -82,21 +82,12 @@ bus = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ContinueButton" type="Button" parent="content" unique_id=1968078453]
-custom_minimum_size = Vector2(300, 100)
+[node name="ContinueButton" parent="content" unique_id=1192526095 instance=ExtResource("5_0bnpd")]
 layout_mode = 2
-size_flags_vertical = 8
-theme = ExtResource("1_n87rw")
-theme_override_font_sizes/font_size = 64
-text = "continue"
-script = ExtResource("2_myx47")
-select_sound = &"game_start"
+font_size = 64
+text = "Continue"
 
-[node name="QuitButton" type="Button" parent="content" unique_id=108659657]
-custom_minimum_size = Vector2(300, 100)
+[node name="QuitButton" parent="content" unique_id=1191130154 instance=ExtResource("5_0bnpd")]
 layout_mode = 2
-size_flags_vertical = 8
-theme = ExtResource("1_n87rw")
-theme_override_font_sizes/font_size = 64
+font_size = 64
 text = "Quit"
-script = ExtResource("2_myx47")

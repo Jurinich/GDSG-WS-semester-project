@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dnr1y4qqnyqmt"]
+
+[ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="1_dx6r0"]
+[ext_resource type="Script" uid="uid://bu2m2267modcs" path="res://scripts/ui/custom_button.gd" id="1_l1cl8"]
+[ext_resource type="Texture2D" uid="uid://5mnixfh2re8d" path="res://assets/sprites/UI/arrow.png" id="1_njdmp"]
+
+[node name="CustomButton" type="Control" unique_id=1192526095]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 100.0
+focus_mode = 2
+theme = ExtResource("1_dx6r0")
+script = ExtResource("1_l1cl8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1888904273]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Left" type="VBoxContainer" parent="HBoxContainer" unique_id=1489895289]
+layout_mode = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer/Left" unique_id=1801098779]
+visible = false
+custom_minimum_size = Vector2(52.8, 52.8)
+layout_mode = 2
+
+[node name="Arrow" type="TextureRect" parent="HBoxContainer/Left/Control" unique_id=429171872]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.1855495
+offset_right = -2.1855469
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_njdmp")
+expand_mode = 1
+stretch_mode = 4
+flip_h = true
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=764050757]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6392157, 0.6745098, 1)
+theme_override_colors/font_outline_color = Color(0, 0.015686275, 0.23529412, 1)
+theme_override_font_sizes/font_size = 40
+text = "Text"
+
+[node name="Right" type="VBoxContainer" parent="HBoxContainer" unique_id=270133093]
+layout_mode = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer/Right" unique_id=1238858872]
+visible = false
+custom_minimum_size = Vector2(52.8, 52.8)
+layout_mode = 2
+
+[node name="Arrow" type="TextureRect" parent="HBoxContainer/Right/Control" unique_id=1799195954]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.1855495
+offset_right = 2.1855469
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_njdmp")
+expand_mode = 1
+stretch_mode = 4

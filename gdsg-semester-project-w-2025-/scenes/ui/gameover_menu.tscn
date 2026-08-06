@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="1_1c8k4"]
 [ext_resource type="Script" uid="uid://mfofxc00vvjc" path="res://scripts/ui/gameover_menu.gd" id="2_eruoa"]
 [ext_resource type="Texture2D" uid="uid://btg7cq10y06vr" path="res://assets/sprites/Popups/Popup_menue.png" id="3_73r7d"]
-[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/ui/buttonsound_extension.gd" id="5_nblo7"]
+[ext_resource type="PackedScene" uid="uid://dnr1y4qqnyqmt" path="res://scenes/ui/custom_button.tscn" id="4_eruoa"]
 
 [node name="GameoverMenu" type="Control" unique_id=1402068368]
 process_mode = 2
@@ -79,21 +79,12 @@ theme_override_font_sizes/font_size = 60
 text = "Score"
 horizontal_alignment = 1
 
-[node name="ReplayButton" type="Button" parent="content/Buttons" unique_id=1968078453]
-custom_minimum_size = Vector2(300, 100)
+[node name="ReplayButton" parent="content/Buttons" unique_id=1192526095 instance=ExtResource("4_eruoa")]
 layout_mode = 2
-size_flags_vertical = 8
-theme = ExtResource("1_1c8k4")
-theme_override_font_sizes/font_size = 64
-text = "Play again"
-script = ExtResource("5_nblo7")
-select_sound = &"game_start"
+font_size = 64
+text = "Play Again"
 
-[node name="QuitButton" type="Button" parent="content/Buttons" unique_id=108659657]
-custom_minimum_size = Vector2(300, 100)
+[node name="QuitButton" parent="content/Buttons" unique_id=1298276232 instance=ExtResource("4_eruoa")]
 layout_mode = 2
-size_flags_vertical = 8
-theme = ExtResource("1_1c8k4")
-theme_override_font_sizes/font_size = 64
+font_size = 64
 text = "Quit"
-script = ExtResource("5_nblo7")

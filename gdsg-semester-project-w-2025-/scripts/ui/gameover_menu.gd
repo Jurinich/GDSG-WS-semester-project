@@ -1,7 +1,7 @@
 class_name GameOverMenu extends Control
 
-@onready var quit_button: Button = $content/Buttons/QuitButton
-@onready var replay_button: Button = $content/Buttons/ReplayButton
+@onready var quit_button: CustomButton = $content/Buttons/QuitButton
+@onready var replay_button: CustomButton = $content/Buttons/ReplayButton
 @onready var score: Label = $content/Buttons/Score
 @onready var winner: Label = $content/Buttons/Winner
 

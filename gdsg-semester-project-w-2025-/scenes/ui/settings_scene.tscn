@@ -5,8 +5,8 @@
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="3_83w5s"]
 [ext_resource type="PackedScene" uid="uid://tl0eirbqug0a" path="res://scenes/ui/audio_slider.tscn" id="4_7jrx5"]
 [ext_resource type="PackedScene" uid="uid://d1fsv1oehdmet" path="res://scenes/ui/looping_selection.tscn" id="4_jg5mx"]
-[ext_resource type="Script" uid="uid://cdujq8dwum32i" path="res://scripts/ui/buttonsound_extension.gd" id="4_tori7"]
 [ext_resource type="Script" uid="uid://bwsdwnw2rqq6h" path="res://scripts/ui/looping_selection_item.gd" id="5_hlosk"]
+[ext_resource type="PackedScene" uid="uid://dnr1y4qqnyqmt" path="res://scenes/ui/custom_button.tscn" id="7_jmcw8"]
 
 [sub_resource type="Resource" id="Resource_byo6x"]
 script = ExtResource("5_hlosk")
@@ -270,13 +270,8 @@ layout_mode = 2
 [node name="HSeparator" type="HSeparator" parent="Container" unique_id=154403020]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="Container" unique_id=41829431]
-custom_minimum_size = Vector2(300, 100)
+[node name="BackButton" parent="Container" unique_id=2015931975 instance=ExtResource("7_jmcw8")]
+custom_minimum_size = Vector2(250, 100)
 layout_mode = 2
-size_flags_vertical = 8
-theme = ExtResource("3_83w5s")
-theme_override_font_sizes/font_size = 64
+size_flags_horizontal = 4
 text = "Back"
-script = ExtResource("4_tori7")
-
-[connection signal="pressed" from="Container/BackButton" to="." method="_on_back_button_pressed"]

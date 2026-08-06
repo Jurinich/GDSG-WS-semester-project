@@ -1,6 +1,6 @@
 extends Control
 
-@onready var back_button: Button = $Container/BackButton
+@onready var back_button: CustomButton = $Container/BackButton
 @onready var gamemode_menu: LoopingSelection = $Container/ScrollContainer/Content/Gamemode/LoopingSelection
 @onready var time_menu: LoopingSelection = $Container/ScrollContainer/Content/Time/LoopingSelection
 @onready var score_menu: LoopingSelection = $Container/ScrollContainer/Content/Score/LoopingSelection
@@ -16,6 +16,7 @@ var item_scene: PackedScene = preload("res://scenes/ui/item_settings.tscn")
 
 func _ready():
 	gamemode_menu.grab_focus()
+	back_button.pressed.connect(_on_back_button_pressed)
 	_init_menus()
 	_init_item_settings()
 	_connect_focus_signals(scroll_container)

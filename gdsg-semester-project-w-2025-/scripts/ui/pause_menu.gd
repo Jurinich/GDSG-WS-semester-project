@@ -1,7 +1,7 @@
 class_name PauseMenu extends Control
 
-@onready var quit_button: Button = $content/QuitButton;
-@onready var continue_button: Button = $content/ContinueButton;
+@onready var quit_button: CustomButton = $content/QuitButton;
+@onready var continue_button: CustomButton = $content/ContinueButton;
 
 func _ready():
 	quit_button.pressed.connect(_on_quit_button_pressed);
