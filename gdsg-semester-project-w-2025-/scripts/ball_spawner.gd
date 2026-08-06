@@ -7,14 +7,6 @@ extends Timer
 @export var spawn_interval: float = 8.0 # Change how often a ball spawns here!
 
 @onready var player_1: CharacterBody2D = $"../Player1"
-var balls_spawning_this_frame: int = 0
-
-func _process(_delta):
-	var current_balls = get_tree().get_nodes_in_group("balls").size()
-	if current_balls + balls_spawning_this_frame == 0:
-		spawn_ball()
-		
-	balls_spawning_this_frame = 0
 
 func _ready():
 	add_to_group("ball_spawner")
@@ -22,11 +14,9 @@ func _ready():
 	wait_time = spawn_interval
 	one_shot = false
 	timeout.connect(spawn_ball)
-	
-	trigger_spawn()
 
-
-func trigger_spawn():
+func activate_spawner() -> void:
+	spawn_ball()
 	start()
 
 func spawn_ball():
@@ -34,8 +24,6 @@ func spawn_ball():
 		var ball = ball_scene.instantiate()
 		ball.global_position = spawn_position
 		get_parent().add_child.call_deferred(ball)
-		
-		balls_spawning_this_frame += 1
 	else:
 		print("Spawn blocked: Ball limit reached.")
 
@@ -48,24 +36,21 @@ func split_single_ball(target_ball: Ball, split_amount: int):
 	var current_size = target_ball.scale.x
 	var starting_slow_speed = 150.0
 	
-	for i in range(split_amount):
+	var current_count = get_tree().get_nodes_in_group("balls").size()
+	var spawnable = min(split_amount - 1, GameManager.ball_limit - current_count)
+
+	for i in range(spawnable + 1):
 		var ball_to_modify: Ball
 		
 		if i == 0:
 			ball_to_modify = target_ball
 		else:
-			var current_count = get_tree().get_nodes_in_group("balls").size() + balls_spawning_this_frame
+			ball_to_modify = ball_scene.instantiate()
+			ball_to_modify.is_split_spawn = true 
+			ball_to_modify.global_position = target_ball.global_position
+			ball_to_modify.size_multiplier = current_size
 			
-			if current_count < GameManager.ball_limit:
-				ball_to_modify = ball_scene.instantiate()
-				ball_to_modify.is_split_spawn = true 
-				ball_to_modify.global_position = target_ball.global_position
-				ball_to_modify.size_multiplier = current_size
-				
-				get_parent().add_child.call_deferred(ball_to_modify) 
-				balls_spawning_this_frame += 1 
-			else:
-				break
+			get_parent().add_child.call_deferred(ball_to_modify)
 				
 		var current_angle = random_offset + (i * angle_step)
 		ball_to_modify.velocity = Vector2(cos(current_angle), sin(current_angle))

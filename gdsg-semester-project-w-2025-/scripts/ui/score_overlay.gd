@@ -32,7 +32,6 @@ var score_alarm_left: bool = false
 var score_alarm_right: bool = false
 
 func _ready() -> void:
-	GameManager.score_changed.connect(set_score)
 	if GameManager.settings.gamemode == Settings.GameMode.SCORE:
 		minutes.visible = false
 		seconds.visible = false

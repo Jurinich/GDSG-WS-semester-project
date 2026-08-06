@@ -18,11 +18,12 @@ func _on_quit_button_pressed():
 	GameManager.change_scene(GameManager.Scene.MAIN_MENU)
 
 func _on_continue():
-	get_tree().paused = false;
-	hide();
+	GameManager.settings.save()
+	get_tree().paused = false
+	hide()
 
 func _unhandled_input(event):
-	if event.is_action_pressed("Pause"):
+	if visible && event.is_action_pressed("Pause"):
 		AudioManager.playSound("pause_menu")
-		_on_continue();
-		get_viewport().set_input_as_handled();
+		_on_continue()
+		get_viewport().set_input_as_handled()

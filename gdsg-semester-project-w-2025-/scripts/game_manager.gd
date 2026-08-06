@@ -1,11 +1,6 @@
 extends Node
 
-signal score_changed(left: int, right: int)
-
 var ball_limit: int = 20
-
-var left_player_score: int = 0
-var right_player_score: int = 0
 
 var left_player_paddle: Paddle
 var right_player_paddle: Paddle
@@ -31,35 +26,11 @@ const SCENE_FILES: Dictionary = {
 func _ready() -> void:
 	settings.load()
 
-func reset():
-	left_player_score = 0
-	right_player_score = 0
-	score_changed.emit()
-
-# function returns true if the game should continue on
-func add_point(player : String) -> bool:
-	match player.to_lower():
-		"left":
-			left_player_score += 1
-		"right":
-			right_player_score += 1
-	score_changed.emit(left_player_score, right_player_score)
-	
-	if (settings.gamemode == Settings.GameMode.SCORE):
-		if (left_player_score >= settings.score || right_player_score >= settings.score):
-			change_scene(Scene.MAIN_MENU, true)
-			return false
-
-	return true
-
 func change_scene(scene: Scene, deferred: bool = false) -> void:
 	if deferred:
 		get_tree().call_deferred("change_scene_to_file", SCENE_FILES[scene])
 	else:
 		get_tree().change_scene_to_file(SCENE_FILES[scene])
-
-func get_score_formatted() -> String:
-	return str(left_player_score) + ":" + str(right_player_score)
 
 func _unhandled_input(event):
 	if event.is_action_pressed("Quit"):
