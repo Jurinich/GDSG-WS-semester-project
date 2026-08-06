@@ -80,7 +80,11 @@ func set_time(time: int) -> void:
 	time_alarm = time <= time_alarm_threshold
 
 func set_score(left: int, right: int) -> void:
+	if left > 99:
+		score_left.add_theme_font_size_override("font_size", 40)
 	score_left.text = str(left)
+	if right > 99:
+		score_right.add_theme_font_size_override("font_size", 40)
 	score_right.text = str(right)
 	score_alarm_left = score_alarm_threshold > 0 && left >= score_alarm_threshold
 	score_alarm_right = score_alarm_threshold > 0 && right >= score_alarm_threshold
