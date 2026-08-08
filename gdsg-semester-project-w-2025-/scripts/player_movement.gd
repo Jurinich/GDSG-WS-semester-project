@@ -20,9 +20,12 @@ var current_speed: float
 
 var paddle: Paddle
 var fixed_x: float
-var arcade_input: float
+
 var device_id_cur: int
 var sprite_scale: Vector2
+
+var up_pressed: bool = false
+var down_pressed: bool = false
 
 func _ready():
 	if isP1:
@@ -42,20 +45,17 @@ func hide_paddle(paddle_hidden: bool) -> void:
 	shadow_sprite.visible = !paddle_hidden
 	collision_layer = 0 if paddle_hidden else 2
 
-func getYdir() -> float:
-	if GameManager.arcade_mode:
-		if Input.is_joy_button_pressed(device_id_cur, JOY_BUTTON_DPAD_UP):
-			return -1.0
-		elif Input.is_joy_button_pressed(device_id_cur, JOY_BUTTON_DPAD_DOWN):
-			return 1.0
-		else:
-			return 0.0
-
+func _unhandled_input(event: InputEvent) -> void:
+	if isP1:
+		if event.is_action("downP1"):
+			down_pressed = event.is_pressed()
+		elif event.is_action("upP1"):
+			up_pressed = event.is_pressed()
 	else:
-		if isP1:
-			return Input.get_action_strength("downP1") - Input.get_action_strength("upP1")
-		else:
-			return Input.get_action_strength("downP2") - Input.get_action_strength("upP2")
+		if event.is_action("downP2"):
+			down_pressed = event.is_pressed()
+		elif event.is_action("upP2"):
+			up_pressed = event.is_pressed()
 
 func play_hit_animation():
 	var tween_scale = create_tween()
@@ -82,7 +82,7 @@ func _play_move_animation(dir: Vector2, delta: float) -> void:
 	sprite.scale = sprite.scale.lerp(target_scale, animation_delta)
 
 func _physics_process(delta: float) -> void:
-	var dir: Vector2 = Vector2(0, getYdir())
+	var dir: Vector2 = Vector2(0, float(down_pressed) - float(up_pressed))
 	velocity = dir * current_speed
 	move_and_slide()
 	global_position.x = fixed_x

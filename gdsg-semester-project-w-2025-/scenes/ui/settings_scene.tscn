@@ -193,6 +193,7 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 font_size = 28
 items = Array[ExtResource("5_hlosk")]([SubResource("Resource_byo6x"), SubResource("Resource_gfh8v")])
+hold_repeat = 0.1
 
 [node name="Time" type="HBoxContainer" parent="Container/ScrollContainer/Content" unique_id=1676327129]
 layout_mode = 2
@@ -263,6 +264,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 font_size = 28
 items = Array[ExtResource("5_hlosk")]([SubResource("Resource_fohb0"), SubResource("Resource_smxgj"), SubResource("Resource_p2udf")])
+hold_repeat = 0.1
 
 [node name="Items" type="VBoxContainer" parent="Container/ScrollContainer/Content" unique_id=507344027]
 layout_mode = 2
@@ -271,7 +273,5 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="BackButton" parent="Container" unique_id=2015931975 instance=ExtResource("7_jmcw8")]
-custom_minimum_size = Vector2(250, 100)
 layout_mode = 2
-size_flags_horizontal = 4
 text = "Back"

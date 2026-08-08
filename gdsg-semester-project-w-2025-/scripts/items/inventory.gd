@@ -8,12 +8,6 @@ var selected_index: int = 0
 @export var cycle_action: String = "" 
 @export var use_action: String = ""
 
-func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed(cycle_action):
-		cycle_item()
-	elif Input.is_action_just_pressed(use_action):
-		use_item()
-		
 func add_item(new_item: ItemData) -> bool:
 	if items.size() < max_items:
 		items.append(new_item)

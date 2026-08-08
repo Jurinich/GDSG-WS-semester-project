@@ -5,22 +5,17 @@ var ball_limit: int = 20
 var left_player_paddle: Paddle
 var right_player_paddle: Paddle
 
-var arcade_mode = false
-var arcade_p1_id = -1
-var arcade_p2_id = 1
-
 var settings: Settings = Settings.new()
 
 enum Scene {
-	MAIN_MENU, GAME, SETTINGS, CREDITS, ARCADE_CALIBRATION
+	MAIN_MENU, GAME, SETTINGS, CREDITS
 }
 
 const SCENE_FILES: Dictionary = {
 	Scene.MAIN_MENU: "res://scenes/ui/main_menu.tscn",
 	Scene.GAME: "res://scenes/game.tscn",
 	Scene.SETTINGS: "res://scenes/ui/settings_scene.tscn",
-	Scene.CREDITS: "res://scenes/ui/credits_scene.tscn",
-	Scene.ARCADE_CALIBRATION: "res://scenes/ui/arcade_calibration.tscn"
+	Scene.CREDITS: "res://scenes/ui/credits_scene.tscn"
 }
 
 func _ready() -> void:
@@ -32,7 +27,10 @@ func change_scene(scene: Scene, deferred: bool = false) -> void:
 	else:
 		get_tree().change_scene_to_file(SCENE_FILES[scene])
 
-func _unhandled_input(event):
+func _unhandled_input(event: InputEvent):
+	#if event is InputEventKey:
+		#print("keyboard: ", event.device)
+	
 	if event.is_action_pressed("Quit"):
 		get_tree().quit()
 

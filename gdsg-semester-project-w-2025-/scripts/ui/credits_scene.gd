@@ -5,8 +5,7 @@ func _on_back_button_pressed():
 	AudioManager.playSound(&"menu_select");
 
 func _unhandled_input(event):
-	# Now we safely know this event belongs to THIS player
-	if event.is_action_pressed("Start"):
+	if event.is_action_pressed("ui_accept"):
 		get_viewport().set_input_as_handled()
 		_on_back_button_pressed()
 

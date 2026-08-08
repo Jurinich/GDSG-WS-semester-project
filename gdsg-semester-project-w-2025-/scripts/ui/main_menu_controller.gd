@@ -8,14 +8,6 @@ func _ready():
 	looping_menu.grab_focus();
 	looping_menu.button_pressed.connect(_on_looping_menu_button_pressed)
 
-	if GameManager.arcade_mode:
-		if GameManager.arcade_p1_id == -1:
-			GameManager.change_scene(GameManager.Scene.ARCADE_CALIBRATION)
-
-	else:
-		$"SelectionController/PlayerSelectionNode1/ArControls".visible = false
-		$"SelectionController/PlayerSelectionNode2/ArControls2".visible = false
-
 func _on_looping_menu_button_pressed(button: String) -> void:
 	match button:
 		"Start Game":

@@ -26,8 +26,8 @@ signal value_changed(value: Variant)
 			label.text = items[index].text
 
 @export var items: Array[LoopingSelectionItem]
-@export var hold_delay: float = 0.4
-@export var hold_repeat: float = 0.08
+@export var hold_delay: float = 0.1
+@export var hold_repeat: float = 0.05
 
 @export var arrow_animation_speed: float = 0.005
 @export var arrow_animation_distance: float = 3.0
@@ -50,6 +50,10 @@ func _ready() -> void:
 	focus_exited.connect(_on_focused_changed.bind(false))
 
 func _process(_delta: float) -> void:
+	if !focused:
+		held_direction = 0
+		return
+	
 	var offset = sin(Time.get_ticks_msec() * arrow_animation_speed) * arrow_animation_distance
 	left_arrow.position.x = offset
 	right_arrow.position.x = -offset
@@ -77,21 +81,24 @@ func _gui_input(event: InputEvent) -> void:
 		direction = 1
 	elif event.is_action("ui_left"):
 		direction = -1
-	
-	if direction == 0 || event.is_released():
-		held_direction = 0
+	else:
 		return
 	
 	get_viewport().set_input_as_handled()
-	if held_direction != direction:
+	
+	if event.is_released():
+		held_direction = 0
+		return
+	if held_direction == direction:
+		hold_timer -= get_process_delta_time()
+		if hold_timer <= 0.0:
+			hold_timer = hold_repeat
+		else:
+			return
+	else:
 		hold_timer = hold_delay
 		held_direction = direction
-	else:
-		hold_timer -= get_process_delta_time()
-		if hold_timer > 0.0:
-			return
 	
-	hold_timer = hold_repeat
 	select(selected_item + direction)
 	AudioManager.playSound(&"menu_hover")
 
