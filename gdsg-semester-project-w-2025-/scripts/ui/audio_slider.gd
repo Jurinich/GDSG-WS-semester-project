@@ -2,7 +2,7 @@
 class_name AudioSlider extends VBoxContainer
 
 @onready var label: Label = $LabelContainer/Label
-@onready var slider: HSlider = $SliderContainer/Slider
+@onready var slider: CustomSlider = $SliderContainer/Slider
 @onready var mute_menu: LoopingSelection = $LabelContainer/LoopingSelection
 @onready var icon: AtlasTexture = $SliderContainer/Icon.texture
 
@@ -17,13 +17,13 @@ func _ready() -> void:
 		await ready
 		_update_label()
 		return
-	slider.value = AudioManager.get_volume(bus)
+	slider.slider.value = AudioManager.get_volume(bus)
 	mute_menu.select_value(AudioManager.is_mute(bus))
 	mute_menu.value_changed.connect(_on_mute)
 	mute_menu.focus_entered.connect(_on_focus_entered)
 	mute_menu.focus_exited.connect(_on_focus_exited)
 	slider.focus_entered.connect(AudioManager.playSound.bind(&"menu_hover"))
-	slider.value_changed.connect(_on_slider_changed)
+	slider.slider.value_changed.connect(_on_slider_changed)
 	_update_label()
 	_update()
 
@@ -41,7 +41,7 @@ func _on_focus_exited() -> void:
 
 func _update() -> void:
 	var music_muted = AudioManager.is_mute(bus)
-	slider.editable = !music_muted
+	slider.slider.editable = !music_muted
 	slider.focus_mode = Control.FOCUS_NONE if music_muted else Control.FOCUS_ALL
 	var volume = AudioManager.get_volume(bus)
 	if volume > 1.5:

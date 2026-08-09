@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://c03lkqwrc8qjd"]
+
+[ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="1_bbj2p"]
+[ext_resource type="Script" uid="uid://csiq1swmp2ynx" path="res://scripts/ui/custom_slider.gd" id="2_bbj2p"]
+[ext_resource type="Texture2D" uid="uid://5mnixfh2re8d" path="res://assets/sprites/UI/arrow.png" id="3_2itoo"]
+
+[node name="CustomSlider" type="Control" unique_id=1192526095]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 100.0
+focus_mode = 2
+theme = ExtResource("1_bbj2p")
+script = ExtResource("2_bbj2p")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1888904273]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Left" type="VBoxContainer" parent="HBoxContainer" unique_id=1489895289]
+layout_mode = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer/Left" unique_id=1801098779]
+visible = false
+custom_minimum_size = Vector2(52.8, 52.8)
+layout_mode = 2
+
+[node name="Arrow" type="TextureRect" parent="HBoxContainer/Left/Control" unique_id=429171872]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.6173564
+offset_right = 1.6173592
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2itoo")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer" unique_id=1268136413]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 0
+max_value = 2.0
+step = 0.05
+value = 1.0
+
+[node name="Right" type="VBoxContainer" parent="HBoxContainer" unique_id=270133093]
+layout_mode = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer/Right" unique_id=1238858872]
+visible = false
+custom_minimum_size = Vector2(52.8, 52.8)
+layout_mode = 2
+
+[node name="Arrow" type="TextureRect" parent="HBoxContainer/Right/Control" unique_id=1799195954]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.6173564
+offset_right = -1.6173553
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2itoo")
+expand_mode = 1
+stretch_mode = 4
+flip_h = true

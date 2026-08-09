@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bwsdwnw2rqq6h" path="res://scripts/ui/looping_selection_item.gd" id="2_ecltu"]
 [ext_resource type="Script" uid="uid://cvkrdtkaxotxi" path="res://scripts/ui/audio_slider.gd" id="2_ugmtn"]
 [ext_resource type="Texture2D" uid="uid://bu7x7pg2bfnrq" path="res://assets/sprites/UI/volume_icon.png" id="3_ugmtn"]
+[ext_resource type="PackedScene" uid="uid://c03lkqwrc8qjd" path="res://scenes/ui/custom_slider.tscn" id="6_ecltu"]
 
 [sub_resource type="Resource" id="Resource_5rwak"]
 script = ExtResource("2_ecltu")
@@ -35,7 +36,7 @@ alignment = 1
 [node name="Label" type="Label" parent="LabelContainer" unique_id=1199866642]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Music: "
+text = "Music:"
 
 [node name="LoopingSelection" parent="LabelContainer" unique_id=421652052 instance=ExtResource("1_ugmtn")]
 custom_minimum_size = Vector2(100, 0)
@@ -58,11 +59,6 @@ stretch_mode = 4
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="Slider" type="HSlider" parent="SliderContainer" unique_id=593061609]
-custom_minimum_size = Vector2(400, 0)
+[node name="Slider" parent="SliderContainer" unique_id=1192526095 instance=ExtResource("6_ecltu")]
+custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-max_value = 2.0
-step = 0.05
-value = 1.0
