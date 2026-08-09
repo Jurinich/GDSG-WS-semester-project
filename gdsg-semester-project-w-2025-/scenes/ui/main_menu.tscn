@@ -85,7 +85,7 @@ anchor_right = 0.9990001
 anchor_bottom = 0.83900005
 theme = ExtResource("6_oa1go")
 font_size = 50
-items = Array[String](["Start Game", "Settings", "Quit", "Credits", "Controllers"])
+items = Array[String](["Start Game", "Settings", "Quit", "Swap Sides", "Credits"])
 
 [node name="Title" type="TextureRect" parent="." unique_id=475323065]
 layout_mode = 1

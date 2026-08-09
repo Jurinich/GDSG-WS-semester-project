@@ -12,10 +12,16 @@
 [ext_resource type="Texture2D" uid="uid://5mnixfh2re8d" path="res://assets/sprites/UI/arrow.png" id="12_0ls0v"]
 [ext_resource type="FontFile" uid="uid://c8ew4ubjel38x" path="res://assets/fonts/Noto_Color_Emoji/NotoColorEmoji-Regular.ttf" id="12_c3mdi"]
 [ext_resource type="FontFile" uid="uid://cyq138krrqg2p" path="res://assets/fonts/Holtwood_One_SC/HoltwoodOneSC-Regular.ttf" id="12_gmqxd"]
+[ext_resource type="Texture2D" uid="uid://ospe4vt1gwit" path="res://assets/sprites/UI/device_icon.png" id="13_gmqxd"]
 
 [sub_resource type="FontVariation" id="FontVariation_0ls0v"]
 fallbacks = Array[Font]([ExtResource("12_c3mdi")])
 base_font = ExtResource("12_gmqxd")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dv4ih"]
+resource_local_to_scene = true
+atlas = ExtResource("13_gmqxd")
+region = Rect2(0, 0, 256, 128)
 
 [node name="PlayerSelectionNode" type="Control" unique_id=425702317]
 layout_mode = 3
@@ -116,3 +122,15 @@ texture = ExtResource("12_0ls0v")
 expand_mode = 1
 stretch_mode = 5
 flip_h = true
+
+[node name="Device" type="TextureRect" parent="." unique_id=848097466]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -196.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("AtlasTexture_dv4ih")
+stretch_mode = 3

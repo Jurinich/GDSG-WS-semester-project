@@ -19,5 +19,8 @@ func _on_looping_menu_button_pressed(button: String) -> void:
 			GameManager.change_scene(GameManager.Scene.SETTINGS)
 		"Credits":
 			GameManager.change_scene(GameManager.Scene.CREDITS)
+		"Swap Sides":
+			selection_controller.swap_sides()
+			ControllerInput.swap_controllers()
 		"Quit":
 			get_tree().quit()

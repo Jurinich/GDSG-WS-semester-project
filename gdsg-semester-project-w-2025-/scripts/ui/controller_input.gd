@@ -1,12 +1,14 @@
 extends Node
 
+signal devices_updated(p1_device: int, p2_device: int)
+
 const ECHO_DELAY: float = 0.2
 const ECHO_INTERVAL: float = 0.04
 
 var last_events: Dictionary = {}
 
-var p1_device: int = 0
-var p2_device: int = 1
+var p1_device: int = InputEvent.DEVICE_ID_KEYBOARD
+var p2_device: int = InputEvent.DEVICE_ID_KEYBOARD
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -33,9 +35,12 @@ func _input(event: InputEvent) -> void:
 	fake_event.device = InputEvent.DEVICE_ID_KEYBOARD
 	fake_event.pressed = event.is_pressed()
 	
-	var p1 = event.device == p1_device
-	if !p1 && event.device != p2_device:
+	if !_is_device_connected(event.device):
+		if event.is_action_pressed("connect_device"):
+			_connect_new_device(event.device)
 		return
+	
+	var p1 = event.device == p1_device
 	
 	if event is InputEventJoypadButton:
 		key += "button." + str(event.button_index)
@@ -89,3 +94,20 @@ func _get_axis_keycode(axis: JoyAxis, positive: bool, p1: bool) -> Key:
 		else:
 			return KEY_W if p1 else KEY_UP
 	return Key.KEY_NONE
+
+func _connect_new_device(device_id: int) -> void:
+	if p1_device == InputEvent.DEVICE_ID_KEYBOARD:
+		p1_device = device_id
+		devices_updated.emit(p1_device, p2_device)
+	elif p2_device == InputEvent.DEVICE_ID_KEYBOARD:
+		p2_device = device_id
+		devices_updated.emit(p1_device, p2_device)
+
+func _is_device_connected(device_id: int) -> bool:
+	return p1_device == device_id || p2_device == device_id
+
+func swap_controllers() -> void:
+	var temp = p1_device
+	p1_device = p2_device
+	p2_device = temp
+	devices_updated.emit(p1_device, p2_device)
