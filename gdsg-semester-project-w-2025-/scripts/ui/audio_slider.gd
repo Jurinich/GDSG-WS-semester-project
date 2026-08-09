@@ -40,18 +40,21 @@ func _on_focus_exited() -> void:
 	mute_menu.custom_minimum_size = Vector2(100.0, 0.0)
 
 func _update() -> void:
-	var music_muted = AudioManager.is_mute(bus)
-	slider.slider.editable = !music_muted
-	slider.focus_mode = Control.FOCUS_NONE if music_muted else Control.FOCUS_ALL
-	var volume = AudioManager.get_volume(bus)
-	if volume > 1.5:
-		icon.region.position.x = 0
-	elif volume > 0.5:
-		icon.region.position.x = 128
-	elif volume > 0.0:
-		icon.region.position.x = 256
-	else:
+	var muted = AudioManager.is_mute(bus)
+	slider.slider.editable = !muted
+	slider.focus_mode = Control.FOCUS_NONE if muted else Control.FOCUS_ALL
+	if muted:
 		icon.region.position.x = 384
+	else:
+		var volume = AudioManager.get_volume(bus)
+		if volume > 1.5:
+			icon.region.position.x = 0
+		elif volume > 0.5:
+			icon.region.position.x = 128
+		elif volume > 0.0:
+			icon.region.position.x = 256
+		else:
+			icon.region.position.x = 384
 
 func _on_mute(value: bool) -> void:
 	AudioManager.mute(bus, value)
