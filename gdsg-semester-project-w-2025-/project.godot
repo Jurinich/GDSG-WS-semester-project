@@ -15,6 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Kitty Pong"
+config/version="1.0"
 run/main_scene="uid://b7uldkmwrx85"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
@@ -31,6 +32,9 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
 window/stretch/mode="canvas_items"
+window/size/mode.debug=0
+window/size/window_width_override.debug=1280
+window/size/window_height_override.debug=720
 
 [input]
 

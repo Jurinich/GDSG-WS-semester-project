@@ -28,11 +28,9 @@ func change_scene(scene: Scene, deferred: bool = false) -> void:
 		get_tree().change_scene_to_file(SCENE_FILES[scene])
 
 func _unhandled_input(event: InputEvent):
-	#if event is InputEventKey:
-		#print("keyboard: ", event.device)
-	
 	if event.is_action_pressed("Quit"):
-		get_tree().quit()
+		if !OS.has_feature("no_quit"):
+			get_tree().quit()
 
 func can_spawn_more() -> bool:
 	var current_ball_count = get_tree().get_nodes_in_group("balls").size()

@@ -78,15 +78,14 @@ stretch_mode = 5
 
 [node name="LoopingMenu" parent="ButtonBox" unique_id=421652052 instance=ExtResource("6_lgwnu")]
 layout_mode = 1
-anchor_left = 0.0
+anchors_preset = -1
+anchor_left = 0.004
 anchor_top = 0.215
+anchor_right = 0.9990001
 anchor_bottom = 0.83900005
-offset_right = 0.0
 theme = ExtResource("6_oa1go")
-menu_radius = 75.0
 font_size = 50
-scale_modifier = 0.4
-items = Array[String](["Start Game", "Settings", "Quit", "Credits"])
+items = Array[String](["Start Game", "Settings", "Quit", "Credits", "Controllers"])
 
 [node name="Title" type="TextureRect" parent="." unique_id=475323065]
 layout_mode = 1

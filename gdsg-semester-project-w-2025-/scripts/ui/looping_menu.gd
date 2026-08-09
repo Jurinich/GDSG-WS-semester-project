@@ -5,14 +5,16 @@ signal button_pressed(button: String)
 
 var ARROW_TEXTURE: Texture = preload("res://assets/sprites/UI/arrow.png")
 
-@export var menu_radius: float = 300.0  # affects 3d effect and how far up/down the menu goes
-@export var rotation_speed: float = 10  # how fast the menu should spin
+@export var modulate_factor: float = 0.5
+@export var item_spacing: float = 60.0
+@export var rotation_speed: float = 10.0
 @export var font_size: int = 40
+
 @export var arrow_padding: float = 10.0
 @export var arrow_animation_speed: float = 0.005
 @export var arrow_animation_distance: float = 8.0
 
-@export_range(0.0, 1.0) var scale_modifier: float = 0.20  # how quickly elements scale down
+@export_range(0.0, 1.0) var scale_modifier: float = 0.4
 
 @export var selected_menu: int = 0
 @export var items: Array[String]:
@@ -36,9 +38,6 @@ func _ready() -> void:
 	_populate_button_array()
 	focus_entered.connect(_on_focused_changed.bind(true))
 	focus_exited.connect(_on_focused_changed.bind(false))
-	for i in range(buttons.size()):
-		buttons[i].pressed.connect(_on_button_pressed.bind(i))
-	_compute_positions(1.0)
 
 func _process(delta: float) -> void:
 	_compute_positions(delta)
@@ -51,40 +50,27 @@ func _compute_positions(delta: float) -> void:
 	var center = size / 2.0
 	var count = buttons.size()
 
-	var max_index_range = max(1.0, float(count - 1) / 2.0)
-
 	for i in range(count):
 		var button = buttons[i]
 
-		# distance to selected button, needs to wrap around but also has to be from -n/2 to n/2
-		# first I get the relative position to selected button but fposmod only returns positive values (from 0 to n)
-		# so count / 2.0 needs to be subtracted (-n/2 to n/2)
-		var offset = fposmod(i - visual_selected_menu + count / 2.0, count) - count / 2.0
+		var offset: float = fposmod(i - visual_selected_menu + count / 2.0, count) - count / 2.0
+		var distance = abs(offset)
 		
-		var angle = clamp(offset / max_index_range, -1.0, 1.0) * PI
-		var position_offset = sin(angle) * menu_radius
-		var depth = cos(angle)
-
-		# depth gives (-1.0 to 1.0), need (0 to 1)
-		var depth_level = (depth + 1.0) / 2.0
-		
-		if depth_level >= 0.9:
-			button.mouse_filter = MouseFilter.MOUSE_FILTER_STOP
-		else:
-			button.mouse_filter = MouseFilter.MOUSE_FILTER_IGNORE
-
 		var target_position = Vector2(center.x, center.y) - button.size / 2.0
-		target_position.y += position_offset
-		
+		if distance < 1.5:
+			target_position.y += offset * item_spacing
 		button.position = lerp(button.position, target_position, interpolation)
+		
+		var target_scale = lerp(1.0, 1.0 - scale_modifier, distance)
+		button.scale = button.scale.lerp(Vector2.ONE * target_scale, interpolation)
+		
+		var factor = (1.0 - distance) * modulate_factor + (1.0 - modulate_factor)
+		var target_color = (Color.WHITE if focused else Color.GRAY) * factor
+		button.modulate = button.modulate.lerp(target_color, interpolation)
+		var alpha = clamp((distance - 1.0), 0.0, 1.0)
+		button.modulate.a = lerp(1.0, 0.0, alpha)
 
-		var target_scale = lerp(1.0 - scale_modifier, 1.0, depth_level)
-		button.scale = Vector2.ONE * target_scale
-
-		button.modulate = (Color.WHITE if focused else Color.GRAY) * (depth_level * 0.6 + 0.4)
-		button.modulate.a = 1.0 if depth_level > 0.1 else depth_level
-
-		button.z_index = round(depth_level)
+		button.z_index = lerp(10, 0, distance * 0.5)
 	_update_arrow(delta)
 
 func _update_arrow(delta: float) -> void:
@@ -107,13 +93,15 @@ func _populate_button_array() -> void:
 		child.queue_free()
 	buttons.clear()
 	largest_button = 0.0
-	for item in items:
+	for i in items.size():
 		var button := Button.new()
-		button.text = item
+		button.text = items[i]
 		button.add_theme_font_size_override("font_size", font_size)
 		button.pivot_offset_ratio = Vector2(0.5, 0.5)
+		button.mouse_filter = MouseFilter.MOUSE_FILTER_IGNORE
 		add_child(button)
 		buttons.append(button)
+		button.pressed.connect(_on_button_pressed.bind(i))
 		var button_size : Vector2 = button.get_combined_minimum_size()
 		largest_button = max(largest_button, button_size.y)
 	update_minimum_size()
@@ -121,6 +109,8 @@ func _populate_button_array() -> void:
 	arrow_left = _create_arrow()
 	arrow_left.rotation = PI
 	arrow_right = _create_arrow()
+	
+	_compute_positions(1.0)
 
 func _create_arrow() -> TextureRect:
 	var arrow = TextureRect.new()
@@ -172,5 +162,5 @@ func _get_minimum_size() -> Vector2:
 		largest = largest.max(button.get_combined_minimum_size())
 		
 	if buttons.size() > 1:
-		largest.y += menu_radius * 2.0
+		largest.y += item_spacing * 2.0
 	return largest
