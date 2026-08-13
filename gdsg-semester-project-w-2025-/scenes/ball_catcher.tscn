@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b7r41vivhjnyg"]
 
 [ext_resource type="Script" uid="uid://dgfwjdirab11p" path="res://scripts/ball_catcher_asset.gd" id="1_ch6sr"]
+[ext_resource type="Resource" uid="uid://c2vxlmy17iqmt" path="res://assets/sounds/game/canon/vacuum.tres" id="2_3ncff"]
 [ext_resource type="Texture2D" uid="uid://q1rbly0n2ykn" path="res://assets/sprites/vacuum_cleaner.png" id="2_ch6sr"]
 [ext_resource type="Material" uid="uid://dl2yasj36kjla" path="res://resources/materials/vacuum.tres" id="3_hsoyf"]
 
@@ -14,6 +15,7 @@ size = Vector2(61.75, 230)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_ch6sr")
+sounds = ExtResource("2_3ncff")
 
 [node name="Air" type="Sprite2D" parent="." unique_id=1368736998]
 material = ExtResource("3_hsoyf")
