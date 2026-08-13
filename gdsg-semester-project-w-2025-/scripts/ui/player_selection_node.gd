@@ -64,7 +64,7 @@ func _get_device_icon_offset(device: int, other_device: int) -> int:
 
 func _unhandled_input(event):
 	if _check_input_desktop(event):
-		AudioManager.playSound(&"menu_hover");
+		AudioManager.playSound(&"skin_select");
 		get_viewport().set_input_as_handled()
 
 func _check_input_desktop(event: InputEvent) -> bool:

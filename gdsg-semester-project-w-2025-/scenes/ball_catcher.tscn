@@ -37,3 +37,6 @@ collision_mask = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1481372575]
 position = Vector2(71.875, 0)
 shape = SubResource("RectangleShape2D_hsoyf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1223559016]
+bus = &"Sounds"

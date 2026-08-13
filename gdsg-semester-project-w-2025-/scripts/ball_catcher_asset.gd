@@ -2,6 +2,7 @@ class_name VacuumCleaner extends Area2D
 
 @onready var air_sprite: Sprite2D = $Air
 @onready var air_material: ShaderMaterial = $Air.material
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var caught_balls: Array[Ball] = []
 var is_shooting: bool = false
@@ -19,6 +20,8 @@ var inactive_position: Vector2 = Vector2(-200, 0)
 @export var shoot_delay : float = 0.25
 @export var shoot_angle : float = 10.0
 
+@export var sounds : SoundResource
+
 func _ready():
 	if paddle_owner and not paddle_owner.isP1:
 		shoot_direction = Vector2.LEFT
@@ -26,6 +29,9 @@ func _ready():
 
 	position = inactive_position
 
+	audio_player.stream = sounds.audiostreams[0]
+	audio_player.play()
+	
 	collection_timer = Timer.new()
 	collection_timer.wait_time = catch_time
 	collection_timer.one_shot = true
