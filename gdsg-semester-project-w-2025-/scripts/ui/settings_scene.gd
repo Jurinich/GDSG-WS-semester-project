@@ -84,6 +84,8 @@ func _create_label(text: String) -> Label:
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.text = text
 	label.add_theme_font_size_override("font_size", 30)
+	label.add_theme_constant_override("outline_size", 0)
+	label.add_theme_color_override("font_color", Color("5400a7"))
 	return label
 
 func _on_gamemode_changed(value: Settings.GameMode) -> void:

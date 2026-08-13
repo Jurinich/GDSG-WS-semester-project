@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://b7uldkmwrx85"]
 
 [ext_resource type="Script" uid="uid://bvukho5xegmaq" path="res://scripts/ui/main_menu_controller.gd" id="1_l6cm7"]
-[ext_resource type="Texture2D" uid="uid://cdm15ogkivjxe" path="res://assets/sprites/Backgrounds/BG_StartScreenMenue.png" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://8lwjw2ltyywa" path="res://assets/sprites/Backgrounds/main_menu.png" id="2_q85j6"]
 [ext_resource type="Texture2D" uid="uid://bkpwot3g78twl" path="res://assets/sprites/Kittens/UI_kittens/kitten_inbox.png" id="3_rtw2f"]
-[ext_resource type="Texture2D" uid="uid://btg7cq10y06vr" path="res://assets/sprites/Popups/Popup_menue.png" id="3_wu84c"]
 [ext_resource type="Texture2D" uid="uid://c4vomr1gla4ut" path="res://assets/sprites/Logos/Logo_pink.png" id="4_8ln24"]
 [ext_resource type="Texture2D" uid="uid://br0nn0g3jab66" path="res://assets/sprites/Kittens/UI_kittens/kitten_lying.png" id="4_oa1go"]
+[ext_resource type="Script" uid="uid://b5iqp8fxplawo" path="res://scripts/ui/bouncing_ui.gd" id="6_8g5eo"]
 [ext_resource type="PackedScene" uid="uid://c1xmahmsx11f" path="res://scenes/ui/looping_menu.tscn" id="6_lgwnu"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="6_oa1go"]
+[ext_resource type="Texture2D" uid="uid://bxuoc2i7voaem" path="res://assets/sprites/Backgrounds/menu_box.png" id="7_7suek"]
 [ext_resource type="Script" uid="uid://bpt207xu16nw5" path="res://scripts/ui/selection_controller.gd" id="8_jk1qb"]
 [ext_resource type="PackedScene" uid="uid://bj18d1fh7lipn" path="res://scenes/ui/player_selection_node.tscn" id="8_tbmy8"]
 
@@ -35,7 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_ekxnf")
+texture = ExtResource("2_q85j6")
 expand_mode = 2
 stretch_mode = 1
 
@@ -47,9 +48,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -297.0
-offset_top = -264.0
+offset_top = -255.0
 offset_right = -60.0
-offset_bottom = -31.0
+offset_bottom = -21.999023
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("3_rtw2f")
@@ -60,33 +61,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("4_oa1go")
 
-[node name="ButtonBox" type="TextureRect" parent="." unique_id=126057425]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -358.5
-offset_top = -587.0
-offset_right = 358.5
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("3_wu84c")
-expand_mode = 2
-stretch_mode = 5
-
-[node name="LoopingMenu" parent="ButtonBox" unique_id=421652052 instance=ExtResource("6_lgwnu")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.004
-anchor_top = 0.215
-anchor_right = 0.9990001
-anchor_bottom = 0.83900005
-theme = ExtResource("6_oa1go")
-font_size = 50
-items = Array[String](["Start Game", "Settings", "Quit", "Swap Sides", "Credits"])
-
 [node name="Title" type="TextureRect" parent="." unique_id=475323065]
 layout_mode = 1
 anchors_preset = 8
@@ -95,13 +69,47 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -992.0
-offset_top = -432.0
-offset_right = 992.429
-offset_bottom = -73.0
+offset_top = -453.0
+offset_right = 992.42896
+offset_bottom = -132.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("4_8ln24")
 stretch_mode = 5
+script = ExtResource("6_8g5eo")
+
+[node name="MenuBackground" type="NinePatchRect" parent="." unique_id=943765428]
+self_modulate = Color(1, 1, 1, 0.7058824)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -417.5
+offset_top = 12.5
+offset_right = 417.5
+offset_bottom = 387.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_7suek")
+patch_margin_left = 50
+patch_margin_top = 50
+patch_margin_right = 50
+patch_margin_bottom = 50
+
+[node name="LoopingMenu" parent="MenuBackground" unique_id=421652052 instance=ExtResource("6_lgwnu")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_oa1go")
+item_spacing = 90.0
+font_size = 90
+items = Array[String](["Start Game", "Settings", "Quit", "Swap Sides", "Credits"])
 
 [node name="SelectionController" type="Control" parent="." unique_id=2026829769]
 layout_mode = 1
@@ -119,12 +127,11 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_right = 0.0
 anchor_bottom = 0.5
-offset_left = 120.0
-offset_top = -224.0
-offset_right = 688.0
-offset_bottom = 590.0
+offset_left = 20.0
+offset_top = -310.0
+offset_right = 420.0
+offset_bottom = 270.0
 grow_horizontal = 1
-scale = Vector2(0.5, 0.5)
 player_name = "Left Player"
 isP1 = true
 
@@ -135,11 +142,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -404.0
-offset_top = -224.0
-offset_right = 164.0
-offset_bottom = 590.0
+offset_left = -420.0
+offset_top = -310.0
+offset_right = -20.0
+offset_bottom = 270.0
 grow_horizontal = 0
-scale = Vector2(0.5, 0.5)
 player_name = "Right Player"
 start_index = 1

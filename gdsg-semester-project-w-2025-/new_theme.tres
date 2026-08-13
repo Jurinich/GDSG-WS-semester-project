@@ -1,12 +1,41 @@
 [gd_resource type="Theme" format=3 uid="uid://dfhebtip2k3k3"]
 
+[ext_resource type="Texture2D" uid="uid://15g8iniu1tig" path="res://assets/sprites/UI/grabber.png" id="1_78ylj"]
 [ext_resource type="FontFile" uid="uid://cyq138krrqg2p" path="res://assets/fonts/Holtwood_One_SC/HoltwoodOneSC-Regular.ttf" id="1_amlv4"]
+[ext_resource type="Texture2D" uid="uid://bcckb2bv515l2" path="res://assets/sprites/UI/grabber_disabled.png" id="2_aggjg"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_amlv4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbmy8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jk1qb"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_78ylj"]
+load_path = "res://.godot/imported/grabber.png-820110f2638cde05ff0c337082793b0e.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78ylj"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.5372549)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aggjg"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.67058825)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
 
 [resource]
 default_font = ExtResource("1_amlv4")
@@ -18,5 +47,10 @@ Button/constants/outline_size = 12
 Button/styles/hover = SubResource("StyleBoxEmpty_amlv4")
 Button/styles/normal = SubResource("StyleBoxEmpty_tbmy8")
 Button/styles/pressed = SubResource("StyleBoxEmpty_jk1qb")
+HSlider/icons/grabber = ExtResource("1_78ylj")
+HSlider/icons/grabber_disabled = ExtResource("2_aggjg")
+HSlider/icons/grabber_highlight = SubResource("CompressedTexture2D_78ylj")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_78ylj")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_aggjg")
 Label/constants/outline_size = 12
 Label/fonts/font = ExtResource("1_amlv4")

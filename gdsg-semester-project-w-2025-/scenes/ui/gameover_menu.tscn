@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="1_1c8k4"]
 [ext_resource type="Script" uid="uid://mfofxc00vvjc" path="res://scripts/ui/gameover_menu.gd" id="2_eruoa"]
 [ext_resource type="Texture2D" uid="uid://btg7cq10y06vr" path="res://assets/sprites/Popups/Popup_menue.png" id="3_73r7d"]
+[ext_resource type="Texture2D" uid="uid://bxuoc2i7voaem" path="res://assets/sprites/Backgrounds/menu_box.png" id="4_1c8k4"]
 [ext_resource type="PackedScene" uid="uid://dnr1y4qqnyqmt" path="res://scenes/ui/custom_button.tscn" id="4_eruoa"]
 
 [node name="GameoverMenu" type="Control" unique_id=1402068368]
@@ -26,6 +27,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.3137255)
 
 [node name="Background" type="TextureRect" parent="Backdrop" unique_id=1999937326]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -40,6 +42,26 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_73r7d")
 
+[node name="NinePatchRect" type="NinePatchRect" parent="Backdrop" unique_id=314641649]
+self_modulate = Color(1, 1, 1, 0.76862746)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -462.0
+offset_top = -332.5
+offset_right = 462.0
+offset_bottom = 332.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_1c8k4")
+patch_margin_left = 50
+patch_margin_top = 50
+patch_margin_right = 50
+patch_margin_bottom = 50
+
 [node name="content" type="VBoxContainer" parent="." unique_id=2027556061]
 layout_mode = 1
 anchors_preset = 8
@@ -47,25 +69,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -337.25
+offset_left = -380.5
 offset_top = -316.5
-offset_right = 337.25
-offset_bottom = 352.5
+offset_right = 380.5
+offset_bottom = 300.5
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="heading" type="Label" parent="content" unique_id=1775497830]
 layout_mode = 2
 theme = ExtResource("1_1c8k4")
+theme_override_colors/font_color = Color(1, 0.6392157, 0.6745098, 1)
 theme_override_font_sizes/font_size = 64
 text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Buttons" type="VBoxContainer" parent="content" unique_id=1077976366]
-custom_minimum_size = Vector2(0, 560)
+[node name="HSeparator" type="HSeparator" parent="content" unique_id=1216332142]
 layout_mode = 2
-alignment = 1
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="content" unique_id=1077976366]
+custom_minimum_size = Vector2(0, 450)
+layout_mode = 2
 
 [node name="Winner" type="Label" parent="content/Buttons" unique_id=191914394]
 layout_mode = 2
@@ -78,6 +104,9 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "Score"
 horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="content/Buttons" unique_id=1210829280]
+layout_mode = 2
 
 [node name="ReplayButton" parent="content/Buttons" unique_id=1192526095 instance=ExtResource("4_eruoa")]
 layout_mode = 2

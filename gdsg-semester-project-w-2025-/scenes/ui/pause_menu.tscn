@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cdixmj78exahn" path="res://scripts/ui/pause_menu.gd" id="2_kukqi"]
 [ext_resource type="Texture2D" uid="uid://btg7cq10y06vr" path="res://assets/sprites/Popups/Popup_menue.png" id="3_8uki6"]
 [ext_resource type="PackedScene" uid="uid://tl0eirbqug0a" path="res://scenes/ui/audio_slider.tscn" id="4_0bnpd"]
+[ext_resource type="Texture2D" uid="uid://bxuoc2i7voaem" path="res://assets/sprites/Backgrounds/menu_box.png" id="4_4inpj"]
 [ext_resource type="PackedScene" uid="uid://dnr1y4qqnyqmt" path="res://scenes/ui/custom_button.tscn" id="5_0bnpd"]
 
 [node name="PauseMenu" type="Control" unique_id=1402068368]
@@ -27,6 +28,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.3137255)
 
 [node name="Background" type="TextureRect" parent="Backdrop" unique_id=1999937326]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -40,6 +42,25 @@ offset_bottom = 365.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_8uki6")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Backdrop" unique_id=1266293749]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -462.0
+offset_top = -332.5
+offset_right = 462.0
+offset_bottom = 332.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_4inpj")
+patch_margin_left = 50
+patch_margin_top = 50
+patch_margin_right = 50
+patch_margin_bottom = 50
 
 [node name="content" type="VBoxContainer" parent="." unique_id=2027556061]
 layout_mode = 1
@@ -58,6 +79,7 @@ grow_vertical = 2
 [node name="heading" type="Label" parent="content" unique_id=1775497830]
 layout_mode = 2
 theme = ExtResource("1_n87rw")
+theme_override_colors/font_color = Color(1, 0.6392157, 0.6745098, 1)
 theme_override_font_sizes/font_size = 64
 text = "Game Paused"
 horizontal_alignment = 1
@@ -69,10 +91,6 @@ size_flags_vertical = 3
 
 [node name="MusicSlider" parent="content" unique_id=286722270 instance=ExtResource("4_0bnpd")]
 layout_mode = 2
-
-[node name="HSeparator3" type="HSeparator" parent="content" unique_id=1159428512]
-layout_mode = 2
-size_flags_vertical = 3
 
 [node name="SoundSlider2" parent="content" unique_id=298458789 instance=ExtResource("4_0bnpd")]
 layout_mode = 2

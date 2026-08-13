@@ -1,22 +1,38 @@
 [gd_scene format=3 uid="uid://bj18d1fh7lipn"]
 
 [ext_resource type="Script" uid="uid://de4tr7w5a07aw" path="res://scripts/ui/player_selection_node.gd" id="1_h4mwn"]
-[ext_resource type="Texture2D" uid="uid://emd4k5xlqjpj" path="res://assets/paddle1.png" id="1_xkd2o"]
 [ext_resource type="Script" uid="uid://bl35ksw8rjatp" path="res://scripts/paddle.gd" id="2_uqnh8"]
 [ext_resource type="Resource" uid="uid://t4ec086vi30l" path="res://resources/paddles/0_salmon.tres" id="3_d6s4f"]
-[ext_resource type="Texture2D" uid="uid://ckntan25rrejh" path="res://assets/sprites/Popups/popup_catselection.png" id="3_k03x2"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="3_quxui"]
 [ext_resource type="Resource" uid="uid://2fala6tiko0h" path="res://resources/paddles/1_tuna.tres" id="4_c3mdi"]
 [ext_resource type="Resource" uid="uid://m2jywddari2d" path="res://resources/paddles/2_skeleton.tres" id="5_gmqxd"]
 [ext_resource type="Resource" uid="uid://c8dp5os0kbfs4" path="res://resources/paddles/3_fih.tres" id="6_d6s4f"]
+[ext_resource type="Texture2D" uid="uid://bxuoc2i7voaem" path="res://assets/sprites/Backgrounds/menu_box.png" id="7_gmqxd"]
+[ext_resource type="Texture2D" uid="uid://bkq5o2fbf7tci" path="res://assets/sprites/Paddles/0_salmon.png" id="9_gmqxd"]
 [ext_resource type="Texture2D" uid="uid://5mnixfh2re8d" path="res://assets/sprites/UI/arrow.png" id="12_0ls0v"]
 [ext_resource type="FontFile" uid="uid://c8ew4ubjel38x" path="res://assets/fonts/Noto_Color_Emoji/NotoColorEmoji-Regular.ttf" id="12_c3mdi"]
 [ext_resource type="FontFile" uid="uid://cyq138krrqg2p" path="res://assets/fonts/Holtwood_One_SC/HoltwoodOneSC-Regular.ttf" id="12_gmqxd"]
+[ext_resource type="Texture2D" uid="uid://bea3ch42hjuqn" path="res://assets/sprites/UI/input_icons.png" id="13_0ls0v"]
 [ext_resource type="Texture2D" uid="uid://ospe4vt1gwit" path="res://assets/sprites/UI/device_icon.png" id="13_gmqxd"]
 
 [sub_resource type="FontVariation" id="FontVariation_0ls0v"]
 fallbacks = Array[Font]([ExtResource("12_c3mdi")])
 base_font = ExtResource("12_gmqxd")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ronc"]
+resource_local_to_scene = true
+atlas = ExtResource("13_0ls0v")
+region = Rect2(0, 0, 360, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_untwl"]
+resource_local_to_scene = true
+atlas = ExtResource("13_0ls0v")
+region = Rect2(0, 250, 360, 250)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5kh4"]
+resource_local_to_scene = true
+atlas = ExtResource("13_0ls0v")
+region = Rect2(0, 500, 360, 250)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dv4ih"]
 resource_local_to_scene = true
@@ -24,113 +40,169 @@ atlas = ExtResource("13_gmqxd")
 region = Rect2(0, 0, 256, 128)
 
 [node name="PlayerSelectionNode" type="Control" unique_id=425702317]
+custom_minimum_size = Vector2(400, 580)
 layout_mode = 3
 anchor_right = 0.31300002
 anchor_bottom = 0.74100006
-offset_bottom = -0.28009033
+offset_right = -200.96002
+offset_bottom = -220.28009
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h4mwn")
 player_name = "Player"
 paddles = Array[ExtResource("2_uqnh8")]([ExtResource("3_d6s4f"), ExtResource("4_c3mdi"), ExtResource("5_gmqxd"), ExtResource("6_d6s4f")])
 
-[node name="Background" type="TextureRect" parent="." unique_id=606959779]
+[node name="Background" type="NinePatchRect" parent="." unique_id=1231654404]
+self_modulate = Color(1, 1, 1, 0.7058824)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_k03x2")
+texture = ExtResource("7_gmqxd")
+patch_margin_left = 50
+patch_margin_top = 50
+patch_margin_right = 50
+patch_margin_bottom = 50
 
-[node name="Label" type="Label" parent="." unique_id=470179760]
+[node name="Container" type="VBoxContainer" parent="." unique_id=311650202]
 layout_mode = 1
 anchors_preset = -1
+anchor_top = 0.03
 anchor_right = 1.0
-anchor_bottom = 0.13100001
-offset_right = -0.960022
-offset_bottom = 0.19998932
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Label" type="Label" parent="Container" unique_id=470179760]
+layout_mode = 2
 theme = ExtResource("3_quxui")
-theme_override_font_sizes/font_size = 56
+theme_override_font_sizes/font_size = 38
 text = "Player"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Selection" type="TextureRect" parent="." unique_id=2002744008]
-custom_minimum_size = Vector2(0, 400)
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.124000005
-anchor_right = 1.0
-anchor_bottom = 0.624
-offset_left = 77.0
-offset_top = -0.20000458
-offset_right = -80.96002
-offset_bottom = -0.2000122
+[node name="Selection" type="TextureRect" parent="Container" unique_id=2002744008]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("1_xkd2o")
+offset_transform_enabled = true
+offset_transform_scale = Vector2(2, 2)
+offset_transform_rotation = -1.5707964
+texture = ExtResource("9_gmqxd")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Container" type="HBoxContainer" parent="." unique_id=2050260758]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -282.0
-offset_bottom = -190.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Name" type="HBoxContainer" parent="Container" unique_id=2050260758]
+layout_mode = 2
 alignment = 1
 
-[node name="Left" type="Control" parent="Container" unique_id=1751352015]
-custom_minimum_size = Vector2(70, 100)
+[node name="Left" type="Control" parent="Container/Name" unique_id=1751352015]
+custom_minimum_size = Vector2(70, 60)
 layout_mode = 2
 
-[node name="Arrow" type="TextureRect" parent="Container/Left" unique_id=577875530]
-custom_minimum_size = Vector2(70, 100)
+[node name="Arrow" type="TextureRect" parent="Container/Name/Left" unique_id=577875530]
+custom_minimum_size = Vector2(70, 60)
 layout_mode = 0
 offset_right = 70.0
-offset_bottom = 70.0
+offset_bottom = 60.0
 texture = ExtResource("12_0ls0v")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Name" type="Label" parent="Container" unique_id=966466496]
-custom_minimum_size = Vector2(0, 100)
+[node name="Name" type="Label" parent="Container/Name" unique_id=966466496]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme = ExtResource("3_quxui")
+theme_override_colors/font_color = Color(1, 0.6392157, 0.6745098, 1)
 theme_override_fonts/font = SubResource("FontVariation_0ls0v")
-theme_override_font_sizes/font_size = 56
+theme_override_font_sizes/font_size = 32
 text = "Fish 🥀"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Right" type="Control" parent="Container" unique_id=451618035]
-custom_minimum_size = Vector2(70, 100)
+[node name="Right" type="Control" parent="Container/Name" unique_id=451618035]
+custom_minimum_size = Vector2(70, 60)
 layout_mode = 2
 
-[node name="Arrow" type="TextureRect" parent="Container/Right" unique_id=805765977]
-custom_minimum_size = Vector2(70, 100)
+[node name="Arrow" type="TextureRect" parent="Container/Name/Right" unique_id=805765977]
+custom_minimum_size = Vector2(70, 60)
 layout_mode = 0
 offset_right = 70.0
-offset_bottom = 70.0
+offset_bottom = 60.0
 texture = ExtResource("12_0ls0v")
 expand_mode = 1
 stretch_mode = 5
 flip_h = true
 
-[node name="Device" type="TextureRect" parent="." unique_id=848097466]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -196.0
-grow_horizontal = 2
-grow_vertical = 0
+[node name="Padding" type="Control" parent="Container" unique_id=876278918]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Move" type="HBoxContainer" parent="Container" unique_id=1092955628]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+alignment = 1
+
+[node name="Buttons" type="TextureRect" parent="Container/Move" unique_id=1763060265]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = SubResource("AtlasTexture_8ronc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Container/Move" unique_id=1115355256]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("3_quxui")
+theme_override_font_sizes/font_size = 22
+text = "Move"
+horizontal_alignment = 1
+
+[node name="Accept" type="HBoxContainer" parent="Container" unique_id=1247864806]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+alignment = 1
+
+[node name="Buttons" type="TextureRect" parent="Container/Accept" unique_id=1236016651]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = SubResource("AtlasTexture_untwl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Container/Accept" unique_id=402016940]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("3_quxui")
+theme_override_font_sizes/font_size = 22
+text = "Accept"
+horizontal_alignment = 1
+
+[node name="Back" type="HBoxContainer" parent="Container" unique_id=1912338614]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+alignment = 1
+
+[node name="Buttons" type="TextureRect" parent="Container/Back" unique_id=1189246986]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = SubResource("AtlasTexture_c5kh4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Container/Back" unique_id=371955030]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme = ExtResource("3_quxui")
+theme_override_font_sizes/font_size = 22
+text = "Back / Pause"
+horizontal_alignment = 1
+
+[node name="Device" type="TextureRect" parent="Container" unique_id=848097466]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
 texture = SubResource("AtlasTexture_dv4ih")
-stretch_mode = 3
+expand_mode = 1
+stretch_mode = 5

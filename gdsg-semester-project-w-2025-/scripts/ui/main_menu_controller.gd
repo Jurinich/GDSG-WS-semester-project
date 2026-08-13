@@ -1,7 +1,8 @@
 extends Control
 
-@onready var selection_controller = $"SelectionController"
-@onready var looping_menu = $"ButtonBox/LoopingMenu"
+@onready var selection_controller = $SelectionController
+@onready var looping_menu = $MenuBackground/LoopingMenu
+@onready var title = $Title
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
