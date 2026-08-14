@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://t4ec086vi30l" path="res://resources/paddles/0_salmon.tres" id="3_d6s4f"]
 [ext_resource type="Theme" uid="uid://dfhebtip2k3k3" path="res://new_theme.tres" id="3_quxui"]
 [ext_resource type="Resource" uid="uid://2fala6tiko0h" path="res://resources/paddles/1_tuna.tres" id="4_c3mdi"]
+[ext_resource type="Resource" uid="uid://c8oob8mtmh7xm" path="res://resources/paddles/4_clownfish.tres" id="5_8ronc"]
 [ext_resource type="Resource" uid="uid://m2jywddari2d" path="res://resources/paddles/2_skeleton.tres" id="5_gmqxd"]
 [ext_resource type="Resource" uid="uid://c8dp5os0kbfs4" path="res://resources/paddles/3_fih.tres" id="6_d6s4f"]
 [ext_resource type="Texture2D" uid="uid://bxuoc2i7voaem" path="res://assets/sprites/Backgrounds/menu_box.png" id="7_gmqxd"]
@@ -50,7 +51,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_h4mwn")
 player_name = "Player"
-paddles = Array[ExtResource("2_uqnh8")]([ExtResource("3_d6s4f"), ExtResource("4_c3mdi"), ExtResource("5_gmqxd"), ExtResource("6_d6s4f")])
+paddles = Array[ExtResource("2_uqnh8")]([ExtResource("3_d6s4f"), ExtResource("4_c3mdi"), ExtResource("5_8ronc"), ExtResource("5_gmqxd"), ExtResource("6_d6s4f")])
 
 [node name="Background" type="NinePatchRect" parent="." unique_id=1231654404]
 self_modulate = Color(1, 1, 1, 0.7058824)

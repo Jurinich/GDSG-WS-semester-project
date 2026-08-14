@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Paddle" format=3 uid="uid://c8oob8mtmh7xm"]
+
+[ext_resource type="Script" uid="uid://bl35ksw8rjatp" path="res://scripts/paddle.gd" id="1_efmls"]
+[ext_resource type="Texture2D" uid="uid://cwgtfcjm5uudr" path="res://assets/sprites/Paddles/4_clownfish.png" id="2_efmls"]
+
+[resource]
+script = ExtResource("1_efmls")
+name = &"Clownfish"
+sprite = ExtResource("2_efmls")
+metadata/_custom_type_script = "uid://bl35ksw8rjatp"
