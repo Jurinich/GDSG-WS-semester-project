@@ -47,7 +47,6 @@ func _ready() -> void:
 				capsule.set_sprite(chooseItem())
 			else:
 				capsule.hide()
-	spawn_burst()
 
 func _process(delta: float) -> void:
 	if shaking_strength > 0.0:
