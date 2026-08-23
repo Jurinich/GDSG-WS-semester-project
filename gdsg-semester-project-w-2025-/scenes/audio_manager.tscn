@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ca0u01v4akhj3" path="res://scripts/audio_manager.gd" id="1_yt2vs"]
 [ext_resource type="AudioStream" uid="uid://dghu87athimbe" path="res://assets/Music/kitty_pong_bgm.mp3" id="2_2fqsb"]
-[ext_resource type="PackedScene" uid="uid://bink6xfeoi6jk" path="res://scenes/sound_component.tscn" id="3_fcxyy"]
-[ext_resource type="Script" uid="uid://b07gdu4yupssq" path="res://scripts/sound_resource.gd" id="4_1y43m"]
+[ext_resource type="PackedScene" path="res://scenes/sound_component.tscn" id="3_fcxyy"]
+[ext_resource type="Script" path="res://scripts/sound_resource.gd" id="4_1y43m"]
 [ext_resource type="AudioStream" uid="uid://c6qmpp11487qw" path="res://assets/sounds/menu/Menu hover 1.wav" id="5_n1t8p"]
 [ext_resource type="AudioStream" uid="uid://mj1m2tbrynff" path="res://assets/sounds/menu/Menu hover 2.wav" id="6_bne8e"]
 [ext_resource type="AudioStream" uid="uid://3o1lw30gritp" path="res://assets/sounds/menu/Menu hover 4.wav" id="7_24ib7"]
@@ -41,7 +41,11 @@
 [ext_resource type="AudioStream" uid="uid://tyf8ha45cxr2" path="res://assets/sounds/menu/Timer 2.wav" id="39_1cnjy"]
 [ext_resource type="AudioStream" uid="uid://dsbh6a3ps0t07" path="res://assets/sounds/game/canon/Canon 1.wav" id="40_1cnjy"]
 [ext_resource type="AudioStream" uid="uid://5hxh8p756q5e" path="res://assets/sounds/game/canon/Canon 2.wav" id="41_2igfy"]
-[ext_resource type="AudioStream" uid="uid://csy1i5tpv54u4" path="res://assets/sounds/menu/skin select.wav" id="42_gi52w"]
+[ext_resource type="AudioStream" uid="uid://bolqgp7wwehqo" path="res://assets/sounds/menu/skin select.wav" id="42_gi52w"]
+[ext_resource type="AudioStream" uid="uid://b6mankw6hop0v" path="res://assets/sounds/game/paddle/Clown 1.wav" id="43_ku15p"]
+[ext_resource type="AudioStream" uid="uid://cmuv2uvusfd4f" path="res://assets/sounds/game/paddle/Clown 2.wav" id="44_sa6p2"]
+[ext_resource type="AudioStream" uid="uid://dh4p1b1wojmim" path="res://assets/sounds/game/paddle/Clown 3.wav" id="45_opu6i"]
+[ext_resource type="AudioStream" uid="uid://lgvm03n4suic" path="res://assets/sounds/game/canon/vacuum collect ball.wav" id="46_sa6p2"]
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_sbao2"]
 clip_count = 1
@@ -133,7 +137,16 @@ audiostreams = Array[AudioStream]([ExtResource("40_1cnjy"), ExtResource("41_2igf
 script = ExtResource("4_1y43m")
 name = &"skin_select"
 audiostreams = Array[AudioStream]([ExtResource("42_gi52w")])
-metadata/_custom_type_script = "uid://b07gdu4yupssq"
+
+[sub_resource type="Resource" id="Resource_t2ybr"]
+script = ExtResource("4_1y43m")
+name = &"Clownfish"
+audiostreams = Array[AudioStream]([ExtResource("43_ku15p"), ExtResource("44_sa6p2"), ExtResource("45_opu6i")])
+
+[sub_resource type="Resource" id="Resource_ku15p"]
+script = ExtResource("4_1y43m")
+name = &"vacuum collect ball"
+audiostreams = Array[AudioStream]([ExtResource("46_sa6p2")])
 
 [node name="AudioManager" type="Node" unique_id=1047763007]
 process_mode = 3
@@ -144,5 +157,5 @@ stream = SubResource("AudioStreamInteractive_sbao2")
 autoplay = true
 
 [node name="SoundPlayer" parent="." unique_id=647762911 instance=ExtResource("3_fcxyy")]
-sounds = Array[ExtResource("4_1y43m")]([SubResource("Resource_ch668"), SubResource("Resource_10vkx"), SubResource("Resource_0q7qy"), SubResource("Resource_7js83"), SubResource("Resource_ttt2c"), SubResource("Resource_pfob2"), SubResource("Resource_eyy75"), SubResource("Resource_c6kha"), SubResource("Resource_5lp4t"), SubResource("Resource_yt2vs"), SubResource("Resource_1y43m"), SubResource("Resource_fcxyy"), SubResource("Resource_2igfy"), SubResource("Resource_gi52w"), SubResource("Resource_g71vj"), SubResource("Resource_ladlq"), SubResource("Resource_n6b7g")])
+sounds = Array[ExtResource("4_1y43m")]([SubResource("Resource_ch668"), SubResource("Resource_10vkx"), SubResource("Resource_0q7qy"), SubResource("Resource_7js83"), SubResource("Resource_ttt2c"), SubResource("Resource_pfob2"), SubResource("Resource_eyy75"), SubResource("Resource_c6kha"), SubResource("Resource_5lp4t"), SubResource("Resource_yt2vs"), SubResource("Resource_1y43m"), SubResource("Resource_fcxyy"), SubResource("Resource_2igfy"), SubResource("Resource_gi52w"), SubResource("Resource_g71vj"), SubResource("Resource_ladlq"), SubResource("Resource_n6b7g"), SubResource("Resource_t2ybr"), SubResource("Resource_ku15p")])
 audio_player_amount = 30

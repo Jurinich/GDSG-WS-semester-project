@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://csy1i5tpv54u4"
+uid="uid://bolqgp7wwehqo"
 path="res://.godot/imported/skin select.wav-b9892126c59e5b7eb45e5d569571a034.sample"
 
 [deps]
@@ -21,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=2
+compress/mode=0

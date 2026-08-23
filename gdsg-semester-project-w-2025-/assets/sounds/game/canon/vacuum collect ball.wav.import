@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://lgvm03n4suic"
+path="res://.godot/imported/vacuum collect ball.wav-08d33ef73d911082c1e1716c6c9e2fef.sample"
+
+[deps]
+
+source_file="res://assets/sounds/game/canon/vacuum collect ball.wav"
+dest_files=["res://.godot/imported/vacuum collect ball.wav-08d33ef73d911082c1e1716c6c9e2fef.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

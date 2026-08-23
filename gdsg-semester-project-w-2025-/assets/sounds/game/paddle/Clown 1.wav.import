@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b6mankw6hop0v"
+path="res://.godot/imported/Clown 1.wav-ff1a282e2170e77688601ee0f5a4d2a8.sample"
+
+[deps]
+
+source_file="res://assets/sounds/game/paddle/Clown 1.wav"
+dest_files=["res://.godot/imported/Clown 1.wav-ff1a282e2170e77688601ee0f5a4d2a8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
