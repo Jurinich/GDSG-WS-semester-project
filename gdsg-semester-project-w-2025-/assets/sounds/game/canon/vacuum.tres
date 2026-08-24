@@ -9,3 +9,4 @@
 script = ExtResource("1_i4shd")
 name = &"vacuum"
 audiostreams = Array[AudioStream]([ExtResource("1_n0apv"), ExtResource("2_erlef"), ExtResource("3_uesgh")])
+metadata/_custom_type_script = "uid://b07gdu4yupssq"

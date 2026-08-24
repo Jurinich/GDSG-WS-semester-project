@@ -37,8 +37,8 @@
 [ext_resource type="AudioStream" uid="uid://dqwcoahirl7v5" path="res://assets/sounds/game/paddle/fih 1.wav" id="36_26ibh"]
 [ext_resource type="AudioStream" uid="uid://3c5yputrrifo" path="res://assets/sounds/game/paddle/fih 2.wav" id="37_d55hy"]
 [ext_resource type="AudioStream" uid="uid://38kd3khra6n3" path="res://assets/sounds/game/paddle/fih 3.wav" id="38_1cnjy"]
-[ext_resource type="AudioStream" uid="uid://dce11nqsbnmiw" path="res://assets/sounds/menu/Timer 1.wav" id="38_d55hy"]
-[ext_resource type="AudioStream" uid="uid://tyf8ha45cxr2" path="res://assets/sounds/menu/Timer 2.wav" id="39_1cnjy"]
+[ext_resource type="AudioStream" uid="uid://balnr865sgj0y" path="res://assets/sounds/menu/Timer 1 (Louder).wav" id="38_sa6p2"]
+[ext_resource type="AudioStream" uid="uid://cqyotxuxcu7vm" path="res://assets/sounds/menu/Timer 2 (Louder).wav" id="39_opu6i"]
 [ext_resource type="AudioStream" uid="uid://dsbh6a3ps0t07" path="res://assets/sounds/game/canon/Canon 1.wav" id="40_1cnjy"]
 [ext_resource type="AudioStream" uid="uid://5hxh8p756q5e" path="res://assets/sounds/game/canon/Canon 2.wav" id="41_2igfy"]
 [ext_resource type="AudioStream" uid="uid://bolqgp7wwehqo" path="res://assets/sounds/menu/skin select.wav" id="42_gi52w"]
@@ -120,13 +120,13 @@ audiostreams = Array[AudioStream]([ExtResource("36_26ibh"), ExtResource("37_d55h
 
 [sub_resource type="Resource" id="Resource_gi52w"]
 script = ExtResource("4_1y43m")
-name = &"Time beep"
-audiostreams = Array[AudioStream]([ExtResource("38_d55hy")])
+name = &"Time_beep"
+audiostreams = Array[AudioStream]([ExtResource("38_sa6p2")])
 
 [sub_resource type="Resource" id="Resource_g71vj"]
 script = ExtResource("4_1y43m")
-name = &"Time end"
-audiostreams = Array[AudioStream]([ExtResource("39_1cnjy")])
+name = &"Time_end"
+audiostreams = Array[AudioStream]([ExtResource("39_opu6i")])
 
 [sub_resource type="Resource" id="Resource_ladlq"]
 script = ExtResource("4_1y43m")
@@ -154,6 +154,7 @@ script = ExtResource("1_yt2vs")
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1602257755]
 stream = SubResource("AudioStreamInteractive_sbao2")
+volume_db = -7.5
 autoplay = true
 
 [node name="SoundPlayer" parent="." unique_id=647762911 instance=ExtResource("3_fcxyy")]

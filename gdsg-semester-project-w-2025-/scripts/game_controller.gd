@@ -76,7 +76,11 @@ func timer_tick():
 	if (cur_game_time <= 0):
 		timer.stop()
 		gameover_menu.show_menu(left_player_score, right_player_score)
+		AudioManager.playSound("Time_end");
 		return
+	
+	if(cur_game_time > 0 && cur_game_time <= 15):
+		AudioManager.playSound("Time_beep");
 	
 	cur_game_time -= 1
 	score_ui.set_time(cur_game_time)
