@@ -61,6 +61,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 func catch_ball(ball: Ball) -> void:
 	_play_collect_animation()
+	AudioManager.playSound(&"vacuum_collect_ball")
 	
 	caught_balls.append(ball)
 	ball.set_physics_process(false)

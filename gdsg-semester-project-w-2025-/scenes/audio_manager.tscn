@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ca0u01v4akhj3" path="res://scripts/audio_manager.gd" id="1_yt2vs"]
 [ext_resource type="AudioStream" uid="uid://dghu87athimbe" path="res://assets/Music/kitty_pong_bgm.mp3" id="2_2fqsb"]
-[ext_resource type="PackedScene" path="res://scenes/sound_component.tscn" id="3_fcxyy"]
+[ext_resource type="PackedScene" uid="uid://bink6xfeoi6jk" path="res://scenes/sound_component.tscn" id="3_fcxyy"]
 [ext_resource type="Script" path="res://scripts/sound_resource.gd" id="4_1y43m"]
 [ext_resource type="AudioStream" uid="uid://c6qmpp11487qw" path="res://assets/sounds/menu/Menu hover 1.wav" id="5_n1t8p"]
 [ext_resource type="AudioStream" uid="uid://mj1m2tbrynff" path="res://assets/sounds/menu/Menu hover 2.wav" id="6_bne8e"]
@@ -145,7 +145,7 @@ audiostreams = Array[AudioStream]([ExtResource("43_ku15p"), ExtResource("44_sa6p
 
 [sub_resource type="Resource" id="Resource_ku15p"]
 script = ExtResource("4_1y43m")
-name = &"vacuum collect ball"
+name = &"vacuum_collect_ball"
 audiostreams = Array[AudioStream]([ExtResource("46_sa6p2")])
 
 [node name="AudioManager" type="Node" unique_id=1047763007]
