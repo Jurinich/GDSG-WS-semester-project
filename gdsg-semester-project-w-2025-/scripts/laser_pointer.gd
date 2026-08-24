@@ -38,6 +38,9 @@ var pointer_hidden_óffset: Vector2 = Vector2(0, -300)
 const ARENA_CENTER_X = 960
 const ARENA_CENTER_Y = 540
 
+var game_start_ignore_laser_sound: bool = true
+
+
 func _ready() -> void:
 	add_to_group("laser_pointer")
 	turn_off_laser()
@@ -109,7 +112,9 @@ func turn_on_laser():
 	dot_sprite.show()
 
 func turn_off_laser():
-	AudioManager.playSound("laser_click");
+	if(!game_start_ignore_laser_sound):
+		AudioManager.playSound("laser_click");
+		game_start_ignore_laser_sound = false
 	laser_on = false
 	dot_sprite.hide()
 
